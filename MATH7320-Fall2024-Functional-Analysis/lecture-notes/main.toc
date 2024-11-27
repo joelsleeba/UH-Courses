@@ -11,3 +11,4 @@
 \contentsline {section}{\numberline {3.1}Orthogonal Projections}{30}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Compact Operators}{33}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Spectral Theorem for Compact Normal Operators}{35}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Functional Calculus}{40}{section.3.4}%
