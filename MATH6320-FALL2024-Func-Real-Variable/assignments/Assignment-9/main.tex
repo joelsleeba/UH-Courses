@@ -133,16 +133,17 @@
         \lim_{p \to \infty} \inf \|f\|_p \ge \|f\|_\infty
       \end{align*}
 
-      Now to get the other inequality, observe that
+      Now to get the other inequality, observe that for $p > r$
       \begin{align*}
-        \int |f|^p \ d \mu &= \int |f|^r \ d \mu \int |f|^{p-r} \ d \mu \\
+        \int |f|^p \ d \mu &= \int |f|^r \  |f|^{p-r} \ d \mu \\
         &\le \| f\|_\infty^{p-r} \int |f|^r \ d \mu \\
       \end{align*}
       Hence we get
       \begin{align*}
         \|f\|_p = \Big( \int |f|^p \ d \mu\Big)^{1/p} \le \|
         f\|_\infty^{\frac{p-r}{p}} \Big( \int |f|^r \ d
-        \mu\Big)^{\frac{1}{p}} = \|f\|_\infty \|f\|_r^{\frac{r}{p}}
+        \mu\Big)^{\frac{1}{p}} = \|f\|_\infty^{ \frac{p-r}{p} }
+        \|f\|_r^{\frac{r}{p}}
       \end{align*}
       Thus taking limits, we see that
       \begin{align*}
@@ -279,5 +280,4 @@
 \end{questions}
 \printbibliography[heading=bibintoc]
 \end{document}
-
 
