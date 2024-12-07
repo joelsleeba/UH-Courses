@@ -76,6 +76,14 @@
 
 \begin{questions}
   \question
+  Let $x$ be a nilpotent element of the commutative ring $R$.
+  \begin{parts}
+    \part Prove that $x$ is either zero or a zero-divisor.
+    \part Prove that $rx$ is nilpotent for all $r \in R$.
+    \part Prove that $1 + x$ is a unit of $R$.
+    \part Deduce that the sum of a unit and a nilpotent element is a
+    unit in $R$.
+  \end{parts}
   \begin{solution}
     \begin{parts}
       \part Let $x \in R$, be nilpotent, $(x^n = 0)$ and $R$ be
@@ -99,6 +107,8 @@
   \end{solution}
 
   \question
+  A ring $R$ is called a Boolean ring if $a^2 = a$ for all $ a \in
+  R$. Prove that every Boolean ring is commutative.
   \begin{solution}
     Let $a \in R$. then $a + a = (a + a)^2 = a^2 + a^2 + a^2 + a^2 =
     a+ a + a+ a$ forces $a + a = 0$ i.e $a = -a$ for all $a \in R$.
@@ -112,6 +122,15 @@
   \end{solution}
 
   \question
+  Let $X$ be any non-empty set and let $\mathcal{P}(X)$ be the power
+  set of $X$. Define addition and multiplication in $\mathcal{P}(X)$ as
+  \begin{align*}
+    A + B = A \Delta B, \quad A \cdot B = A \cap B
+  \end{align*}
+  \begin{parts}
+    \part Show that $\mathcal{P}(X)$ is a ring under these operations.
+    \part Prove that $\mathcal{P}(X)$ is a unital commutative Boolean ring.
+  \end{parts}
   \begin{solution}
     \begin{parts}
       \part We have already verified in the first assignment that
@@ -139,6 +158,17 @@
   \end{solution}
 
   \question
+  Decide which of the following are ideals of the ring $\mathbb{Z}[x]$
+  \begin{parts}
+    \part Set of all polynomials whose constant term is a multiple of $3$.
+    \part Set of all polynomials whose coefficient of $x^2$ is a
+    multiple of $3$.
+    \part Set of all polynomials whose constant term, coefficient of
+    $x$, and coefficient of $x^2$ are $0$.
+    \part $\mathbb{Z}[x^2]$.
+    \part Set of polynomials whose coefficients sum to zero.
+    \part Set of polynomials $p(x)$ such that $p^\prime(0) = 0$.
+  \end{parts}
   \begin{solution}
     \begin{parts}
       \part The zero polynomial $\textbf{0}$, which is the additive
@@ -188,6 +218,8 @@
   \end{solution}
 
   \question
+  Prove that the ring $M_2(\mathbb{R})$ contains a subring
+  isomorphism to $\mathbb{C}$.
   \begin{solution}
     Consider the map $\phi: \mathbb{C} \to M_2(\mathbb{R})$ defined as
     \begin{align*}
@@ -224,6 +256,16 @@
   \end{solution}
 
   \question
+  \begin{parts}
+    \part  Prove that the map $\phi: \mathbb{Z} \to R$ defined as $n
+    \to n1_R$ is a ring homomorphism with kernel $n \mathbb{Z}$,
+    where $n$ is the characteristic of $R$.
+    \part Determine the characteristic of $\mathbb{Q}, \mathbb{Z}[x],
+    \mathbb{Z}/n \mathbb{Z}$.
+    \part Prove that if $ p$ is a prime and if $R$ is a commutative
+    ring of characteristic $p$, then $(a + b)^p = a^p + b^p$ for all
+    $ a, b \in R$.
+  \end{parts}
   \begin{solution}
     \begin{parts}
       \part Let $\phi: \mathbb{Z} \to R$ be the map given. Then
@@ -269,6 +311,8 @@
   \end{solution}
 
   \question
+  Prove that an integral domain has characteristic $p$, where $p$ is
+  either a prime or $0$.
   \begin{solution}
     Assume that $R$ is an integral domain with characteristic $p \neq
     0$. Then $p \textbf{1} = 0$ for the multiplicative identity
@@ -284,6 +328,8 @@
   \end{solution}
 
   \question
+  Let $R$ be a commutative ring. Prove that the set of all nilpotent
+  elements form an ideal, called the \textit{nilradical}.
   \begin{solution}
     Let $I$ be the collection of all nilpotent elements of a
     commutative ring $R$. Let $a, b \in I$ with $a^n = b^m = 0$. Then
@@ -303,6 +349,13 @@
   \end{solution}
 
   \question
+  Let $I, J$ be ideals of $R$.
+  \begin{parts}
+    \part Prove that $I + J$ is the smallest ideal containing both $I$ and $J$.
+    \part Prove that $IJ$ is an ideal contained in $I \cap J$.
+    \part Give an example where $IJ \neq I \cap J$.
+    \part Prove that if $R$ is commutative and $I+J = R$, then $IJ = I \cap J$.
+  \end{parts}
   \begin{solution}
     \begin{parts}
       \part Since $I, J$ are subrings of $R$, being the ideals of
@@ -361,6 +414,8 @@
   \end{solution}
 
   \question
+  Assume that $R$ is commutative. Prove that if $P$ is a prime ideal
+  of $R$ and $P$ contains no zero divisors, then $R$ is an integral domain.
   \begin{solution}
     Let $a, b \in \mathbb{R}$ such that $ab = 0 \in P$. Without loss
     of generality assume $a \in P$. Since we know that $P$
@@ -369,6 +424,9 @@
   \end{solution}
 
   \question
+  Assume $R$ is commutative. Let $I, J$ are ideals of $R$ and assume
+  that $P$ is a prime ideal of $R$ that contains $I \cap J$. Prove
+  that either $I$ or $J$ is contained in $P$.
   \begin{solution}
     Let $IJ \subset P$ and $I \not \subset P$. Then $\exists
     i_p \in I\setminus P$. Now for any $j \in J$,
@@ -379,6 +437,8 @@
   \end{solution}
 
   \question
+  Let $I$ be the ideal $(2, x)$ of $\mathbb{Z}[x]$. Prove that $I^2$
+  contains elements which are not of the form $ab$ for any $a, b \in I$.
   \begin{solution}
     Let $x \in I, y \in J$. Then $x = \sum_{i = 1}^{n} r_i a_i, y =
     \sum_{j = 1}^{m} s_i b_i$ for $r_i, s_j \in R$. This shows that
@@ -400,6 +460,9 @@
   % \end{solution}
 
   \question
+  Prove that if $R$ is an integral domain, then $(x)$ is a prime
+  ideal in $R[x]$. Prove that $(x)$ is a maximal ideal if and only if
+  $R$ is a field.
   \begin{solution}
     Let $I = (x)$, be the principal ideal generated by $x \in
     R[[x]]$. Let $p = \sum_{i = 0}^{n} a_i x^i, q = \sum_{j =
@@ -437,6 +500,8 @@
   \end{solution}
 
   \question
+  Let $R$ be a commutative ring with identity. Prove that every prime
+  ideal of $R$ is a maximal ideal.
   \begin{solution}
     Let $P$ be a prime ideal of a finite unital commutative ring $R$.
     Then consider $R/P$, the collection of all additive cosets of
@@ -464,5 +529,4 @@
 \end{questions}
 \printbibliography[heading=bibintoc]
 \end{document}
-
 

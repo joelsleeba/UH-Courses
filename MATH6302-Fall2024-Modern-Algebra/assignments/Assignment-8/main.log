@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.11.11)  15 NOV 2024 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.3)  6 DEC 2024 18:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -888,7 +888,7 @@ LaTeX Font Info:    Trying to load font information for OMX+yhex on input line
 File: OMXyhex.fd 
 File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 )
-Overfull \hbox (51.58437pt too wide) detected at line 93
+Overfull \hbox (51.58437pt too wide) detected at line 101
 \OT1/cmr/m/n/12 (1 + \OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )(1 \OMS/cmsy/m/n/12 ^^@
  \OML/cmm/m/it/12 x \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ^^@
  \OML/cmm/m/it/12 x[] [] x[]\OT1/cmr/m/n/12 ) = (1 \OMS/cmsy/m/n/12 ^^@ \OML/cm
@@ -900,20 +900,20 @@ MS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 x[] [] x[]\OT1/cmr/m/n/12 ) = 1
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (2.4461pt too wide) in paragraph at lines 255--259
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Overfull \hbox (2.4461pt too wide) in paragraph at lines 297--301
 []\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 R$ \OT1/cmr/m/n/12 be a ring of char-ac
 -ter-is-tic $\OML/cmm/m/it/12 p$\OT1/cmr/m/n/12 , then for any $\OML/cmm/m/it/1
 2 a \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 R$\OT1/cmr/m/n/12 , $\OML/cmm/m/it/12 p
 a \OT1/cmr/m/n/12 = [] =
  []
 
-[3] [4] [5] [6] [7]
+[4] [5] [6] [7] [8]
 
-LaTeX Warning: Empty bibliography on input line 465.
+LaTeX Warning: Empty bibliography on input line 530.
 
-[8]
-This exam contains 14 questions with 0 parts, 0 subparts, and 0 subsubparts.
+[9]
+This exam contains 14 questions with 19 parts, 0 subparts, and 0 subsubparts.
 (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -926,11 +926,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20261 strings out of 476076
- 342473 string characters out of 5793774
- 1945187 words of memory out of 5000000
- 42094 multiletter control sequences out of 15000+600000
- 574911 words of font info for 97 fonts, out of 8000000 for 9000
+ 20342 strings out of 476076
+ 343432 string characters out of 5793775
+ 1944187 words of memory out of 5000000
+ 42154 multiletter control sequences out of 15000+600000
+ 575258 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  66i,15n,81p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
@@ -941,12 +941,12 @@ mr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-
-Output written on main.pdf (8 pages, 141427 bytes).
+cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/share/texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
+Output written on main.pdf (9 pages, 155161 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 62 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
