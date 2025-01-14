@@ -1,0 +1,118 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+\marginnote{\scriptsize 14/01/2025}
+
+Let $\mathcal{H}$ be separable, and  $T \in \mathcal{K}(\mathcal{H})$
+be self adjoint, and $X$ be the
+orthonormal basis for $\mathcal{H}$ consisting of the eigenvectors of
+$T$. Then $\mathcal{H} \cong \ell^{2}(X)$ and then $T$ can be
+identified with a multiplication operator $M_f$ with $f \in
+\ell^{\infty}(X)$ such that $f(x) = \lambda_x$, where $\lambda_x$ is
+the eigenvalue for the eigenvector, $x \in X$.
+
+If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
+\ : \   m, n \in \mathbb{N} \}$ is an involutive algebra.
+
+\begin{definition}
+  An algebra over $\mathbb{C}$(or $\mathbb{R}$) is a vector space
+  over $\mathbb{C}$(or $\mathbb{R}$) with a product that is
+  associative and distributive.
+
+  A normed algebra is an algebra $\mathcal{A}$ equipped with a norm
+  \marginnote{ \scriptsize \it product is continuous}
+  such that $\|ab\| \le \|a\|\|b\|$ for all $a, b \in \mathcal{A}$.
+
+  If the norm is complete in a normed algebra, we call it a Banach algebra.
+
+  An algebra is unital if has a neutral element $1$ with respect to
+  the multiplication. It is called commutative if $ab = ba$ for all
+  $a, b \in \mathcal{A}$
+
+  An involution on an algebra is a map $*: \mathcal{A} \to
+  \mathcal{A}$ such that
+  \begin{enumerate}[label=(\arabic*)]
+    \item $(\alpha a + b)^* = \overline{\alpha} a^* + b^*$
+    \item $(ab)^* = b^*a^*$
+    \item $(a^*)^* = a$
+  \end{enumerate}
+  for all $a, b \in \mathcal{A}$ and $\alpha \in \mathbb{C}$
+
+  A normed $*$-algebra is a normed algebra with an involution $*$
+  such that $\|a^*\| = \|a\|$.
+\end{definition}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a  unital Banach algebra. An element $a \in
+  \mathcal{A}$ is invertible if there exists $b \in \mathcal{A}$ such
+  that $ab = ba = 1$.
+
+  The spectrum of $a$ is the set
+  \begin{align*}
+    \sigma(a) = \{ \lambda \in \mathbb{C}  \ : \  \lambda 1 - a
+    \textrm{ is not invertible } \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  In any unital Banach algebra, the set of invertible elements is open.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{definition}
+  The spectral radius of $a \in \mathcal{A}$ is defined to be
+  \begin{align*}
+    r(a) = \sup \{ |\lambda|  \ : \   \lambda \in \sigma(a) \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma} For all $a \in \mathcal{A}$,
+  \begin{align*}
+    r(a) \le \|a\|
+  \end{align*}
+\end{lemma}
+
+\begin{theorem}
+  Let $\mathcal{A}$ be a unital Banach algebra and $a \in
+  \mathcal{A}$. Then $\sigma(a)$ is a non-empty compact subset of $\mathbb{C}$.
+\end{theorem}
+
+\begin{lemma}
+  Let $X$ be a normed space. Then there exist a compact set $K$ and
+  an isometric linear map $X \to C(K)$.
+\end{lemma}
+\begin{proof}
+  embed $X$ to $X^**$.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a commutative Banach algebra. The spectrum of
+  $\mathcal{A}$ is the set $\textrm{sp}(\mathcal{A}) = \{ \tau \in
+  \mathcal{A}^*  \ : \  \tau(ab) = \tau(a)\tau(b), a, b \in \mathcal{A} \}$.
+\end{definition}
+
+\begin{lemma}
+  For every $\tau \in \textrm{sp}(\mathcal{A})$,
+  \begin{enumerate}
+    \item $\tau(1) = 1$
+    \item $\|\tau\| = 1$
+    \item $ \textrm{sp}(\mathcal{A})$ is a weak * closed subset of
+      $\mathcal{A}^*$
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  For every $a \in \mathcal{A}$,
+  \begin{align*}
+    \sigma(a) = \{ \tau(a)  \ : \   a \in \textrm{sp}(\mathcal{  A}) \}
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Let $\tau \in \textrm{sp}(\mathcal{A})$, then $\tau(\tau(a)1 -
+  a) = 0$ and therefore $\tau(a)1 - a \in \textrm{Ker}(\tau)$,
+  hence it is not invertible. Hence $\tau(a) \in \sigma(a)$.
+
+  Conversely, let $ \lambda \in \sigma(a)$, \textcolor{red}{verify}.
+\end{proof}

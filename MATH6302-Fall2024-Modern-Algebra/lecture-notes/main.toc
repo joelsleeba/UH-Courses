@@ -1,4 +1,0 @@
-\contentsline {chapter}{Contents}{1}{chapter*.1}%
-\contentsline {chapter}{\numberline {1}}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Internal Direct products}{2}{section.1.1}%
-\contentsline {chapter}{\numberline {2}}{4}{chapter.2}%
