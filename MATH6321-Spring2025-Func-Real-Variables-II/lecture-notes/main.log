@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.3)  14 JAN 2025 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  16 JAN 2025 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1131,11 +1131,19 @@ Package marginnote Info: xpos seems to be 89.62709pt on input line 5.
 Chapter 1.
 [3
 
-] [4])
+] [4]) (./lectures/2.tex
+Package marginnote Info: Margin note 7.1 is on absolute page 8 on input line 4.
 
-LaTeX Warning: Empty bibliography on input line 115.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
+ [5]
+Package marginnote Info: Margin note 8.1 is on absolute page 8 on input line 31
+.
+Package marginnote Info: xpos seems to be 93.82712pt on input line 31.
+ [6] [7])
 
-[5] (./main.aux)
+LaTeX Warning: Empty bibliography on input line 116.
+
+[8] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1147,13 +1155,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30788 strings out of 476076
- 575294 string characters out of 5793775
- 1939187 words of memory out of 5000000
- 52416 multiletter control sequences out of 15000+600000
- 576774 words of font info for 103 fonts, out of 8000000 for 9000
+ 30833 strings out of 476076
+ 575989 string characters out of 5793775
+ 1940187 words of memory out of 5000000
+ 52437 multiletter control sequences out of 15000+600000
+ 578896 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,8n,87p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,11n,87p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
@@ -1163,11 +1171,13 @@ share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (6 pages, 141988 bytes).
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fo
+nts/type1/public/rsfs/rsfs10.pfb>
+Output written on main.pdf (9 pages, 176400 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
+ 168 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  37 words of extra memory for PDF output out of 10000 (max. 10000000)
 
