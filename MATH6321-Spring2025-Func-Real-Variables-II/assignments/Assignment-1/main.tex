@@ -148,13 +148,12 @@
       f_{k_j}(t) \ dt \\
     \end{align*}
 
-    Moreover by \autoref{eq:2}, for each $\varepsilon > 0$ and $k_j \in
-    \mathbb{Z}$, there is
-    a $N_{k_j} \in \mathbb{N}$ such that for all $N > N_{k_j}$
+    Moreover by \autoref{eq:2}, for each $f_{k_j}$, and $\varepsilon
+    > 0$, there is a $N_{k_j} \in \mathbb{N}$ such that for all $N > N_{k_j}$
     \begin{align*}
       \Bigg| \frac{1}{N} \sum_{n = 1}^{N} f_{k_j}(2\pi n \alpha) -
       \frac{1}{2\pi} \int_{-\pi}^{\pi}  f_{k_j}(t) \ dt\Bigg| <
-      \frac{\varepsilon}{2^{k_j}|a_j|}
+      \frac{\varepsilon}{2^{j}|a_j|}
     \end{align*}
     Let $N_f = \max \{ N_{k_j}  \ : \  1 \le j \le J \}$, then for all $N > N_f$
     \begin{align*}
@@ -169,7 +168,7 @@
       &\le \sum_{j = 1}^{J} |a_j| \Bigg|\frac{1}{N}\sum_{n = 1}^{N}
       f_{k_j}(2 \pi n \alpha) -  \frac{1}{2\pi}
       \int_{-\pi}^{ \pi}   f_{k_j}(t) \ dt\Bigg| \\
-      &< \sum_{j = 1}^{J} \frac{\varepsilon}{2^{k_j}} \\
+      &< \sum_{j = 1}^{J} \frac{\varepsilon}{2^{j}} \\
       &< \varepsilon
     \end{align*}
     Since $\varepsilon > 0$ was chosen arbitrary, this proves that
@@ -200,7 +199,7 @@
     P_2(\mathbb{R})$, when $f$ is the projection of $x^3$ to
     $P_2(\mathbb{R})$. Hence
     \begin{align*}
-      \min_{a, b, c \in \mathbb{R}} \int_{-1}^{1} |x^3 - a - bx -
+      \min_{a, b, c \ \in \ \mathbb{R}} \int_{-1}^{1} |x^3 - a - bx -
       cx^2|^2 \ dx = \int_{-1}^{1} \Big|x^3 - \frac{3}{5}x\Big|^2
       \ dx = \frac{8}{175}
     \end{align*}

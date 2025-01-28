@@ -1,0 +1,111 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 28/01/2025 }
+
+\begin{example}
+  Let $(X, \Sigma, \mu)$ be a measure space. Define $E : \Sigma \to
+  B(L^{2}(X, \mu)):= A \to M_{\chi_A}$. It is easy to see that $E$
+  satisfies the first 3 properties of a spectral measure.
+  \textcolor{red}{verify the 4th}.
+\end{example}
+
+\begin{proposition}
+  \label{prop:spectral_measure_gives_complex_measure}
+  Let $E$ be a spectral measure on $(X, \Sigma, \mathcal{H})$. Then
+  for every $\xi, \eta \in \mathcal{H}$.
+  \begin{align*}
+    E_{\xi, \eta}(A) = \langle  E(A) \xi ,  \eta \rangle
+  \end{align*}
+  defines a finite measure on $(X, \Sigma)$ with $\|E_{\xi, \eta}\|
+  \le \|\xi\| \|\eta\|$.
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{lemma}
+  Let $\{ P_i \}_{i \in I}$ be a family of pairwise orthogonal
+  projections on a Hilbert space $\mathcal{H}$. Then there exist a
+  unique projection $P$ on $\mathcal{H}$ such that $\forall \xi, \eta
+  \in \mathcal{H}$,
+  \begin{align*}
+    \sum_{i \in I} \langle P_i \xi ,  \eta \rangle = \langle P \xi ,
+    \eta \rangle
+  \end{align*}
+\end{lemma}
+This means the convergence of orthogonal projections is not in the
+norm sense, but rather in the sense above. For example
+\begin{example}
+  Consider $P_n = P_{\delta_n}$ in $B(\ell^{2}(\mathbb{N}))$, and let
+  $  Q_n = \sum_{i = 1}^{n} P_i$. Then clearly $Q_i$ doesn't converge
+  in norm, but rather in the above sense to the identity map in
+  $B(\ell^{2}(\mathbb{N}))$.
+\end{example}
+
+\begin{lemma}
+  \label{lem:resiz_representation_for_sesquilinear}
+  Let $B(\cdot, \cdot)$ be a bounded sesquilinear form on a Hilbert
+  space $\mathcal{H}$. Then there exist a unique $T \in
+  B(\mathcal{H})$ such that for all $\xi, \eta \in \mathcal{H}$,
+  \begin{align*}
+    B(\xi, \eta) = \langle T \xi ,  \eta \rangle
+  \end{align*}
+\end{lemma}
+
+\begin{proposition}
+  \label{prop:spectral_measure_and_integration}
+  Let $\phi$ be a bounded linear function on $(X, \Sigma)$. Then
+  there exist a unique $  T_\phi \in B(\mathcal{H})$ such that for
+  all $\xi, \eta \in \mathcal{H}$
+  \begin{align*}
+    \int_X \phi \ d  E_{\xi, \eta} = \langle T_\phi \xi ,  \eta \rangle
+  \end{align*}
+  and we denote $T_\phi:= \int_X \phi \ d  E$
+\end{proposition}
+\begin{proof}
+  See that the integral is sesquilinear on $\xi, \eta$. Then use
+  \autoref{lem:resiz_representation_for_sesquilinear} with
+  \autoref{prop:spectral_measure_gives_complex_measure}.
+\end{proof}
+
+Note that the set $\mathcal{M}(X)$ of all bounded measurable functions on $X$,
+equipped with sup norm is a Banach space. Moreover, with pointwise
+product and complex conjugation it turns into a commutative C$^*$ algebra.
+
+\begin{theorem}
+  Let $(X, \Sigma)$ be a measure space and $\phi$ be a bounded linear
+  function. The map
+  \begin{align*}
+    \mathcal{M}(X) \to B(\mathcal{H}):= \phi \mapsto \int_ X \phi \ d E
+  \end{align*}
+  is a contractive $*$-homomorphism.
+\end{theorem}
+\begin{proof}
+  To show that it is a $*$-homomorphism, observe that
+  \begin{align*}
+    \overline{E_{\xi, \eta}} = E_{\eta, \xi}
+  \end{align*}
+  and then proceed. \textcolor{red}{verify}
+
+  To show that the map is multiplicative, we need to show that
+  \begin{align*}
+    \int \phi \psi \ d  E = \int \phi \ d  E \circ \int \psi \ d  E
+  \end{align*}
+  See the picture and use \label{prop:spectral_measure_and_integration}.
+\end{proof}
+
+\begin{theorem}
+  Let $X$ be a compact Hausdorff space and $\mathcal{H}$ be a
+  Hilbert space, and $\Psi: C(X) \to B(\mathcal{H})$ is a
+  $*$-homomorphism (representation). Then there exist a unique
+  spectral measure on $(X, \mathcal{B}, \mathcal{H})$ ($\mathcal{B}$
+  being the Borel sigma algebra on $X$), such that
+  \begin{align*}
+    \Psi(f) = \int_X  f \ d E
+  \end{align*}
+\end{theorem}
+
+% \begin{definition}
+%   A C$^*$ algebra is a Banach *-algebra satifying the norm equality
+%   $\|a^*a\| = \|a\|^2$, for all $a \in \mathcal{A}$.
+% \end{definition}

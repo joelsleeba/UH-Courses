@@ -3,8 +3,8 @@
 \chapter{Banach Algebras}
 \marginnote{\scriptsize 14/01/2025}
 
-Let $\mathcal{H}$ be separable, and  $T \in \mathcal{K}(\mathcal{H})$
-be self adjoint, and $X$ be the
+Let $\mathcal{H}$ be a separable Hilbert space, and  $T \in
+\mathcal{K}(\mathcal{H})$ be self adjoint, and $X$ be the
 orthonormal basis for $\mathcal{H}$ consisting of the eigenvectors of
 $T$. Then $\mathcal{H} \cong \ell^{2}(X)$ and then $T$ can be
 identified with a multiplication operator $M_f$ with $f \in
@@ -58,7 +58,20 @@ If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
   In any unital Banach algebra, the set of invertible elements is open.
 \end{lemma}
 \begin{proof}
-  \textcolor{red}{verify}
+  If $\|x\| < 1$, then
+  \begin{align*}
+    \frac{1}{1 - x} = \sum_{n \in \mathbb{N}} x^n
+  \end{align*}
+  or equivalently if $\|1 - x\| < 1$, then
+  \begin{align*}
+    \frac{1}{x} = \sum_{n \in \mathbb{N}} (1-x)^n
+  \end{align*}
+  Now let $x_0$ be invertible in the unital Banach algebra and let $x
+  \in B(x_0, \frac{1}{\|x_0^{-1}\|})$. Then $\|xx_0^{-1}  - 1\| \le
+  \|x - x_0\| \|x_0^{-1}\| < 1$ and similarly $\|x_0^{-1}x - 1\| <
+  1$. This shows that $xx_0^{-1}, x_0^{-1}x$ are invertible with
+  inverses (assumed) $y, z$ respectively. Thus $xx_0^{-1}y = 1 =
+  zx_0^{-1}x$. \textcolor{red}{verify}.
 \end{proof}
 
 \begin{definition}
@@ -78,13 +91,17 @@ If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
   Let $\mathcal{A}$ be a unital Banach algebra and $a \in
   \mathcal{A}$. Then $\sigma(a)$ is a non-empty compact subset of $\mathbb{C}$.
 \end{theorem}
+\begin{proof}
+  \textcolor{red}{proof incoming for non-empty.} See last semester
+  notes for proof of compactness.
+\end{proof}
 
 \begin{lemma}
   Let $X$ be a normed space. Then there exist a compact set $K$ and
   an isometric linear map $X \to C(K)$.
 \end{lemma}
 \begin{proof}
-  embed $X$ to $X^**$.
+  embed $X$ to $X^{**}$, with $K$ being the weak * closed unit ball of $X^*$
 \end{proof}
 
 \begin{definition}

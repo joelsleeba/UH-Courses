@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  22 JAN 2025 22:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  23 JAN 2025 09:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -888,18 +888,18 @@ LaTeX Font Info:    Trying to load font information for OMX+yhex on input line
 File: OMXyhex.fd 
 File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 )
-Overfull \hbox (43.05434pt too wide) detected at line 174
+Overfull \hbox (43.05434pt too wide) detected at line 173
 []
  []
 
 
-Underfull \vbox (badness 2941) detected at line 181
+Underfull \vbox (badness 2941) detected at line 180
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (14.92198pt too wide) in paragraph at lines 187--195
+Overfull \hbox (14.92198pt too wide) in paragraph at lines 184--192
 \OML/cmm/m/it/12 P[]\OT1/cmr/m/n/12 (\U/msb/m/n/12 R\OT1/cmr/m/n/12 )$. Now by 
 Gram-Schmidt or-thonor-mal-iza-tion, we see that $[][]\OML/cmm/m/it/12 ; []x; [
 ]x[][]$
@@ -907,7 +907,7 @@ Gram-Schmidt or-thonor-mal-iza-tion, we see that $[][]\OML/cmm/m/it/12 ; []x; [
 
 [3]
 
-LaTeX Warning: Empty bibliography on input line 212.
+LaTeX Warning: Empty bibliography on input line 209.
 
 [4]
 This exam contains 3 questions with 0 parts, 0 subparts, and 0 subsubparts.
@@ -940,7 +940,7 @@ t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb></usr/share/texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on main.pdf (4 pages, 132706 bytes).
+Output written on main.pdf (4 pages, 132635 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
