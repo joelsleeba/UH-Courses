@@ -97,9 +97,10 @@ We study consequences before looking at the proof of
   \end{align*}
 \end{proof}
 
-We investigate more consequences of Baire's theorem.
+We investigate more consequences of Banach-Steinhaus' theorem.
 
 \begin{theorem}[Open mapping theorem]
+  \marginnote{ \scriptsize \it \textcolor{red}{review this}}
   Let $X, Y$ be Banach spaces, $T: X \to Y$ is bounded, linear. If
   $T$ is onto and $U \subset X$ is open, then $T(U)$ is open.
 \end{theorem}
@@ -115,16 +116,63 @@ We investigate more consequences of Baire's theorem.
   \begin{align*}
     \|\frac{y-Tu}{\varepsilon}\| < \delta
   \end{align*}
-
   By the inclusion, we get $z \in X$ such that $\|z\| < 1$ and $Tz =
   \frac{y-Tu}{z}$. Solving for $y$, gives $y = T(\varepsilon z + y)$.
   Letting $w = \varepsilon z + u$, then $\|w - u\| = \varepsilon
   \|z\| < \varepsilon$ and $Tw = y$. We have found for each $y$ near
   $ Tu$ a vector $w \in U$ which maps to $y$.
-
   Let $U \subset X$ be open. Fix $u \in U$. Then there is $\delta >
   0$ with $ \{ x   \ : \  \|x - u\| < \delta \} \subset U$.
   We also know that if $y \in Y$
+
+  Now for the rest, follow the same logic as in functional analysis
+  last semester to see that $T(B_1^X(0))$ is not nowhere dense, and
+  thus $\exists y \in Y, r > 0$ such that
+  \begin{align*}
+    B_{4r}(y_0) \subset \overline{ T(B_1^X(0))}
+  \end{align*}
+  Choose $y' \in B_{2r}(y_0) \cap T(B_1(0))$. (The fact that this is
+    non-empty follows from the fact that every open ball in the closure
+  must intersect the original set pre-closure). Then  there is
+  $x^\prime \in B_1^X(0)$ such that $y^\prime = T(x^\prime)$. Now
+  using triangle inequality
+  \begin{align*}
+    B_{2r}(y^\prime) \subset B_{4r}(y_0) \subset \overline{ T(B_1^X(0))}
+  \end{align*}
+  Thus for $y \in B_{2r}(0)$,
+  \begin{align*}
+    y &= - y^\prime + (y + y^\prime) \\
+    &\in -y^\prime + B_{2r}(y^\prime) \\
+    &\subset -y^\prime + \overline{T(B_1(0))} \\
+    &= \overline{ T( -x^\prime + B_1(0))} \\
+    &\subset \overline{T(B_2^X(0))}
+  \end{align*}
+  Now by resclaing with 2, we see that
+  \begin{align*}
+    B_r(0)  \subset \overline{T(B_1^X(0))}
+  \end{align*}
+  Again by further scaling we see that for all $n \in \mathbb{N}$,
+  \begin{align*}
+    B_{r2^{-n}}(0) \subset \overline{ T(B_{2^{-n}}(0))}
+  \end{align*}
+  For $y \in B_{\frac{r}{2}}(0)$, there is a $x_1 \in B_{2^{-1}}(0)$ such that
+  \begin{align*}
+    \|y - T(x_1)\| < r2^{-1}
+  \end{align*}
+  Now let $y_1 = y - T(x_1)$ and repeat the same procedure to get
+  $x_2 \in B_{2^{-2}(0)}$ such that
+  \begin{align*}
+    y_2 &:= y_1 - T(x_2) \\
+    &=y - T( x_1 + x_2) \\
+    &\in B_{ r2^{-3}}(0)
+  \end{align*}
+  Proceeding inductively, we get $x_n \in B_{2^{-n}}(0)$ such that
+  $y_n = y-T(\sum_{i = 1}^{n} x_i) \in B_{ r2^{-n-1}(0)}$. That is
+  \begin{align*}
+    \|y_n\| = \Big \| y - T \big(\sum_{i = 1}^{n} x_i\big) \Big \| <
+    \frac{r}{2^{n+1}}
+  \end{align*}
+  \textcolor{red}{verify}
 \end{proof}
 
 \begin{corollary}
