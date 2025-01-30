@@ -29,7 +29,24 @@
   just need to verify the norm inequality
   \begin{align*}
     \|ab + I\| \le \|a + I\|\|b + I\|
-  \end{align*} \textcolor{red}{verify}.
+  \end{align*}
+  By the definition of the quotient norm for any $\varepsilon > 0$,
+  there exist a $i_a, i_b \in
+  I$ such that
+  \begin{align*}
+    \|a + i_a\| \le \|a + I\| + \varepsilon, \quad \|b + i_b\| \le
+    \|b + I\| + \varepsilon
+  \end{align*}
+  Then,
+  \begin{align*}
+    \|ab + I\| &\le \|ab + i_ab + i_b a + i_aib\|  \\
+    &= \|(a + i_a)( b + i_b)\| \\
+    &\le \| a + i_a\| \|b + i_b\| \\
+    &\le (\|a + I\| + \varepsilon)(\|b + I\| + \varepsilon) \\
+    &\le \|a + I\|\|b + I\| + \varepsilon \|b  + I\| + \varepsilon
+    \|a + I\| + \varepsilon^2
+  \end{align*}
+  Since $\varepsilon$ was chosen arbitrarily, this gives our result.
 \end{proof}
 
 \begin{lemma}
@@ -65,7 +82,7 @@
   \label{specturm_of_comm_alg_and_spectrum_of_element}
   For every $a \in \mathcal{A}$, a commutative unital Banach algebra,
   \begin{align*}
-    \sigma(a) = \{ \tau(a)  \ : \   a \in \textrm{sp}(\mathcal{  A}) \}
+    \sigma(a) = \{ \tau(a)  \ : \   \tau \in \textrm{sp}(\mathcal{  A}) \}
   \end{align*}
 \end{lemma}
 \begin{proof}
@@ -82,8 +99,8 @@
 
   Define $\tau: \mathcal{A} \to \mathbb{C} = \mathcal{A}/I_\lambda :=
   x \mapsto x + I_\lambda$. Then $\tau \in \textrm{sp}(\mathcal{A})$,
-  and $\tau(a) = a + I = \lambda + I_\lambda = \lambda1 + I$ since
-  $\lambda1 - a \in I$. Now by the identification of $A/I_\lambda$
+  and $\tau(a) = a + I_\lambda = \lambda + I_\lambda$ since
+  $\lambda1 - a \in I_\lambda$. Now by the identification of $A/I_\lambda$
   with $\mathbb{C}$ as in \autoref{2:A=C}, we see that $\tau(a) =
   \lambda$.
 \end{proof}
@@ -102,15 +119,26 @@
   $\Phi$ is a contractive algebra homomorphism with $\| \Phi(a)\| = r(a)$.
 \end{theorem}
 \begin{proof}
-  \textcolor{red}{verify}
+  That $\Phi$ is contractive follows easily from
+  \begin{align*}
+    \|\Phi(a)(\tau)\| = \|\tau(a)\| \le \|a\|
+  \end{align*}
+  since $\tau$ is a contraction as proved in
+  \autoref{lem:spectrum_is_compact}. Linearity and multiplicativity
+  of $\Phi$ follows form the fact that every element $\tau \in
+  \textrm{sp}(\mathcal{A})$ is linear and multiplicative on $\mathcal{A}$.
 \end{proof}
 
-\begin{remark}
+\begin{remark}[Maximal ideals of $\mathcal{A}$ and $\textrm{sp}(\mathcal{A})$]
   Let $\mathcal{A}$ be unital commutative Banach algebra. Let $\tau
   \in \textrm{sp}(\mathcal{A})$, then $\textrm{Ker}(\tau)$ is a
   closed ideal of $\mathcal{A}$, and $A/\textrm{Ker}(\tau) \cong
   \mathbb{C}$ by the first isomorphism theorem. So
-  $\textrm{Ker}(\tau)$ is a maximal ideal.
+  $\textrm{Ker}(\tau)$ is a maximal ideal. The converse of this is
+  also true. Natural map to the quotient space of a maximal ideal
+  (which is now a filed isomorphic to $\mathbb{C}$) gives an element
+  of the $\textrm{sp}(\mathcal{A})$. Hence $\textrm{sp}(\mathcal{A})$
+  can be identified with the maximal ideals of $\mathcal{A}$.
 \end{remark}
 
 \begin{remark}
@@ -135,6 +163,9 @@
     r(a) = \lim_{n \to \infty} \|a^n\|^{1/n}
   \end{align*}
 \end{theorem}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
 
 \begin{corollary}
   If $\|a^2\| = \|a\|^2$, then $r(a) = \|a\|$ and the Gelfand

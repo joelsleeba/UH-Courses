@@ -14,6 +14,8 @@ the eigenvalue for the eigenvector, $x \in X$.
 If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
 \ : \   m, n \in \mathbb{N} \}$ is an involutive algebra.
 
+\section{Preliminaries}
+
 \begin{definition}
   An algebra over $\mathbb{C}$(or $\mathbb{R}$) is a vector space
   over $\mathbb{C}$(or $\mathbb{R}$) with a product that is
@@ -111,6 +113,7 @@ If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
 \end{definition}
 
 \begin{lemma}
+  \label{lem:spectrum_is_compact}
   For every $\tau \in \textrm{sp}(\mathcal{A})$,
   \begin{enumerate}
     \item $\tau(1) = 1$
@@ -120,5 +123,32 @@ If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  \textcolor{red}{verify}
+  \begin{enumerate}[label=(\arabic*)]
+    \item Since $\tau(a) = \tau(a \cdot \textbf{1}) =
+      \tau(a)\tau(\textbf{1})$ for all $ a \in \mathcal{A}$, it is
+      immediate that $\tau(\textbf{1}) = 1 \in \mathbb{C}$.
+    \item Since $\tau(\textbf{1}) = 1$, it is clear that $\|\tau\|
+      \ge 1$. The other inequality follows from the fact that
+      $\tau(a) \in \sigma(a)$ (see that $a - \tau(a) \textbf{1} \in
+      \textrm{Ker}(\tau)$) and thus $|\tau(a)| \le r(a) \le \|a\|$.
+    \item Let $ \tau, \phi \in \textrm{sp}(A)$. Then for all $\hat{a}
+      \in \hat{\mathcal{A}}$ (image of $\mathcal{A}$ in
+      $\mathcal{A}^{**}$ under the natural inclusion), we have
+      \begin{align*}
+        |\hat{a}(\tau - \phi)| =  |\hat{a}(\tau) - \hat{a}(\phi)|
+        = |\tau(a) - \phi(a)| =
+        | (\tau - \phi)(a)| \le \|a\||\tau - \phi|
+      \end{align*}
+      Thus if $\tau_\alpha$ is any weak * Cauchy net, $\tau_\alpha(a)$
+      converges for all $a \in \mathcal{A}$. Let $\tau(a) =
+      \lim_{\alpha} \tau_\alpha(a)$. Then all we have left is to
+      prove that $\tau \in \textrm{sp}(\mathcal{A})$. But since
+      $\tau_(\alpha) \to \tau(a)$ and $\tau_\alpha(b) \to \tau(b)$,
+      by the algebra of limits in $\mathbb{C}$, we get $ \tau(ab) =
+      \tau(a) \tau(b)$ proving $\tau \in \textrm{sp}(\mathcal{A})$.
+
+      Thus we see that $\textrm{sp}(\mathcal{A})$ is a weak * closed
+      subspace of the unit ball of $\mathcal{A}^*$ which is closed by
+      the Banach Alaoglu theorem.
+  \end{enumerate}
 \end{proof}

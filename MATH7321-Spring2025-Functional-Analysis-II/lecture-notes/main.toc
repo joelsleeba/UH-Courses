@@ -1,2 +1,4 @@
 \contentsline {chapter}{Contents}{1}{chapter*.1}%
 \contentsline {chapter}{\numberline {1}Banach Algebras}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Preliminaries}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Continuous Functional Calculus}{8}{section.1.2}%
