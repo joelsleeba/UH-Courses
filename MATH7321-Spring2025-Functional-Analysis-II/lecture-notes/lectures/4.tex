@@ -141,8 +141,46 @@ product and complex conjugation, it turns into a commutative C$^*$ algebra.
   \begin{align*}
     \int_X \phi \psi \ d  E = \int_X \phi \ d  E \circ \int_X \psi \ d  E
   \end{align*}
-  See the picture and use
-  \autoref{prop:spectral_measure_and_integration}. \textcolor{red}{verify}
+  Notice that by \autoref{prop:spectral_measure_and_integration}, we'll
+  done if we show that for all $\xi, \eta \in \mathcal{H}$,
+  \begin{align*}
+    \int_X \phi \psi \ d E_{\xi, \eta} = \int_X \phi \ d  E_{(\int_X
+    \psi \ d E) \xi, \eta}
+  \end{align*}
+  But for this, it is enough to show the equivalence of the measures
+  $\psi dE_{\xi, \eta}$ and $E_{(\int_X \psi \ d E)\xi, \eta }$. That
+  is for all $A \in \Sigma$, we need to show that
+  \begin{align}
+    \label{eq:4}
+    \Big \langle E(A)\Big(\int_X  \psi \ d  E\Big)\xi ,  \eta \Big
+    \rangle = \int \psi \chi_A \ d  E_{\xi, \eta}
+  \end{align}
+  But again, the left hand side of the inner product is
+  \begin{align*}
+    \Big \langle \Big( \int_X \psi \ d E\Big) \xi ,  E(A) \eta \Big \rangle
+  \end{align*}
+  since $E(A)$ is a projection. Again by
+  \autoref{prop:spectral_measure_and_integration}, we see that the
+  above inner product is
+  \begin{align*}
+    \int_X \psi \ d E_{\xi, E(A) \eta}
+  \end{align*}
+  Then \autoref{eq:4} reduces to showing
+  \begin{align*}
+    \int_X \psi \ d E_{\xi, E(A) \eta} = \int \psi \chi_A \ d  E_{\xi, \eta}
+  \end{align*}
+  Again using the same reasoning, it is enough to show that the
+  measures are the same. That is for any $B \in \Sigma$, we must have
+  \begin{align*}
+    E_{\xi , E(A) \eta}(B) =     \int_X \chi_A \chi_B \ dE_{\xi, \eta}
+  \end{align*}
+  But this is equivalent to
+  \begin{align*}
+    \langle E(A) \xi ,  E(B) \eta \rangle = \langle E(A)E(B) \xi ,
+    \eta \rangle =  \langle  E(A \cap B) \xi , \eta \rangle = \int_X
+    \chi_{A\cap B} \ d E_{ \xi, \eta} = E_{\xi, \eta}(A \cap B)
+  \end{align*}
+  which is true by a property of the Spectral measure.
 \end{proof}
 
 % \begin{definition}
