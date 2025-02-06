@@ -98,7 +98,6 @@
   \end{solution}
 
   \question
-  \textcolor{red}{not finished}
   \begin{solution}
     Let $f_n$ be a cauchy sequence in $M$. Then $f_n \to f$ in $C([0,
     1])$, since $C([0, 1])$ is complete under sup norm. For
@@ -147,33 +146,83 @@
     Thus we get that $M$ is convex.
 
     % work from here onwards.
-    We show that $f \in \mathcal{M}$, then $\|f\|_\infty > 1$. If $f
-    \in \mathcal{M}$ and $\|f\|_\infty \le 1$, then
+    Now we'll show that if $ f \in M$, then $ \|f\|_\infty > 1$.
+    Let $f \in C([0, 1])$, such that $\|f\|_\infty \le 1$.
+    Then
     \begin{align*}
-      \Big | \int_{0}^{\frac{1}{2}} f(x) \ dx \Big | \le
+      \int_{0}^{\frac{1}{2}} f(x) \ dx \le  \Big |
+      \int_{0}^{\frac{1}{2}} f(x) \ dx \Big | \le
       \int_{0}^{\frac{1}{2}} |f(x)| \ dx \le \int_{0}^{\frac{1}{2}} 1
       \ dx = \frac{1}{2}
     \end{align*}
     and by a similar reasoning, we get
     \begin{align*}
+      - \int_{\frac{1}{2}}^{1} f(x) \ dx \le
       \Big|\int_{\frac{1}{2}}^{1} f(x) \ dx\Big| \le
       \int_{\frac{1}{2}}^{1} |f(x)| \ dx \le \int_{\frac{1}{2}}^{1} 1
       \ dx = \frac{1}{2}
     \end{align*}
-    Thus
+    which gives
     \begin{align*}
-      \frac{-1}{2} \le \int_{0}^{\frac{1}{2}} f(x) \ dx \le \frac{1}{2}
+      \int_{0}^{\frac{1}{2}} f(x) \ dx - \int^{1}_{\frac{1}{2}} f(x) \ dx \le 1
+    \end{align*}
+    Thus equality in the above inequalities hold only when
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f(x) \ dx = \frac{1}{2} = -
+      \int_{1}^{\frac{1}{2}} f(x) \ dx
+    \end{align*}
+    Now if $f(x) = u(x) + iv(x)$, where $u(x), v(x)$ are real valued
+    functions, this would imply that
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} u(x) \ dx = \frac{1}{2} = -
+      \int_{1}^{\frac{1}{2}} u(x) \ dx
     \end{align*}
     and
     \begin{align*}
-      \frac{-1}{2} \le \int_{\frac{1}{2}}^{1} f(x) \ dx \le \frac{1}{2}
+      \int_{0}^{\frac{1}{2}} v(x) \ dx = 0 =
+      \int_{1}^{\frac{1}{2}} v(x) \ dx
     \end{align*}
-    Thus by triangle inequality,
+    This is rather replacing $f(x)$ with $u(x)$, and therefore
+    without loss of generality, we might very well assume that $f$ is
+    a real valued function. Moreover
     \begin{align*}
-      \Big|\int_{0}^{\frac{1}{2}} f(x) \ dx - \int_{\frac{1}{2}}^{1}
-      f(x) \ dx\Big| \le \Bigg| \Big|\int_{0}^{\frac{1}{2}} f(x) \ dx
-      \Big| + \Big|\int_{\frac{1}{2}}^{1}f(x) \ dx\Big|\Bigg| \le 1
+      \frac{1}{2} = \int_{0}^{\frac{1}{2}} f(x) \ dx \le
+      \int_{0}^{\frac{1}{2}} |f(x)| \ dx \le \frac{1}{2}
     \end{align*}
+    shows that $f = |f|$ almost everywhere in $[0, \frac{1}{2}]$.
+    Again since $\|f\|_\infty \le 1$, \  $\chi_[0, \frac{1}{2}] - f$ is
+    a non-negative function in $[0, \frac{1}{2}]$
+    which satisfy
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f - \chi_{[0, \frac{1}{2}]} \ dx =
+      \int_{0}^{\frac{1}{2}} f \ dx - \int_{0}^{\frac{1}{2}}
+      \chi_{[0, \frac{1}{2}]} \ dx = \frac{1}{2} - \frac{1}{2} = 0
+    \end{align*}
+    Then by a result we proved before which states that if
+    \begin{align*}
+      \int_E  f \ d \mu = 0
+    \end{align*}
+    either $\mu(E) = 0$ or $f = 0$ almost everywhere, we get that $f
+    = \chi_{[0, \frac{1}{2}]}$ almost everywhere in $[0,
+    \frac{1}{2}]$. By continuity of $f$, we see that $f(x) = 1$ for
+    all $x=[0, \frac{1}{2})$.
+    By a similar reasoning we get $f(x) = \frac{-1}{2}$ for all $x
+    \in (\frac{1}{2}, 1]$. But such a continuous function do not
+    exist. Hence we have shown that if $f \in M$, then $\|f\|_\infty > 1$.
+
+    Now we'll find a sequence of functions $f_i \in M$ such that
+    $\|f_i\|_\infty \to 1$. Define
+    \begin{align*}
+      f_n(x) =
+      \begin{cases}
+        1 + \frac{1}{n}, & 0 \le x \le \frac{1}{2} - \frac{1}{n} \\
+        (n+1)(\frac{1}{2} - x), & \frac{1}{2} - \frac{1}{n} < x \le
+        \frac{1}{2} + \frac{1}{n} \\
+        -1 - \frac{1}{n}, & \frac{1}{2} + \frac{1}{n} < x \le 1
+      \end{cases}
+    \end{align*}
+    Then $f_n \in M$ for all $n \ge 2$ and $\|f_n\|_\infty = 1 +
+    \frac{1}{n}$. Hence $ \|f_n\|_\infty \to 1$.
   \end{solution}
 
   \question
@@ -199,7 +248,8 @@
       \ : \ \exists x \in [0, 1], \forall y \in [0, 1], \ |f(x) - f(y)|
     \le m |x - y|  \}$ is closed. Let $(f_n)$ be a cauchy sequence in
     $X_m$. Since $X_m \subset C([0, 1])$ and $C([0 ,1 ])$ is closed
-    under the sup norm, $f_n \to f \in C([0, 1])$. We'll show that $f \in X_m$.
+    under the sup norm, $f_n \to f \in C([0, 1])$. We'll show that
+    $f \in X_m$.
     Let $x_n \in [0, 1]$ correspond to each $f_n$ such that for
     all $y \in [0, 1]$,
     \begin{align*}
@@ -235,7 +285,8 @@
       \begin{align*}
         |f_n(x_n) - f_n(y)| = m |x_n - y|
       \end{align*}
-      Then for any convergent subsequence $x_{n_k} \to x_0 \in [0, 1]$, we have
+      Then for any convergent subsequence $x_{n_k} \to x_0 \in [0,
+      1]$, we have
       that for all $y \in [0, 1]$
       \begin{align*}
         |f(x_0) - f(y)| \le m |x_0 - y|
