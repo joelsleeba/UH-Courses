@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1738257562.69244 0
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1738688877.09331 0
   "articles.bib" 0 -1 0 ""
   "main.bcf" 0 -1 0 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1738257561.93481 "main.tex" "main.pdf" "main" 1738257562.69276 0
+["pdflatex"] 1738688876.33751 "main.tex" "main.pdf" "main" 1738688877.09363 0
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1736268207 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1736268207 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1736268207 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -224,14 +224,15 @@
   "lectures/1.tex" 1737650599.34134 5629 6d0643392ce358c9d82f7d6da0340f59 ""
   "lectures/2.tex" 1737648062.83348 5479 65c5fb4ad08c9d169fa0d03863c024cd ""
   "lectures/3.tex" 1738254479.21229 5473 742921599c4f041ce0ca3900d6fe9ee5 ""
-  "lectures/4.tex" 1738257561.1056 6974 733b566dadbe48f3e733fafe36698b01 ""
-  "lectures/5.tex" 1738254199.14431 1049 69c76a7507b1dfcc36a74a231d762310 ""
-  "main.aux" 1738257562.5956 1631 d8c897977ae1e5f83ccdccca2ecfe692 "pdflatex"
+  "lectures/4.tex" 1738258186.82666 6974 733b566dadbe48f3e733fafe36698b01 ""
+  "lectures/5.tex" 1738685791.97231 1106 3d82eef8c54c64154c4ce392dd26752b ""
+  "lectures/6.tex" 1738688875.59321 2076 e378e37890ed785766e2a2c160fd0c6a ""
+  "main.aux" 1738688876.99654 1808 9ed073eedd91e8310b31466f937404a4 "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.out" 1738257562.5956 836 d09c0a8c7968ca4042727f1ba48a9dcb "pdflatex"
-  "main.run.xml" 1738257562.59893 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
-  "main.tex" 1738252724.15662 3993 c4ded86a1de3113f7a5971cd8d3704fd ""
-  "main.toc" 1738257562.59893 389 45b9a474782547fc2b83cfcd6cdae17a "pdflatex"
+  "main.out" 1738688876.99654 1056 3037ce81676cdfa86895e9bdf1a3f59d "pdflatex"
+  "main.run.xml" 1738688876.99988 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
+  "main.tex" 1738685469.76759 4016 d065baaf411844bd401b0d766040c050 ""
+  "main.toc" 1738688876.99988 482 ae222d18e8666afa0629005ae59c294b "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  30 JAN 2025 17:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  4 FEB 2025 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1199,7 +1199,7 @@ Package marginnote Info: Margin note 14.1 is on absolute page 14 on input line
 4.
 Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 
-Overfull \hbox (2.15996pt too wide) in paragraph at lines 37--44
+Overfull \hbox (2.15996pt too wide) in paragraph at lines 36--43
 []\OT1/cmr/m/n/12 Now we show that the map $\U/rsfs/m/n/12 F \OT1/cmr/m/n/12 : 
 \OMS/cmsy/m/n/12 M\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X\OT1/cmr/m/n/12 ) \OMS/cms
 y/m/n/12 ! \OML/cmm/m/it/12 B\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12
@@ -1207,11 +1207,18 @@ y/m/n/12 ! \OML/cmm/m/it/12 B\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 H\OT1/cmr/m/n/12
 /n/12 is a $\OMS/cmsy/m/n/12 ^^C$\OT1/cmr/m/n/12 -representation
  []
 
-[12])
+[12]) (./lectures/6.tex
+Package marginnote Info: Margin note 15.1 is on absolute page 15 on input line 
+4.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
+Package marginnote Info: Margin note 15.2 is on absolute page 15 on input line 
+14.
+Package marginnote Info: xpos seems to be 393.78427pt on input line 14.
+ [13])
 
-LaTeX Warning: Empty bibliography on input line 119.
+LaTeX Warning: Empty bibliography on input line 120.
 
-[13] (./main.aux)
+[14] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1223,10 +1230,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30907 strings out of 476076
- 577138 string characters out of 5793775
+ 30921 strings out of 476076
+ 577336 string characters out of 5793775
  1942187 words of memory out of 5000000
- 52466 multiletter control sequences out of 15000+600000
+ 52471 multiletter control sequences out of 15000+600000
  579642 words of font info for 113 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,12n,87p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1244,10 +1251,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmti8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on main.pdf (14 pages, 236188 bytes).
+Output written on main.pdf (15 pages, 241377 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
