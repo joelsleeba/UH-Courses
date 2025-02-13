@@ -49,7 +49,6 @@
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{problem}{Problem}[section]
-\newtheorem{solution}{Solution}[section]
 
 \theoremstyle{definition} % upright text, extra space above and below
 \newtheorem{definition}{Definition}[section]
@@ -59,6 +58,7 @@
 \theoremstyle{remark} % upright text, no extra space above or below
 \newtheorem{remark}{Remark}[section]
 \newtheorem*{note}{Note} %'Notes' in italics and without counter
+\newtheorem{solution}{Solution}[exercise]
 
 \newcommand{\propositionautorefname}{Proposition}
 \newcommand{\lemmaautorefname}{Lemma}
@@ -70,26 +70,6 @@
 \newcommand{\noteautorefname}{Note}
 \newcommand{\exerciseautorefname}{Exercise}
 \newcommand{\solutionautorefname}{Solution}
-
-% For exercise and solutions
-%\newif\ifshowsolutions
-%\showsolutionstrue % Change to \showsolutionsfalse to hide solutions
-
-% Custom environments for problems and solutions
-%\newcounter{exercise}[chapter]
-%\newenvironment{problem}[1][]
-%  {\par\noindent\textbf{#1.}}
-%  {\par}
-%
-%\newenvironment{solution}
-%  {\ifshowsolutions \expandafter\solutioncontent \else
-% \expandafter\comment \fi}
-%  {\ifshowsolutions \hfill \qedsymbol \else \expandafter\endcomment
-% \fi \vspace{1em}}
-%
-%\newenvironment{solutioncontent}
-%  {\par\noindent\textit{Solution.}}
-%  {\par}
 
 \addbibresource{articles.bib}
 
@@ -116,6 +96,7 @@
 \input{lectures/4.tex}
 \input{lectures/5.tex}
 \input{lectures/6.tex}
+\input{lectures/7.tex}
 
 \printbibliography[heading=bibintoc]
 

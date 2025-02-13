@@ -1,0 +1,62 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 11/02/2025}
+
+\begin{exercise}
+  Explore the correspondance between states on $\ell^{\infty}(X)$ and
+  the finitely additive probability measures on $X$.
+\end{exercise}
+
+\begin{theorem}
+  Let $\mathcal{H}$ be a Hilbert space, and let $f: B(\mathcal{H})
+  \to \mathbb{C}$ be linear. Then, the following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $f$ is SOT continuous.
+    \item $f$ is WOT continuous.
+    \item There exists $\xi_1 , \xi_2 , \ldots , \xi_n, \eta_1 ,
+      \eta_2 , \ldots , \eta_n \in \mathcal{H}$ such that
+      \begin{align*}
+        f(T) = \sum_{i = 1}^{n} \langle T \xi_i , \eta_i \rangle
+      \end{align*}
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We just need to prove $1 \implies 3$. By a lemma from last semester,
+  there must exist $ \xi_1 , \xi_2 , \ldots , \xi_n \in \mathcal{H}$
+  such that $|f(T)| \le \sum_{i = 1}^{n}  \|T \xi_i\|$ for all $T \in
+  B(\mathcal{H})$. Let $   \mathcal{K} = \overline{\{ T \xi_o  \ : \
+  T \in B(\mathcal{H}) \}} \subset \mathcal{H}$. Then
+  \begin{align*}
+    \phi: \mathcal{K} \to \mathbb{C} := T \xi_0 \to f(T)
+  \end{align*}
+  is a well defined linear functional for $\mathcal{K}$. Now by Reisz
+  representation, we see that $\phi(T \xi_0) = \langle  T \xi_0 ,
+  \eta_0 \rangle $ for some $\eta_0 \in \mathcal{H}$.
+
+  But here, for $\xi_1 , \xi_2 , \ldots, \xi_n$, consider them in
+  $\mathcal{H}^n$ and do the same process to get a $(\eta_1 , \eta_2
+  , \ldots , \eta_n) \in \mathcal{H}^n$.
+\end{proof}
+
+\begin{theorem}
+  Let $X, Y$ be normed spaces. For $1 \le p \le \infty$, define
+  \begin{align*}
+    \|(x, y)\|_p = \Big( \|x\|^p + \|y\|^p\Big)^{\frac{1}{p}}
+  \end{align*}
+  Then $\|\cdot\|_p$ is a norm extending both norms in $X$ and $Y$.
+  If $X$ and $Y$ are Banach, then so is $(X \oplus Y, \|\cdot\|_p)$.
+  All these norms are equivalent for all $1 \le p \le \infty$.
+\end{theorem}
+
+\begin{proposition}
+  We have that $(X \oplus_p Y)^* = X^* \oplus_q Y^*$.
+\end{proposition}
+\begin{proof}
+  We first show when $p = 1, q = \infty$. Consider the map
+  \begin{align*}
+    \Xi: (X \oplus_1 Y)^* \to X^* \oplus_\infty Y^* := F \to F_X \oplus F_Y
+  \end{align*}
+  once we identify $X$ as $X \oplus 0$ and $Y$ similarly as subspaces
+  of $X \oplus Y$. See that this is a bijective linear map. Now show
+  that the norms are preserved in $\Xi$.
+\end{proof}

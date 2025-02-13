@@ -1,0 +1,116 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 06/02/2025 }
+
+\begin{exercise}
+  Show that for $L^{p}(\mu)$, and a bounded linear functional
+  $\Lambda$ and letting
+  \begin{align*}
+    \mathcal{M} = \{ f \in L^{p}(\mu)  \ : \   \Lambda(f) = 1 \}
+  \end{align*}
+  If $1 < p < \infty$, then $M$ has at most one norm minimizer.
+\end{exercise}
+\begin{solution}
+  Assume we have two minimizers for the norm, $f, g \in M$, then we
+  know from Problem 1 in Assignment 2, if $f \neq g$, then
+  \begin{align*}
+    \|(f+g)/2\| < \frac{1}{2} \|f\| + \frac{1}{2} \|g\| = \|f\|
+  \end{align*}
+  This contradicts our assumption that $f$ is a norm minimizer.
+\end{solution}
+
+\section{Application of open mapping theorem}
+
+Let $\mathbb{T} = [-\pi, \pi]$, and $f \in L^{1}(\mathbb{T})$. Then
+\begin{align*}
+  c_n := \hat{f}(n) = \frac{1}{2\pi} \int_{\mathbb{T}}  f \bar{e_n} \ d m
+\end{align*}
+where $e_n(t) = e^{int}$. $c_n$ are called the $n$-th Fourier
+coefficient of $f$.
+
+\begin{theorem}[Riemann - Lebesgue lemma]
+  If $f \in L^1(\mathbb{T})$,  then
+  \begin{align*}
+    \lim_{n \to \pm \infty}  \hat{f}(n) = 0
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Let $\epsilon > 0$ be given. Take trigonometric polynomials
+  \begin{align*}
+    P = \Big \{ p(t) = \sum_{k = -m}^{m} p_ke^{ikt} \ : \ m \in
+    \mathbb{N} \Big \}
+  \end{align*}
+  which are dense in $L^{1}(\mathbb{T})$, so we can choose $p \in P$
+  such that $\|f - p\|_1 < \varepsilon$. For sufficiently large $|n|$
+  , that is $|n|> m$, we also have
+  \begin{align*}
+    \frac{1}{2\pi} \int_{\mathbb{T}} (f-p) \bar{e_n} \ dm -
+    \frac{1}{2pi} \int_{\mathbb{T}}  f \bar{e_n} \ dm = \hat{f}(n)
+  \end{align*}
+  We also observe that for any $ n \in \mathbb{Z}$,
+  \begin{align*}
+    |\hat{f}(n) - \hat{p}(n)| = \Big| \frac{1}{2\pi}
+    \int_{\mathbb{T}}  (f- p) \bar{e_n} \ dm \Big| \le \frac{1}{2\pi}
+    \|f - p\|_1 < \frac{\varepsilon}{2\pi} < \varepsilon
+  \end{align*}
+  By comparing $\hat{p}(n) \to 0$ as $ n \to 0$, with $\hat{ f}(n)$,
+  we get that
+  \begin{align*}
+    \lim_{n \to \pm \infty} \sup |\hat{f}(n)| < \varepsilon
+  \end{align*}
+  Since $\varepsilon > 0$, we get our proof.
+\end{proof}
+
+Let $c_{\textbf{0}} = \{ \phi: \mathbb{Z} \to \mathbb{C}  \ : \
+\lim_{n \to \pm \infty}  \phi(n) = 0 \}$. We conclude that computing
+the Fourier coefficients gives us a linear map $\Lambda:
+L^{1}(\mathbb{T}) \to c_{\textbf{0}}$, such that
+\begin{align*}
+  \Lambda(f)(n) = \hat{f}(n)
+\end{align*}
+
+We know $\Lambda$ is continuous by
+\begin{align*}
+  |\Lambda(f)(n)| &= \Big| \frac{1}{2\pi} \int_{\mathbb{T}}  f
+  \bar{e_n} \ d m\Big| \\
+  &\le \frac{1}{2\pi} \int_{\mathbb{T}} |f|  \ d m \\
+  &= \frac{1}{2\pi} \|f\|_1
+\end{align*}
+Now taking supremums over $n \in \mathbb{Z}$, we get
+$\|\Lambda(f)\|_\infty \le \frac{1}{2\pi} \|f\|_1$. Again by the
+usual trick, we see that $\|\Lambda\| \le \frac{1}{2\pi}$.
+
+\begin{theorem}
+  $\Lambda$ as defined above is not onto.
+\end{theorem}
+\begin{proof}
+  We establish that $\Lambda$ is one to one. This follows easily from
+  Weierstrass and Lusin by using trigonometric polynomials, and then
+  continuous functions to approximate $L^{1}(\mathbb{T})$.
+
+  Now asssume that $\Lambda^{-1}$ is bounded, then for each $\hat{ f}
+  \in c_{\textbf{0}}$,
+  \begin{align*}
+    \|\Lambda^{-1}(\hat{f})\| \le \|f\|
+  \end{align*}
+  If we choose
+  \begin{align*}
+    \hat{f}(m) =
+    \begin{cases}
+      \frac{1}{2\pi}, & \|m\| \le n \\
+      0, & \textrm{else}
+    \end{cases}
+  \end{align*}
+  the coefficients corresponding
+  to the n-th Dirichlet's kernel. Then since $\Lambda$ is one-to-one,
+  we get $\Lambda^{-1}(\hat{D_n}) = D_n$. But we know that $\|D_n\|_1
+  \to \infty$, as $n \to \infty$, while $\|\hat{D_n}\|_\infty = 1$.
+  Thus we see that $ \Lambda^{-1}$ is unbounded. We conclude by the
+  open mapping theorem that $\Lambda$ is not onto.
+\end{proof}
+\begin{corollary}
+  We see that the range of $\Lambda$ is not a closed subspace of
+  $c_0$, by the same proof.
+\end{corollary}
+
+\section{Hahn-Banach Theorem}
