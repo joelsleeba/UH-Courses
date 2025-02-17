@@ -1,0 +1,54 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 13/02/2025 }
+
+\begin{example}
+  Kadison Singer problem.
+\end{example}
+
+\section{Applications of Hahn-Banach Theorem}
+For the god given Hahn-Banach theorem, refer Chapter 1 of last
+semester's functional notes.
+
+\begin{proposition}
+  Let $D = \{ z \in \mathbb{C}  \ : \  |z|< 1 \}$, and let $\d D = S^1$.
+  Now, if $p(z) = \sum_{j = 1}^{n} p_j z^j$, then
+  \begin{align*}
+    \max \{ |p(z)|  \ : \  z \in \bar{D}  \} = \max \{ |p(z)|  \ :
+    \ z \in S^1\}
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Since $p$ is continuous and $ \bar{D}$ is compact, the maximum is
+  attained at $ \bar{D}$. Assume $ z_0 \in D$ is where the maximum is
+  achieved. Then if we rewrite $p(z) = \sum_{j = 1}^{n} q_j (z -
+  z_0)^j$, for $0< r< 1$ such that $z_0 + re^{i \theta} \in D$ for
+  any $\theta \in [0, 2 \pi)$,
+  \begin{align*}
+    \int_{0}^{2\pi}  p(z_0 + re^{i\theta}) \ \frac{d\theta}{2\pi} &=
+    \sum_{j = 0}^{n} \int_{0}^{2\pi}  q_j(re^{i\theta})
+    \ \frac{d\theta}{2\pi} = q_0 = p(z_0)
+  \end{align*}
+  This using the max property (abs value of integral is $\le$
+  integral of abs value) of the integral forces $p(z_0) = p(z_0
+  + re^{i\theta})$ for all $\theta \in [0, 2 \pi]$.  Use again the
+  fact that $p(z)$ is a polynomial and see. Then $p$ will be
+  take a constant value $q_0$ in $D$.
+\end{proof}
+
+\begin{example}
+  Let $A \subset C(\bar{D})$ be a subspace containing all
+  polynomials, and all such functions for which maximum modulus
+  holds.
+
+  For example, let $A(\mathbb{D})$ be the closure of the space
+  of polynomials with $\|\cdot\|_\infty$ on $S^1$. Then for any $ f
+  \in A(\mathbb{D})$, there exist a sequence of polynomials $p_n$
+  such that $p_n \to f$ uniformly, and  then $\|p_n\|_\infty \to
+  \|f\|_\infty$ by uniform convergence.
+
+  By max-modulus property of the polynomials and uniform convergence,
+  \begin{align*}
+    \|f\|_{\infty, \partial \mathbb{D}} = \| f\|_{\infty, \mathbb{D}}
+  \end{align*}
+\end{example}

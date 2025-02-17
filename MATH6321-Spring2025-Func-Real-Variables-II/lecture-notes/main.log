@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  6 FEB 2025 11:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  13 FEB 2025 11:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1168,26 +1168,34 @@ Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 Package marginnote Info: Margin note 18.1 is on absolute page 18 on input line 
 4.
 Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
- [16] [17])
+ [16] [17]) (./lectures/9.tex
+Package marginnote Info: Margin note 20.1 is on absolute page 20 on input line 
+4.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 
-LaTeX Warning: Empty bibliography on input line 101.
 
-[18] (./main.aux)
+LaTeX Warning: Command \d invalid in math mode on input line 14.
+
+[18])
+
+LaTeX Warning: Empty bibliography on input line 102.
+
+[19] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8374C2F04932019727155CC1358A4EC1;1449.
+(rerunfilecheck)             Checksum: A88D26FF84B608819FFC7E00F4112D37;1687.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30921 strings out of 476076
- 577230 string characters out of 5793775
+ 30934 strings out of 476076
+ 577414 string characters out of 5793775
  1942187 words of memory out of 5000000
- 52469 multiletter control sequences out of 15000+600000
+ 52474 multiletter control sequences out of 15000+600000
  579293 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,16n,87p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1206,10 +1214,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type
 nts/cm/cmti8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on main.pdf (19 pages, 253824 bytes).
+Output written on main.pdf (20 pages, 258777 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 76 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 308 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

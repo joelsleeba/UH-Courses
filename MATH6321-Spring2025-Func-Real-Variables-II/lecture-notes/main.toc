@@ -6,3 +6,4 @@
 \contentsline {section}{\numberline {2.2}Applications of Banach-Steinhaus}{15}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Application of open mapping theorem}{17}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Hahn-Banach Theorem}{18}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Applications of Hahn-Banach Theorem}{18}{section.2.5}%

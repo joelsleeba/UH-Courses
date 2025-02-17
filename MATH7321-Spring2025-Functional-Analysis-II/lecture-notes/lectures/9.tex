@@ -1,0 +1,78 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 13/02/2025 }
+
+\begin{theorem}[Bicommutant Theorem]
+  Let $A \subset B(\mathcal{H})$ be a unital $*$-subalgebra, where
+  $\mathcal{H}$ is separable. Then $\overline{ \mathcal{A}}^{SOT} =
+  \mathcal{A}^{\prime \prime}$
+\end{theorem}
+\begin{proof}
+  Let $T \in \overline{\mathcal{A}}^{SOT}$, and $S \in
+  \mathcal{A}^\prime$. Let $(T_i) \in \mathcal{A}$ be a net
+  converging in SOT to $T$. Then for all $\xi \in \mathcal{H}$,
+  \begin{align*}
+    TS \xi = \lim_{i} T_iS \xi = \lim_{i} ST_i \xi = S \lim_i T_i \xi = ST \xi
+  \end{align*}
+  shows that $T \in \mathcal{A}^{\prime\prime}$.
+
+  To see the converse, let $T \in \mathcal{A}^{\prime \prime}$, fix
+  $\xi \in \mathcal{H}$, and $\varepsilon >
+  0$ and let $K = \overline{\mathcal{A} \xi}$. Then notice that $K$
+  is a reducing subspace for all operators in $\mathcal{A}$.
+  \textcolor{red}{verify}. Then $P_K T = TP_K$ by our results on
+  reducing subsapces in last semester. Thus $P_K \in \mathcal{A}^\prime$.
+
+  %Prof version
+  Let $\xi_1 , \xi_2 , \ldots , \xi_n \in \mathcal{H}$, $\varepsilon>
+  0$ be given. Let
+  \begin{align*}
+    \mathcal{K} = \Big \{
+      \begin{bmatrix}%{c}
+        A \xi_1 \\
+        \vdots \\
+        A \xi_n
+    \end{bmatrix}  \ : \  A \in \mathcal{A} \Big \}
+  \end{align*}
+  For each $A \in \mathcal{A}$, let $\mathcal{A}^{(n)} = I_n \otimes A\in
+  B(\mathcal{H}^n)$. Let $\mathcal{A}^n = \{ A^{(n)}  \ : \  A \in
+  \mathcal{A} \}$. Observe that $\mathcal{A}^{(n)}(\mathcal{K})
+  \subset \mathcal{K}$. Also observe that $\mathcal{K}$ is reducing
+  for all $A^{(n)} \in \mathcal{A}^{(n)}$. So $P_{\mathcal{K}} \in
+  (\mathcal{A}^{(n)})^\prime = M_n(\mathcal{A}^\prime)$.
+  \textcolor{red}{verify the rest}.
+\end{proof}
+
+\begin{definition}
+  For every $\xi, \eta \in \mathcal{H}$, denote $\omega_{\xi, \eta}
+  \in B(\mathcal{H})^*$ such that
+  \begin{align*}
+    \omega_{\xi, \eta}(T) = \langle T \xi ,  \eta \rangle
+  \end{align*}
+\end{definition}
+
+\begin{theorem}
+  $B(\mathcal{H}) = \overline{\textrm{span}}\{ \omega_{\xi, \eta}
+  \ : \    \xi, \eta \in \mathcal{H} \}^*$
+\end{theorem}
+
+\begin{proposition}
+  For $T \in B(\mathcal{H})$, the following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\langle T \xi ,  \xi \rangle \ge 0, \forall \xi
+      \in \mathcal{H}$
+    \item $\exists S \in B(\mathcal{H})$ such that  $T = S^*S$
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  $2 \implies 1$ is obvious.
+
+  Now for the other one, it is clear that $T$ is self adjoint. So we
+  get that $\Xi: C(\textrm{sp}(T)) \to B(\mathcal{H})$. We claim that
+  $\textrm{sp}(T) \subset \mathbb{R}^{\ge 0}$, which then completes
+  the proof by the identification of $T$ with the multiplication
+  operator corresponding to the identity function in $C(\textrm{sp}(T))$.
+
+  For the sake of contradiction, assume that $Y = \textrm{sp}(T) \cap
+  \mathbb{R}^{< 0} \neq \emptyset$. Then let $P = \Xi(\chi_Y)$.
+\end{proof}
