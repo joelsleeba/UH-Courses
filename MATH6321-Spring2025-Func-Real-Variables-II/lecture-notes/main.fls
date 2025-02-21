@@ -414,6 +414,9 @@ INPUT lectures/7.tex
 INPUT ./lectures/9.tex
 INPUT ./lectures/9.tex
 INPUT lectures/9.tex
+INPUT ./lectures/10.tex
+INPUT ./lectures/10.tex
+INPUT lectures/10.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

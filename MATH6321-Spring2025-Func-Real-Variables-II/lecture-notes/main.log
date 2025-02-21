@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  13 FEB 2025 11:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.15)  18 FEB 2025 10:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1176,9 +1176,13 @@ Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 
 LaTeX Warning: Command \d invalid in math mode on input line 14.
 
-[18])
+[18]) (./lectures/10.tex
+Package marginnote Info: Margin note 21.1 is on absolute page 21 on input line 
+4.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
+)
 
-LaTeX Warning: Empty bibliography on input line 102.
+LaTeX Warning: Empty bibliography on input line 103.
 
 [19] (./main.aux)
  ***********
@@ -1192,10 +1196,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30934 strings out of 476076
- 577414 string characters out of 5793775
+ 30942 strings out of 476076
+ 577543 string characters out of 5793775
  1942187 words of memory out of 5000000
- 52474 multiletter control sequences out of 15000+600000
+ 52478 multiletter control sequences out of 15000+600000
  579293 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,16n,87p,677b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1214,10 +1218,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type
 nts/cm/cmti8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on main.pdf (20 pages, 258777 bytes).
+Output written on main.pdf (20 pages, 260132 bytes).
 PDF statistics:
- 308 PDF objects out of 1000 (max. 8388607)
- 247 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
+ 309 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 82 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

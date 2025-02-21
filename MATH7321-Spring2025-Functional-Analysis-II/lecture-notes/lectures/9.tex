@@ -62,6 +62,8 @@
     \item $\langle T \xi ,  \xi \rangle \ge 0, \forall \xi
       \in \mathcal{H}$
     \item $\exists S \in B(\mathcal{H})$ such that  $T = S^*S$
+    \item $\exists S \ge 0$ such that $T = S^2$. In this case we
+      write $S = T^{\frac{1}{2}}$.
   \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -73,6 +75,82 @@
   the proof by the identification of $T$ with the multiplication
   operator corresponding to the identity function in $C(\textrm{sp}(T))$.
 
-  For the sake of contradiction, assume that $Y = \textrm{sp}(T) \cap
-  \mathbb{R}^{< 0} \neq \emptyset$. Then let $P = \Xi(\chi_Y)$.
+  Let $\lambda < 0$. Then for all $\xi \in \mathcal{H}$,
+  \begin{align*}
+    \|(T - \lambda I) \xi\|^2 &= \langle (T - \lambda I) \xi , (T -
+    \lambda I) \xi \rangle \\
+    &= \|T \xi\|^2 - 2 \lambda \langle T \xi ,
+    \xi \rangle + \lambda^2 \|\xi\|^2 \\
+    & \ge \lambda^2 \|\xi\|^2
+  \end{align*}
+  which shows that $T - \lambda I$ is injective. Then it has a linear
+  left inverse $S$. Then $S : (T - \lambda I) \xi \mapsto  \xi$. Thus
+  we get $\|S\| \le \frac{1}{\lambda}$. Also $S(T- \lambda I) = I$
+  implies $(T - \lambda I) S^* = I$, which shows that $T - \lambda I$
+  is not invertible. Hence $\lambda \not\in \sigma(T)$.
 \end{proof}
+
+\begin{definition}
+  $T \in B(\mathcal{H})$ is called positive if it satisfies any of
+  the above conditions.
+\end{definition}
+
+\begin{definition}
+  Let $T \in B(\mathcal{H})$. We define $|T| = (T^*T)^{ \frac{1}{2}}$
+\end{definition}
+
+\begin{definition}
+  Given $\xi, \eta \in \mathcal{H}$, we denote $P_{\xi, \eta}:
+  \mathcal{H} \to  \mathcal{H} := \rho \mapsto  \langle \rho ,  \eta
+  \rangle  \xi$.
+\end{definition}
+
+\begin{lemma}
+  $\forall T \in B(\mathcal{H})$, $\exists S \in B(\mathcal{H})$ such
+  that $T = S|T|$.
+\end{lemma}
+\begin{proof}
+  For every $\xi \in \mathcal{H}$, define the map $S_1 :
+  \textrm{Image}(|T|) \to  \textrm{Image}(T) := |T|\xi \mapsto  T
+  \xi$. If $|T|\xi = 0$, then $ \langle |T|\xi , |T|\xi \rangle =
+  \langle |T|^2 \xi,  \xi \rangle = \langle T^*T \xi ,  \xi \rangle =
+  \|T \xi\|^2 = 0$. Moreover \textcolor{red}{$S_1$ is linear}. Thus
+  the map is well defined.
+
+  We have $\|S_1 |T|(\xi)\|^2 = \|T \xi\|^2 = \langle T \xi ,  T \xi
+  \rangle = \langle T^*T \xi ,  \xi \rangle  = \langle |T|\xi , |T|
+  \xi \rangle = \||T|\xi\|^2$. Hence $S_1$ is an isometry. Thus it
+  extends to an isometry from $\overline{\textrm{Image}(|T|)}$ onto
+  $\overline{\textrm{Image}(T)}$. Now define $S \in B(\mathcal{H})$
+  to be $S = S_1P_{\overline{ \textrm{Image}(|T|)}}$. Then $  S^*S =
+  P_{\overline{ \textrm{Image}(|T|)}}$, and $SS^* = P_{\overline{
+  \textrm{Image}(T)}}$.
+\end{proof}
+
+\begin{theorem}
+  If $T \in \mathcal{K}(\mathcal{H})$, $\exists$ orthonormal basis
+  $\{ \xi_n \}, \{ \eta_n \}$ for $\mathcal{H}$ such that
+  \begin{align*}
+    T = \sum_{n \in \mathbb{N}} \alpha_n P_{\xi_n, \eta_n}
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  By the lemma, $T = S|T|$. Observe $|T| \in
+  \mathcal{K}(\mathcal{H})$. There exists an orthonormal basis
+  $\xi_n$ and $(\alpha_n) \in \textbf{c}_0(\mathbb{R})_+$ such that
+  $|T| = \sum_{n} \alpha_n P_{\xi_n}$. Then $T = S |T| = \sum_{n}
+  \alpha_n SP_{\xi_n, \eta_n} = \sum_{n} a_n P_{S \eta_n, \xi_n}$.
+  Work on with previous lemma to show that $S
+  \xi_n$ is orthonormal basis.
+\end{proof}
+
+\begin{definition}
+  Let $f \in \mathcal{K}(\mathcal{H})^*$. Define $T_f \in
+  B(\mathcal{H})$ to be the unique operator satisfying $\langle T_f
+  \xi ,  \eta \rangle = f(P_{\xi, \eta})$. Then the map $f \to T_f$ is linear.
+\end{definition}
+
+\begin{theorem}
+  $T_f \in \mathcal{K}(\mathcal{H})$ for every $   f \in
+  \mathcal{K}(\mathcal{H})^*$
+\end{theorem}

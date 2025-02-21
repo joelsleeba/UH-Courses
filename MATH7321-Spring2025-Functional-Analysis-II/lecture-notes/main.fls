@@ -397,7 +397,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/yhmath/yhcmex10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT ./lectures/4.tex
 INPUT ./lectures/4.tex
 INPUT lectures/4.tex
@@ -409,6 +408,7 @@ INPUT lectures/5.tex
 INPUT ./lectures/6.tex
 INPUT ./lectures/6.tex
 INPUT lectures/6.tex
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT ./lectures/7.tex
 INPUT ./lectures/7.tex
 INPUT lectures/7.tex
@@ -418,6 +418,9 @@ INPUT lectures/8.tex
 INPUT ./lectures/9.tex
 INPUT ./lectures/9.tex
 INPUT lectures/9.tex
+INPUT ./lectures/10.tex
+INPUT ./lectures/10.tex
+INPUT lectures/10.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

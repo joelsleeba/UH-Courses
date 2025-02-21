@@ -22,12 +22,13 @@
     \langle \Psi(f) \xi ,  \eta \rangle  = \int f \ d \mu_{\xi,
     \eta} \quad f \in C(X)
   \end{align*}
-  Now for any $\phi \in \mathcal{M}(X)$, the map
+  Now for any $\xi, \eta \in \mathcal{H}$, the linear map
   \begin{align*}
-    \mathcal{H}\times \mathcal{H} \to  \mathbb{C} :=  (\xi, \eta)
-    \mapsto \int f \ d \mu_{\xi, \eta}
+    \mathcal{M}(X) \to  \mathbb{C} := \phi
+    \mapsto \int \phi \ d \mu_{\xi, \eta}
   \end{align*}
-  is a bounded sesquilinear form with norm $\|\xi\|\|\eta\|$. Hence
+  is a bounded sesquilinear form about $\xi, \eta$ with the operator
+  norm $\|\xi\|\|\eta\|$, which is attained when $\phi = \chi_X$. Hence
   there exist a unique $T_\phi \in B(\mathcal{H})$ such that
   \begin{align*}
     \langle T_\phi \xi ,  \eta \rangle = \int \phi \ d \mu_{\xi, \eta}
@@ -46,15 +47,18 @@
   \in \mathcal{M}(X)$. Then $\forall \xi, \eta \in
   \mathcal{H}$,
   \begin{align*}
+    \marginnote{ \scriptsize \it \textcolor{red}{verify the 2nd step}}
     \langle T_{\phi f}(\xi), \eta \rangle  &= \int \phi f \ d \mu_{\xi, \eta} \\
-    &= \int \phi f \ d \mu_{\Phi(f) \xi, \eta} \\
-    &= \langle T_\phi \Phi(f) \xi ,  \eta \rangle
+    &= \int \phi \ d \mu_{\Psi(f) \xi, \eta} \\
+    &= \langle T_\phi \Psi(f) \xi ,  \eta \rangle\\
+    &= \langle  T_\phi T_f \xi ,  \eta \rangle
   \end{align*}
   shows that $\mathscr{F}$ is multiplicative if one of the functions
   are in $C(X)$.
   More generally, if $\phi, \psi \in \mathcal{M}(X)$, choose a net
   $f_i \in C(X)$  such that $f_i$ converges to $\phi$ weak * in
-  $C(X)^{**}$, and $\|f_i\| \to \|\phi\|$ (\textcolor{red}{This is
+  $C(X)^{**} = \mathcal{M}(x)$, and $\|f_i\| \to \|\phi\|$
+  (\textcolor{red}{This is
       guaranteed by Goldstein's
   theorem}) and $\|f_i\| \le \|\phi\|$. Now for any $\xi, \eta \in
   \mathcal{H}$, we have
@@ -68,7 +72,7 @@
   \textcolor{red}{verify}. Thus $\mathscr{F}$ is a $*$-representation
   of $\mathcal{M}(X)$.
 
-  Now define $E : \Sigma(A) \to  B(\mathcal{H}) :=   A \mapsto
+  Now define $E : \Sigma \to  B(\mathcal{H}) :=   A \mapsto
   T_{\chi_A}$. Obviously $E$ satisfy all the first three properties
   of a spectral measure easily.
 

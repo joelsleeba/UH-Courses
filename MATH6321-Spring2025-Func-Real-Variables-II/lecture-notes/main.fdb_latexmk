@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1739467239.67095 0
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1739895969.7879 0
   "articles.bib" 0 -1 0 ""
   "main.bcf" 0 -1 0 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1739467238.3772 "main.tex" "main.pdf" "main" 1739467239.67129 0
+["pdflatex"] 1739895968.93324 "main.tex" "main.pdf" "main" 1739895969.78825 0
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1736268207 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1736268207 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1736268207 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -223,6 +223,7 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1736956820.08784 326993 92f68cc10ab4ce9240e9fbb800f4c9bd ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1736956794 7112995 504aa2a1d5e73b6c03f66b3026b231bb ""
   "lectures/1.tex" 1737650599.34134 5629 6d0643392ce358c9d82f7d6da0340f59 ""
+  "lectures/10.tex" 1739895968.22974 885 7d6968ddcbb3dcc13c1c349ff56f932a ""
   "lectures/2.tex" 1737648062.83348 5479 65c5fb4ad08c9d169fa0d03863c024cd ""
   "lectures/3.tex" 1738254479.21229 5473 742921599c4f041ce0ca3900d6fe9ee5 ""
   "lectures/4.tex" 1738258186.82666 6974 733b566dadbe48f3e733fafe36698b01 ""
@@ -230,12 +231,12 @@
   "lectures/6.tex" 1738688875.59321 2076 e378e37890ed785766e2a2c160fd0c6a ""
   "lectures/7.tex" 1738861965.80144 4007 f0a21d2490a4c2a33925a706160eb8df ""
   "lectures/9.tex" 1739467237.66943 1994 caa59a778f1964e4d991b3decdd99a96 ""
-  "main.aux" 1739467239.57342 2289 8380ef1720a385990d8a65ddb4c5bce6 "pdflatex"
+  "main.aux" 1739895969.68775 2332 7d89602917e63285d9ede5d69cde9605 "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.out" 1739467239.57342 1687 a88d26ff84b608819ffc7e00f4112d37 "pdflatex"
-  "main.run.xml" 1739467239.57662 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
-  "main.tex" 1739462486.89532 3500 dd6df2cbde068c680c663a136818dc1d ""
-  "main.toc" 1739467239.57662 754 2f2ef5581e0c94511163daa8f6accb49 "pdflatex"
+  "main.out" 1739895969.68775 1687 a88d26ff84b608819ffc7e00f4112d37 "pdflatex"
+  "main.run.xml" 1739895969.69083 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
+  "main.tex" 1739894596.88825 3524 4330b68b37ec2bd5b77b596f4352ff56 ""
+  "main.toc" 1739895969.69083 754 2f2ef5581e0c94511163daa8f6accb49 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
