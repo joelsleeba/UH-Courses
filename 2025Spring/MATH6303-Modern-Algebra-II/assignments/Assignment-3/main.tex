@@ -1,0 +1,183 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6303 Modern Algebra II \\ Homework  III}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    We know that the roots of $x^p - 2$ are precisely,
+    $2^{\frac{1}{p}}e^{i\frac{ 2\pi j}{p}}$, where $0 \le j \le p-1$.
+    Hence the splitting field of $x^p - 2$ is
+    $\mathbb{Q}(2^{\frac{1}{p}}, e^{i\frac{2\pi}{p}})$. Since
+    $2^{\frac{1}{p}}$ is a root of the irreducible (by Eisenstein
+    with 2) polynomial $x^p - 2$, and $e^{i \frac{2 \pi}{p}}$ is a
+    root of the irreducible cyclotomic polynomial $x^{p-1} + x^{p-2}
+    + \ldots + x + 1$, we see that the degree of the extension
+    \begin{align*}
+      [\mathbb{Q}(2^{\frac{1}{p}}, e^{i \frac{2 \pi}{ p}}) :
+      \mathbb{Q}] = [\mathbb{Q}(2^{\frac{1}{p}}, e^{i \frac{2 \pi}{
+      p}}) : \mathbb{Q}(2^{\frac{1}{p}})]
+      [\mathbb{Q}(2^{\frac{1}{p}}) : \mathbb{Q}] = (p-1)p
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Observe that $f(x) = x^4 - 14x + 9 = 0$ is irreducible since $f(x
+    + 2) = x^4 + 8x^3 + 10x^2 - 24x - 31$ is irreducible by
+    \textcolor{red}{verify}.
+    We notice that the roots of $x^2
+    - 14x + 9$ are $7 \pm \sqrt{40}$
+    using the quadratic formula. Hence the roots of $x^4 - 14x^2 + 9$
+    are precisely $\pm \sqrt{7 \pm \sqrt{40}}$. Moreover, notice that
+    \begin{align}
+      \label{align:2}
+      \sqrt{7 + \sqrt{40}} \times \sqrt{7 - \sqrt{40}} = \sqrt{7^2 -
+      40} = \sqrt{9} = 3
+    \end{align}
+    Hence the splitting field of the polynomial is
+    $K = \mathbb{Q}(\sqrt{7 + \sqrt{40}})$, which is a degree 4
+    extension, since $x^4 - 14x + 9$ is irreducible. Hence
+    the Galois group of the splitting field is of order $4$.
+
+    Now let $\tau \in \textrm{Aut}(K/\mathbb{Q})$. Then $\tau(\sqrt{7
+    + \sqrt{40}})$ can be mapped to one of $\pm \sqrt{7 \pm
+    \sqrt{40}}$. Let's look at these by cases. If $\tau$ fixes
+    $\sqrt{7 + \sqrt{40}}$, since $\sqrt{7 - \sqrt{40}} =
+    \frac{3}{\sqrt{7 + \sqrt{40}}}$, it fixes $\sqrt{7 - \sqrt{40}}$
+    and therefore the whole $K$, and becomes just the identity map.
+    By the same reasoning, any element of
+    $\textrm{Aut}(K/\mathbb{Q})$ which fixes either of $\pm \sqrt{7
+    \pm \sqrt{40}}$ fixes the whole field $K$.
+
+    Let $\tau(\sqrt{7 + \sqrt{40}}) =\sqrt{7 - \sqrt{40}}$, then by
+    \autoref{align:2}, $\tau(\sqrt{7 - \sqrt{40}}) =\sqrt{7 +
+    \sqrt{40}}$. This forces $\tau^2 = e$.
+
+    Now let $\tau(\sqrt{7 + \sqrt{40}}) = -\sqrt{7 - \sqrt{40}}$,
+    then again \autoref{align:2} forces $\tau(\sqrt{7 - \sqrt{40}}) =
+    -\sqrt{7 + \sqrt{40}}$. Thus, again $\tau^2 = e$.
+
+    By a similar reasoning, we'll get that $\tau(\sqrt{7 +
+    \sqrt{40}}) = -\sqrt{7 + \sqrt{40}}$ also gives $\tau^2 = e$.
+
+    Since we exhausted all the possible automorphisms, we see that
+    $\tau^2 = e$ for all $\tau \in \textrm{Aut}(K/\mathbb{Q})$. Hence
+    the Galois group must be isomorphic to $V_4$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    We get that $x^4 - 4x^2 + 2$ is an irreducible polynomial (
+    Eisenstein with $p = 2$) with root $\sqrt{2 + \sqrt{2}}$. All
+    roots of $x^4 - 4x^2 + 2$ are $\pm \sqrt{2 \pm \sqrt{2}}$. Moreover,
+    \begin{align*}
+      \sqrt{2 + \sqrt{2}} \times \sqrt{2 - \sqrt{2}} = \sqrt{2}
+    \end{align*}
+    shows that the splitting field of $x^4 - 4x^2 + 2$, is $
+    K = \mathbb{Q}(\sqrt{2 + \sqrt{2}}, \sqrt{2})$. Moreover we notice
+    that $\sqrt{2 + \sqrt{2}} \not\in \mathbb{Q}(\sqrt{2})$, while
+    $\sqrt{2 + \sqrt{2}}$ is a root of the polynomial $x^2 - (2 +
+    \sqrt{2})$, which is again irreducible (by having no roots) in
+    $\mathbb{Q}(\sqrt{2})$.
+    Thus we get that
+    \begin{align*}
+      [\mathbb{Q}( \sqrt{2 + \sqrt{2}}, \sqrt{2}) : \mathbb{Q}] =
+      [\mathbb{Q}( \sqrt{2 + \sqrt{2}}, \sqrt{2}) :
+      \mathbb{Q}(\sqrt{2})] [ \mathbb{Q}(\sqrt{2}): \mathbb{Q}] = 2 \times 2 = 4
+    \end{align*}
+    Thus we see that the Galois group of $x^4 - 4x^2 + 2$ is of order
+    $4$. Now consider $\tau \in \textrm{Aut}(K / \mathbb{Q})$ such that
+    \begin{align*}
+      \tau(\sqrt{2 + \sqrt{2}}) = \sqrt{2 - \sqrt{2}}, \ \textrm{and}
+      \ \tau(\sqrt{2 - \sqrt{2}}) = - \sqrt{2 + \sqrt{2}}
+    \end{align*}
+    We notice that the above definition gives $\tau(2 + 2) = 2 + 2$,
+    which in turn fixes every $r \in \mathbb{Q}$. Thus $\tau$ extends
+    to a well defined automorphism of $K$, which fixes $\mathbb{Q}$.
+    Then it is easy to verify that $|\tau| = 4$. Thus we see that
+    $\textrm{Gal}(K/\mathbb{Q}) = \mathbb{Z}_4$.
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
