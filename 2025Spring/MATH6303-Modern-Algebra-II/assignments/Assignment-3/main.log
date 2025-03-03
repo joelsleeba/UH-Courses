@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.2.23)  2 MAR 2025 15:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.2.23)  2 MAR 2025 21:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -890,19 +890,13 @@ File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (15.77122pt too wide) in paragraph at lines 205--214
-\OMS/cmsy/m/n/12 ^^F[]$\OT1/cmr/m/n/12 . Let's look at these by cases. If $\OML
-/cmm/m/it/12 ^^\$ \OT1/cmr/m/n/12 fixes $[]$, since $[] =
- []
-
-
-Overfull \hbox (13.2584pt too wide) in paragraph at lines 215--218
+Overfull \hbox (13.2584pt too wide) in paragraph at lines 217--220
 []\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 ([]) = []$, then by 
 [][]Equa-tion 1[][][], $\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 ([]) = []$.
  []
 
 
-Overfull \hbox (26.4873pt too wide) in paragraph at lines 219--222
+Overfull \hbox (26.4873pt too wide) in paragraph at lines 221--224
 []\OT1/cmr/m/n/12 Now let $\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 ([]) = \OMS/cmsy
 /m/n/12 ^^@[]$\OT1/cmr/m/n/12 , then again [][]Equa-tion 1[][][] forces $\OML/c
 mm/m/it/12 ^^\\OT1/cmr/m/n/12 ([]) =
@@ -910,7 +904,7 @@ mm/m/it/12 ^^\\OT1/cmr/m/n/12 ([]) =
 
 [2] [3]
 
-LaTeX Warning: Empty bibliography on input line 299.
+LaTeX Warning: Empty bibliography on input line 301.
 
 [4]
 This exam contains 4 questions with 0 parts, 0 subparts, and 0 subsubparts.
@@ -944,7 +938,7 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/
 texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on main.pdf (4 pages, 141519 bytes).
+Output written on main.pdf (4 pages, 141128 bytes).
 PDF statistics:
  99 PDF objects out of 1000 (max. 8388607)
  66 compressed objects within 1 object stream

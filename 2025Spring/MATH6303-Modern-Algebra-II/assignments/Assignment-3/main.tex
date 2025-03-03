@@ -185,9 +185,6 @@
 
     \question
     \begin{solution}
-      Observe that $f(x) = x^4 - 14x + 9 = 0$ is irreducible since $f(x
-      + 2) = x^4 + 8x^3 + 10x^2 - 24x - 31$ is irreducible by
-      \textcolor{red}{verify}.
       We notice that the roots of $x^2
       - 14x + 9$ are $7 \pm \sqrt{40}$
       using the quadratic formula. Hence the roots of $x^4 - 14x^2 + 9$
@@ -198,13 +195,18 @@
         40} = \sqrt{9} = 3
       \end{align}
       Hence the splitting field of the polynomial is
-      $K = \mathbb{Q}(\sqrt{7 + \sqrt{40}})$, which is a degree 4
-      extension, since $x^4 - 14x + 9$ is irreducible. Hence
-      the Galois group of the splitting field is of order $4$.
-
+      $K = \mathbb{Q}(\sqrt{7 + \sqrt{40}})$. Thus
+      $[\mathbb{Q}(\sqrt{7 + \sqrt{10}}): \mathbb{Q}] \le 4$. Hence
+      the Galois group of the splitting field is of order $\le 4$.
       Now let $\tau \in \textrm{Aut}(K/\mathbb{Q})$. Then $\tau(\sqrt{7
       + \sqrt{40}})$ can be mapped to one of $\pm \sqrt{7 \pm
-      \sqrt{40}}$. Let's look at these by cases. If $\tau$ fixes
+      \sqrt{40}}$. Since each of them give
+      distinct automorphisms, we see that the Galois group contain
+      atleast $4$ distinct automorphisms. This combined with the
+      above inference, we get that $\textrm{Aut}(K/\mathbb{Q})$ has
+      exactly $4$ elements.
+
+      Let's look at these by cases. If $\tau$ fixes
       $\sqrt{7 + \sqrt{40}}$, since $\sqrt{7 - \sqrt{40}} =
       \frac{3}{\sqrt{7 + \sqrt{40}}}$, it fixes $\sqrt{7 - \sqrt{40}}$
       and therefore the whole $K$, and becomes just the identity map.
