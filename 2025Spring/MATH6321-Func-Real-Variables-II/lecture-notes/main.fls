@@ -1,4 +1,4 @@
-PWD /home/joel/NotesHome/Mathematics/courses/MATH6321-Spring2025-Func-Real-Variables-II/lecture-notes
+PWD /home/joel/NotesHome/Mathematics/courses/2025Spring/MATH6321-Func-Real-Variables-II/lecture-notes
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT main.tex
@@ -37,8 +37,6 @@ INPUT /usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 INPUT /usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 INPUT /usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
 INPUT /usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
-INPUT /usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
-INPUT /usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texmf-dist/tex/latex/refcount/refcount.sty
@@ -49,6 +47,8 @@ INPUT /usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 INPUT /usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 INPUT /usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+INPUT /usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -417,6 +417,21 @@ INPUT lectures/9.tex
 INPUT ./lectures/10.tex
 INPUT ./lectures/10.tex
 INPUT lectures/10.tex
+INPUT ./lectures/11.tex
+INPUT ./lectures/11.tex
+INPUT lectures/11.tex
+INPUT ./lectures/12.tex
+INPUT ./lectures/12.tex
+INPUT lectures/12.tex
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/yhmath/yhcmex10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

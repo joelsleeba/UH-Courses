@@ -18,6 +18,18 @@ the Shatten-p class of operators.
   operators to get all rank one operators. Now taking the closed span
   gives me all the compact operators.
 
-  \textcolor{red}{verify the rest assuming there's a non-compact
-  operator is in $I$}.
+  Let $0 \ge T \in I \notin \mathcal{K}(\mathcal{H})$. (Or take
+  $TT^*$). Then by spectral decomposition,
+  \begin{align*}
+    T = \int_{0}^{\infty}  \lambda \ d E(\lambda)
+  \end{align*}
+  Then there exist $\epsilon > 0$ such that
+  \begin{align*}
+    P = \int_{\varepsilon}^{\infty}  \ d E(\lambda)
+  \end{align*}
+  is infinite dimensional.
+
+  Now the bounded Borel function $g(x) = \chi_{[\varepsilon, \infty]}
+  \frac{1}{x}$ embedded into $B(\mathcal{H})$ when multiplied with
+  $T$ gives $P$.
 \end{proof}
