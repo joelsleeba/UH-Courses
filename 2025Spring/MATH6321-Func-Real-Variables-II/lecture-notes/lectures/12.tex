@@ -110,11 +110,17 @@
   \begin{align*}
     \Lambda(  \chi_{\cup_{j = 1}^{n}E_j}) \to \Lambda(\chi_E)
   \end{align*}
-  Thus $\lambda$ is a measure and $\lambda \ll \mu$. By
+  Thus $\lambda$ is a measure and $\lambda \ll \mu$ by the definition
+  of $\lambda$. By
   Radon-Nikodym, we have $g \in L^{1}(\mu)$ with $d \lambda = g d \mu$.
 
   For $f$ simple,
   \begin{align*}
-    \Lambda(f) = \int f \ d \lambda = \int fg \ d \mu
+    \Lambda(f) = \int f \ d \lambda = \int fg \ d \mu := \Lambda_g(f)
+  \end{align*}
+  Now, consider $p = 1$. Then
+  \begin{align*}
+    \Big|\int f \ d \lambda\Big| = \Big|\int fg \ d \mu\Big| \le
+    \|\Lambda\| \|f\|_1
   \end{align*}
 \end{proof}

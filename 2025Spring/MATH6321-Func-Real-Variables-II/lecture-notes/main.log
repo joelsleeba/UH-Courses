@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.16)  20 MAR 2025 11:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.16)  25 MAR 2025 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1248,9 +1248,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 ]
 
-[21])
+[21]) (./lectures/13.tex)
+Package marginnote Info: Margin note 24.1 is on absolute page 24 on input line 
+104.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 104.
 
-LaTeX Warning: Empty bibliography on input line 105.
+
+LaTeX Warning: Empty bibliography on input line 106.
 
 
 
@@ -1266,10 +1270,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31151 strings out of 475171
- 581644 string characters out of 5767103
- 1386902 words of memory out of 5000000
- 53560 multiletter control sequences out of 15000+600000
+ 31158 strings out of 475171
+ 581760 string characters out of 5767103
+ 1386919 words of memory out of 5000000
+ 53564 multiletter control sequences out of 15000+600000
  582483 words of font info for 121 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,16n,87p,693b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1288,7 +1292,7 @@ dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type
 nts/cm/cmti8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on main.pdf (23 pages, 268316 bytes).
+Output written on main.pdf (23 pages, 268536 bytes).
 PDF statistics:
  343 PDF objects out of 1000 (max. 8388607)
  279 compressed objects within 3 object streams

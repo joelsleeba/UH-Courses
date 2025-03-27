@@ -1,0 +1,246 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6321 - Theory of functions of a real variable \\ Homework 7}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    Let $A \in \mathcal{M}$, the $  \sigma$-algebra of Lebesgue
+    measurable sets. If $\nu(A) = 0$, then $A = \infty$, since $\nu$ is
+    the counting measure. Then $\mu(A) = \mu(\emptyset) = 0$. This
+    shows that $\mu \ll \nu$. Moreover, $\mu([0, 1]) = 1$ shows that
+    $\mu$ is bounded.
+
+    For the sake of contradiction, assume that $d \mu = h d \nu$ for
+    some $h \in L^{1}(\nu)$. Then for any measurable function $f$
+    \begin{align*}
+      \int f \ d \mu = \int fh \ d \nu
+    \end{align*}
+    Specifically for $f =  \chi_{\{ a \}}$ for some $  a \in [0, 1]$,
+    we get that
+    \begin{align*}
+      0 = \mu(\{ a \}) = \int  \chi_{\{ a \}} \ d \mu = \int \chi_{\{ a
+      \}} h \ d  \nu = h(a)
+    \end{align*}
+    This implies $h = 0$ everywhere in $[0, 1]$ forcing $\mu = 0$,
+    which is a contradiction.
+
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Given $\nu \ll \lambda \ll \mu$ and let $g_1 = \frac{ d \lambda}{d  \mu}
+    \in L^{1}(\mu), g_2 = \frac{ d
+    \nu}{d \lambda} \in L^{1}(\lambda)$. Then for any
+    $\nu$-measurable $f$, we have
+    \begin{align}
+      \label{eq:2}
+      \int f \ d  \nu= \int f g_2 \ d  \lambda  = \int f g_2 g_1 \ d  \mu
+    \end{align}
+    Now by the uniqueness criterion in the Radon-Nikodyn theorem,
+    we'll be done if we show that $g_2g_1 \in L^{1}(\mu)$. For that, choose
+    \begin{align*}
+      f(x) =
+      \begin{cases}
+        0, & \textrm{ if } g_2(x)g_1(x) = 0 \\
+        \frac{\overline{g_2(x)g_1(x)}}{|g_2(x)g_1(x)|}, & \textrm{otherwise}
+      \end{cases}
+    \end{align*}
+    Then $\|f\|_\infty \le 1$ and $f$ is measurable (wrt $\mu, \nu,
+    \lambda)$. Hence by \autoref{eq:2} and the finiteness of the measure $\nu$,
+    \begin{align*}
+      \Big| \int |g_2 g_1| \ d \mu \Big |&= \Big |\int f g_2 g_1 \ d
+      \mu \Big |\\
+      &= \Big | \int f \ d \nu \Big |\\
+      &\le \int |f| \ d \nu \\
+      &\le  \int \|f\|_\infty \ d  \nu \\
+      &\le \nu(X) < \infty
+    \end{align*}
+    Thus $g_2g_1 \in L^{1}(\mu)$ and we are done.
+
+    Now for the special case, when $\mu = \nu$, \autoref{eq:2} becomes
+    \begin{align*}
+      \int f \ d  \nu= \int f g_2 \ d  \lambda  = \int f g_2 g_1 \ d  \nu
+    \end{align*}
+    and the uniqueness in the Radon-Nikodyn theorem for $\nu \ll \nu$
+    forces $g_2g_1 = 1$ almost everywhere in $X$. Hence we get that
+    $g_1 = g_2^{-1}$ $\nu$-almost everywhere.  Since the
+    measure zero sets of $\lambda$ and $\nu$ agree, we see that $g_1
+    = g_2^{-1}$ $\lambda$-almost everywhere.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Given that $\hat{\mu}(n) := \int e^{-int} \ d \mu \to 0$ as $n
+    \to \infty$. Let $f(t) = e^{imt}$ for some $m \in \mathbb{Z}$. Then
+    \begin{align*}
+      \int e^{-int} f \ d \mu &= \int  e^{-int} e^{ imt} \ d \mu \\
+      &= \int  e^{-i (n - m) t} \ d \mu
+    \end{align*}
+    And clearly $\int e^{-int} f \ d \mu \to 0$ as $n \to \infty$. By
+    linearity of the integral, this is true if $f$ is any
+    trigonometric polynomial.
+
+    Now, let $f \in C([0, 2 \pi])$. By stone Weierstrass theorem, for
+    any $\varepsilon > 0$,
+    there is a trigonometric polynomial $g$ such that $ \|f -
+    g\|_\infty < \frac{\varepsilon}{2|\mu|([0, 2 \pi])}$. Then
+    \begin{align*}
+      \Big|\int e^{-int} (f - g) \ d \mu \Big| & \le \int
+      |e^{-int}||f - g| \ d \mu \\
+      &\le \frac{\varepsilon}{2|\mu|([0, 2 \pi])} \mu([0, 2 \pi]) \\
+      &\le \frac{\varepsilon}{2}
+    \end{align*}
+    Thus by the linearity of the intergral
+    \begin{align*}
+      \Big|\int e^{-int} f \ d \mu\Big| \le \Big| \int e^{-int} g \ d
+      \mu\Big| + \frac{\varepsilon}{2}
+    \end{align*}
+    Since $g \in C([0, 2 \pi])$ and we know that $\int e^{-int} g \ d
+    \mu \to 0$, there is a $N \in \mathbb{N}$ such that for all $n > N$,
+    \begin{align*}
+      \Big|\int e^{-int} g \ d \mu\Big| < \frac{\varepsilon}{2}
+    \end{align*}
+    Thus we see that
+    \begin{align*}
+      \Big|\int e^{-int} f \ d \mu\Big| \le \Big| \int e^{-int} g \ d
+      \mu\Big| + \frac{\varepsilon}{2} \le \varepsilon
+    \end{align*}
+    But since $\varepsilon > 0$ was chosen arbitrarily, this shows that
+    \begin{align*}
+      \int e^{-int} f \ d \mu \ \stackrel{ n \to \infty}{\longrightarrow} \ 0
+    \end{align*}
+    Thus we see that for any continuous function $f \in C([0, 2 \pi])$, we have
+    \begin{align*}
+      \int e^{-int} f \ d \mu \ \stackrel{ n \to \infty}{\longrightarrow} \ 0
+    \end{align*}
+
+    Now, let $f$ be any bounded ($\|f\|_\infty < M$) $\mu$-measurable
+    function.  Then by
+    Lusin's theorem, for any $\varepsilon > 0$, there is a continuous
+    function $g \in C([0, 1])$ such that
+    \begin{align*}
+      \mu(\{ f \neq g \}) < \frac{\varepsilon}{4 M}
+      \quad \textrm{and} \quad \|g\|_\infty \le \|f\|_\infty < M
+    \end{align*}
+    Then
+    \begin{align*}
+      \Big|\int e^{-int} f \ d \mu - \int  e^{-int} g \ d \mu\Big| =
+      \Big|\int e^{-int}(f - g)\ d \mu\Big| &\le \int \chi_{\{ f \neq
+      g \}}|f - g| \ d \mu \\
+      &\le \|f - g\|_\infty  \int \chi_{\{ f \neq g \}} \ d \mu \\
+      &= 2M \mu(\{ f \neq g \}) \\
+      &< 2M \frac{\varepsilon}{4M} \\
+      &= \frac{\varepsilon}{2}
+    \end{align*}
+    shows that
+    \begin{align*}
+      \int e^{-int} f \ d \mu \le \int  e^{-int} g \ d \mu +
+      \frac{\varepsilon}{2}
+    \end{align*}
+    Since we know $\int e^{-int} g \ d \mu \to 0$, for appropriate
+    choice of $n$, we get
+    \begin{align*}
+      \int e^{-int} f \ d \mu \le \varepsilon
+    \end{align*}
+    Since $\varepsilon > 0$ was arbitrary, this gives that for any
+    bounded measurable function $f$,
+    \begin{align}
+      \label{eq:3}
+      \int e^{-int} \ d \mu \ \stackrel{ n \to
+      \infty}{\longrightarrow} \ 0 \quad \implies \quad
+      \int e^{-int} f \ d \mu \ \stackrel{ n \to \infty}{\longrightarrow} \ 0
+    \end{align}
+
+    By polarization identity $d \mu = h d |\mu|$, where $|h| = 1$
+    almost everywhere in $[0, 2 \pi]$.
+    By \autoref{eq:3} for $f = \bar{h}^2$, we get
+    \begin{align*}
+      \int e^{-int} \bar{h}^2 \ d \mu \to 0
+    \end{align*}
+    Since $|h| = 1$ almost everywhere, $\bar{h}h = 1$ almost
+    everywhere and thus,
+    \begin{align*}
+      \overline{\int e^{-int} \bar{h}^2 \ d \mu} = \overline{ \int
+        e^{-int} \bar{h}
+      \ d |\mu|} = \int e^{int}h \ d |\mu| = \int e^{int} \ d \mu \
+      \stackrel{n\to \infty}{\longrightarrow} \ \bar{0} = 0
+    \end{align*}
+
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

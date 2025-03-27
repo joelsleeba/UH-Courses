@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1742487515.04385 0
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1742917098.95048 0
   "articles.bib" 0 -1 0 ""
   "main.bcf" 0 -1 0 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1742487514.25899 "main.tex" "main.pdf" "main" 1742487515.04429 0
+["pdflatex"] 1742917098.15673 "main.tex" "main.pdf" "main" 1742917098.95081 0
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1741938398 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1741938398 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1741938398 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -225,7 +225,8 @@
   "lectures/1.tex" 1737650599.34134 5629 6d0643392ce358c9d82f7d6da0340f59 ""
   "lectures/10.tex" 1739915226.02382 885 7d6968ddcbb3dcc13c1c349ff56f932a ""
   "lectures/11.tex" 1742310665.26077 63 7320eb1c2266f0fd01050bc23fe09465 ""
-  "lectures/12.tex" 1742487513.59321 4345 e60ed2b2536b4ed5c9aa84d0dc2e5146 ""
+  "lectures/12.tex" 1742917097.31636 4545 a5ca429fbcbf262b4d399fa783d62e04 ""
+  "lectures/13.tex" 1742915380.49533 63 32ad2a4b2ee09966e6f8d7101cd6296d ""
   "lectures/2.tex" 1737648062.83348 5479 65c5fb4ad08c9d169fa0d03863c024cd ""
   "lectures/3.tex" 1738254479.21229 5473 742921599c4f041ce0ca3900d6fe9ee5 ""
   "lectures/4.tex" 1738258186.82666 6974 733b566dadbe48f3e733fafe36698b01 ""
@@ -233,12 +234,12 @@
   "lectures/6.tex" 1738688875.59321 2076 e378e37890ed785766e2a2c160fd0c6a ""
   "lectures/7.tex" 1738861965.80144 4007 f0a21d2490a4c2a33925a706160eb8df ""
   "lectures/9.tex" 1739467237.66943 1994 caa59a778f1964e4d991b3decdd99a96 ""
-  "main.aux" 1742487514.94518 2890 337b9d23a448518daa41ddd54a0d1114 "pdflatex"
+  "main.aux" 1742917098.85537 2933 8ef451c7ddb9e7ab21073ee845069a2d "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.out" 1742487514.94518 2285 7f8b2c9e4ec7ec719f073b70904dfada "pdflatex"
-  "main.run.xml" 1742487514.94761 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
-  "main.tex" 1742483937.53479 3572 63b292a88dbfb4c1727b783124a9f8d8 ""
-  "main.toc" 1742487514.94761 1020 ac9b787cbf7a00b0a452bada7e7eac24 "pdflatex"
+  "main.out" 1742917098.85537 2285 7f8b2c9e4ec7ec719f073b70904dfada "pdflatex"
+  "main.run.xml" 1742917098.85845 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
+  "main.tex" 1742915337.9302 3596 d061213c1abeca6cad2b431b8c8ec364 ""
+  "main.toc" 1742917098.85845 1020 ac9b787cbf7a00b0a452bada7e7eac24 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

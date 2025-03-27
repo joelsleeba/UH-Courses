@@ -1,0 +1,57 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 25/03/2025 }
+
+Show that if $z \in X \hat{\otimes} Y$, with $z = \sum_{n \in
+\mathbb{N}} x_i \otimes y_i$, then $\sum_{n \in \mathbb{N}}
+\|x_i\|\|y_i\| < \infty$.
+
+\begin{proposition}
+  Let $X, Y, Z$ be Banach spaces. Then $B(X \hat{\otimes} Y , Z)
+  \cong \textrm{Bil}(X \times Y , Z)$.
+\end{proposition}
+\begin{proof}
+  Let $\phi \in B(X \hat{\otimes} Y , Z)$. Define $\rho:
+  \textrm{Bil}(X \times Y, Z)$ such that $\rho(x, y) = \phi(x \otimes
+  y)$. Then the map $\phi \to \rho$ is a linear injective contraction.
+
+  Conversely, given a bounded bilinear $ \rho: X \times Y \to Z$, let
+  $\phi: X \otimes Y \to Z$ be the respective linear map, defined as
+  $\phi(x \otimes y) = \rho(x, y)$. Let $\omega \in X \otimes Y$.
+  Choose $x_1 , x_2 , \ldots , x_n \in X, y_1 , y_2 , \ldots , y_n
+  \in Y$ such that $\omega = \sum_{i = 1}^{n} x_i \otimes y_i$ and
+  $\|\omega\|_{\wedge} > \sum_{i = 1}^{n}  \|x_i\|\|y_i\| - \varepsilon$. Then
+  \begin{align*}
+    \|\phi(\omega)\| &= \|\sum_{i = 1}^{n} \rho(x_i, y_i)\| \\
+    &\le \|\rho\| \sum_{i = 1}^{n} \|x_i\|\|y_i\| \\
+    &\le \|\rho\|(\|\omega\|_{\wedge} + \varepsilon)
+  \end{align*}
+\end{proof}
+
+\begin{corollary}
+  $(X \hat{\otimes} Y)^* \cong \textrm{Bil}(X \times Y) \cong B(X,
+  Y^*) \cong B(Y, X^*)$
+\end{corollary}
+\begin{proof}
+  Notice that the last three equivalences follow easily since if
+  $\rho: X \times Y \to \mathbb{C}$ is bilinear, then $\tilde{ \rho}:
+  X \to Y^*$ defined as $\tilde{ \rho}(x)(y) = \rho(x, y)$, and
+  similarly for $Y \to X^*$
+\end{proof}
+
+\begin{proposition}
+  Let $\sum_{n \in \mathbb{N}} x_n \otimes y_n \in X \otimes Y$ with
+  $ \sum_{n \in \mathbb{N}} \|x_i\|\|y_i\| < \infty$ and
+  \begin{align*}
+    \sum_{n \in \mathbb{N}} f(x_n)y_n = 0
+  \end{align*}
+  for all $f \in X^*$. Then
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{Notice that all the finite rank operators satisfy this.}
+
+  Let $T \in B(Y, X^*)$. Assume that there's a net $T_j$ of finite
+  rank operators such that $T_j \to T$ uniformly on compact subsets
+  of $Y$. Let $\varepsilon > 0$ and choose $N \in \mathbb{N}$ such
+  that $\sum_{i = N+1}^{\infty} \|x_i\|\|y_i\| < \varepsilon$.
+\end{proof}

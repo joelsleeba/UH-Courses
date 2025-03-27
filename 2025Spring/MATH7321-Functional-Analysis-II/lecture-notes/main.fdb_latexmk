@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1742492081.20283 0
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1742924174.92726 0
   "articles.bib" 0 -1 0 ""
   "main.bcf" 0 -1 0 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1742492080.32823 "main.tex" "main.pdf" "main" 1742492081.20317 0
+["pdflatex"] 1742924173.76095 "main.tex" "main.pdf" "main" 1742924174.9276 0
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1741938398 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1741938398 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1741938398 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -233,7 +233,8 @@
   "lectures/13.tex" 1742316501.00678 2885 921097a3d3d2859d664f610624ea59b7 ""
   "lectures/14.tex" 1742315981.11073 2602 41444bfe8834561cc51707f47900fcf9 ""
   "lectures/15.tex" 1742320301.6632 1383 24de380756f9720003c9cfde27335553 ""
-  "lectures/16.tex" 1742492079.73076 1450 4637197bad17867466d56b2087c91d34 ""
+  "lectures/16.tex" 1742920453.93364 1533 1f4bddf38a78e1db110eab5079543185 ""
+  "lectures/17.tex" 1742924172.2108 2212 8f956284010a08c7eb3d8d02386f4d4f ""
   "lectures/2.tex" 1739828174.54948 6918 538831b77388e296c718c200bbb69c61 ""
   "lectures/3.tex" 1739829250.20524 6741 ee70a4fb83b8371a6d1da07be66fd6ae ""
   "lectures/4.tex" 1738279471.01309 7687 1486f9d65b1fb9b6f5c7fb6ea42ff3aa ""
@@ -242,12 +243,12 @@
   "lectures/7.tex" 1739850141.59165 4294 acbe5ab590fea30588bd383b80a85296 ""
   "lectures/8.tex" 1739297699.48797 2401 f3698130d5711ddb57b77bda9818f103 ""
   "lectures/9.tex" 1740505454.78831 5919 24afe4863fe7ab2b7e85bb427630ae80 ""
-  "main.aux" 1742492081.09773 3094 471642ff9b570b42c3aef2a2e38cb6e4 "pdflatex"
+  "main.aux" 1742924174.8209 3114 9cb2902c813acbc0007690c89eb968fa "pdflatex"
   "main.bbl" 0 -1 0 "biber main"
-  "main.out" 1742492081.09873 864 47540e080db44c54915d2a4be21d4958 "pdflatex"
-  "main.run.xml" 1742492081.10106 2309 5f2729c01bdaa8f4cb8e1b8d4e11dd42 "pdflatex"
-  "main.tex" 1742488529.27315 4258 8cf5cdb860170102aad1c6b9ac8c0fc5 ""
-  "main.toc" 1742492081.10106 456 47ff1a1d06e3fe62256c2041e5640cd4 "pdflatex"
+  "main.out" 1742924174.8219 864 47540e080db44c54915d2a4be21d4958 "pdflatex"
+  "main.run.xml" 1742924174.82365 2309 17ee7f4cf776a640b618a2b2d5deaa10 "pdflatex"
+  "main.tex" 1742919703.48246 4282 14845012d25c90b4bacd601ac3c80c35 ""
+  "main.toc" 1742924174.82365 456 47ff1a1d06e3fe62256c2041e5640cd4 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
