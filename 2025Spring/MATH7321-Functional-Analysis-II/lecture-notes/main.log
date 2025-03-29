@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Arch Linux) (preloaded format=pdflatex 2025.3.16)  25 MAR 2025 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.26)  27 MAR 2025 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,24 +972,24 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 44.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1027,7 +1027,7 @@ LaTeX Font Info:    ... okay on input line 96.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 96.
+Package hyperref Info: Link coloring ON on input line 76.
 (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -1072,27 +1072,27 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' not found.
 
 No file main.bbl.
-Package biblatex Info: Reference section=0 on input line 96.
-Package biblatex Info: Reference segment=0 on input line 96.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 108
-.
+Package biblatex Info: Reference section=0 on input line 76.
+Package biblatex Info: Reference segment=0 on input line 76.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
+
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 108
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
+
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-8.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 88
+.
 
 (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for OMX+yhex on input line 
-108.
+88.
 
 (/usr/share/texmf-dist/tex/latex/yhmath/OMXyhex.fd
 File: OMXyhex.fd 
@@ -1330,9 +1330,13 @@ Package marginnote Info: Margin note 27.1 is on absolute page 27 on input line
 Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 
 
-[25])
+[25]) (./lectures/18.tex
+Package marginnote Info: Margin note 28.1 is on absolute page 28 on input line 
+4.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
+)
 
-LaTeX Warning: Empty bibliography on input line 131.
+LaTeX Warning: Empty bibliography on input line 112.
 
 
 
@@ -1348,10 +1352,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31257 strings out of 475171
- 583297 string characters out of 5767103
- 1389365 words of memory out of 5000000
- 53591 multiletter control sequences out of 15000+600000
+ 31268 strings out of 475171
+ 583477 string characters out of 5767095
+ 1389382 words of memory out of 5000000
+ 53595 multiletter control sequences out of 15000+600000
  581487 words of font info for 116 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,17n,87p,693b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1373,10 +1377,10 @@ mti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/
 fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf-dist/fonts/type1/public/yh
 math/yhcmex.pfb>
-Output written on main.pdf (27 pages, 329383 bytes).
+Output written on main.pdf (27 pages, 330372 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 349 compressed objects within 4 object streams
- 149 named destinations out of 1000 (max. 500000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 354 compressed objects within 4 object streams
+ 153 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
