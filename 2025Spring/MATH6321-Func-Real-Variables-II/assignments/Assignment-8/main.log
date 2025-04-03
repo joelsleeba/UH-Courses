@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.26)  30 MAR 2025 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.26)  2 APR 2025 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -889,11 +889,8 @@ LaTeX Font Info:    Trying to load font information for OMX+yhex on input line
 File: OMXyhex.fd 
 File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 )
-Overfull \hbox (1.57689pt too wide) in paragraph at lines 99--103
-[]\OT1/cmr/m/n/12 Consider the ring $\OML/cmm/m/it/12 Z[] \OT1/cmr/m/n/12 := \U
-/msb/m/n/12 Z\OML/cmm/m/it/12 =\OT1/cmr/m/n/12 6\U/msb/m/n/12 Z$ \OT1/cmr/m/n/1
-2 and the mod-ule $\OML/cmm/m/it/12 Z[]$ \OT1/cmr/m/n/12 over $\OML/cmm/m/it/12
- Z[]$\OT1/cmr/m/n/12 . Then $[](\OML/cmm/m/it/12 Z[]\OT1/cmr/m/n/12 ) =
+Overfull \hbox (11.2482pt too wide) detected at line 165
+[]
  []
 
 
@@ -904,12 +901,12 @@ Overfull \hbox (1.57689pt too wide) in paragraph at lines 99--103
 
 [2]
 
-LaTeX Warning: Empty bibliography on input line 193.
+LaTeX Warning: Empty bibliography on input line 218.
 
 
 
 [3]
-This exam contains 5 questions with 0 parts, 0 subparts, and 0 subsubparts.
+This exam contains 2 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -922,24 +919,27 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20490 strings out of 475171
- 347105 string characters out of 5767095
- 1219962 words of memory out of 5000000
- 43240 multiletter control sequences out of 15000+600000
- 575282 words of font info for 96 fonts, out of 8000000 for 9000
+ 20476 strings out of 475171
+ 347197 string characters out of 5767095
+ 1231850 words of memory out of 5000000
+ 43231 multiletter control sequences out of 15000+600000
+ 576026 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 66i,10n,81p,693b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 66i,13n,81p,693b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (3 pages, 92029 bytes).
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (3 pages, 128019 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
+ 86 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

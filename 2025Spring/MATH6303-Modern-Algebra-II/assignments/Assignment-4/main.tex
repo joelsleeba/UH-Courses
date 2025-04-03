@@ -76,7 +76,6 @@
 \begin{questions}
 
   \question
-  \textcolor{red}{not finished}
   \begin{solution}
     \begin{parts}
       \part Since $\textrm{Tor}(M) \subset M$ by the definition, the
@@ -96,16 +95,19 @@
         0 = r_g g = (-r_g)(-g)
       \end{align*}
       Thus $\textrm{Tor}(M)$ is a subgroup of $M$, and hence a submodule of $M$
+
       \part Consider the ring $Z_6:= \mathbb{Z}/ 6 \mathbb{Z}$ and
-      the module $Z_6 \times Z_6$ over $Z_6$. Then $(2, 3), (3, 2)
-      \in \textrm{Tor}(Z_6 \times Z_6)$ \textcolor{red}{verify}
+      the module $Z_6$ over $Z_6$. Then $\textrm{Tor}(Z_6) = \{ 0, 2,
+      3, 4 \}$. Clearly this is not a submodule since $2 + 3 \not\in
+      \textrm{Tor}(Z_6)$.
 
       \part Let $a \in \mathbb{R}$ be a zero divisor such that $ab =
-      0$ for some $b \neq 0 \in \mathbb{R}$. For any $x\neq 0 \in M$, the
-      $R$-module, consider $bx \in M$. Since $a(bx) = (ab) x = 0x =
-      0$, $bx \in \textrm{Tor}(M)$.
-
-      Now to show $bx \neq 0$. \textcolor{red}{verify}
+      0$ for some $b \neq 0 \in \mathbb{R}$. If $M =
+      \textrm{Tor}(M)$, we are done. So Let $x \in M \setminus
+      \textrm{Tor}(M)$. Then
+      $a(bx) = (ab) x = 0$
+      shows that $bx \in \textrm{Tor}(M)$. Since $x \not\in
+      \textrm{Tor}(M)$, $bx \neq 0$, and we are done.
     \end{parts}
   \end{solution}
 
@@ -130,18 +132,14 @@
   \question
   \begin{solution}
     Let $I$ be a right ideal of $R$ and $N_I = \{ m \in M  \ | \  am
-    = 0, \ \forall a \in I \}$. For the same reasoning as we used in
-    Problem 1(a), we'll be done if we show that $N_I$ is a subgroup
-    of $M$. Let $x, y \in N_I$. Then for any $a \in I$,
+    = 0, \ \forall a \in I \}$. By the submodule criterion, we'll be
+    done if we show that $r(x - y) \in N_I$ for all $x, y \in N_I$
+    and $r \in R$. Let $x, y \in N_I$. Then for any $a \in I$,
     \begin{align*}
-      a(x + y) = ax + ay = 0 + 0 = 0
+      ar(x - y) = (ar)x - (ar)y = 0 - 0 = 0
     \end{align*}
-    and
-    \begin{align*}
-      a(-x) = -(ax) = -0 = 0
-    \end{align*}
-    Thus $x + y, -x \in N_I$ for all $x, y \in N_I$, making it a
-    subgroup of $M$. Thus $N_I$ is a submodule of $M$.
+    where $arx, ary  = 0$ since $ar \in I$ as $ I$ is a right-ideal.
+    Thus $N_I$ is a submodule of $M$.
   \end{solution}
 
   \question

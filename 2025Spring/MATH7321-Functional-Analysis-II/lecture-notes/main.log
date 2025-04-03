@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.26)  27 MAR 2025 12:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.26)  1 APR 2025 12:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1334,13 +1334,21 @@ Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 Package marginnote Info: Margin note 28.1 is on absolute page 28 on input line 
 4.
 Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
-)
+) (./lectures/19.tex
+Package marginnote Info: Margin note 28.2 is on absolute page 28 on input line 
+4.
+Package marginnote Info: xpos seems to be 89.62709pt on input line 4.
 
-LaTeX Warning: Empty bibliography on input line 112.
+
+[26]
+
+[27])
+
+LaTeX Warning: Empty bibliography on input line 113.
 
 
 
-[26] (./main.aux)
+[28] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1352,10 +1360,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31268 strings out of 475171
- 583477 string characters out of 5767095
- 1389382 words of memory out of 5000000
- 53595 multiletter control sequences out of 15000+600000
+ 31290 strings out of 475171
+ 583762 string characters out of 5767095
+ 1389399 words of memory out of 5000000
+ 53599 multiletter control sequences out of 15000+600000
  581487 words of font info for 116 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,17n,87p,693b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1377,10 +1385,10 @@ mti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/
 fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf-dist/fonts/type1/public/yh
 math/yhcmex.pfb>
-Output written on main.pdf (27 pages, 330372 bytes).
+Output written on main.pdf (29 pages, 336613 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 354 compressed objects within 4 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 375 compressed objects within 4 object streams
+ 168 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
