@@ -1,0 +1,29 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 08/04/2025 }
+
+\begin{lemma}
+  Let $\alpha$ be a tensor norm on $X \otimes Y$. The canonical
+  algebraic vector space isomorphism between $(X \otimes Y)^{\circ} \to
+  \{  T: X \times Y \to \mathbb{C} \ | \ T \textrm{ is bilinear} \}$,
+  maps $(X \otimes Y, \alpha)^\circ$ into bounded bilinear maps.
+\end{lemma}
+\begin{proof}
+  Let $\phi \in (X \otimes Y, \alpha)^\circ$. Let $\rho: X \times Y
+  \to \mathbb{C}$, $\rho(x, y) = \phi(x \otimes y)$.
+\end{proof}
+
+\begin{definition}
+  A linear map $T: X^* \to Y$ is called an integral operator if the
+  corresponding bilinear map $\rho :   X^* \times Y^* \to \mathbb{C}
+  := (\phi, \psi) \mapsto  \psi(T(\phi))$ is integral.
+\end{definition}
+
+\begin{example}
+  Let $T: \ell^{1} \to \textbf{c}_0$ be the canonical inclusion.
+  Define $\rho: \ell^{1} \times \ell^{1} \to C $ by $\rho(f, g) =
+  \sum_{n \in \mathbb{N}} f(n)\overline{g(n)}$. Now we look at the
+  measure which makes this an integral bilinear map. Let $\nu$ be the
+  normalized lebesgue maeusre on $\mathbb{T}$. Let $\tilde{\nu} :=
+  \nu^{\mathbb{N}} \in \textrm{Prob}(\mathbb{T}^{\mathbb{N}})$
+\end{example}

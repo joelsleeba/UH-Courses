@@ -451,6 +451,12 @@ INPUT lectures/18.tex
 INPUT ./lectures/19.tex
 INPUT ./lectures/19.tex
 INPUT lectures/19.tex
+INPUT ./lectures/20.tex
+INPUT ./lectures/20.tex
+INPUT lectures/20.tex
+INPUT ./lectures/21.tex
+INPUT ./lectures/21.tex
+INPUT lectures/21.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
