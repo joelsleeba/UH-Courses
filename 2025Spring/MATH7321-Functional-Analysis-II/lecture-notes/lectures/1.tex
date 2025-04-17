@@ -1,0 +1,154 @@
+% TeX_root = ../main.tex
+
+\chapter{Banach Algebras}
+\marginnote{\scriptsize 14/01/2025}
+
+Let $\mathcal{H}$ be a separable Hilbert space, and  $T \in
+\mathcal{K}(\mathcal{H})$ be self adjoint, and $X$ be the
+orthonormal basis for $\mathcal{H}$ consisting of the eigenvectors of
+$T$. Then $\mathcal{H} \cong \ell^{2}(X)$ and then $T$ can be
+identified with a multiplication operator $M_f$ with $f \in
+\ell^{\infty}(X)$ such that $f(x) = \lambda_x$, where $\lambda_x$ is
+the eigenvalue for the eigenvector, $x \in X$.
+
+If $T \in B(\mathcal{H})$ is normal, then $\textrm{span}\{ T^mT^{*n}
+\ : \   m, n \in \mathbb{N} \}$ is an involutive algebra.
+
+\section{Preliminaries}
+
+\begin{definition}
+  An algebra over $\mathbb{C}$(or $\mathbb{R}$) is a vector space
+  over $\mathbb{C}$(or $\mathbb{R}$) with a product that is
+  associative and distributive.
+
+  A normed algebra is an algebra $\mathcal{A}$ equipped with a norm
+  \marginnote{ \scriptsize \it product is continuous}
+  such that $\|ab\| \le \|a\|\|b\|$ for all $a, b \in \mathcal{A}$.
+
+  If the norm is complete in a normed algebra, we call it a Banach algebra.
+
+  An algebra is unital if has a neutral element $1$ with respect to
+  the multiplication. It is called commutative if $ab = ba$ for all
+  $a, b \in \mathcal{A}$
+
+  An involution on an algebra is a map $*: \mathcal{A} \to
+  \mathcal{A}$ such that
+  \begin{enumerate}[label=(\arabic*)]
+    \item $(\alpha a + b)^* = \overline{\alpha} a^* + b^*$
+    \item $(ab)^* = b^*a^*$
+    \item $(a^*)^* = a$
+  \end{enumerate}
+  for all $a, b \in \mathcal{A}$ and $\alpha \in \mathbb{C}$
+
+  A normed $*$-algebra is a normed algebra with an involution $*$
+  such that $\|a^*\| = \|a\|$.
+\end{definition}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a  unital Banach algebra. An element $a \in
+  \mathcal{A}$ is invertible if there exists $b \in \mathcal{A}$ such
+  that $ab = ba = 1$.
+
+  The spectrum of $a$ is the set
+  \begin{align*}
+    \sigma(a) = \{ \lambda \in \mathbb{C}  \ : \  \lambda 1 - a
+    \textrm{ is not invertible } \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  In any unital Banach algebra, the set of invertible elements is open.
+\end{lemma}
+\begin{proof}
+  If $\|x\| < 1$, then
+  \begin{align*}
+    \frac{1}{1 - x} = \sum_{n \in \mathbb{N}} x^n
+  \end{align*}
+  or equivalently if $\|1 - x\| < 1$, then
+  \begin{align*}
+    \frac{1}{x} = \sum_{n \in \mathbb{N}} (1-x)^n
+  \end{align*}
+  Now let $x_0$ be invertible in the unital Banach algebra and let $x
+  \in B(x_0, \frac{1}{\|x_0^{-1}\|})$. Then $\|xx_0^{-1}  - 1\| \le
+  \|x - x_0\| \|x_0^{-1}\| < 1$ and similarly $\|x_0^{-1}x - 1\| <
+  1$. This shows that $xx_0^{-1}, x_0^{-1}x$ are invertible with
+  inverses (assumed) $y, z$ respectively. Thus $xx_0^{-1}y = 1 =
+  zx_0^{-1}x$. \textcolor{red}{verify}.
+\end{proof}
+
+\begin{definition}
+  The spectral radius of $a \in \mathcal{A}$ is defined to be
+  \begin{align*}
+    r(a) = \sup \{ |\lambda|  \ : \   \lambda \in \sigma(a) \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma} For all $a \in \mathcal{A}$,
+  \begin{align*}
+    r(a) \le \|a\|
+  \end{align*}
+\end{lemma}
+
+\begin{theorem}
+  Let $\mathcal{A}$ be a unital Banach algebra and $a \in
+  \mathcal{A}$. Then $\sigma(a)$ is a non-empty compact subset of $\mathbb{C}$.
+\end{theorem}
+\begin{proof}
+  \textcolor{red}{proof incoming for non-empty.} See last semester
+  notes for proof of compactness.
+\end{proof}
+
+\begin{lemma}
+  Let $X$ be a normed space. Then there exist a compact set $K$ and
+  an isometric linear map $X \to C(K)$.
+\end{lemma}
+\begin{proof}
+  embed $X$ to $X^{**}$, with $K$ being the weak * closed unit ball of $X^*$
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a commutative Banach algebra. The spectrum of
+  $\mathcal{A}$ is the set $\textrm{sp}(\mathcal{A}) = \{ \tau \in
+  \mathcal{A}^*  \ : \  \tau(ab) = \tau(a)\tau(b), a, b \in \mathcal{A} \}$.
+\end{definition}
+
+\begin{lemma}
+  \label{lem:spectrum_is_compact}
+  For every $\tau \in \textrm{sp}(\mathcal{A})$,
+  \begin{enumerate}
+    \item $\tau(1) = 1$
+    \item $\|\tau\| = 1$
+    \item $ \textrm{sp}(\mathcal{A})$ is a weak * closed subset of
+      $\mathcal{A}^*$ (Hence compact)
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item Since $\tau(a) = \tau(a \cdot \textbf{1}) =
+      \tau(a)\tau(\textbf{1})$ for all $ a \in \mathcal{A}$, it is
+      immediate that $\tau(\textbf{1}) = 1 \in \mathbb{C}$.
+    \item Since $\tau(\textbf{1}) = 1$, it is clear that $\|\tau\|
+      \ge 1$. The other inequality follows from the fact that
+      $\tau(a) \in \sigma(a)$ (see that $a - \tau(a) \textbf{1} \in
+      \textrm{Ker}(\tau)$) and thus $|\tau(a)| \le r(a) \le \|a\|$.
+    \item Let $ \tau, \phi \in \textrm{sp}(A)$. Then for all $\hat{a}
+      \in \hat{\mathcal{A}}$ (image of $\mathcal{A}$ in
+      $\mathcal{A}^{**}$ under the natural inclusion), we have
+      \begin{align*}
+        |\hat{a}(\tau - \phi)| =  |\hat{a}(\tau) - \hat{a}(\phi)|
+        = |\tau(a) - \phi(a)| =
+        | (\tau - \phi)(a)| \le \|a\||\tau - \phi|
+      \end{align*}
+      Thus if $\tau_\alpha$ is any weak * Cauchy net, $\tau_\alpha(a)$
+      converges for all $a \in \mathcal{A}$. Let $\tau(a) =
+      \lim_{\alpha} \tau_\alpha(a)$. Then all we have left is to
+      prove that $\tau \in \textrm{sp}(\mathcal{A})$. But since
+      $\tau_(\alpha) \to \tau(a)$ and $\tau_\alpha(b) \to \tau(b)$,
+      by the algebra of limits in $\mathbb{C}$, we get $ \tau(ab) =
+      \tau(a) \tau(b)$ proving $\tau \in \textrm{sp}(\mathcal{A})$.
+
+      Thus we see that $\textrm{sp}(\mathcal{A})$ is a weak * closed
+      subspace of the unit ball of $\mathcal{A}^*$ which is closed by
+      the Banach Alaoglu theorem.
+  \end{enumerate}
+\end{proof}

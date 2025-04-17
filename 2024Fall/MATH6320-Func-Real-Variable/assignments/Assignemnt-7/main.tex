@@ -1,0 +1,312 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  letterpaper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH 6320 - Functions of One Real Variable\\ Homework  7}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    Consider the sequence of functions \[
+      g_{n, k}(x) =
+      n \chi_{[ \frac{k}{2^{n}}, \frac{k+1}{2^{n}}]}(x), \quad
+      \textrm{where } k \in \{0, 1, 2, \ldots, 2^n-1  \}, n \in \mathbb{N} \\
+    \]
+    Order then with the lexicographic ordering to get $f_{1}, f_{2},
+    f_{3}, \ldots$. Let $f_r = g_{n, k}$. Since each $f_n$ is simple,
+    they are Reimann integrable and \[
+      \int  f_r \ d m = \int  n \chi_{[ \frac{k}{2^n},
+      \frac{k+1}{2^n}]}\ d m = \frac{n}{2^n}
+    \]
+    Since each $n$ has only finitely many elements $ k \in \{ 1, 2,
+    3, \ldots 2^n-1 \}$, we see that as $r \to \infty$, $n \to \infty$. Thus \[
+      \lim_{r \to \infty} \int f_r\ dm = \lim_{n \to \infty}
+      \frac{n}{2^n} = 0
+    \]
+    But then we see that for any $x \in [0, 1]$ and $M \in
+    \mathbb{N}$, there exist $k_0 <  2^{M+1} \in \mathbb{N} \cup \{0
+    \}$ such that $\frac{k_0}{2^{M+1}}
+    \le x \le \frac{k_0+1}{2^{M+1}}$. Thus we see that $g_{(M+1), k_0}(x) =
+    M+1 >M$. Then for all $x \in [0, 1]$, \[
+      \sup_{r \in \mathbb{N}} f_r(x) = \infty
+    \]
+    Hence if $g = \sup_{n \in \mathbb{N}}f_n$, then $g  = \infty
+    \chi_X$, which clearly is not in $L^1(m)$ as $\int  g \ d m = \infty$.
+
+    Next, to get a sequence of continuous functions $f_r$ which
+    satisfy with the same property as above, let $$K_{n, k} =
+    \Bigg[\frac{k}{2^n}, \frac{k+1}{2^n} \Bigg], \quad \textrm{where } k \in \{
+    0, 1, \ldots 2^{n}-1 \}, n \in \mathbb{N}$$
+    and \[
+      U_{n, k} =
+      \begin{cases}
+        [0, \frac{2}{2^{n}}), & k = 0 \\
+        (\frac{k-1}{2^n}, \frac{k+2}{2^n}), & 1 \le k < 2^{n} - 1 \\
+        ( \frac{2^{n}-2}{2^n}, 1], & k = 2^n-1
+      \end{cases}
+    \]
+
+    Then we notice that each $K_{n, k}$ is compact and $U_{n, k}$ is
+    open, with $K_{n, k} \subset U_{n, k}$. Since $[0, 1]$ is
+    compact, it is also locally compact and by Urysohn's lemma, there
+    are continuous functions $h_{n, k}$ such that \[
+      \chi_{K_{n, k}} \prec h_{n, k} \prec \chi_{U_{n, k}}
+    \]
+    Let $g_{n, k} = n h_{n, k}$. Then we see that $g_{n, k}$ are
+    continuous with \[
+      \int  g_{n, k} \ d m = n \int  h_{n, k} \ d m \le n \int
+      \chi_{U_{n, k}} \ d m = \frac{3n}{2^n}
+    \]
+    Now index $g_{n, k}$ by the lexicographic ordering on $(n, k)$ to
+    get a sequence $  f_1, f_2, \ldots$. Then by the same arguments
+    as in the previous choice for $f_r$, we see that \[
+      \sup_{r \in \mathbb{N}}f_r(x) = \infty
+    \]
+    and \[
+      \lim_{r \to \infty} \int  f_r \ d m = \lim_{n \to \infty}
+      \frac{3n}{2^n} = 0
+    \]
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $A_1 ,  A_2 , \ldots ,  A_n$ be any partition of $X$ where
+    each $A_j$ is measurable. Define a simple function \[
+      s = \sum_{j = 1}^{n} \chi_{A_j}\sup_{x \in A_j}f(x)
+    \]
+    Since each $A_j$ is measurable, we see that $s$ is measurable.
+    Moreover $f < s$ since $f< s$ in each of the set $A_j$. Then, \[
+      \int f \ d \mu \le \int  s \ d \mu = \sum_{j = 1}^{n} \mu(A_j)
+      \sup_{ x \in A_j} f(x)
+    \]
+    Since $A_1 , A_2 , \ldots , A_n$ was an arbitrary partition of
+    $X$ into measurable sets, the above inequality holds for all such
+    finite partitions. Then taking the infimum among all such
+    partitions preserve the inequality. Thus we get \[
+      \int  f \ d \mu \le \inf \Bigg\{ \sum_{j = 1}^{n} \mu(A_j)
+      \sup_{ x \in A_j} f(x)\ : \ A_j \textrm{'s partition }  X \Bigg\}
+    \]
+    Now consider the sequence of functions \[
+      s_n(x)  =
+      \begin{cases}
+        0, & x < 0 \\
+        (k+1)2^{-n}, & k2^{-n} < x \le (k+1)2^{-n} , \quad k \in \mathbb{N}\\
+        % n, & x \ge n
+      \end{cases}
+    \]
+    Then $s_1 \ge s_2 \ge \ldots$.  We
+    notice that $s_n$ is a slight variation of the familiar
+    'staircase-to-plateau' function. We also observe that each $s_n$
+    is measurable and $s_n$ converge pointwise to the identity
+    function in the positive part of the real numbers.
+
+    Then consider the sequence $\phi_n = s_{n} \circ
+    f$. Since $s_n, f$ are measurable functions, $\phi_n$ is also a
+    measurable function. Since $f$ is bounded, there is an
+    $M \in \mathbb{N}$ such that $f(x) \in [0, M]$ for all $x \in X$.
+    Hence $\phi_n$ can take at most $2^n M$ values. Therefore
+    $\phi_n$ are simple measurable functions. Hence \[
+      \phi_n  = \sum_{i = 1}^{m} a_i \chi_{A_i}
+    \]
+    where $A_i$s are measurable sets partition $X$.
+    Moreover by virtue of the definition, we see that $a_i = \sup_{x
+    \in A_i}f(x)$. Hence \[
+      \phi_n = \sum_{i = 1}^{m} \chi_{A_i} \sup_{x \in A_i}f(x)
+    \]
+    Again, since $s_n(r) \ge s_{n+1}(r)$ for all $r \in
+    \mathbb{R}$, we see that
+    $s_n(f(x)) \ge s_{n+1}(f(x))$ for all $x \in X$. Hence $\phi_1
+    \ge \phi_2 \ge \phi_3  \ge \ldots \ge f$. Since $s_n$ converge
+    pointwise to to the identity on $[0, \infty)$, and $f$ is
+    bounded,  $\phi_n$ converge pointwise to $f$.
+
+    Moreover note that since $f$ is bounded above by $M$, each
+    $\phi_n$ is bounded above by $M$. Hence $|\phi_n| \le M\chi_X$ and \[
+      \int M \chi_X  \ d \mu = M \mu(X) < \infty
+    \]
+    Then by dominated convergence theorem, we get \[
+      % \inf  \sum_{i = 1}^{m} \chi_{A_i} \sup_{ x \in A_i}f(x) \le
+      \lim_{n \to \infty} \int \phi_n \ d  \mu = \int  f \ d \mu
+    \]
+    Thus we see that \[
+      \inf \Bigg\{ \sum_{i = 1}^{m} \chi_{A_i} \sup_{ x \in A_i}f(x)
+        \ : A_j \textrm{'s partition } X
+      \Bigg\} \le \int f \ d \mu
+    \]
+    which gives our equality.
+
+    To see that the above equality need not hold if $f$ is not
+    bounded, consider $X = (0, 1)$ with the restricted Lebesgue
+    measure. Consider the function $f: (0, 1) \to \mathbb{R}:= x \to
+    \frac{1}{\sqrt{x}}$. Then by the fact that Lebesgue and Riemann
+    integral agrees for continuous function, we see that \[
+      \int  f \ d m = 2
+    \]
+    If $A$ is any non-null measurable set containing a neighborhood
+    of $0$, we see that $\mu(A)\sup_{x \in A}f(x) = \infty$. Since null
+    sets cannot finitely cover any neighborhood, we see that any
+    finite partition of
+    $X$ must contain a non-null set that intersect all neighborhoods
+    of $0$. Thus we see that for any partition $\{ A_1 , A_2 , \ldots
+    , A_n \}$ of $X$ \[
+      \sum_{j = 1}^{n} \mu(A_j) \sup_{ x \in A_j}f(x) = \infty
+    \]
+    which gives us
+    \[
+      \inf \Bigg\{ \sum_{j = 1}^{n} \mu(A_j)
+        \sup_{ x \in A_j} f(x)\ : \ A_j \textrm{'s partition }  X
+      \Bigg\} = \infty \neq \int  f \ d m
+    \]
+  \end{solution}
+
+  \question
+  \begin{solution}
+    We need to show that the set $f^{-1}((y_0, \infty))$ is open for
+    all $y_0 \in \mathbb{R}$. But
+    \begin{align*}
+      f^{-1}((y_0, \infty)) \textrm{ is open } & \iff f^{-1}((-\infty,
+      y_0]) \textrm{ is closed} \\
+      &\iff \{ x \in \mathbb{R}  \ : \  \mu(x+V) \le y_0  \}
+      \textrm{ is closed}
+    \end{align*}
+
+    Let $(x_n)_{n=1}^\infty \subset \{ x \in \mathbb{R}  \ : \
+    \mu(x+B) \le y  \}$ be a sequence such that $x_n \to x_0 \in
+    \mathbb{R}$. We need to show that $\mu(x_0+V) \le y$.
+
+    Since $V$ is open and addition is a continuous function, we see
+    that $x_0+V$ is also open. Now let $$V_n = \{ y \in x_0 + V  \ :
+    \ B_{ \frac{1}{n}}(y) \subset x_0+V  \} = \bigcup_{\substack{y
+        \ \in \ x_0 + V
+    \\ B_{ \frac{1}{n}}(y) \ \subset \ x_0 +V}} B_{ \frac{1}{n}}(y)$$
+    Then it is clear that $V_n$ is open for each $V_n$ and $V_1
+    \subset V_2 \ldots V_n \subset V_{n+1} \ldots$ since $B_{
+    \frac{1}{n+1}}(y) \subset B_{\frac{1}{n}}(y)$. Since
+    $x_0+V$ is open, each $y \in x_0+V$ is contained in an open ball
+    $B_{1/n}(y) \subset x_0+V$ for some $n \in \mathbb{N}$. Thus we
+    see that \[
+      \bigcup_{n = 1}^{\infty}V_n = x_0+V
+    \]
+    Then by the continuity of the
+    measure from below, we see that \[
+      \mu (V_n) \nearrow \mu(x_0+V)
+    \]
+
+    Now consider the set
+    \begin{align*}
+      D_n = (x_n + V) \cap (x_0 + V) &= \{ y \in x_0 + V  \ : \ y \in
+      x_n + V \} \\
+      &= \{ y \in x_0 + V  \ : \ (y - x_n)+x_0 \in x_0 + V  \} \\
+      &= \{ y \in x_0 + V  \ : \ y + (x_0 - x_n) \in x_0 + V  \} \\
+      &\supseteq \{ y \in x_0 + V  \ : \  B_{2|x_0 - x_n|}(y)
+      \subset x_0 + V \}
+    \end{align*}
+    Since $x_n \to x_0$, for each $N$, there is an $N_N> N$ (we can
+    demand $N_N > N$) such that
+    for all $n > N_N$, we have $2|x_n - x_0| < \frac{1}{N}$. Then for
+    all $n > N_N$,
+    \begin{align*}
+      \{ y \in x_0 + V  \ : \
+      B_{2|x_0 - x_n|}(y) \subset x_0 + V \}
+      &\supseteq \{ y \in x_0 + V  \ : \  B_{ \frac{1}{N}}(y)
+      \subset x_0 + V \} \\
+      &= V_N
+    \end{align*}
+
+    Therefore for all $n > N_N$, we get $V_N \subset D_n \subset x_0 + V $
+    and \[
+      \mu(V_N) \le \mu(D_n) \le \mu(x_0 + V)
+    \]
+    Since we know that $\mu(V_N)
+    \to \mu(x_0 + V)$ as $N \to \infty$, we get  $$\mu(D_n) \to \mu(x_0 + V)$$
+    being sandwiched between $\mu(V_N)$ and $\mu(x_0 + V)$. Again,
+    since $V_N \subset D_n \subset x_n + V$ for all $n > N_N$, we get \[
+      \mu(V_N) \le \mu(D_n) \le \mu(x_n + V)
+    \]
+    for all $n > N_N$.
+    Then, taking the limits must preserve the inequality and we see that
+    \[
+      \mu(x_0 + V) = \lim_{n \to \infty} \mu(V_n) \le \lim_{n \to
+      \infty} \mu(x_n + V)
+    \]
+    Now since $\mu(x_n + V) \le y$ for each $x_n$,  we get \[
+      \mu(x_0 + V) \le \lim_{n \to \infty}  \mu(x_n + V) \le y
+    \]
+    which proves our assertion.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+
+

@@ -1,0 +1,272 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions, var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS. https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{multicol} % multiple colums
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH6320 - Modern Algebra  \\ Homework 5}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  Prove that if $H$ is a normal subgroup of prime index $p$, then for all $K \leqslant G$ either $K \leqslant H$ or $G = HK$ with $|K:K\cap H| = p$
+  \begin{solution}
+    Since $H$ is normal in $G$, we see that $N_G(H) = G$, and therefore $K \leqslant N_G(H)$. Now using the second isomorphism theorem we get
+    \begin{enumerate}[label=(\roman*)]
+      \item $HK$ is a subgroup of $G$
+      \item $H \trianglelefteq HK$
+      \item $K \cap H \trianglelefteq K$
+      \item $HK/H \cong K/K \cap H$
+    \end{enumerate}
+    Assume that $K$ is not a subgroup of $H$. Then $H$ is a proper normal subgroup of $HK$. Since the cosets of $H$ in $HK$ are also cosets in $G$ we have $HK/K \subset G/K$. By the normality of $H$ in $HK$, we get that $HK/H$ is algebraically closed under the group operation. Since $G/H$ is a finite group, by the subgroup criterion for finite groups $HK/H$ must be a subgroup of $G/H$. Moreover $|G/H| = |G:H| = p$ is prime, and $|HK/H|>1$ (since $H$ is a proper subgroup of $HK$). Then Lagrange's theorem forces $HK/H = G/H$.
+
+    Now if $HK$ is a proper subgroup of $G$, then there is $g \in G$ such that $g \notin HK$. This forces $gH \in G/H$ but $gH \notin HK/H$, which is a contradiction. Hence $HK = G$.
+
+    By (iv) from above, we get that $G/H \cong K/K\cap H$. Then $p = |G:H| = |G/H| = |K/K\cap H| = |K:K\cap H|$
+  \end{solution}
+
+  \question
+  Let $C$ be a normal subgroup of the group $A$ and let $D$ be a normal subgroup of the group $B$. Prove that $(C \times D) \trianglelefteq (A \times B)$ and $(A \times B)/(C \times D) \cong (A/C)\times(B/D)$.
+  \begin{solution}
+    First we'll show that $(C \times D) \trianglelefteq (A \times B)$. For this let $(a, b) \in (A \times B)$ and $(c, d) \in C \times D$. Then $(a, b)(c, d)(a, b)^{-1} = (a, b)(c, d)(a^{-1}, b^{-1}) = (aca^{-1}, bdb^{-1}) \in C \times D$ since $C \trianglelefteq A, D \trianglelefteq B$. Hence we get, $(C \times D) \trianglelefteq (A \times B)$.
+
+    Now consider the map $\phi : A \times B \to (A/C) \times (B/D) := (a, b) \to (aC, bD)$. Clearly $\phi$ is surjective, since if $(aC, bD) \in (A/C)\times(B/D)$, then $\phi(a, b) = ( aC, bD)$. Also, it is a group homomorphism. If $(p, q), (r, s) \in A \times B$, then $\phi(pr, qs) = (prC, qsD) = (pC, qD)(rC, sD) = \phi(p, q)\phi(r, s)$.
+
+    Moreover, the $\textrm{Ker}(\phi) = C \times D$, since $\phi(a, b) = (aC, bD) = \textbf{0} \in (A/C) \times (B/D)$ if and only if $aC = C$ and $bD = D$, which is equivalent to $a \in C$ and $d \in D$. Hence by the first isomorphism theorem, we get $(A \times B)/(C \times D) \cong (A/C)\times(B/D)$.
+  \end{solution}
+
+  \question
+  Let $M, N$ be normal subgroups of $G$ such that $G = MN$. Prove that $G/(M\cap N) \cong (G/M) \times (G/N)$.
+  \begin{solution}
+    Consider the map $\phi: G \to (G/M)\times(G/N) := g \to (gM, gN)$. We'll show that this map is a surjective group homomorphism with $\textrm{Ker}(\phi) = M \cap N$. Then first isomorphism theorem will give us our required result.
+
+    First to show that it is a group homomorphism, let $ g, h \in G$. Then $\phi(gh) = (ghM, ghN) = (gM, gN)(hM, hN) = \phi(g) \phi(h)$. Hence $\phi$ is a group homomorphism.
+
+    Now to show the surjectivity of $\phi$, let $(gM, hN) \in (G/M)\times(G/N)$. Since $MN = G$ is a group, we see that $MN = G = NM$. Hence there exist $m_g, m^\prime_g, m_h, m^\prime_h \in M$ and $n_g, n^\prime_g, n_h, n^\prime_h \in N$ such that $g = m_gn_g = n^\prime_g m^\prime_g$ and $h = m_hn_h = n^\prime_h m^\prime_h$.
+    Then $$gM = n^\prime_g m^\prime_g M  = n^\prime_gM = n^\prime_g m_h M$$
+    and $$hN = m_hn_hN = m_hN = n^\prime_g (m_h N )n^{\prime-1}_g= n^\prime_gm_hN$$
+    where $m_hN = n^\prime_g (m_h N )n^{\prime-1}_g$ follows from the fact that cosets of a normal subgroup are stable under the conjugation action.
+    Therefore we see that $ \phi(n^\prime_gm_h) = (n^\prime_gm_hM, n^\prime_gm_hN) = (gM, hN)$ and hence $\phi$ is surjective.
+
+    Now it only remains to show that $\textrm{Ker}(\phi) = M \cap N$. $\phi(g) = (gM, gN) =  \textbf{0} = (M, N)$ if and only if $g \in M$ and $g \in N$. Hence we see that $\phi(g) = \textbf{0}$ if and only if $g \in M \cap N$. Hence $\textrm{Ker}(\phi) = M \cap N$.
+  \end{solution}
+
+  \question
+  Let $p$ be a prime and let $G$ be a group of $p$-power roots of 1 in $\mathbb{C}$. Prove that the map $z \to z^p$ is a surjective homomorphism. Deduce that $G$ is isomorphic to a proper quotient of itself.
+  \begin{solution}
+    Note that the group $G = \{ z \in \mathbb{C}  \ : \   z^{p^n} = 1 \textrm{ for some } n \in \mathbb{N} \}$ and $\phi: G \to G$ is the map with $\phi(z) = z^p$. First we'll show that the map is well defined. Let $z \in G$ with $z^{p^n} = 1$. Then $\phi(z)^{p^{n-1}} = (z^{p})^{p^{n-1}} = z^{p^n} = 1$. Hence $\phi(z) \in G$.
+
+    Now to see that $\phi$ is a homomorphism, let $z, w \in G$. Then $\phi(zw) = (zw)^p  = z^p w^p = \phi(z) \phi(w)$. Hence $\phi$ is a homomorphism.
+
+    To prove the surjectivity of $\phi$, let $z = e^{  i \theta} \in G$ with $z^{p^n} = 1$. This is equivalent to $p^n \theta= 2m\pi$ for some $m \in \mathbb{N}$. Let $w = e^{i \theta/p}$. Since $w^{p^{n+1}} = (e^{i \theta/p})^{p^{n+1}} = e^{i \theta p^{n}} = e^{ 2 m \pi} = 1$, we see that $ w \in G$. Moreover $\phi(w) = z$. Hence $ \phi$ is a surjective homomorphism.
+
+    Now by the first isomorphism theorem, we see that $ G \cong G/\textrm{Ker}(\phi)$.
+  \end{solution}
+
+  \question
+  Let $p$ be a prime and let $G$ be a group of order $p^{\alpha}m$ where $p \not| m$. Assume $P$ is a subgroup of $G$ of order $p^\alpha$ and $ N$ be a normal subgroup of order $p^{ \beta} n$, where $p \not | n$. Prove that $|P \cap N| = p^\beta$ and $|PN/N| = p^{\alpha -\beta}$.
+  \begin{solution}
+    Note that since $P \cap N \leqslant P, N$, we have $|P\cap N|\big|p^{\alpha}$ and $|P \cap N| \big| p^{\beta}n$. Since $\beta \le \alpha$ and $(p^{\alpha}, p^{\beta}n) = p^{\beta}$, we get $|P\cap N| \big| p^{\beta}$. Let $|P \cap N | = p^k$ where $k \le \beta$. Since $ N$ is a normal subgroup of $G$, we know that $PN$ is a subgroup of $G$ with $|PN| = \frac{|P||N|}{|P \cap N|} = p^{\alpha + \beta - k}n$. Again since $PN$ is a subgroup of $G$, by Lagrange's theorem, we get $p^{\alpha + \beta - k}n \big| p^{\alpha}n$. Therefore,
+    \begin{align*}
+      \alpha + \beta - k &\le \alpha \\
+      \beta - k & \le 0 \\
+      \beta \le k
+    \end{align*}
+    Hence $k = \beta$, and we get $|P \cap N| = p^{\beta}$.
+
+    Now since $N \trianglelefteq G$ and $P \leqslant N_G(N) = G$, by the second isomorphism theorem $PN/N \cong P/(P \cap N)$. Therefore $|PN/N| = |P/(P \cap N)| = \frac{|P|}{|P \cap N|} = \frac{p^{\alpha}}{p^{\beta}} = p^{\alpha - \beta}$.
+  \end{solution}
+
+  \question
+  Give the list of invariant factors for all Abelian groups of order 105, 44100.
+  \begin{solution}
+    \begin{parts}
+      \part $105 = 21\times5 = 3\times5\times7$. If $Z_{n_1}\times Z_{n_2} \times \ldots \times Z_{n_k}$ is an invariant factor decomposition of the group of order $105$, we know that $n_{i+1}|n_i$. But since the powers of each of $2, 3, 5$ in the prime factorization of $105$, is just 1, there is no way other than $Z_{105}$ to represent an Abelian group of order 105.
+      \part $44100 = 2^2 \times 3^3 \times 5^2 \times 7^2$. Therefore the possible invariant factor decompositions of a group of order $44100$ are as
+      \begin{multicols}{4}
+        \begin{itemize}
+          \item  $Z_{44100}$
+          \item $Z_{22050} \times Z_{2}$
+          \item $Z_{14700} \times Z_{3}$
+          \item $Z_{8820} \times Z_5$
+          \item $Z_{6300} \times Z_7$
+          \item $Z_{7350} \times Z_6$
+          \item $Z_{4410} \times Z_{10}$
+          \item $Z_{3150} \times Z_{14}$
+          \item $Z_{2920} \times Z_{15}$
+          \item $Z_{2100} \times Z_{21}$
+          \item $Z_{1050} \times Z_{42}$
+          \item $Z_{1260} \times Z_{35}$
+          \item $Z_{1470} \times Z_{30}$
+          \item $Z_{630}\times Z_{70}$
+          \item $Z_{420}\times Z_{105}$
+          \item $Z_{210} \times Z_{210}$
+        \end{itemize}
+      \end{multicols}
+    \end{parts}
+  \end{solution}
+
+  \question
+  Give the list of elementary divisors for all Abelian groups of order 105, 44100
+  \begin{solution}
+    \begin{parts}
+      \part $105 = 3 \times 5 \times 7$. If $A_1 \times A_2 \times \ldots \times A_k$ is the elementary divisor decomposition of the group of order $105$, then each $|A_1| = 3, |A_2| = 5$ and $|A_3| = 7$. Since every group of prime power is cyclic, we get that the only possible decomposition is $Z_3 \times Z_5 \times Z_7$.
+      \part $44100 = 2^23^25^27^2$. Hence if $A_2 \times A_3 \times A_5 \times A_7$ is the elementary divisor decomposition, then $|A_1| = 2^2, |A_{2}| = 3^2, |A_{3}| = 5^2$ and $|A_4| = 7^2$. Again each $A_p$ can be isomorphic to either $Z_{p^2}$ or $Z_p \times Z_p$. So the complete list of elementary divisors for all Abelian groups of order $44100$ is
+      \begin{itemize}
+        \item  $Z_4 \times Z_9 \times Z_{25} \times Z_{49}$
+        \item  $( Z_2 \times Z_2) \times Z_9 \times Z_{25} \times Z_{49}$
+        \item  $Z_4 \times ( Z_3 \times Z_3) \times Z_{25} \times Z_{49}$
+        \item  $Z_4 \times Z_9 \times (Z_5 \times Z_5) \times Z_{49}$
+        \item  $Z_4 \times Z_9 \times Z_{25} \times (Z_{7} \times Z_7)$
+        \item  $Z_4 \times Z_9 \times (Z_{5} \times Z_5) \times (Z_{7} \times Z_7)$
+        \item  $Z_4 \times (Z_3\times Z_3) \times Z_{25} \times (Z_{7} \times Z_7)$
+        \item  $(Z_2 \times Z_2) \times Z_9 \times Z_{25} \times (Z_{7} \times Z_7)$
+        \item  $(Z_2 \times Z_2) \times Z_9  \times (Z_{5} \times Z_5) \times Z_{49}$
+        \item  $(Z_2 \times Z_2) \times (Z_{3} \times Z_3)\times Z_{25} \times Z_{49}$
+        \item  $Z_4 \times (Z_{3} \times Z_3)\times ( Z_{5} \times Z_5)\times Z_{49}$
+        \item  $(Z_2 \times Z_2) \times (Z_{3} \times Z_3)\times (Z_{5} \times Z_{5} )\times Z_{49}$
+        \item  $(Z_2 \times Z_2) \times (Z_{3} \times Z_3) \times Z_{25} \times (Z_{7} \times Z_{7} )$
+        \item  $(Z_2\times Z_2) \times Z_9 \times (Z_{5} \times Z_5) \times (Z_{7} \times Z_7)$
+        \item  $Z_4 \times (Z_3\times Z_3) \times (Z_{5} \times Z_5) \times (Z_{7} \times Z_7)$
+        \item  $(Z_2 \times Z_2) \times (Z_3\times Z_3) \times (Z_{5} \times Z_5) \times (Z_{7} \times Z_7)$
+      \end{itemize}
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{parts}
+    \part Prove that any finite group has a finite exponent
+    \part Give an example of an infinite group with finite exponent
+    \part Does a finite group of exponent $m$ always contain an element of order $m$?
+  \end{parts}
+  \begin{solution}
+    \begin{parts}
+      \part We know that for all finite group $G$ with order $|G|$, $g^{|G|} = e$ for all $g \in G$. Therefore the exponent of the group can be at most $|G|$.
+      \part Let $G = \{ z \in \mathbb{C} \ : \  z^n = 1 \textrm{ for some } n \in \mathbb{Z} \}$. Then
+    \end{parts}
+  \end{solution}
+
+  \question
+  Let $A$ be a finite Abelian group and let $p$ be a prime. Let \[
+    A^p = \{ a^{p}  \ : \ a \in A  \} \quad \textrm{and} \quad A_p = \{ x  \ : \ x^p = 1  \}
+  \]
+  \begin{parts}
+    \part Prove that $A/A^p \cong A_p$
+    \part Prove that the number of subgroups of $A$ of order $p$ equals the number of subgroups of $A$ of index $p$.
+  \end{parts}
+  \begin{solution}
+    \begin{parts}
+      \part We'll first show that $A^p, A_p$ are subgroups of $A$. Let $a^p, b^p \in A^p$. Then $(a^{p})^{-1}b^p = a^{-p}b^p = (a^{-1})^pb^p  = (a^{-1}b)^p$. Since $a^{-1}b \in A$, we get that $(a^p)^{-1}b^p = (a^{-1}b)^p \in A^p$. Hence $A^p$ is a subgroup.
+      Now let $a, b \in A_p$. Then $a^p = b^p = 1$. Then $(a^{-1}b)^p = (a^{-1})^p b^p = (a^p)^{-1} b^p =  1$. Hence $a^{-1}b \in A_p$. Hence $A_p$ is also is a subgroup.
+      Since $A$ is Abelian, both of these are normal in $A$. Now let $A \cong A_1 \times A_2 \times \ldots \times A_n$ with $|A_i| = p_i^{\alpha_i}$ and $p_i > p_{i+1}$ where each $p_i$ are distinct primes. 
+
+      We'll show that both the groups $A/A^p$ and $A_p$ have exponent $p$. Then both their orders must be a power of $p$. Then if we show that the order of both these groups are the same, by the fundamental theorem of finitely generated Abelian groups, we'll get that they are isomorphic.
+
+      To see that $A_p$ has exponent $p$, let $a \in A_p$, then by the definition of $A_p$, we see that $a^p = 1$. Since $p$ is a prime, we see that the exponent of the group should be either $p$ or 1.
+
+      Now for $A/A^p$, let $aA^p \in A/A^p$, then $(aA^p)^p = a^pA^p = A^p$ implies the exponent of $A/A^p$ should be either $p$ or $1$ by the same reasoning.
+
+      If the exponent of $A_p = 1$, $A_p$ must be the trivial group, which forces the homomorphism $\phi: A \to A : a \to a^p$ to be isomorphic, since $\textrm{Ker}(\phi) = A_p$. This gives $\phi(A) = A^p$ and that $A/A^p = A/A = \{ 0 \} = A_p$. 
+
+      If the exponent of the group $A_p = p$, then there is an element in $a \in A$ with order $p$. Then $aA^p$ must also have order $p$ forcing the exponent of $A/A^p$ to be $p$. Hence we see that the groups $A_p$ and $A/A^p$ has the same exponent.
+
+      Now by the same map $\phi$ above, we see that $A/A_p \cong A^p$. Therefore $\frac{|A|}{|A_p|} = |A^p|$ and we get $ \frac{|A|}{|A^p|} = |A_p|$, which gives us that the order of the groups under consideration are the same. Hence we get $ A/A^p \cong A_p$.
+
+
+      \part Let $G$ be a subgroup of $A$ of order $p$. Then $g^p = 1$ for all $g \in G$. Hence $G \subset A_p$, which gives $G \leqslant A_p$, since $A_p$ itself is a subgroup. Conversely if $H$ is a subgroup of $A_p$ of order $p$, then trivially it is a subgroup of $A$ of the same order. Hence there's a correspondence between subgroups of $A$ of order $p$ and the subgroups of $A_p$ of order $p$. Since $A_p \cong A/A^p$, we get that the number of subgroups of $A_p$ of order $p$ is equal to the number of subgroups of $A/A^p$ of order $p$.
+
+      % Now let $G = \{ [g_1] , [g_2] , \ldots , [g_p] \ : \ g_i \in A\}$ be a subgroup of $A/A^p$ of order $p$. Then we claim that $\tilde{G} = \{ g_ia   \ : \ [g_i] \in G, a \in A^p \} = \cup_{i = 1}^{p}g_iA^p$ is a subgroup of $A$ with $|\tilde{G}:A^{p}| = p$. To see that $\tilde{G}$ is a subgroup, let $g_ia, g_jb \in \tilde{G}$. Then $(g_ia)^{-1}(g_jb) = (a^{-1}g_i^{-1})(g_jb) = a^{-1}(g_i^{-1}g_j)b = (g_i^{-1}g_j)a^{-1}b$. Hence $[(g_ia)^{-1}(g_jb)] = [(g_i^{-1}g_j)a^{-1}b] = [g_i^{-1}g_j] = [g_k]$ for some $[g_k] \in G$. This gives that $(g_ia)^{-1}(g_jb) = g_ka_k$ for some $[g_k] \in G, a_k \in A^p$. Hence $(g_ia)^{-1}(g_jb) \in \tilde{G}$ and therefore $\tilde{G}$ is a subgroup of $A$. Moreover we see that $A^p \leqslant \tilde{G}$ and $|\tilde{G}: A^p| = p$ by the construction of $\tilde{G}$. Conversely if $H$ is any subgroup of $A$ with $|H:A^p| = p$, then $H/A^p$ will be a subgroup of $A/A^p$ of order $p$. Hence the number of subgroups of $A/A^p$ of order $p$ is equal to the number of subgroups $H \leqslant A$ with $|H/A^p| = p$
+
+      Now let $G$ be a subgroup $A$ of index $p$. Then $A/G = \{ [h_1], [h_2], \ldots,  [h_p] \}$. Then $h_i^p \in G$. Since $h_i$ can be chosen to be any $a \in A$, we see that $A^p \leqslant G$. Therefore, by the third isomorphism theorem, we see that $p = |A/G| = |\frac{A/A^p}{G/A^p}|$. Hence $G/A^p$ is a subgroup of $A/A^p$ of index $p$. Conversely if $H/A^p$ is a subgroup of $A/A^p$ of index $p$, let $\frac{A/A^p}{H/A^p} = \{[a_1A^p], [a_2A^p], \ldots, [a_pA^p] \}$ then \[
+           \tilde{H} = \bigcup_{i = 1}^{p}a_iA^p
+      \]
+    \end{parts}
+
+  \end{solution}
+
+  \question
+  Let $n$ and $k$ be positive integers and let $A$ be the free Abelian group of rank $n$. Prove that $A/kA$ is isomorphic to the direct product of $n$ copies of $\mathbb{Z}/k \mathbb{Z}$.
+  \begin{solution}
+  Since we know that $A \cong  \mathbb{Z}^n$, in essence, we just need to show that $\mathbb{Z}^n/ k \mathbb{Z}^n \cong (\mathbb{Z}/ k \mathbb{Z})^n$. Consider the map $\phi: \mathbb{Z}^n \to (\mathbb{Z}/ k \mathbb{Z})^n$ as $\phi(a_1 , a_2 , \ldots , a_n) = ([a_1] , [a_2] , \ldots , [a_n])$, where $[a_i] = a_i + k \mathbb{Z}$.
+
+  Clearly $\phi$ is a homomorphism. Let $a = (a_1 , a_2 , \ldots, a_n), b = (b_1 , b_2 , \ldots , b_n) \in \mathbb{Z}^n$. Then $\phi(a^{-1}b) = \phi(-a_1 + b_1 , -a_2 + b_2 , \ldots , -a_n + b_n) = ([b_1 - a_1], [b_2 - a_2], \ldots, [b_n - a_n]) = ([b_1] , [b_2] , \ldots , [b_n]) - ([a_1] , [a_2] , \ldots , [a_n]) = \phi(b) - \phi(a)$.
+
+  Moreover, $\phi$ is a surjection. If $([a_1] , [a_2] , \ldots , [a_n]) \in (\mathbb{Z}/k \mathbb{Z})^n$, then $\phi(a_1 , a_2 , \ldots , a_n) =([a_1] , [a_2] , \ldots , [a_n])$, shows that $\phi$ is surjective.
+
+  Now we'll show that $\textrm{Ker}(\phi) = k \mathbb{Z}^n$. $\phi(a_1 , a_2 , \ldots , a_n) = ([a_1] , [a_2] , \ldots , [a_n]) = 0$ if and only if $[a_i] \in k \mathbb{Z}$ for each $1 \le i \le n$. This is equivalent to $(a_1 , a_2 , \ldots , a_n) \in (k \mathbb{Z})^n = k \mathbb{Z}^n$. Hence we get that $\textrm{Ker}(\phi) = k \mathbb{Z}^n$. 
+
+  Now by the first isomorphism theorem, we get that $\mathbb{Z}^n/ k \mathbb{Z}^n \cong (\mathbb{Z}/ k \mathbb{Z})^n$.
+  \end{solution}
+
+
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+
+

@@ -1,0 +1,156 @@
+% TeX_root = ../main.tex
+
+\chapter*{Course Information}
+\marginnote{\scriptsize 14/01/2025 }
+
+Office : Tuesday 11:30 - 12:30 PM, Wednesday 1-2PM\\
+Midterm: 4th March 2025, in class
+
+\chapter{Hilbert Spaces (continuation)}
+
+\begin{exercise}[Warm up]
+  \label{warm_up1}
+  Show that if $f \in \ell^{2}(X)$, then utmost countably many values
+  of $f$ are non-zero.
+\end{exercise}
+\begin{solution}
+  Take the sets
+  \begin{align*}
+    E_n = \{ x \in X  \ : \  |f(x)|>1/n \}
+  \end{align*}
+  and consider their union.
+\end{solution}
+
+\section{Orthonormal Sets}
+
+\begin{definition}
+  A orthonormal family in a Hilbert space is a family
+  $(u_\alpha)_{\alpha \in A}$ such that $\langle  u_\alpha ,  u_\beta
+  \rangle  = 0$ if $\alpha \neq \beta$ and $\|u_\alpha\| = 1$ for
+  each $ \alpha, \beta \in A$.
+\end{definition}
+
+\begin{theorem}[Bessel's Inequality]
+  Given an orthonormal family $(u_\alpha)_{\alpha \in A}$ in a
+  Hilbert space $\mathcal{H}$, and $h \in \mathcal{H}$, then
+  \begin{align*}
+    \|h\|^2 \ge \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle |^2
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Let $B \subset A$ be finite, and let
+  \begin{align*}
+    g = \sum_{\alpha \in  B} \langle h , u_\alpha \rangle  u_\alpha
+  \end{align*}
+  We can easily show that, $\langle h-g , g \rangle  = 0$. Thus
+  \begin{align*}
+    \|h\|^2 &= \|h - g + g\|^2 \\
+    &= \langle h-g +g , h-g +g \rangle \\
+    &= \|h - g\|^2 + \|g\|^2 \\
+    & \ge \|g\|^2
+  \end{align*}
+  Now the inequality follows form the definition of summation as the
+  supremum of finite index sums.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{H}$ be a Hilbert space. An orthonormal family
+  $(u_\alpha)_{\alpha \in A}$ is called complete, or an orthonormal
+  basis, if for each $h \in H$,
+  \begin{align*}
+    \|h\|^2 = \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle |^2
+  \end{align*}
+\end{definition}
+
+\begin{definition}
+  A set $U = \{ u_\alpha  \ : \   \alpha \in A \}$ is a maximal
+  orthonormal set if for any $V$ with $V \supset U$ and $V$ is
+  orthonormal, then $V = U$.
+\end{definition}
+
+\begin{theorem}
+  Let $\mathcal{H}$ be a Hilbert space, $(u_\alpha)_{\alpha \in A}$
+  an orthonormal family, then the following are equivalent.
+  \begin{enumerate}
+    \item $(u_\alpha)_{\alpha \in A}$ is an orthonormal basis
+    \item $\textrm{span}\{ u_\alpha  \ : \   \alpha \in A \}$ is
+      dense in $\mathcal{H}$
+    \item $\{ u_\alpha \}$ is a maximal orthonormal set
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  ($1 \implies 2$) Let $h$ be given. Consider for any $B \subset A$,
+  \begin{align*}
+    g = \sum_{\alpha \in  B} \langle h , u_\alpha \rangle  u_\alpha
+  \end{align*}
+  then we recall $\langle h- g , g \rangle  = 0$. And thus
+  \begin{align*}
+    \|h\|^2 =  \|h- g\|^2 + \|g\|^2
+  \end{align*}
+  We know from equality in Bessel's inequality that, for given
+  $\varepsilon > 0$  we can choose $B$ such that $\|h\|^2 - \|g\|^2 <
+  \varepsilon^2$. Hence
+  \begin{align*}
+    \|h - g\|^2 = \|h\|^2 - \|g\|^2 < \varepsilon^2
+  \end{align*}
+  Thus, we can find a $g$ that is arbitrarily close to $h$.
+
+  ($\neg 3 \implies \neg 2$). Assuming $3$ is wrong, there exists $u
+  \in \mathcal{H}$, such that $\|u\| = 1$, and $\langle u , u_\alpha
+  \rangle = 0$ for each $\alpha \in A$. Next, for any finite $B
+  \subset A$, and any $c_\alpha \in \mathbb{C}$, we look at
+  \begin{align*}
+    \|u - \sum_{\alpha \in  B} c_\alpha u_\alpha\| &= \|u\|^2 +
+    \|\sum_{\alpha \in  B} c_\alpha u_\alpha\|^2 \\
+    &= \|u\|^2 + \sum_{\alpha \in  B} |c_\alpha|^2 \\
+    & \ge \|u\|^2 = 1
+  \end{align*}
+  Thus $u \not\in \overline{\textrm{span} \{ u_\alpha \}}$.
+
+  $(\neg 1 \implies \neg 3)$. Assume there is $h \in \mathcal{H}$ such that
+  \begin{align*}
+    \|h\|^2 > \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle|^2
+  \end{align*}
+  We know that $A_o = \{ \alpha \in A  \ : \  \langle h , u_\alpha
+  \rangle \neq 0 \}$ is at most countable from \autoref{warm_up1}.
+  We can find $A_1 \subset A_2 \subset \ldots$ each finite where
+  \begin{align*}
+    A_n = \{ \alpha \in A_o  \ : \  |\langle h , u_\alpha \rangle |
+    \ge \frac{1}{n} \}
+  \end{align*}
+  and
+  \begin{align*}
+    A_o = \bigcup_{n = 1}^{\infty}A_n
+  \end{align*}
+  Let $g_n = \sum_{\alpha \in  A_n} \langle h , u_\alpha \rangle
+  u_\alpha$. By monotone convergence theorem, given $\varepsilon> 0$,
+  there exists $N \in \mathbb{N}$ such that
+  \begin{align*}
+    \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle |^2 <
+    \sum_{\alpha \in  A_N} |\langle h , u_\alpha \rangle |^2 + \varepsilon
+  \end{align*}
+  Thus, for $m \ge n \ge N$
+  \begin{align*}
+    \|g_m - g_n\|^2 &= \|\sum_{\alpha \in  A_m \setminus A_n} \langle
+    h , u_\alpha \rangle  u_\alpha\|^2 \\
+    &= \sum_{\alpha \in  A_m \setminus A_n} |\langle h , u_\alpha \rangle |^2 \\
+    &= \sum_{\alpha \in  A_m} |\langle h , u_\alpha \rangle |^2 -
+    \sum_{\alpha \in  A_n} |\langle h , u_\alpha \rangle |^2 \\
+    &=  \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle |^2 -
+    \sum_{\alpha \in A_n} |\langle h , u_\alpha \rangle |^2 \\
+    &< \varepsilon
+  \end{align*}
+  Therefore, we conclude that $(g_n)$ is a Cauchy sequence. By
+  completeness of $\mathcal{H}$, $g_n \to g$ for some $g \in
+  \mathcal{H}$. Let $\gamma = h - g$. If $\gamma \in A_o$, then
+  $\gamma \in A_n$ for some $n \in \mathbb{N}$. Thus we'll get that
+  \begin{align*}
+    \langle h-g , u_\alpha \rangle &= 0
+  \end{align*}
+  \textcolor{red}{verify}
+
+  If $\gamma \notin A_o$, then $\langle h , u_\gamma \rangle = 0$ and
+  $\langle g_n , u_\gamma \rangle = 0$, so again $\langle  ,  \rangle
+  $ \textcolor{red}{verify}
+
+\end{proof}

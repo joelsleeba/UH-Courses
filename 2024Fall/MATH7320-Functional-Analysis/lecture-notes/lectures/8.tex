@@ -1,0 +1,69 @@
+% TeX_root = ../main.tex
+
+\begin{theorem}[Tychonoff]
+  The product of compact sets is compact.
+\end{theorem}
+\begin{corollary}
+  Let $X$ be a compact Hausdorff space. Then for any set $S$, the set
+  $\{ \phi: S \to X \} = X^S$ is compact wrt to pointwise convergence.
+\end{corollary}
+
+\begin{theorem}[Banach-Alaoglu Theorem]
+  Let $X$ be a normed space. Then the closed unit ball
+  $\overline{B_{X^*}(0, 1)} = \{ f \in X^* \ : \ \|f\| \le 1 \} = E$
+  is weak * compact.
+\end{theorem}
+\begin{proof}
+  Let $\bar{B}$ be the closed unit ball of $X$. Then by Tychonoff
+  theorem, $\bar{D}^{\bar{B}}$ is compact. Define $\phi: E \to
+  \bar{D}^{\bar{B}}$ as $\phi(f)(x) := f(x)$. Observe that $\phi$ is injective.
+  Also observe that $\phi$ is continuous (weak * in LHS, and pointwise in RHS).
+
+  Next we show that the image of $\phi$ a closed subset of $\bar{D}^{
+  \bar{B}}$, hence compact. Let $f_i$ be a net in $E$ such that
+  $\phi(f_i) \to \psi$ pointwise for some $\psi \in \bar{D}^{\bar{B}}$.
+
+  Define $g: X \to C$ as $g(x) = \alpha \psi( \frac{x}{ \alpha} )$
+  where $\|x\| \le \alpha$. For this to be well defined we must have
+  $\|x\| \psi(\frac{x}{\|x\|}) = \alpha \psi( \frac{x}{ \alpha})$ for
+  any $ \alpha >  \|x\|$. But we get this since $\psi$ is a pointwise
+  limit of linear functionals. Moreover we get that $g$ is linear for
+  the same reason. Thus $\psi = \phi(g)$ and so $\phi(E)$ is closed.
+
+  It only remains to show that the inverse of $\phi$ is continuous.
+  \textcolor{red}{verify}.
+\end{proof}
+
+\begin{proposition}
+  \label{ClosedUnitBallisCompactiffFiniteDim}
+  The closed unit ball of a normed space $Y$ is compact w.r.t the
+  norm topology if and only if $Y$ is finite dimensional.
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{theorem}
+  Let $X$ be a normed space. Then $E$ is weak * metrizable iff $X$ is separable.
+  \marginnote{ \scriptsize \it \textcolor{red}{complete this proof}}
+\end{theorem}
+\begin{proof}
+  Assume $X$ is separable. Let $\{ x_n  \ : \  n \in \mathbb{N} \}$
+  be a dense subset of $X$. For every $f, g \in E$, define $d(f, g)
+  := \sum_{n \in \mathbb{N}}  \frac{1}{2^n}|f( \frac{x_n}{\|x_n\|}) -
+  g( \frac{x_n}{\|x_n\|} )|$. Check that $d$ is a metric.
+
+  Now asssume $f_i \to f$ weakly in $E$. Then $f_i(x_n) \to f(x_n)$
+  for all $n \in \mathbb{N}$ and $d(f_i, f) \to 0$ (\textcolor{red}{verify}).
+
+  % Conversely if $d(f_i, f) \to 0$ then $f_i(x_n) \to f(x_n)$ for
+  % all $n \in \mathbb{N}$.
+  Assume $E$ is metrizable. Then $\exists \{ U_n \ : \ n \in
+  \mathbb{N} \}$ of weak * open neighborhoods of $0$ such that
+  $\cap_{n = 1}^{\infty}U_n = \{ 0 \}$. So, for each $ n \in
+  \mathbb{N}$, there exists a finite set $ A_n \in X$ and $\epsilon
+  > 0$ such that the (subbasis sets) $\{ f \in E \ : \ |f|\le
+    \epsilon \forall x \in A_n  \subset U_n$. Now let $A = \cup_{n
+    = 1}^{\infty}A_n$. Let $\phi \in E$ such that $\phi(x) = 0$ for
+    all $x \in A$.
+  \end{proof}

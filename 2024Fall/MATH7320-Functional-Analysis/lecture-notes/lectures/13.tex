@@ -1,0 +1,96 @@
+% TeX_root = ../main.tex
+
+\begin{example}
+  Let $S = \{ n \delta_n  \ : \  n \in \mathbb{N} \} \subset
+  \ell^\infty$. We show that $0 \in \overline{S}^{w^*}$
+\end{example}
+\begin{proof}
+  Let $f \in \ell^1$. Then the set $\{ n \in \mathbb{N}  \ : \
+  |f(n)| < \epsilon/n \}$ is infinite. (Otherwise this would
+  contradict $f \in \ell^1$). Thus $\exists N \in \mathbb{N}$ such
+  that $N|f_i(N)| < \epsilon$  for all $i = 1, 2, \ldots m$. And
+  therefore $$N \delta_n \in \bigcup_{f_1 , f_2 , \ldots , f_N, \epsilon} (0)$$
+\end{proof}
+
+\begin{definition}
+  A subset $S$ of a vector space $V$ is called  balanced if $\forall
+  s \in S, \alpha \in \mathbb{F}$ with $|\alpha| \le 1, \alpha s \in S$.
+\end{definition}
+
+\begin{lemma}
+  Let $X$ be a topological vector space, then every open neighborhood
+  of ${0}$ contains a balanced open neighborhood of $O$.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{lemma}
+  All n-dimensional topological vector spaces are isomorphic as
+  topological vector spaces.
+\end{lemma}
+\begin{proof}
+  For the case $n = 1$, and $\mathbb{F} = \mathbb{C}$.
+
+  Assume $\tau$ is a topology on $\mathbb{C}$ that turns it into a
+  topological vector space. Now think of $i : \mathbb{C} \to
+  (\mathbb{C}, \tau) := x \to x$  as the composition of $\mathbb{C}
+  \to \mathbb{C} \times (\mathbb{C} , \tau):= x \to (x, 1)$ and
+  $\mathbb{C} \times (\mathbb{C} , \tau) \to (\mathbb{C} , \tau):=
+  (x, y) \to xy$. Then we see  that $i$ is the composition of these
+  maps which are continuous by the definition of the product topology
+  and the TVS. Hence, $i$ is continuous.
+
+  To show that $i^{-1}$ is continuous, consider the annulus $A = \{
+  \alpha \in \mathbb{C}  \ : \  1 \le |\alpha| \le 2 \}$. Then since
+  $A$ is compact in the usual topology and $i(A) = A$ is a continuous
+  image, we get that $A$ is open in $\tau$. Hence $A^c \ni 0$ is open
+  and by the lemma above has a balanced open neighborhood of $0$ in
+  it. \textcolor{red}{(Show that this is actually an open disk)}.
+\end{proof}
+
+\begin{theorem}
+  \label{ClosedUnitBallisCompactiffFiniteDim}
+  Let $X$ be a normed space. Then the closed unit ball of $X$ is
+  compact in norm topology if and only if $X$ is finite dimensional.
+\end{theorem}
+\begin{proof}
+  Suppose $X$ is infinite dimensional normed space and let $\bar{B}$
+  be the closed unit ball. Let $x_1 \in \bar{B}$ and let $Y_1 =
+  \textrm{span}\{ x_1 \}$. Then $Y_1$ is a closed subspace of $X$.
+  Since $X$ is a non-zero normed space, let $x_2 \in X$ such that
+  $\|x_2 + Y_1\| = \frac{1}{2}$.
+  Repeat the construction in the proof of Reisz lemma.
+\end{proof}
+
+\begin{lemma}
+  Let $X$ be a normed space. Then $i(X)$ is weak * dense in $X^{**}$
+\end{lemma}
+\begin{proof}
+  Let $C = \overline{B}^{w*}$, where $B$ is the closed unit ball.
+  Then $C$ is compact convex.
+  FSTOC, assume $\exists \phi \in X^{**}$ such that $\|\phi\| \le 1$,
+  \marginnote{ \scriptsize Show that $\Re f(x) \le r \|x\|$ imply $
+  \|f\| \le \alpha$}
+  $\phi \notin C$. Then by HBT, there is a $f \in X^{**}$ and $r \in
+  \mathbb{R}$, $\epsilon >0$ such that $\Re f(y) \le r < r+ \epsilon
+  \le \Re f(\phi)$ for all $y \in i(X)$. This implies $\|f\| \le r$,
+  hence $|f(\phi)| = |\phi(f)| \le \|\phi\|\|f\| < r$ which gives a
+  contradiction.
+\end{proof}
+
+\begin{theorem}
+  Let $X$ be a Banach space. Then the closed unit ball $\bar{B}$ is
+  weakly compact if and only if $X$ is reflexive.
+\end{theorem}
+\begin{proof}
+  If $X$ is reflexive, the weak and weak * topology coincides and the
+  Banach Alaouglu  gives the proof. \textcolor{red}{verify}
+
+  Assume $\bar{B}$ is weakly compact. Observe that then the map $i: X
+  \to X^{**}$ is continuous when we equip $X$ with weak topology and
+  $X^{**}$ with weak topology. Thus $i(\bar{B})$ is weak * compact.
+  Moreover $ i(\bar{B})$ is weak * dense in the closed unit ball of
+  $X^{**}$. Hence the result.
+\end{proof}
+

@@ -1,0 +1,183 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 28/01/2025 }
+
+\begin{corollary}
+  Let $G_1 , G_2 , \ldots$ be a sequence of dense $G_\delta$ subsets,
+  then $\cap_{n = 1}^{\infty}G_n$ is dense and $G_\delta$.
+\end{corollary}
+
+\begin{theorem}[Banach-Steinhaus theorem]
+  \label{thm:Banach-Steinhaus}
+  If $X$ is a Banach space and $Y$ a normed vector space. Let
+  $(T_\alpha)_{\alpha \in A}$ be a family of bounded linear maps from
+  $X \to Y$. Then either of the two holds,
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\exists M \ge 0$ such that $\|T_\alpha\| \le M$ for all $
+      \alpha \in A$.
+    \item The set $\{ x \in X  \ : \  \sup_{\alpha}\|T_\alpha x\| =
+      \infty \}$ is a dense $G_\delta$ set.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  With $X, Y, T_\alpha$ as above, if for each $x \in X$,
+  $\sup_{\alpha \in A} \|T_\alpha x\| < \infty$, then there is a $M
+  \ge 0$ such that
+  \begin{align*}
+    \sup_{\alpha \in A} \|T_\alpha\| \le M
+  \end{align*}
+\end{corollary}
+
+We study consequences before looking at the proof of
+\autoref{thm:Banach-Steinhaus}.
+
+\begin{exercise}
+  Suppose $(a_n)$ is a sequence such that for
+  each $(b_n) \in \ell^{2}(\mathbb{N})$,
+  $\sum_{n \in \mathbb{N}} a_n b_n < \infty$, then $a \in \ell^{2}(\mathbb{N})$.
+\end{exercise}
+\begin{proof}
+  To see this, take
+  \begin{align*}
+    T_n : \ell^{2}(\mathbb{N}) \to \mathbb{C} := T_n(b) \mapsto \sum_{i =
+    1}^{n} \overline{a_i}b_i
+  \end{align*}
+  and observe
+  \begin{align*}
+    |T_n(b)| &\le \Big( \sum_{i = 1}^{n} |a_i|^2\Big)^{\frac{1}{2}}
+    \Big( \sum_{i = 1}^{n} |b_j|^2\Big)^{\frac{1}{2}} \\
+    & \le  \Big( \sum_{i = 1}^{n} |a_i|^2\Big)^{\frac{1}{2}} \|b\|
+  \end{align*}
+  Hence each $T_n$ is linear ( by definition) and bounded by the
+  inequality above.
+  Let $(b_n) \in \ell^{2}(\mathbb{N})$, then for $ n \in \mathbb{N}$, we get
+  \begin{align*}
+    |T_n(b)| & \le \sum_{i = 1}^{n} |a_ib_i| \\
+    &\le \sum_{i = 1}^{\infty} |a_ib_i| < \infty
+  \end{align*}
+  Now a direct application of
+  \autoref{thm:Banach-Steinhaus} gives that three is a $M \ge 0$ such
+  that $|T_n b| \le M \|b\|$ for each $n \in \mathbb{N}$. Hence if we consider
+  \begin{align*}
+    T : \ell^{2}(\mathbb{N}) \to \mathbb{C} := b \mapsto \sum_{i =
+    1}^{\infty}  a_ib_i
+  \end{align*}
+  we find that $\|T\| \le M$. By Reisz representation theorem for
+  Hilbert space s, there is a $c \in \ell^{2}(\mathbb{N})$ such that
+  $T(b) = \langle b , c \rangle$. Choosing $b = e_m$, we get $T(e_m)
+  = \bar{c_m} = a_m$. We conclude that $a \in \ell^{2}(\mathbb{N})$.
+\end{proof}
+
+\begin{proof}[Proof of Banach-Steinhaus \autoref{thm:Banach-Steinhaus}]
+  \label{proof:Banach-Steinhaus}
+  Let $\phi_\alpha: X \to [0, \infty):= x \to \|T_\alpha x\|$. Look at
+  \begin{align*}
+    |\phi_\alpha(x) - \phi_\alpha(y)| &= |\|T_\alpha x\| - \|T_\alpha y\|| \\
+    &\le \|T_\alpha (x -y)\| \\
+    &\le \| T_\alpha\| \|x - y\| \\
+  \end{align*}
+  Hence $\phi_\alpha$ is (lower-semi) continuous.
+
+  Therefore, we can define a lower semi-continuous function
+  \begin{align*}
+    \phi(x) = \sup_{\alpha \in A} \phi_\alpha(x)
+  \end{align*}
+  Thus, for $n \in \mathbb{N}$, $V_n = \{ x \in X  \ : \  \phi(x) > n
+  \}$ is open. If each $V_n$ is dense in $X$, then $G = \cap_{n =
+  1}^{\infty} V_n$ is a dense $G_\delta$ set, and $\phi(G) = \{
+  \infty \}$. Otherwise, if for some $n \in \mathbb{N}$, one of $V_n$
+  is not dense. Then that particular $V_n^c$ contains a non-empty
+  open set. Choosing a $B_\delta(y) \subset W$ centered at $y$, we
+  get that for $x \in X$, $\|x - y\| < \delta$, we have
+  $\phi_\alpha(x) = \|T_\alpha x\| \le n$ for each $\alpha \in A$.
+  This implies that there is an $M \ge 0$ for which
+  \begin{align*}
+    \sup_{\alpha \in A} \|T_\alpha\| \le M
+  \end{align*}
+\end{proof}
+
+We investigate more consequences of Banach-Steinhaus' theorem.
+
+\begin{theorem}[Open mapping theorem]
+  \marginnote{ \scriptsize \it \textcolor{red}{review this}}
+  Let $X, Y$ be Banach spaces, $T: X \to Y$ is bounded, linear. If
+  $T$ is onto and $U \subset X$ is open, then $T(U)$ is open.
+\end{theorem}
+\begin{proof}
+  We claim it is equivalent to show $T(B_1(0)) \subset B_\delta(0)$
+  for some $\delta > 0$. The statement then follows by choosing for
+  $U$ open, a vector $u \in U$ with $\varepsilon > 0$ such that
+  $B_\varepsilon(u) \subset U$. In that case, if $y \in Y$ satisfies
+  \begin{align*}
+    \|y - Tu\| < \varepsilon \delta
+  \end{align*}
+  or
+  \begin{align*}
+    \|\frac{y-Tu}{\varepsilon}\| < \delta
+  \end{align*}
+  By the inclusion, we get $z \in X$ such that $\|z\| < 1$ and $Tz =
+  \frac{y-Tu}{z}$. Solving for $y$, gives $y = T(\varepsilon z + y)$.
+  Letting $w = \varepsilon z + u$, then $\|w - u\| = \varepsilon
+  \|z\| < \varepsilon$ and $Tw = y$. We have found for each $y$ near
+  $ Tu$ a vector $w \in U$ which maps to $y$.
+  Let $U \subset X$ be open. Fix $u \in U$. Then there is $\delta >
+  0$ with $ \{ x   \ : \  \|x - u\| < \delta \} \subset U$.
+  We also know that if $y \in Y$
+
+  Now for the rest, follow the same logic as in functional analysis
+  last semester to see that $T(B_1^X(0))$ is not nowhere dense, and
+  thus $\exists y \in Y, r > 0$ such that
+  \begin{align*}
+    B_{4r}(y_0) \subset \overline{ T(B_1^X(0))}
+  \end{align*}
+  Choose $y' \in B_{2r}(y_0) \cap T(B_1(0))$. (The fact that this is
+    non-empty follows from the fact that every open ball in the closure
+  must intersect the original set pre-closure). Then  there is
+  $x^\prime \in B_1^X(0)$ such that $y^\prime = T(x^\prime)$. Now
+  using triangle inequality
+  \begin{align*}
+    B_{2r}(y^\prime) \subset B_{4r}(y_0) \subset \overline{ T(B_1^X(0))}
+  \end{align*}
+  Thus for $y \in B_{2r}(0)$,
+  \begin{align*}
+    y &= - y^\prime + (y + y^\prime) \\
+    &\in -y^\prime + B_{2r}(y^\prime) \\
+    &\subset -y^\prime + \overline{T(B_1(0))} \\
+    &= \overline{ T( -x^\prime + B_1(0))} \\
+    &\subset \overline{T(B_2^X(0))}
+  \end{align*}
+  Now by resclaing with 2, we see that
+  \begin{align*}
+    B_r(0)  \subset \overline{T(B_1^X(0))}
+  \end{align*}
+  Again by further scaling we see that for all $n \in \mathbb{N}$,
+  \begin{align*}
+    B_{r2^{-n}}(0) \subset \overline{ T(B_{2^{-n}}(0))}
+  \end{align*}
+  For $y \in B_{\frac{r}{2}}(0)$, there is a $x_1 \in B_{2^{-1}}(0)$ such that
+  \begin{align*}
+    \|y - T(x_1)\| < r2^{-1}
+  \end{align*}
+  Now let $y_1 = y - T(x_1)$ and repeat the same procedure to get
+  $x_2 \in B_{2^{-2}(0)}$ such that
+  \begin{align*}
+    y_2 &:= y_1 - T(x_2) \\
+    &=y - T( x_1 + x_2) \\
+    &\in B_{ r2^{-3}}(0)
+  \end{align*}
+  Proceeding inductively, we get $x_n \in B_{2^{-n}}(0)$ such that
+  $y_n = y-T(\sum_{i = 1}^{n} x_i) \in B_{ r2^{-n-1}(0)}$. That is
+  \begin{align*}
+    \|y_n\| = \Big \| y - T \big(\sum_{i = 1}^{n} x_i\big) \Big \| <
+    \frac{r}{2^{n+1}}
+  \end{align*}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{corollary}
+  If $T$ is one-one and onto, then $T^{-1}$ is bounded.
+\end{corollary}
+\begin{proof}
+
+\end{proof}

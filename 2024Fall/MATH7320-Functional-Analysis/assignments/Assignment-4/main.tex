@@ -1,0 +1,383 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH730 Functional Analysis \\ Homework 4}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+
+  \begin{solution}
+    \begin{parts}
+      \part
+      We approach this problem in cases.
+      \begin{subparts}
+        \subpart
+        Let $1 < p <
+        \infty$. We claim that the unit circle $\mathbb{T}_p = \{ x
+        \in \ell_p  \ : \  \|x\|_p = 1 \}$
+        is the collection of all extreme points of
+        the unit ball of $\ell_p$, which we'll denote by $B_p$.
+
+        \hspace{20px} To see that the elements of $\mathbb{T}_p$ are indeed
+        extreme points of the unit ball, assume $x = ta + (1-t)b$,
+        where $x \in \mathbb{T}_p, a, b \in B_p$. Then Minkowski inequality
+        $1 = \|x\| \le t \|a\| + (1-t) \|b\|$ forces $\|a\| = \|b\| = 1$.
+        Thus we see that $1 = \|x\| = \|ta\| + \|(1-t)y\|$. Thus the
+        Minkowski inequality is an equality here. We know that in
+        $\ell_p$ spaces where $1 < p < \infty$, the Minkwoski
+        inequality is an equality if and only if $ (1-t)b = k ta$ for
+        some $k >0$. Thus we get $ x = ta + kta = (k+1)ta$. Now using
+        the fact that $a, x$ and $(k+1)ta$ all must have norm $1$,
+        gives us that $(k+1)t = 1$ and thus $a = x$. Replacing $a$
+        with $x$ in $x = ta + (1-t)b$ gives us that $b = x$. Thus we
+        see that $\mathbb{T}_p \subset \textrm{Ext}(B_p)$.
+
+        \hspace{20px} Now to prove that $\mathbb{T}_p$ are precisely the extreme
+        points, we'll show that $\overline{\textrm{co}}(\mathbb{T}_p)
+        = B$. Then inverse Krein-Milman would show that
+        $\textrm{Ext}(B_p) \subset \mathbb{T}_p$. Let $x \in B$. Then $
+        \frac{x}{\|x\|_p}, \frac{-x}{\|x\|_p} \in \mathbb{T}_p$ and \[
+          x = \Bigg( \frac{1 + \|x\|_p}{2}\Bigg) \frac{x}{\|x\|_p} -
+          \Bigg( \frac{1-\|x\|_p}{2}\Bigg) \frac{x}{\|x\|_p}
+        \]
+        shows that $\overline{\textrm{co}}(\mathbb{T}_p) = B_p$.
+        Hence we're done.
+
+        \subpart
+        Let $p = 1$. Then we claim that $S = \{ re_j  \ : \
+        e_j(n) = \delta_j(n), |r| = 1 \}$ are all the extreme points of the
+        unit ball of $\ell_1$, which we'll denote by $B_1$.
+
+        To see that $re_j$ is an extreme point, assume that $re_j = tx
+        + (1-t)y$, where $x, y \in B_1$. Then if $x_j = x(j), y_j =
+        y(j)$, we see that $r = tx_j + (1-t)y_j$ fails if either $|x_j|
+        < 1$ or $|y_j| < 1$. Thus $|x_j|, |y_j| \ge 1$ Moreover since
+        $|x_j| \le \|x\|_1 = 1 = \|y\|_1 \ge |y_j|$, we see that $|x_j| =
+        |y_j| = 1$. Now if $i \neq j$ and $x_i \neq 0$. Then $|x_j| +
+        |x_i| = 1 + |x_i| > \|x\|_1$ is a contradiction. Thus we see
+        that $x = z_1e_j$ for some $|z_1| = 1$. By the same reasoning, we
+        get that $y = z_2e_j$ for some $|z_2| = 1$. Then we see that
+        $r = tz_1 + (1-t) z_2$ for the above $z_1, z_{2}$. But the
+        strict convexity of $\mathbb{C}$ forces $ r = z_{1} = z_2$
+        which gives $x = y = re_j$
+        Hence we get $S \subset \textrm{Ext}(B_1)$.
+
+        Let $x = (x_1 , x_2,  \ldots) \in B_1$. We'll show that if $0
+        < |x_j|< 1$ for any $j \in \mathbb{N}$, then $x \notin
+        \textrm{Ext}(B_1)$. Without loss of generality, assume that
+        $0 < |x_1|< 1$.
+        Then there exist a $\epsilon> 0$ such that $B_\epsilon(x_1)
+        \subset \mathbb{D}$, the closed unit ball of $\mathbb{C}$.
+        Let $y \in B_\epsilon(0)$. Then $|x_1 + y|, |x_1 - y| <
+        |x_1| + \epsilon$. Since $\epsilon$ was arbitrary, we can
+        find $y$ such that $|x_1 + y| , |x_1 - y| < |x_1|$. Then for
+        $a = (x_1 + y, x_2, \ldots), b = ( x_1 - y, x_2 - y,
+        \ldots)$, we see that $a, b \in B_1$ and  \[
+          x = \frac{1}{2}a + \frac{1}{2}b
+        \]
+        Thus the only extreme points of $B_1$ are those sequences $x
+        = (x_1 , x_2 , \ldots)$ with $|x_i| = 1, 0$. But the fact
+        that $\|x\| = 1$ forces $x \in S$. Thus we see that
+        $\textrm{Ext}(B_1) = S$
+
+        \subpart
+        Let $p = \infty$. We claim that $S = \{ x = (x_1 , x_2 ,
+        \ldots )  \ : \ |x_i|= 1  \}$ are all the extreme
+        points of the unit ball of $\ell_\infty$, which we'll denote
+        by $B_\infty$.
+
+        To see that elements of $S$ are extreme points of $B_\infty$,
+        let $x \in S$ and assume that $x = ta + (1-t)b$ for $a, b \in
+        B_\infty$. Then $x_j = ta_j + (1-t) b_j$ for all $j \in
+        \mathbb{N}$ with $-1 \le |a_j|, |b_j| \le 1$. Since $|x_j| = 1$, by
+        the same reasoning, we used for
+        $\ell_1$ case, we get $|a_j| = |b_j| = 1$. Then again the
+        strict convexity of $\mathbb{C}$ gives us that $x_j = a_j =
+        b_j$.  Since $j$ was
+        arbitrary, we see $x = a = b$. Thus
+        $S \subset \textrm{Ext}(B_\infty)$.
+
+        Assume $x = (x_1 , x_2 , \ldots) \in B_\infty$ such that $x \notin
+        S$. Without loss of generality assume that $|x_1| < 1$. Note
+        that $|x_1| \not > 1$ since $1 = \|x\| \ge |x_1|$. Then there
+        exists $\epsilon > 0$ such that $B_\epsilon(x_1) \subset
+        \mathbb{D}$, the closed unit ball in $ \mathbb{C}$. Let $ y
+        \in B_\epsilon(0)$, then $|x_1+y|, |x_1-y| < 1$. Thus $a =
+        (x_1+y , x_2 , \ldots), b = (x_1-y , x_2 , \ldots) \in
+        B_\infty$. Then \[
+          \frac{a+b}{2} = \frac{1}{2}(x_1+ y ,  x_2 , \ldots) +
+          \frac{1}{2}(x_1 -y , x_2 , \ldots , x_n) =  (x_1 ,  x_2 , \ldots) = x
+        \]
+        shows that $x$ is not an extreme point. Thus, we get that
+        $\textrm{Ext}(B_\infty) =  S$.
+
+      \end{subparts}
+
+      \part
+      Here also we approach using subparts.
+      \begin{subparts}
+        \subpart  Let $1 < p < \infty$. We claim that $\mathbb{T}_p = \{ f \in
+        L^p([0, 1])  \ : \    \|f\|_p = 1 \}$ is the collection of
+        all extreme points of the closed unit ball of $L^1([0, 1])$.
+        We notice that the same proof for $\ell_p$ also works for
+        $L^p([0, 1])$.
+
+        \subpart If $p = 1$, we claim that there are no extreme
+        points for the closed unit ball $B$. To see this let $f \in
+        B$, the unit ball of $L^1$
+        with $\int |f| \ d \mu = 1$. Then there is a non-null set
+        $E$, where $|f(x)| < \frac{1}{2}$ for all $x \in E$. Then
+        $\int  |f| \chi_E \ d \mu \le  \frac{\mu(E)}{2}$. And since $$\int
+        |f| \ d \mu = 1 = \int |f| \chi_E \ d \mu + \int |f|
+        \chi_{E^{c}} \ d \mu$$
+        we get \[
+          \int |f| \chi_{E^c} d \ \mu = 1 - \int |f| \chi_E \ d \mu \le
+          1 - \frac{\mu(E)}{2}
+        \]
+        Therefore $ \frac{2 f\chi_E}{\mu(E)}, \frac{f\chi_{E^c}}{2 -
+        \mu(E)} \in B$ and \[
+          \frac{\mu(E)}{2}\Bigg( \frac{2 f\chi_E}{\mu(E)} \Bigg) +
+          \Bigg(1 - \frac{\mu(E)}{2}\Bigg) \frac{f\chi_{E^c}}{1-
+          \frac{\mu(E)}{2} } = f \chi_E + f \chi_{E^c} = f
+        \]
+        shows that $f$ is not an extreme point of $B$.
+
+        \subpart
+        I claim that the collection $S = \{ \chi_{E} - \chi_{E^{c}}
+        \ : \  E \subset [0, 1] , E \in M_\sigma \}$ are the extreme
+        points of unit ball of $L^\infty([0, 1])$.
+
+      \end{subparts}
+      \part
+      I claim that the only extreme points of the unit ball of
+      $C([0, 1])_{\mathbb{R}} = \{ f: [0, 1] \to \mathbb{R}  \ : \ f \textrm{ is
+      continuous}  \}$ are the $\mathbf{1}, -\mathbf{1}$ functions. If $f
+      \notin \{ \textbf{1}, - \textbf{1} \}$ is any function in the
+      closed unit ball of $C([0, 1])$, \[
+        g = \frac{f+1}{2}, \quad h = f + \frac{(f-1)}{2}
+      \]
+      are two functions in the unit ball of $C([0, 1])$ with \[
+        f = \frac{g}{2} + \frac{h}{2}
+      \]
+      Hence there can be no other extreme points than $\{ \textbf{1},
+      -\textbf{1} \}$.
+
+      Now for the case of complex valued functions we claim that the
+      corresponding extreme points are the set $S = \{ f \in C([0,
+        1])_{ \mathbb{C}}   \ : \  |f(x)| = 1, \textrm{ for all } x \in
+      [0, 1] \}$. If $ f \not\in S$, then $\exists x_0 \in [0, 1]$
+      such that $|f(x)| < 1$. Then we can find a function $g \in C([0
+      ,1])_{\mathbb{C}}$ with $ \|g\| \le 1, \| f -g\| \le
+      \frac{1}{2}$ that vary from $f$ only on a neighborhood of
+      $x_0$. Now chose $h = 2f-g$. Then $ \|h\| \le 1$ with \[
+        f = \frac{g+h}{2}
+      \]
+      shows that all the extreme points are in $S$.
+
+      Conversely, if $f \in S$ and $f = tg + (1-t)h$, then $f(x) =
+      tg( x) + (1-t) g(x)$ for all $  x \in [0, 1]$ and thus taking
+      absolute values on both sides, the strict convexity of
+      $\mathbb{C}$ forces $f(x) = g(x) = h(x)$ for all $x \in [0,
+      1]$. Thus we see that $  f$ is an extreme point of the unit
+      ball of $C([0, 1])$.
+
+      \part I claim that there are no extreme points for the closed unit
+      ball in $C_0(\mathbb{C})$, denoted by $B$. Let $g \in B$ with
+      $\|g\| = 1$. Then
+      there is a compact set $K$ such that
+      $|g(x)|< \frac{1}{2}$ whenever $ x \not\in K$. Let $h \in
+      C_0(\mathbb{C})$ such that $h(x) = 0$ on $K$ but $\|h\| =
+      \frac{1}{4}$. Then $ \|h + g\| = 1$ and \[
+        g  = \frac{g+h}{2} + \frac{g-h}{2}
+      \]
+      Shows $g$ is not an extreme points. Now if $\|g\| \neq 1$, then
+      we can rescale it to have norm 1 and proceed as above.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part
+      \begin{subparts}
+        \subpart $(C_b(\mathbb{R}), \|\cdot\|_{\infty})$ is complete.
+
+        Let $f_n$ be a Cauchy sequence in $C_b(\mathbb{R})$. Then
+        $f_n(x)$ is Cauchy for all $x \in \mathbb{R}$. Since $\mathbb{C}$
+        is complete $f_n(x)$ converge for each $x \in \mathbb{R}$. Let
+        $f(x) = \lim_{n \to \infty} f_n(x)$. We'll show that $f_n \to
+        f$ in the sup norm, and that $f \in C_b(\mathbb{R})$. This
+        will show that
+        $C_b(\mathbb{R})$ is complete under the sup norm.
+
+        Let $\epsilon> 0$. Then there is a $N_\epsilon$ such that for
+        all $n, m \ge N_\epsilon$, we have
+        \begin{align*}
+          |f_n(x) - f_m(x)| < \epsilon, \quad \textrm{ for all } x
+          \in \mathbb{R}
+        \end{align*}
+        Now taking limit as $m \to \infty$, we get that $\|f_n - f\|
+        < \epsilon$. Now for $f \in C_b(\mathbb{R})$, we notice that
+        the convergence is uniform which guaranteed the boundedness
+        and continuity of the $f$.
+
+        \subpart $(C_0(\mathbb{R}), \|\cdot\|_{\infty})$ is complete.
+
+        Let $f_n$ be Cauchy sequence in $C_0(\mathbb{R})$ and $f$ be
+        the function as before. Since $C_0(\mathbb{R}) \subset
+        C_b(\mathbb{R})$, most of the proof follows similarly as
+        before. We just need to show that $f$ vanishes at infinty.
+        Let $\epsilon > 0$. Let $f_n$ be the function in the sequence
+        such that $\|f_n - f\| \le \frac{\epsilon}{2}$. Since $f_n
+        \in C_0(\mathbb{R})$, there is a compact set $K \subset
+        \mathbb{R}$ such that $\|f_n(x)\| < \frac{\epsilon}{2}$ for
+        all $x \in K^c$. Then we claim that $|f(x)| < \epsilon$ for
+        all $x \in K^c$. Let $x \notin K^c$, then
+        \begin{align*}
+          |f(x)| &= |f(x) - f_n(x) + f_n(x)| \\
+          &\le \|f - f_n\| + |f_n(x)| \\
+          &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+          &= \epsilon
+        \end{align*}
+        shows that $f \in C_0(\mathbb{R})$
+
+        \subpart $(C_b(\mathbb{R}), \tau)$ is complete.
+
+        We just need to show any Cauchy net $f_\lambda$ converges in
+        $\tau$. Let $f_\lambda$ be a Cauchy net in the unit ball of
+        $C_b(\mathbb{R}), \tau$. Then for
+        $\epsilon > 0$, there is a $\lambda_\epsilon$ such that for
+        all $\lambda_1, \lambda_2 > \lambda_\epsilon$, we get
+        $\rho_g(f_{\lambda_1} - f_{\lambda_2}) < \epsilon$ for all $g
+        \in C_0(\mathbb{R})$. This is equivalent to $\|gf_{\lambda_1}
+        - gf_{\lambda_2}\|_{\infty} < \epsilon$ for all
+        $C_0(\mathbb{R})$. Since $g \in C_0(\mathbb{R})$ and
+        $f_\lambda$ is bounded, we see that $gf_\lambda$ is a Cauchy
+        net in $(C_0(\mathbb{R}), \|\cdot\|_{\infty})$ and hence
+        converges to some $\phi_g$ for each $g \in C_0(\mathbb{R})$.
+
+        Let $g \in C_0(\mathbb{R})$ such that $0 < g(x) < 1$ for
+        all $x \in \mathbb{R}$.
+        Since $f_\lambda$ is a net in the unit ball of
+        $C_b(\mathbb{R})$, we get $gf_\lambda < g$ for all
+        $f_\lambda$. Hence taking limits preserve the inequality and
+        we see that $\phi_g < g$. Hence $\frac{\phi_g}{g} < 1$ and $
+        \frac{\phi_g}{g} \in C_b(\mathbb{R})$.
+
+        Now tracing back our construction of $\phi_g$, we see that
+        $f_\lambda \to \frac{\phi_g}{g}$. Since any Cauchy net can be
+        rescaled to be inside the unit ball, we see that
+        $C_b(\mathbb{R})$ is complete in $\tau$.
+      \end{subparts}
+
+      \part Let $f_n \to f$ in $(C_b(\mathbb{R}), \|\cdot\|_\infty)$.
+      We have to show that $f_n \to f$ in $\tau$, which is equivalent
+      to show that $\|g(f_n - f)\| \to 0$ for all $g \in
+      C_b(\mathbb{R})$. But since $\|g(f_n - f)\| < \| g\|\|f_n
+      -f\|$, by the algebra of limits, we get that $f_n \to f$ in
+      $\tau$. Hence open sets of $\tau$ are open in $\|\cdot\|_\infty$.
+
+      To show that the converse is not true, consider the sequence of
+      functions $f_n \in C_b(\mathbb{R})$ such that $\chi_{[-n, n]} <
+      f_n < \chi_{[-n-1, n+1]}$. Existence of such functions are
+      guaranteed by the Urysohn's lemma, since $(-n-1, n+1) \subset
+      [-n-1, n+1]$ (We don't even need Urysohn if I hand draw). Then
+      $\|f_n - f_{n+1}\| = 1$ and thus $f_n$ is
+      not Cauchy in $\|\cdot\|_\infty$. But we claim that $f_n$ is
+      Cauchy in $\tau$.
+
+      Let $\epsilon> 0$ and $g \in C_0(\mathbb{R})$ be given. Then
+      there is a  compact set $K \subset \mathbb{R}$ such that $g(x)
+      < \epsilon$ for all $x \in K^c$. Moreover there is an $N \in
+      \mathbb{N}$ such that $K \subset [-N, N]$. Then for $m > n >
+      N$, we have \[
+        |g(x)f_n(x) - g(x)f_m(x)| = 0, \quad \textrm{ when } x \in K
+      \]
+      since $f_n(x) = f_m(x) = 1$ when $x \in K$. And \[
+        |g(x)f_n(x) - g(x)f_m(x)| \ge |g(x)| < \epsilon, \quad
+        \textrm{ when } x \in K^c
+      \]
+      since $f_m(x) - f_n(x) < 1$ everywhere.
+      Thus we see that $\rho_g(f_n - f_m) < \epsilon$. Since $g \in
+      C_0(\mathbb{R})$ was arbitrary, this gives that $f_n$ is Cauchy
+      in $\tau$. Hence we see that the topology of $\tau$ and
+      $\|\cdot\|_\infty$ in $C_b(\mathbb{R})$ are not the same.
+    \end{parts}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+
+

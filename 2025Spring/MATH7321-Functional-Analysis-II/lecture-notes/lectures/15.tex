@@ -1,0 +1,43 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 18/03/2025 }
+
+Recall that
+
+\begin{proposition}
+  Let $T \in B(X, W), S \in B(Y, Z)$. Then $\exists! T \otimes
+  S : X \otimes_\alpha Y \to W \otimes_\alpha Z$ such that $(T
+  \otimes S)(x \otimes y) = T(x) \otimes S(y)$.
+\end{proposition}
+\begin{proof}
+  Let $z = \sum_{i = 1}^{n} x_i \otimes y_i$. By our definitions
+  \begin{align*}
+    \|(T \otimes S)(z)\|_\alpha & = \sup_{\phi \in W^\dagger_1, \psi \in
+    Z^\dagger_1} \Bigg\{ \bigg|\sum_{i = 1}^{n} \phi(T(x_i))
+    \psi(S(y_i))\bigg|\Bigg\} \\
+    & \le \|T\|\|S\| \|z\|_\alpha
+  \end{align*}
+
+  Moreover, $\|T \otimes S\| = \|T\|\|S\|$ by taking $x \otimes y$,
+  where $\|T(x)\| \le \|T\| - \varepsilon$ and similarly for $S$.
+\end{proof}
+
+\begin{exercise}
+  Let $z \in \textbf{c}_{00} \otimes X$ such that $z = \sum_{i =
+  1}^{n} \delta_{n_i} \otimes x_i$. Then
+  \begin{align*}
+    \Big \| \sum_{i = 1}^{n} \delta_{n_i} \otimes x_i \Big \|_\alpha
+    &= \sup_{\phi \in \ell^{1}_1, \psi \in X^*_1} \Big \{
+    \Big|\sum_{i = 1}^{n} \phi(\delta_{n_i})  \psi(x_i) \Big|\Big \}
+    \le \max \{\|x_i\|\}
+  \end{align*}
+\end{exercise}
+
+\begin{theorem}
+  \begin{align*}
+    \textbf{c}_0 \otimes_\alpha X \cong \textbf{c}_0(X)
+  \end{align*}
+\end{theorem}
+
+For $z \in X \otimes Y$, define $B_z: X^* \times Y^* \to \mathbb{C}$
+such that $B_z(\phi, \psi):= (\phi \otimes \psi)(z)$.

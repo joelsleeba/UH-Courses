@@ -1,0 +1,95 @@
+% TeX_root = ../main.tex
+
+\begin{example}
+  Let $X$ be an infinite dimensional normed space. Then the set $A = \{ x
+  \in X  \ : \  \|x\| = 1 \}$ is norm closed. But the weak closure of
+  $A$ is the set \[
+    \overline{ A}^w  = \overline{\{ x \in X  \ : \  \|x\| = 1 \}}^{w}
+    = \{ y \in X  \ : \  \|y\| \le 1 \}
+  \]
+  Hence $A$ is an example of a norm closed set, which is not weak closed.
+\end{example}
+
+\begin{theorem}
+  Let $X$ be a normed space and let $K \subset X$ be convex subset of
+  $X$. Then the norm and the weak closure of $K$ coincide.
+\end{theorem}
+\begin{proof}
+  Since norm topology is stronger than weak topology, we get
+  $\overline{K}^{\|\cdot\|} \subset \overline{ K}^{w}$.
+  Let $ x \in X$ such that $x \notin \overline{K}^{\|\cdot\|}$. Now
+  since $ \{ x \}, K$ are convex and compact, by Hahn-Banach
+  separation theorem, there is a $f \in X^*, s \in \mathbb{R},
+  \epsilon > 0$ such that \[
+    |f(x)| \le s < s + \epsilon \le |f(y)|, \quad \forall y \in
+    \overline{K}^{\|\cdot\|}
+  \]
+
+  Since the set $\{ z \in X  \ : \  |f(z)| \ge s + \epsilon \}$ is
+  weakly closed, and contains $K$, it must contain $\overline{K}^w$.
+  Hence $ x \notin \overline{K}^w$
+\end{proof}
+
+\begin{corollary}
+  Let $X$ be a normed space, and $(x_i)_{i \in I}$ be a net in $X$
+  such that $x_i \to x$ weakly in $X$. Then there exists a net
+  $(y_j)_{j \in J}$ of finite convex combinations of $\{ x_i  \ : \ i
+  \in I  \}$ such that $y_i \to x$ in norm.
+\end{corollary}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{proposition}
+  If $K$ is a convex subset of a LCTVS. Then $\overline{K}$ is also convex.
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{proposition}
+  Show that $\textbf{c}_{0}$ is weakly closed and weak * dense in $\ell_\infty$.
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{theorem}[Krein-Smulian Theorem]
+  Let $X$ be a Banach space, and let $C$ be a convex subset of $X^*$.
+  Then $C$ is weak * closed if and only if $C \cap \{ f \in X^*  \ :
+  \  \|f\| \le r \}$ is weak * closed for all $r \in \mathbb{R}^+$.
+
+  \textit{This should even work if we just take $n \in \mathbb{N}$}.
+  \textcolor{red}{verify}.
+\end{theorem}
+
+\begin{corollary}
+  Let $Z$ be a subspace of $X^*$. Then $Z$ is weak * closed if and
+  only if $\{ \phi \in Z  \ : \  \|\phi\| \le 1 \}$ is closed.
+\end{corollary}
+
+\begin{corollary}
+  Let $X$ be a separable Banach space. Then a convex subset $Z$ of
+  $X^*$ is weak * closed if and only if it is weak * sequentially closed.
+\end{corollary}
+\begin{proof}
+  Since $X$ is separable, for every $r > 0$, the set $ \{ f \in X^*
+  \ : \  \|f\| \le r \}$ is weak * metrizable. Thus $Z \cap \{ f \in
+  X^*  \ : \  \|f\| \le 1 \}$ is weak * closed iff it is weak *
+  sequentially closed.
+\end{proof}
+
+\begin{corollary}
+  Let $X$ be a separable Banach space, and $\phi \in X^{**}$. Then
+  $\phi$ is weak * continuous if and only if $\phi$ is sequentially
+  continuous i.e $f_n \to f$ weak * in $X^*$ implies $\phi(f_n) \to \phi(f)$.
+\end{corollary}
+\begin{proof}
+  Assume $\phi$ is sequentially weak * continuous. Let $C =
+  \textrm{Ker}(\phi)$ be a subspace of $X^*$. Let $g_n \in C$ be a
+  sequence such that $g_n \to g \in X^*$. Then by assumption, $0 =
+  \phi(g_n) \to \phi(g)$ implies $\phi(g) = 0$ and therefore $g \in
+  C$. This shows  that $ C$ is weak * sequentially closed, hence weak
+  * closed by the separability of $X$. Hence $\phi$ is weak * continuous.
+\end{proof}
+

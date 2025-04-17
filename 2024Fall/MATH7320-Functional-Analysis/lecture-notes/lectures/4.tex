@@ -1,0 +1,283 @@
+% TeX_root = ../main.tex
+
+\begin{definition}
+  A sublinear map is a function $\rho: X \to \mathbb{R}$ with the properties
+  \begin{itemize}[]
+    \item $\rho(rx) = r \rho(x), \forall r \in \mathbb{R}$
+    \item $\rho(x+y) \le \rho(x)+\rho(y)$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Let $X$ be a normed space. Then the dual of $X$, denoted by $
+  X^{*}$, is the space $B(X, \mathbb{F})$
+\end{definition}
+
+\begin{lemma}
+  \label{lem:existence_linear_functions_with_norm_peaking_at_point}
+  Let $X$ be a normed space and $x \in X$. Then $\exists f \in X^{*}$
+  such that \[
+    \|f\| = 1 \ \textrm{and } \ f(x) = \|x\|
+  \]
+\end{lemma}
+\begin{proof}
+  Let $Z = \textrm{Span}\{ x \}$. Define $g: Z \to \mathbb{F}$ as
+  $g(\alpha  x) = \alpha \|x\|$. Then $\|g\| = 1$. By the Hahn Banach
+  theorem, $g$ has an extension $f$ which preserve the norm and
+  extends $g$ to $X$.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:dual_maps_norm_elements}
+  Let $X$ be a normed space and $x \in X$, then we have \[
+    \|x\| = \sup \{ |f(x)| \ : \ f \in X^{*}, \|f\| \le 1 \}
+  \]
+\end{corollary}
+\begin{proof}
+  If $f$ is any linear functional with $\|f\| \le 1$, then $|f(x)|
+  \le \|f\|\|x\| = \|x\|$. Hence $\|x\| \le \sup \{ |f(x)| \ : \ f
+  \in X^{*}, \|f\| \le 1 \}$.
+  Now let $f_x$ be the functional we get from
+  \autoref{lem:existence_linear_functions_with_norm_peaking_at_point}.
+  Then $f_x \in X^{*}$ and $\|f_x\| = 1$ with $f_x(x) = |f(x)| =
+  \|x\|$. Hence we get that the inequality is actually an equality,
+  and this proves the corollary.
+\end{proof}
+
+\begin{definition}
+  For every $x \in X$, define a linear map $\hat{x}: X^{*} \to
+  \mathbb{F}$ by $\hat{x}(f) = f(x)$
+\end{definition}
+
+\begin{theorem}
+  \label{InclusionToDoubleDualisIsometric}
+  For every $x \in X$, $\hat{ x } \in (X^{*})^{*}$. The map $\rho: x
+  \to \hat{x}$ is an isometric linear map.
+\end{theorem}
+\begin{proof}
+  The fact that $ \hat{x}$ is linear and bounded and the map $X \ni x
+  \to \hat{x} \in X^{**}$ is linear follows from the definition of
+  $f+g$ and $\lambda f$.
+
+  By definition and   \autoref{cor:dual_maps_norm_elements}
+  \begin{align*}
+    \|\hat{x}\| &= \sup \{ |\hat{x}(f) \ : \ f \in X^{*}, \|f\| \le 1 \} \\
+    & = \sup \{ |f(x)| \ : \ f \in X^{*}, \|f\| \le 1 \} \\
+    & = \|f\|
+  \end{align*}
+\end{proof}
+
+\begin{definition}
+  A normed space $X$ is said to be reflexive if the map $\rho: X \to
+  X^{**}:= x \to \hat{x}$ is surjective. (This is a stronger
+  condition than $X \equiv X^{**}$)
+\end{definition}
+
+\begin{theorem}
+  There are isometric isomorphisms between
+  \begin{itemize}[]
+    \item $(\textbf{c}_0)^*$ and $\ell^1$
+    \item
+    \item $(\ell^1)^{*} \textrm{ and } \ell^\infty$
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  \begin{itemize}[]
+    \item Let $(x_{n}) \in \ell^1$. Then consider the map
+      $\phi_{(x_n)}: \textbf{c}_0 \to \mathbb{F}$ defined as
+      $$\phi_{(x_n)}: (y_n) \to \sum_{n \in \mathbb{N}} x_ny_n$$
+      We claim that $\phi_{(x_n)}$ is a continuous linear functional.
+      But first we should see that the sum is well defined. Since
+      $y_n \to 0$, there is an $N \in \mathbb{N}$ such that $|y_n| <
+      1$ for all $n \ge N$. Since \[
+        \Big|\sum_{i = N}^{\infty} x_ny_n \Big| \le \sum_{i =
+        N}^{\infty}  |x_n||y_n| \le \|(x_n)\|_1
+      \]
+      we see that the sum is well defined and the map makes sense.
+      Also since $(y_n)+(z_n) = (y_n +z_n) \in \textbf{c}_0$ whenever
+      $(y_n), (z_n) \in \textbf{c}_0$, we get that \[
+        \sum_{n \in \mathbb{N}} x_n (y_n + z_n) = \sum_{n \in
+        \mathbb{N}} x_n y_n + \sum_{n \in \mathbb{N}} x_n z_n
+      \]
+      which shows the linearity  of the map $\phi_{(x_n)}$.
+
+      Now we show that $\|\phi_{(x_n)}\| = \|(x_n)\|_1$. We
+      immediately see that for $(y_n) \in c_0$ with
+      $\|(y_n)\|_{\textrm{sup}} = \sup_{n \in \mathbb{N}} y_n = 1$, \[
+        |\phi_{(x_n)}((y_n))| = \Big|\sum_{n \in \mathbb{N}} x_ny_n
+        \Big| \le \|(y_n)\|_{\textrm{sup}} \bigg( \sum_{n \in
+        \mathbb{N}} |x_n| \bigg) \le \|(x_n)\|_1
+      \]
+      which gives $\|\phi_{(x_n)}\| \le \|(x_n)\|_1$. Now let
+      $\theta_j \in [0, 2\pi)$ such that $|x_j| = e^{i \theta_j}x_j$.
+      Now consider the sequence $s_m \in \textbf{c}_0$ defined as
+      $s_m = \sum_{j = 1}^{m} e^{i \theta_j}e_j$, where $e_j$ is  the
+      sequence with $j$th entry $1$ and the rest of the entries $0$.
+      Since $(x_n) \in \ell_1$, for all $\epsilon \ge 0$ there exists
+      an $N_\epsilon \in \mathbb{N}$ such that \[
+        \sum_{i = N_\epsilon+1}^{\infty} |x_i| < \epsilon
+      \]
+      Then since \[
+        |\phi_{(x_n)}(s_{N_\epsilon})| = \Big| \sum_{n =
+        1}^{N_\epsilon} e^{i \theta_j}x_n \Big| = \sum_{i =
+        1}^{N_\epsilon} |x_n| = \|(x_n)\| - \sum_{i = N_\epsilon
+        +1}^{\infty} |x_n| \ge \|(x_n)\| - \epsilon
+      \]
+      and $\epsilon > 0$ was arbitrary, we get that $\|\phi_{(x_n)}\|
+      = \|(x_{n})\|$
+
+      Hence we see that the map $(x_n) \to \phi_{(x_n)}$ is an
+      isometric linear map. Now for surjectivity, let $\phi \in
+      \textbf{c}_0^{*}$. We claim that the sequence $(y_n) =
+      (\phi(e_n)) \in \ell^1$ and $\phi = \phi_{(y_n)}$. Let
+      $\theta_j \in [0, 2\pi)$ such that $e^{ i \theta_j}y_j =
+      |y_j|$. Then for any $N \in \mathbb{N}$, we have
+      \begin{align*}
+        \sum_{j = 1}^{N} |\phi(e_j)| &=  \sum_{j = 1}^{N} e^{i
+        \theta_j}\phi(e_j) \\
+        &= \phi \Big(\sum_{j = 1}^{N} e^{i \theta_j} e_j \Big) \\
+        &\le \|\phi\| \Big \| \sum_{j = 1}^{N} e^{i \theta_j} e_j \Big \| \\
+        &= \|\phi\|
+      \end{align*}
+      Since this is true for all $N \in \mathbb{N}$, taking the
+      limits as $N \to \infty$, the inequality is preserved and we
+      get that $(y_n) \in \ell^1$. Moreover $\phi = \phi_{(y_n)}$
+      follows from the definition of $ \phi_{(x_n)}$. Hence we get
+      that $  \textbf{c}_0^{*} \cong^{\textrm{iso}} \ell^1$.
+    \item
+    \item The proof of this will be extremely similar to what we
+      attempted before when we proved $\textbf{c}_0^{*}
+      \cong^{\textrm{iso}} \ell^1$. Let $(x_n) \in \ell^\infty$. Then
+      consider the map $\phi_{(x_n)}: \textbf{c}_0 \to \mathbb{C}$
+      defined as $$\phi_{(x_n)}: (y_n) \to \sum_{n \in \mathbb{N}} x_ny_n$$
+      By a similar way as we did in the above equivalence we see that
+      $\phi_{(x_n)}$ is linear. Moreover since \[
+        \Big | \sum_{n \in \mathbb{N}} x_n y_n \Big | \le
+        \|(x_n)\|_\infty \Big | \sum_{n \in \mathbb{N}} y_n \Big | =
+        \|(x_n)\|_\infty \|(y_n)\|_1
+      \]
+      we see that $\|\phi_{(x_n)}\| \le \|(x_n)\|_{\infty}$. To get
+      the reverse inequality, Let $\|(x_n)\|_\infty = M$, then for
+      any $\epsilon >0$, there exist some $x_k$ in the sequence
+      $(x_n)$ such that $|x_k - M| < \epsilon$. Now consider the
+      sequence $e_k \in \ell^1$ with $k$th entry $1$ and all the rest
+      of them $0$. We get that \[
+        |\phi_{(x_n)}(e_k)| = |x_k| \ge \|(x_n)\|_\infty - \epsilon
+      \]
+      Since $\epsilon$ was arbitrary, we get that $\|\phi_{(x_n)}\| =
+      \|(x_n)\|_{\infty}$. Hence the map $(x_n) \to \phi_{(x_n)}$ is
+      an isometry. To show that it is indeed a bijection, assume
+      $\phi \in (\ell^1)^{*}$, then consider the sequence $y_n =
+      \phi(e_n)$. Since $\phi$ is continuous, it is bounded above by
+      $ \|\phi\|$ and we get that $ y_n \le \|\phi\|$. Therefore
+      $(y_n) \in \ell^\infty$. Moreover we can verify like above that
+      $\phi = \phi_{(y_n)}$ from the definition of $\phi_{(y_n)}$.
+      Hence we get $(\ell^1)^{*} \ \cong^{\textrm{iso}} \ell^\infty$.
+  \end{itemize}
+\end{proof}
+
+\begin{theorem}
+  Let $1 < p < \infty$, and $ q \in \mathbb{R}$ such that $
+  \frac{1}{p} + \frac{1}{q} = 1 $. Then $(\ell^p)^{*} \cong \ell^q$
+\end{theorem}
+\begin{proof}
+  Let $(a_n) \in \ell^p, (b_n) \in \ell^q$, then $\sum_{n \in
+  \mathbb{N}} a_n \bar{b_n}$ is the map to check for isometric isomorphism.
+  Use Holder's inequality as needed. \textcolor{red}{verify}
+\end{proof}
+
+\section{Banach Limits}
+
+\begin{theorem}
+  There exists $\phi \in (\ell^\infty)^{*}$ satisfying the following
+  \begin{enumerate}[label=\arabic*]
+    \item $\forall (a_n) \in \ell^\infty$ with $a_n \ge 0$ for all $
+      n \in \mathbb{N}$, $\phi((a_n)) \ge 0$
+    \item If $(a_n)$ is convergent, then $\phi((a_n)) = \lim_{n \to
+      \infty}  a_n$
+    \item If $(a_n) \in \ell^\infty$ and $b_n = a_{n+1}$, then
+      $\phi((b_n)) = \phi((a_n))$
+  \end{enumerate}
+  Moreover such $\phi$ is called a Banach limit.
+\end{theorem}
+
+\begin{proof}
+  Let $S: \ell^\infty(\mathbb{R} \to \ell^\infty(\mathbb{R})$ and $T
+    = I - S$ where $I$ is the identity map. Also let $V =
+    \textrm{Range}(T) + c$ where $ c \in \textbf{c}$, the set of
+    convergent sequences.
+
+    Define $\phi: V \to \mathbb{R}$, $\phi(a_n - a_{n+1} + x_n) =
+    \lim_{n \to \infty}  x_n$.
+    \begin{itemize}[]
+      \item Claim 1: $\phi$ is well defined
+      \item Claim 2: $\|\phi\| = 1$
+    \end{itemize}
+
+    Assuming the claims, by Hahn Banach, $\phi$ extends to $\tilde{
+    \phi} \in \ell^\infty(\mathbb{R})$ with $\|\tilde{\phi}\|= 1$.
+    Then by the last lemma we get $ \tilde{\phi}((y_n)) \ge 0$ for
+    all $(y_n) \in ell^\infty(\mathbb{R})$ with $y_n \ge 0$
+  \end{proof}
+  \begin{proof}[Proof of Claim 1]
+    Suppose that $(a_n) \in \ell^\infty$ is a sequence such that
+    $a_{n} - a_{n+1}$ converges, say $a_n \to a_{n+1} \to \alpha$. If
+    $ \alpha > 0$, then $\exists N \in \mathbb{N}$ such that for all
+    $n > N$, $ a_n - a_{n+1} > \frac{\alpha}{2}$. So $a_N >
+    \frac{\alpha}{2} + a_{N+1} > \ldots > k\frac{\alpha}{2} +
+    a_{N+k}$. So for all $k \in \mathbb{N}$, $a_N - a_{N+k} = k
+    \frac{\alpha}{2} \to \infty$ contradicting our assumption that
+    $a_n - a_{n+1}$ converges.
+
+    Now assume that $(a_n), ( b_n) \in \ell^\infty(\mathbb{R})$ with
+    $(x_n), (y_n) \in \textbf{c}$ such that $a_n - a_{n+1} + x_n =
+    b_n - b_{n+1} + y_n$. Then $(a_n - b_n) - (a_{ n+1} - b_{n+1}) =
+    y_n -x_n$. Then since  RHS is a convergent limit, LHS must be
+    convergent, which we get from above that it must converge to
+    zero. Then $\lim_{n \to \infty} x_n = \lim_{n \to \infty} y_n$
+  \end{proof}
+  \begin{proof}[Proof Claim 2]
+    To complete the proof, define $ \Psi: \ell^\infty \to \mathbb{C}$
+    by $\Psi((a_n + ib_n)) = \tilde{\phi}(a_n) + i \tilde{ \phi}(b_n)$
+    \textcolor{red}{verify}
+  \end{proof}
+
+  \begin{corollary}
+    $\ell^1$ is not reflexive
+  \end{corollary}
+  \begin{proof}
+    Let $\phi \in (\ell^\infty)^{*}$ be a Banach limit. FTOC, assume
+    $\exists f = (\alpha_n) \in \ell^1$ such that  \[
+      \phi((a_n)) = \sum_{i = 1}^{\infty}  a_n  \overline{\alpha_n}
+    \]
+    Then for all $m \in \mathbb{N}$, $\overline{\alpha_m} =
+    \phi(\delta_m) = 0$, where $\delta_m = (0, 0, \ldots, 1, 0, 0,
+    \ldots)$. But this contradicts since we assumed $\phi \neq 0$ by
+    the Hahn Banach extension from $c_0$
+  \end{proof}
+
+  \begin{lemma}
+    Let $\psi \in (\ell^\infty)^{*}$. then the following are equivalent.
+    \begin{enumerate}[label=\arabic*]
+      \item $\|\psi\| = \psi((1, 1, 1, \ldots))$
+      \item If $(a_n) \in \ell^\infty$ with $a_n \ge 0, \forall n \in
+        \mathbb{N}$. Then $ \psi((a_n)) \ge 0$
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    ($1 \implies 2$) FTSOC assume $\exists (a_n) \in \ell^\infty$,
+    $\psi((a_n)) < 0$. WLOG, assume $|a_n| \le 1$ for all $n \in
+    \mathbb{N}$. let $b_n = 1- a_n$. Then $0 \le b_n \le 1$ and \[
+      \psi((b_n)) > \psi((1, 1, 1, \ldots)) -    \psi((a_n)) > \psi((1,
+      1, 1, \ldots))
+    \]
+    So \[
+      \|\psi\| \ge |\psi((b_n))| \ge \psi((1, 1, \ldots))
+    \]
+
+    ($2 \implies 1$) Let $(a_n) \in \ell^\infty$ with $|a_n| \le 1$,
+    then $0 \le 1-a_n$. So $\psi((1-a_n)) \ge 0$ and therefore
+    $\psi((1, 1, 1, \ldots)) \ge \psi((a_n))$. Similarly $\psi((-a_n))
+    \le \psi((1, 1, 1, \ldots))$ which gives $|\psi((a_n))| \le
+    \psi((1, 1, 1, \ldots))$
+  \end{proof}

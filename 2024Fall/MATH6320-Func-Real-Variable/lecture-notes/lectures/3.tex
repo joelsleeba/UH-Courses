@@ -1,0 +1,96 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\section{Warm up}
+\begin{example}
+  Let $\mathcal{M}$ be a $\sigma$-algebra on a set $X$ and $B$ be the Borel $\sigma$-algebra on $\mathbb{R}$. For any given set $A \subset X$, consider the function $\chi_A: X \to \mathbb{R}$ defined as \[
+    \chi_A(x) = \begin{cases}
+      1, x \  \in A \\
+      0, x  \ \not \in A
+    \end{cases}
+  \]
+  The function $\chi_A$ is measurable if and only if $A \in \mathcal{M}$.
+
+  To see this if $  \chi_A$ is measurable, then inverse image of every Borel set is measurable. Consider the Borel set $( \frac{1}{2}, \frac{3}{2} )$, then $\chi_A^{-1}( \frac{1}{2}, \frac{3}{2} ) = A \in \mathcal{ M}$.
+
+  Conversely, assume $A \in \mathcal{M}$, Take $B \in \mathcal{B}$, the Borel $\sigma$-algebra of $\mathbb{R}$. Consider $\chi_A^{-1}(B)$. We get \[
+    \chi_A^{-1}(B) = \begin{cases}
+      X, & \{ 0, 1 \} \in B \\ 
+      A,  & 0 \not\in B, 1 \in B \\ 
+      A^c, & 0 \in B, 1 \not \in B \\
+      \emptyset, & 0,  1 \not \in B
+    \end{cases}
+  \]
+    In all these cases, we get $\chi_A^{-1}(B)$ to be an element of $\mathcal{M}$, since $\emptyset, X \in \mathcal{M}$. and if $A \in \mathcal{M}$, then $A^c \in \mathcal{M}$. This implies $\chi_A$ is measurable.
+\end{example}
+
+\section{Main Course}
+
+\begin{definition}
+  Let $X, Y$ be topological spaces. We say that a function $f: X \to Y$ is Borel measurable if $f^{-1}(V)$ is a Borel set whenever $V$ is an open set (or equivalently a Borel set because of \autoref{prop:measurabel_sets_with_open_sets})
+\end{definition}
+
+\begin{proposition}
+  If $f: X \to Y$ is a continuous function, then it is Borel measurable.
+\end{proposition}
+\begin{proof}
+  For every open set $E \subset Y$, by assumption $f^{-1}(E)$ is open. So it is in the Borel $\sigma$-algebra on $X$.
+\end{proof}
+\section{Algebra of measurable functions}
+
+\begin{theorem}
+  Let $X$ be a measurable space, $Y, Z$ be topological spaces. If $f: X \to Y$ is measurable and $g: Y \to Z$ is Borel measurable, then $g\circ f: X \to Z$ is measurable.
+\end{theorem}
+\begin{proof}
+  Let $V \subset Z$ be an open set. We have $(g \circ f)^{-1}(V) = f^{-1}(g^{-1}(V))$. Now since $g$ is Borel measurable, we get $g^{-1}(V)$ is Borel measurable in $Y$. Again since $f$ is measurable and $g^{-1}(V)$ is a Borel measurable, we get $f^{-1}(g^{-1}(V))$ is measurable in $X$.
+\end{proof}
+Next we consider forming ordered pairs of measurable functions.
+
+\begin{lemma}
+  If $V \subset \mathbb{R}^2$ is open, then there are open rectangles $\{ R_j \}_{j \in \mathbb{N}}$, such that $R_j = (a_j, b_j)\times (c_j, d_j)$ and $V = \cup_{j = 1}^{\infty}R_j$
+\end{lemma}
+\begin{proof}
+  Since rational $(a, b) \times (c, d)$, $a, b, c, d \in \mathbb{Q}$ generate the euclidean topology on $\mathbb{R}^2$ (product topology on $\mathbb{R} \times \mathbb{R}$ is the euclidean topology in $\mathbb{R}^2$), we obtain a countable union of all such rectangles contained in $V$.
+\end{proof}
+
+\begin{theorem}
+  \label{thm:product_measurable_functions}
+  Let $X$ be a measurable space. If $u, v :X \to \mathbb{R}$ are measurable, then $f: X \to \mathbb{R}^2$ defined as $f(x) = (u(x), v(x))$ is measurable.
+\end{theorem}
+\begin{proof}
+  Let $R = (a, b) \times (c, d) \subset \mathbb{R}^2$. Then \begin{align*}
+    f^{-1}(R) &= \{ x \in X \ : \ u(x) \in (a, b), v(x) \in ( c, d) \} \\ 
+    &= \{ x \in X \ : \ u(x) \in (a, b) \} \cap \{  x \in X  \ : \  v(x) \in (c, d) \}
+  \end{align*}
+  Hence $f^{-1}(R)$ is measurable.
+
+  Given any open set $V \in \mathbb{R}^2$, consider appropriate $\{ R_j \}_{j \in \mathbb{N}}$ such that $V = \cup_{j = 1}^{\infty}R_j$. Then $f^{-1}(V) = f^{-1}(\cup_{j = 1}^{\infty}R_j) = \cup_{ j = 1}^{\infty}f^{-1}(R_j)$. Thus $f^{-1}(V)$ is measurable.
+\end{proof}
+
+Next we establish that measurabilty is preserved under algebraic operations.
+
+\begin{proposition}
+  Let $f:X \to \mathbb{C}$ be such that $f = u+iv$ with real valued $u, v : X \to R$. If $u, v$ are measurable, then $f$ is measurable. And conversely, if $f$ is measurable, then so are $u, v,$ and $|f| = \sqrt{u^2 + v^2}$.
+\end{proposition}
+\begin{proof}
+  Let $u, v$ be measurable, then $h: X \to \mathbb{R}^2:= x \to (u(x), v(x))$ is measurable by \autoref{thm:product_measurable_functions}. Also $g:\mathbb{R}^2 \to \mathbb{C}: (x, y) \to x+iy$ is continuous. Hence we get that $f = g \circ h$ is measurable.
+
+   For converse use that $\Re: \mathbb{C} \to \mathbb{R}$ is a continuous function. So is $\Im : \mathbb{C} \to \mathbb{R}$, and $|\cdot|: \mathbb{C} \to \mathbb{R}$. Then use that $u = \Re \circ f, \ v = \Im \circ f, |f| = |\cdot| \circ f$. 
+\end{proof}
+
+ \begin{proposition}
+   \label{prop:algebra_of_measure_functions}
+   If $f, g : X \to \mathbb{C}$ are measurable, then $f+g$ and $fg$ are measurable.
+ \end{proposition}
+ \begin{proof}
+   Suppose $f, g$ are measurable. Then $F(x) = (f(x), g(x))$ defines a measurable function. Next consider $  \phi: \mathbb{C}^2 \to \mathbb{C}:= (a, b) = a+b$. By continuity of $\phi$, $\phi \circ F$ is measurable, and we obtain $(\phi \circ F)(x) = f(x) + g(x)$
+
+   To show $fg$ is measurable use the continuity of $\psi: \mathbb{C}^2 \to \mathbb{C}:= (a, b) \to ab$ and compose it with $F$.
+ \end{proof}
+
+Can we find a simple test for measurability of a real-valued function?
+
+
+
+

@@ -1,0 +1,126 @@
+% TeX_root = ../main.tex
+
+\chapter{Complex Measures}
+
+\marginnote{\scriptsize 20/03/2025 }
+
+\section{Consequence of Radon-Nikodym Theorem}
+
+\begin{theorem}
+  If $\mu, \nu$ are positive $\sigma$-finite measures such that $\nu
+  \ll \mu$, then there is a positive measurable function $h$ such that
+  $d \nu = h \mu$
+\end{theorem}
+
+\begin{theorem}[Hahn-Decomposition Theorem]
+  Let $\mu$ be a real-valued complex measure (signed measure) on a
+  measurable space
+  $(X, \mathcal{M})$. Then there are two sets $A, B$ such that $A
+  \cup B = X, A \cap B = \emptyset$ and
+  \begin{align*}
+    \mu_+(E) := \mu( E \cap A), \quad \mu_-(E) = \mu(E \cap B)
+  \end{align*}
+  with $ \mu_+ \perp \mu_-$ and $ \mu_+ + \mu_- = \mu$, and $\mu_+ +
+  \mu_- = |\mu|$.
+
+  Moreover, if $   \mu = \mu_1 - \mu_2$ with $ \mu_1 , \mu_2$ being
+  positive measures, then for any $E \in \mathcal{M}$ we have
+  $\mu_1(E) \ge \mu_+(E), \mu_2(E) \ge \mu_-(E)$
+\end{theorem}
+\begin{proof}
+  Since $\mu$ is a complex measure, $\mu \ll |\mu|$ and by
+  Radon-Nikodym, there is a $h \in L^{1}(\mu)$ with $h(x) \in \{ 1, 2  \}$
+  (polar decomposition) such that $d \mu = h d |\mu|$.
+
+  Let $A = h^{-1}(1), B = X \setminus A$. We find that $d\mu_+ =
+  \frac{1}{2}(d|\mu| + d\mu) = \frac{1}{2}(|h| d |\mu| + h d |\mu|) = h_+
+  d |\mu|$,  and similarly $\mu_- = h_- d |\mu|$. The rest follows easily.
+\end{proof}
+
+\section{Bounded linear functionals on $L^p$}
+
+\begin{note}
+  Let $\mu$ be a positive measure, $1 \le p \le \infty$ and
+  $\frac{1}{p} + \frac{1}{q} = 1$. Fixing $ g \in L^{1}(\mu)$.
+  Holder's inequality gives that for any $ f \in L^{p}(\mu)$,
+  \begin{align*}
+    \big|\int fg \ d \mu\big| \le \|f\|_p \|g\|_q
+  \end{align*}
+  So that $\Lambda_g : L^{p}(\mu) \to \mathbb{C} := f \to \int fg \ d
+  \mu$ is a bounded linear functional. Thus, we have a map $\Lambda :
+  L^{q}(\mu) \to L^{p}(\mu)^* := g \mapsto \Lambda_g$.
+
+  For $1 \le p < \infty$, the converse is true, too
+\end{note}
+
+\begin{lemma}
+  If $\mu$ is $\sigma$-finite on $(X, \mathcal{M})$, then there is a
+  $\omega \in L^{1}(\mu)$ such that $\forall x \in X : 0 <  \omega(x) < 1$.
+\end{lemma}
+\begin{proof}
+  Choose a partition $E_j$ of $X$ such that $\mu(E_j) < \infty$ for
+  each $j \in \mathbb{N}$. Let
+  \begin{align*}
+    \omega = \sum_{n \in \mathbb{N}} \frac{1}{2^n} \frac{1}{1 +
+    \mu(E_n)} \chi_{E_n}
+  \end{align*}
+  Since $E_j$ is a partition, we get that
+  \begin{align*}
+    \int |\omega| \ d \mu &= \int \omega \ d \mu \\
+    &= \int \sum_{n \in \mathbb{N}} \frac{1}{2^n} \frac{1}{1 +
+    \mu(E_n)} \chi_{E_n} \ d \mu \\
+    &= \sum_{n \in \mathbb{N}} \frac{1}{2^n} \frac{1}{1 +
+    \mu(E_n)} \mu(E_n) \\
+    &\le \sum_{n \in \mathbb{N}} \frac{1}{2^n}  = 1
+  \end{align*}
+  Hence $\omega \in L^{1}(\mu)$ is the required function.
+\end{proof}
+
+\begin{corollary}
+  If $\mu$ is $\sigma$-finite, then $\tilde{ \mu}$ given by $d
+  \tilde{\mu} = \omega d \mu$ is finite.
+\end{corollary}
+
+\begin{theorem}
+  Let $\mu$ be a $\sigma$-finite measure, $1 \le p < \infty$, $q$ as
+  usual. If $ \Lambda \in L^{p}(\mu)^*$, then there is $ g \in
+  L^{q}(\mu)$ such that
+  \begin{align*}
+    \Lambda = \Lambda_g
+  \end{align*}
+  and $\|\Lambda\| = \|g\|_q$
+\end{theorem}
+\begin{proof}
+  Begin by assuming $\mu$ is finite. Let $\Lambda : L^{p}(\mu) \to
+  \mathbb{C}$ be a bounded linear functional. Notice that $\chi_E \in
+  L^{p}(\mu)$ for each $E \in \mathcal{M}$. Consider $\lambda(E) =
+  \Lambda(\chi_E)$. Let $\{E_j\}_{n = 1}^\infty$ be a partition of $E$. We find
+  \begin{align*}
+    \lambda \Big( \bigcup_{j = 1}^{n}E_j \Big) &= \Lambda \Big(
+    \sum_{j = 1}^n \xi_{E_j} \Big) \\
+    &= \sum_{j = 1}^{n} \Lambda(\chi_{E_j}) \\
+    &= \sum_{ j = 1}^{n} \lambda(E_j)
+  \end{align*}
+  We conclude $\lambda$ is finitely additive. Note
+  \begin{align*}
+    \Big \| \chi_E - \chi_{\cup_{j = 1}^{n}E_j} \Big \|_p = \Big(
+    \mu\big(\bigcup_{j = n+1}^{\infty} E_j\big)\Big)^{\frac{1}{p}}
+  \end{align*}
+  Using monotone convergence and boundedness of $\Lambda$, we get
+  \begin{align*}
+    \Lambda(  \chi_{\cup_{j = 1}^{n}E_j}) \to \Lambda(\chi_E)
+  \end{align*}
+  Thus $\lambda$ is a measure and $\lambda \ll \mu$ by the definition
+  of $\lambda$. By
+  Radon-Nikodym, we have $g \in L^{1}(\mu)$ with $d \lambda = g d \mu$.
+
+  For $f$ simple,
+  \begin{align*}
+    \Lambda(f) = \int f \ d \lambda = \int fg \ d \mu := \Lambda_g(f)
+  \end{align*}
+  Now, consider $p = 1$. Then
+  \begin{align*}
+    \Big|\int f \ d \lambda\Big| = \Big|\int fg \ d \mu\Big| \le
+    \|\Lambda\| \|f\|_1
+  \end{align*}
+\end{proof}

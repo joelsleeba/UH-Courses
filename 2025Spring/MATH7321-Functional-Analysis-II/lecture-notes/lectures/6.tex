@@ -1,0 +1,72 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 04/02/2025 }
+
+\begin{theorem}[Spectral decomposition]
+  Let $T \in B(\mathcal{H})$ be a normal operator. Then there exists
+  a unique spectral measure $E \in (\sigma(T), \Sigma, \mathcal{H})$ such that
+  \begin{align*}
+    T = \int_{\sigma(T)}  \lambda \ d   E(\lambda)
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Immediate from what we've proven so far?? \textcolor{red}{verify}.
+  \marginnote{  \scriptsize \it See $\sigma(T)$ as $\textrm{sp}(T)$ also}.
+\end{proof}
+
+Let $X$ be a compact subset of $\mathbb{C}$. Let $\mu$ be a Radon
+measure on $X$. Let $\mathcal{H} = L^{2}(X, \mu)$, and $T \in
+B(L^{2}(X, \mu))$ by defining $(T \eta)(x) = x \eta(x)$ almost
+everywhere. Then $(T^* \eta)(x) = \bar{x}\eta(x)$.
+Then notice that $T$ is normal. Define spectral measure by $E(A) = M_{\xi_A}$.
+
+\begin{definition}
+  Let $\mathcal{A}$ be a $*$-subalgebra of $B(\mathcal{H})$. A vector
+  $\eta \in \mathcal{H}$ is called cyclic for $\mathcal{A}$ iff $\{ a
+  \eta  \ : \   a \in \mathcal{A} \}$ is dense in $\mathcal{H}$.
+\end{definition}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a $*$-subalgebra of $B(\mathcal{H})$. A vector
+  $\eta \in \mathcal{H}$ is called \textit{separating} for $\mathcal{A}$ iff
+  $a \eta = 0$ for $a \in \mathcal{A}$ implies $a = 0$.
+\end{definition}
+
+\begin{definition}
+  Let $T \in B(\mathcal{H})$ be normal. We denote $C^*(T) =
+  \overline{\textrm{span}}\{ T^nT^{*m}  \ : \ m, n \ge 0  \}$
+\end{definition}
+
+Let $\mathcal{A}$ be a *-subalgebra of $B(\mathcal{H})$, and $\eta
+\in \mathcal{H}$. Define $\langle \cdot , \cdot \rangle^\prime :
+\mathcal{A} \times \mathcal{A} \to \mathbb{C}:= \langle a , b \rangle'
+:= \langle a \eta ,  b \eta \rangle_\mathcal{H}$
+
+\begin{lemma}
+  Let $\mathcal{A}$ be a $*$-subalgebra of $B(\mathcal{H})$, and let
+  $\eta \in \mathcal{H}$. Then $\eta$ is cyclic for $\mathcal{A}$ if
+  and only if it is separating for $\mathcal{A}'$, the commutant of
+  $\mathcal{A}$.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+If $\mathcal{A}$ is commutative and $\eta \in \mathcal{A}$ is cyclic
+for $\mathcal{A}$, then $\langle \cdot , \cdot \rangle^\prime$ is an inner
+product on $\mathcal{A}$.
+
+Denote $\Xi :  \mathcal{A} \to  \mathcal{H}:= a \mapsto a \eta$. Then
+note that this map is an isometry under the new inner product.
+
+\begin{theorem}
+  Let $T \in B(\mathcal{H})$ be normal. Assume there exists a cyclic
+  vector $\eta \in \mathcal{H}$ for $C^*(T)$. Then there exists a
+  Radon probability measure $\mu \in \textrm{Prob}(\textrm{sp}(T))$
+  and a unitary
+  \begin{align*}
+    U: \mathcal{H} \to L^{2}(\textrm{sp}(T), \mu)
+  \end{align*}
+  such that $UTU^* = M_I$, where $I$ is the identity function on
+  $\textrm{sp}(T)$.
+\end{theorem}

@@ -1,0 +1,165 @@
+% TeX_root = ../main.tex
+
+\section{Hahn Banach Theorem}
+\begin{lemma}
+  \label{lem:C_linear_map_from_R_linear}
+  Let $X$ be a complex normed space. Let $f: X \to \mathbb{R}$ be an
+  $\mathbb{R}$-linear functional. Then $g: X \to \mathbb{C}$ defined
+  as $g(x) = f(x) - i f(ix)$ is $\mathbb{C}$-linear
+
+  Conversely if $g: X \to \mathbb{C}$ is a $\mathbb{C}$-linear map,
+  then $f:= \Re\circ g: X \to \mathbb{R}$ is $\mathbb{R}$-linear.
+
+  Moreover $\|f\| = \|g\|$.
+\end{lemma}
+\begin{proof}
+  We'll prove that $ \|f\| = \|g\|$ and leave the rest for the reader
+  (\textcolor{red}{verify}).
+
+  Since $|f(x)| \le |g(x)|$, for all $x \in X$, it is easy to see
+  that $\|f\| \le \|g\|$. Conversely, $\forall \epsilon > 0, \exists
+  x_o \in X$ with $\|x_o\| = 1$ such that $|g(x_o)| > \|g\| -
+  \epsilon$. If $g(x_o)= re^{i\theta}$, take  $\alpha =
+  e^{-i\theta}$. Then $f(\alpha x_o) = \Re(r e^{-i \theta}e^{ i
+  \theta}) = r = g(\alpha x_o)$. Then $\|f\| \ge |f(\alpha x_o)| =
+  |g(\alpha x_o)| = |\alpha||g(x_o)| = |g(x_o)| > \|g\| - \epsilon$.
+  Since $\epsilon$ is arbitrary, this gives $\|f\| \ge \|g\|$
+\end{proof}
+
+\begin{theorem}[Hahn-Banach Extension Theorem]
+  Let $X$ be a normed space over $\mathbb{R}$, $Z$ be a subspace of
+  $X$ and let $\phi: Z \to  \mathbb{R}$ be a continuous linear
+  functional. Then there exists a linear functional $\psi: X \to
+  \mathbb{R}$ such that $\psi|_Z = \phi$ and $\|\phi\| = \|\psi\|$.
+  \label{thm:hahn-banach-extension}
+\end{theorem}
+\begin{proof}
+  Assume $\|\phi\| = 1$ (If this is not the case, we can always scale
+  the functional down to norm 1). Now we'll extend $\phi$ from $Z$ to
+  a subspace with one dimension higher than $Z$, preserving the norm.
+  Let $x_o \in (X \setminus Z)$ and $Y = \textrm{Span}\{ \{ x_o \}
+  \cup Z \}$ be the set one dimension higher than $Z$. Assume $ \psi$
+  is the extension of $\phi$ to $Y$. Then $\psi$ will be completely
+  characterized, if we know the value of $\psi(x_o)$. We look to see
+  what real values we can assign $\psi(x_o)$ satisfying our
+  conditions. Let $y = z +  x_o \in Y$ where $z \in Z$ (We must be
+    taking an arbitrary element $y = z + \alpha x_o \in Y$, but if we
+    know the image of $y = z + x_o$ for all $z \in Z$ under $\psi$,
+    then we can get the image of $y = z + \alpha x_o$ for any $ \alpha
+  \in \mathbb{R}$ by scaling). Norm preserveness demands that for all
+  $z \in Z$, we must have \[
+    -\|z +  x_o\| \le \psi(y) = \psi(z) + \psi(x_o) \le \|z + x_o\| \\
+  \]
+  Since $\psi$ agrees with $\phi$ on $Z$, this is equivalent to
+  \begin{equation}
+    \label{eq:hahn_banach_extension-1}
+    -\phi(z) - \|z + x_o\| \le \psi(x_o) \le \|z + x_o\| - \phi(z)
+  \end{equation}
+  Moreover since we normalized $\phi$ to have norm 1, we know $\psi$
+  must also have norm 1. Then by triangle inequality, we get that for
+  all $ a, b \in Y$ \[
+    \psi(a) - \psi(b)  = \psi(a - b) \le \| a - b\| = \|(a+x_o) - ( b
+    + x_o)\| \le \|a + x_o\| + \|b+x_o\|
+  \]
+  which gives \[
+    - \psi(b) - \|b + x_o\| \le \|a + x_o\| - \psi(a)
+  \]
+  Since this inequality is true for all $a, b \in Y$, taking supremum
+  and infimum over all the possible $ a, b \in Y$ preserves the
+  inequality. Hence we get
+  \begin{equation}
+    \label{eq:hahn_banach_extension-2}
+    \sup_{b \in Y} \Big \{- \psi(b) - \|b + x_o\|\Big \} \le \inf_{a
+    \in Y} \Big\{ \|a + x_o\| - \psi(a) \Big \}
+  \end{equation}
+  Substituting $a = b = z$ in \autoref{eq:hahn_banach_extension-2}
+  guarantees the existence of $\psi(x_o)$ satisfying
+  \autoref{eq:hahn_banach_extension-1}. Hence we get an extension
+  (namely $\psi$) of $\phi$ to $Y$ preserving the norm. Since $Z$ was
+  an arbitrary subspace of $X$, this is true for all such subspaces of $X$.
+
+  Now we will employ Zorn's lemma to get an extension of $\phi$ from
+  $Z$ to the whole of $X$. Consider the collection of all linear
+  extensions of $\phi$, i.e \[ \mathcal{S} = \Big \{ (\psi_Y, Y) \ :
+  \ Z \subset Y, \ \psi_Y|_Y = \phi, \ \| \psi_Y\| = \|\phi\| \Big \} \]
+  Then we define a partial order in the collection $\mathcal{S}$ as
+  $(\psi_X, X) \le (\psi_Y, Y)$ if and only if $X \subset Y$ and
+  $\psi_Y|_X = \psi_X$. Now let $\mathscr{C}$ be a chain in
+  $\mathcal{S}$. Consider the set \[
+    \tilde{Y}_\mathscr{C} = \bigcup_{(\psi_Y, Y) \in \mathscr{C}} Y
+  \]
+  and the map $\psi_{\tilde{Y}_\mathscr{C}}: \tilde{Y}_{\mathscr{C}}
+  \to \mathbb{R}$ defined as \[
+    \psi_{\tilde{Y}_\mathscr{C}}(x) = \psi_Y(x), \ \textrm{ where } x
+    \in Y, \textrm{ for } (\psi_Y, Y) \in \mathscr{C}
+  \]
+  To see this map is well defined, assume $x \in X$ and $x \in Y$ for
+  $(\psi_X, X), (\psi_Y, Y) \in \mathscr{C}$. Then either $(\psi_X,
+  X) \le (\psi_Y, Y)$ or $(\psi_Y, Y) \le (\psi_X, X)$ since
+  $\mathscr{C}$ is totally ordered. WLOG assume $(\psi_X, X) \le
+  (\psi_Y, Y)$, then by definition we get that $\psi_Y|X = \psi_X$.
+  This gives that $\psi_Y(x) = \psi_X(x)$. Hence we get that
+  $\psi_{\tilde{Y}_{\mathscr{C}}}$ is well defined. In a similar
+  fashion we can verify that $\psi_{\tilde{Y}_{\mathscr{C}}}$ is a
+  linear functional.
+
+  Now we claim that $(\tilde{Y}_{\mathscr{C}},
+  \psi_{\tilde{Y}_\mathscr{C}})$ is the upper bound of the chain
+  $\mathscr{C}$. By the definition of $\tilde{Y}$, we see that there
+  cannot be an element $(\psi_Y, Y)$ in the chain $\mathscr{ C}$,
+  with $\tilde{Y} \subset Y$. Hence the only remaining thing to show
+  is that for all $(\psi_X, X) \in \mathscr{ C}$, we have
+  $\psi_{\tilde{Y}_\mathscr{C}}|_X = \psi_X$. But this also follows
+  from the definition of the map $\psi_{\tilde{Y}_\mathscr{C}}$.
+
+  Since $\mathscr{C}$ was taken to be an arbitrary chain in the
+  collection $\mathcal{S}$, we get that every chain in $\mathcal{S}$
+  has an upper bound. Then by Zorn's lemma, the collection
+  $\mathcal{S}$ has a maximal element $(\psi, Y)$. We claim that in
+  this maximal element, $Y = X$. If not, we can extend $\psi$ to a
+  space one dimension above $Y$ like we did in the beginning
+  contradicting the maximality of $(\psi, Y)$. Hence the maximal
+  element is $(\psi, X)$. This by definition of the collection $S$,
+  is the required extension for $(\phi, Z)$.
+\end{proof}
+\begin{remark}
+  Note that in the proof above, we only used the scaling property and
+  triangle inequality of the norm, hence we can relax the condition
+  for norm and replace it with a seminorm, without messing up the proof.
+\end{remark}
+
+\begin{theorem}[Hahn-Banach Extension Theorem for $\mathbb{C}$]
+  Same statement of \autoref{thm:hahn-banach-extension} with only the
+  field changed to $\mathbb{C}$.
+\end{theorem}
+\begin{proof}
+  Consider $X$ as a normed linear space over $\mathbb{R}$. Let $f =
+  \Re \circ \phi: Z \to \mathbb{R}$ and apply
+  \autoref{thm:hahn-banach-extension} on $f$ to get a real linear
+  functional $\tilde{f}: X \to \mathbb{R}$ with the required
+  properties. Now we claim that $\tilde{ \phi}$ defined as $\tilde{
+  \phi}(x) = \tilde{f}(x) - i \tilde{f}(ix)$ is the required extension.
+
+  First we show $\tilde{ \phi}_Z = \phi$. To see this first we notice
+  that if $ \phi$ can be written as  $\phi(x) = f( x) + ig(x)$ where
+  $ f, g$ are real valued functionals, then since $-\phi(x) =
+  i\phi(ix) = if(ix) - g(ix)$. Hence $0 = \phi(x) - \phi(x) = (f(x) -
+  g(ix)) + i(g(x) + f(ix))$. Since real part and imaginary part must
+  be equal to 0, we get that $g(x) = -f(ix)$. Therefore we get
+  $\phi(x) = f(x) - if(ix)$.
+  Now we get $\tilde{\phi}|_Z = \phi$ immediately since $ \tilde{f}|_Z = f$.
+  To finish the proof, we also have to show that $\|\phi\| =
+  \|\tilde{\phi}\|$. But this follows easily from
+  \autoref{lem:C_linear_map_from_R_linear} as $\|\phi\| = \|f\| =
+  \|\tilde{f}\| = \|\tilde{\phi}\|$.
+\end{proof}
+
+\begin{remark}
+  It is quite natural to be confused about the well defineness of the
+  expression $f(ix)$ when we are considering $X$ as a normed linear
+  space over $ \mathbb{R}$ in the beginning of the proof. But note
+  that since $X$ initially was a complex normed linear space, viewing
+  it as a space over $\mathbb{R}$ doesn't change or remove any
+  elements from the space. Hence $ix \in X$ even though $X$ is viewed
+  as a real normed linear space.
+\end{remark}

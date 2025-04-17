@@ -1,0 +1,91 @@
+% TeX_root = ../main.tex
+
+\chapter{$L^{p}$ Spaces}
+
+\begin{definition}
+  A function $\phi: (a,  b) \to \mathbb{R}$ is called convex if
+  $$\phi(tx + (1-t)y) \le t \phi(x) + (1-t) \phi(y)$$
+  for all $x, y \in
+  (a, b)$ and $0 \le t \le 1$.
+\end{definition}
+
+\begin{proposition}
+  A function $\phi: (a, b) \to \mathbb{R}$ is convex if and only if
+  for $u, s, t$ with $ a < u \le t \le s < b$, we have \[
+    \phi(t) \le \phi(s) \frac{u-t}{u-s} + \phi(u) \frac{t-s}{u-s}
+  \]
+  or equivalently using \[
+    \phi(t) - \phi(s) = \frac{t-s}{u-s} (\phi(u) - \phi(s))
+  \]
+  satisfies \[
+    \frac{\phi(t)-\phi(s)}{t-s} \le \frac{\phi(u)-\phi(s)}{u-s}
+  \]
+\end{proposition}
+
+\begin{theorem}
+  A function $\phi: (a, b) \to \mathbb{R}$ that is convex is continuous.
+\end{theorem}
+\begin{proof}
+  Let $S = (s, \phi(s)), X = (  x, \phi(x)), Y = (y, \phi(y))$, with
+  $a < s \le x \le y < b$.
+
+  Draw secands and refer Rudin.
+\end{proof}
+
+\begin{theorem}[Jensen's Inequality]
+  Let $(X, \mathcal{M}, \mu)$ be a measure space with $\mu(X) = 1$.
+  If $f \in L^1(\mu)$ and for each $x \in X$, $a < f(x)< b$ and $
+  \phi$ is convex on $(a, b)$, then \[
+    \phi \Bigg(\int  f \ d \mu \Bigg) \le \int (\phi \circ f)\ d \mu
+  \]
+\end{theorem}
+\begin{proof}
+  We know by convexity that for $u \le s \le t$, \[
+    \frac{\phi(t)-\phi(s)}{t-s} \le \frac{\phi(u)-\phi(s)}{u-s}
+  \]
+  Then there is $\beta$ such that \[
+    \frac{\phi(t)-\phi(s)}{t-s} \le \beta \le \frac{\phi(u)-\phi(s)}{u-s}
+  \]
+  Consider LHS Inequality to get
+  \begin{align*}
+    \phi(t) - \phi(s) & \le \beta (t-s) \\
+    \phi(s) & \ge \phi(t) + \beta(s-t)
+  \end{align*}
+  for $s < t$, and similarly by the RHS we get\[
+    \phi(u)-\phi(s) \ge \beta(u-s)
+  \]
+  Hence in both the cases $(t = f(x), \ u = f(x))$ \[
+    \phi(f(x)) - \phi(s) - \beta(f(x) - s) \ge 0
+  \]
+  Now integrating this gives \[
+    \int \phi \circ f\ d \mu - \phi(t) - \beta \Big( \int  f \ d \mu -
+    s \Big) \ge 0
+  \]
+  Choosing $s = \int  f \ d \mu$ gives out inequality.
+\end{proof}
+
+\begin{example}
+  Take $\mu$ to be the probablity measure on $X = \{ 1, 2, 3, \ldots
+  n \}$, assume $\mu(\{ j \})= \alpha_j> 0$. Then for $b_1 , b_2 ,
+  \ldots , b_n > 0$, we have \[
+    b_1^{\alpha_1}b_2^{\alpha_2}\ldots b_n^{\alpha_n} \le \sum_{j =
+    1}^{n} \alpha_jb_j
+  \]
+\end{example}
+\begin{proof}
+  Use the convexity of $x \to e^x$, and let $ b_j = e^{c_j}$.
+\end{proof}
+
+\begin{theorem}[Holder's Inequality]
+  Let $(X, \mathcal{M},  \mu)$ be a measure space, $f, g : X \to [0,
+  \infty]$ be measurable. Then for $1 < p < \infty$, with $1/p + 1/q
+  = 1$, then \[
+    \int  fg \ d \mu \le \Bigg(\int  f^p \ d \mu \Bigg)^{\frac{1}{p}}
+    \Bigg(\int  g^q \ d \mu\Bigg)^{\frac{1}{q}} \equiv \| f\|_p \|g\|_q
+  \]
+  and \[
+    \Bigg(\int(f+g)^p \ d \mu\Bigg)^{\frac{1}{p}} \le \|f\|_p + \|g\|_p
+  \]
+\end{theorem}
+
+

@@ -1,0 +1,90 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 30/01/2025 }
+
+\begin{theorem}
+  Let $X$ be a compact Hausdorff space and $\mathcal{H}$ be a
+  Hilbert space, and $\Psi: C(X) \to B(\mathcal{H})$ is a
+  $*$-homomorphism (representation). Then there exist a unique
+  spectral measure on $(X, \mathcal{B}, \mathcal{H})$ ($\mathcal{B}$
+  being the Borel sigma algebra on $X$), such that
+  \begin{align*}
+    \Psi(f) = \int_X  f \ d E
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  For every $\xi, \eta \in \mathcal{H}$, the map $ \nu : C(X) \to
+  \mathbb{C}  :=  f \mapsto \langle  \Psi(f) \xi ,  \eta \rangle $ is
+  a bounded linear functional on $C(X)$, hence by the reisz
+  representation theorem, there exists a unique measure $\mu_{\xi,
+  \eta}$ on $X$ such that
+  \begin{align*}
+    \langle \Psi(f) \xi ,  \eta \rangle  = \int f \ d \mu_{\xi,
+    \eta} \quad f \in C(X)
+  \end{align*}
+  Now for any $\xi, \eta \in \mathcal{H}$, the linear map
+  \begin{align*}
+    \mathcal{M}(X) \to  \mathbb{C} := \phi
+    \mapsto \int \phi \ d \mu_{\xi, \eta}
+  \end{align*}
+  is a bounded sesquilinear form about $\xi, \eta$ with the operator
+  norm $\|\xi\|\|\eta\|$, which is attained when $\phi = \chi_X$. Hence
+  there exist a unique $T_\phi \in B(\mathcal{H})$ such that
+  \begin{align*}
+    \langle T_\phi \xi ,  \eta \rangle = \int \phi \ d \mu_{\xi, \eta}
+  \end{align*}
+
+  Now we show that the map $\mathscr{F}: \mathcal{M}(X)\to B(\mathcal{H})  :=
+  \phi \mapsto    T_\phi$ is a $*$-representation of
+  $\mathcal{M}(X)$. Linearity is obvious, though
+  \textcolor{red}{verify}. Argument for $T_{\overline{ \phi}} =
+  T_{\phi}^*$ is as in the last theorem.
+  Observe that for every $f \in C(X)$, $T_f = \Psi(f)$.
+  \textcolor{red}{Take inner product with $\xi, \eta$}.
+  \marginnote{ \scriptsize \it \textcolor{red}{verify the rest}}
+
+  To show multiplicativity of the above map, let $f \in C(X), \phi
+  \in \mathcal{M}(X)$. Then $\forall \xi, \eta \in
+  \mathcal{H}$,
+  \begin{align*}
+    \marginnote{ \scriptsize \it \textcolor{red}{verify the 2nd step}}
+    \langle T_{\phi f}(\xi), \eta \rangle  &= \int \phi f \ d \mu_{\xi, \eta} \\
+    &= \int \phi \ d \mu_{\Psi(f) \xi, \eta} \\
+    &= \langle T_\phi \Psi(f) \xi ,  \eta \rangle\\
+    &= \langle  T_\phi T_f \xi ,  \eta \rangle
+  \end{align*}
+  shows that $\mathscr{F}$ is multiplicative if one of the functions
+  are in $C(X)$.
+  More generally, if $\phi, \psi \in \mathcal{M}(X)$, choose a net
+  $f_i \in C(X)$  such that $f_i$ converges to $\phi$ weak * in
+  $C(X)^{**} = \mathcal{M}(x)$, and $\|f_i\| \to \|\phi\|$
+  (\textcolor{red}{This is
+      guaranteed by Goldstein's
+  theorem}) and $\|f_i\| \le \|\phi\|$. Now for any $\xi, \eta \in
+  \mathcal{H}$, we have
+  \begin{align*}
+    \langle T_{\phi, \psi} \xi ,  \eta \rangle = \int \phi \psi \ d
+    \mu_{\xi, \eta} = \lim_{i} \int \phi f_i \ d \mu_{\xi, \eta} =
+    \lim_i \langle T_{\phi f_i} \xi ,  \eta \rangle = \lim_i \langle
+    T_\phi T_{f_i} \xi , \eta \rangle
+  \end{align*}
+  which converge to $\langle T_\phi T_\psi \xi ,  \eta \rangle$.
+  \textcolor{red}{verify}. Thus $\mathscr{F}$ is a $*$-representation
+  of $\mathcal{M}(X)$.
+
+  Now define $E : \Sigma \to  B(\mathcal{H}) :=   A \mapsto
+  T_{\chi_A}$. Obviously $E$ satisfy all the first three properties
+  of a spectral measure easily.
+
+  See also that the map $E$ is countably additive. Let $(A_n)$ be a
+  family of pairwise disjoint measurable sets of $X$
+  and let $A = \cup_{n = 1}^{\infty}A_n$. Then for every $\xi, \eta
+  \in \mathcal{H}$,
+  \begin{align*}
+    \Big \langle E \big(\bigcup_{n \in \mathbb{N}} A_n \big) \xi ,
+    \eta \Big \rangle &= \int  \chi_{\cup_{n = 1}^{\infty}A_n} \ d
+    \mu_{ \xi, \eta} = \mu_{\xi, \eta}\Big( \bigcup_{n =
+    1}^{\infty}A_n \Big) = \sum_{n \in \mathbb{N}} \mu_{\xi , \eta}(A_n)
+  \end{align*}
+
+\end{proof}

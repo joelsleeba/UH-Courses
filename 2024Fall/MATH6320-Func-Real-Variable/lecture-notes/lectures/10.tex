@@ -1,0 +1,122 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{theorem}[Fatou's Lemma]
+  If $(f_n)$ is a sequence of measurable functions $f_n: X \to [0, \infty]$, then \[
+        \int \lim_{n \to \infty} \inf f_n \ d \mu \le \lim_{n \to \infty} \inf \int  f_n \ d \mu
+  \]
+\end{theorem}
+\begin{proof}
+  Let $g_m(x) = \inf_{n \ge m} f_n(x)$. Then $0 \le g_1(x) \le g_2(x) \le \ldots$. Then by MCT, we get \[
+       \int \lim_{m \to \infty} g_m \ d \mu = \lim_{n \to \infty} \int  g_m \ d \mu(x)
+  \]
+  Also see that if $n \ge m$, then $f_n \ge g_m$ and therefore, we get \[
+       \int  f_n \ d \mu \ge \int  g_m \ d \mu
+  \]
+  So \[
+    \inf_{n \ge m} \int  f_n \ d \mu \ge \int g_m \ d \mu
+  \]
+  Now taking $m \to \infty$ on both sides, we get \[
+    \lim_{n \to \infty} \inf \int  f_n \ d \mu \ge \int \lim_{n \to \infty} \inf f_n\ d \mu
+  \]
+  which proves the theorem.
+\end{proof}
+
+\begin{example}
+  Let $\mu$ be the counting measure on $X = \{ 0, 1 \}$. Let \[
+    f_{2n}(x) = \begin{cases}
+      0, & x = 0 \\ 
+      1, & x = 1
+    \end{cases} \quad 
+    f_{2n+1} = \begin{cases}
+      1, & x = 0 \\ 
+      0, & x = 1
+    \end{cases}
+  \]
+  Then $\int \lim_{n \to \infty} \inf f_n \ d \mu = 0 \le 1 = \lim_{n \to \infty} \inf \int  f_n \ d \mu$
+\end{example}
+
+\begin{theorem}[Lebesgue dominated convergence theorem]
+  Let $(X, \mathcal{M}, \mu)$ be a measurable space. If $f_n: X \to \mathbb{C}$ defines a sequence of measurable functions pointwise converging to $f$, and there is a $g \in L^1(\mu)$ such that \[
+      |f_n| \le g, \quad \forall n \in \mathbb{N}
+  \]
+  Then $f \in L^1(\mu)$ and  \[
+      \int |f_n - f| \ d \mu \to 0
+  \]
+  So we exchange limits and integral and write \[
+      \lim_{n \to \infty} \int  f_n \ d \mu = \int f \ d \mu
+  \]
+\end{theorem}
+\begin{proof}
+  We have $|f| \le g$ since $|f_n| \le g$ for all $n \in \mathbb{N}$ and $f_n \to f$ pointwise. Consider $h_n = 2g - |f_n - f| \ge 0$ (\textcolor{red}{Use triangle inequality to show that $h_n \ge 0$}). Fatou's lemma gives \begin{align*}
+    \lim_{n \to \infty} \inf \int (2g - |f_n - f|) \ d \mu &\ge \int   \lim_{n \to \infty} (2g - |f_n - f|)  \ d \mu \\ 
+    &= 2 \int  g \ d \mu + \int \lim_{n \to \infty} \inf (- |f_n - f|) \ d \mu \\ 
+    &= 2 \int  g \ d \mu - \int \lim_{n \to \infty} \sup (|f_n - f|) \ d \mu \\ 
+  \end{align*}
+
+  But we also have \[
+    \lim_{n \to \infty} \inf \int (2g - |f_n - f|) \ dx \le 2 \int g \ d \mu + \lim_{n \to \infty} \inf \int |f_n - f| \ d \mu
+  \]
+  \textcolor{red}{Hairy logic. Verify with Rudin.}
+\end{proof}
+
+
+\section{Measure Zero}
+
+\begin{definition}
+  We say that a property $P$ holds almost everywhere if \[
+    \mu \big( \{ x \in X \ : \ \textrm{P does not hold at} x \}\big) = 0
+  \]
+\end{definition}
+
+\begin{theorem}
+  If $f: X \to [0, \infty]$ and $\int  f \ d \mu = 0$, then $f = 0$ almost everywhere. Conversely, if $ f = 0$ almost everywhere then $\int  f \ d \mu = 0$.
+\end{theorem}
+\begin{proof}
+  Let $E_n = \{ s \in X \ : \ f(x) \ge \frac{1}{n} \}$ and $E = \cup_{n = 1}^{\infty}E_n = \{  x \in X \ : \ f(x) > 0 \}$. Note that $E$ is measurable since each of $E_i$ is measurable.
+  So \begin{align*}
+    0 = \int f \ d \mu & \ge \int f \chi_{E_n} \ d \mu \\ 
+    & \ge \int \frac{1}{n}\chi_{E_n} \ dx \\ 
+    &= \frac{1}{n} \mu(E_n) \ge 0
+    \end{align*}
+  Hence $\mu(E_n) = 0$ for each $n \in \mathbb{N}$. Hence $E$ is a measure zero set. Therefore $f$ is zero almost everywhere.
+
+  Conversely if $f = 0$ almost everywhere, then let \[
+    g(x) = \begin{cases}
+      0, & f(x) = 0 \\
+      \infty, & \textrm{otherwise}
+    \end{cases}
+  \]
+  Then $g$ is a measurable simple function with $g > f$ and $\int g \ d \mu = $. Hence $ \int f \ d\mu = 0$.
+\end{proof}
+
+\begin{theorem}
+  If $f_n: X \to \mathbb{C}$ defines a sequence of measurable functions and if \[
+    \sum_{n \in \mathbb{N}} |f_n| \in L^1(\mu). 
+  \]
+  Then \[
+    \sum_{n \in \mathbb{N}} f_n \in L^1(\mu)
+  \]
+  and the series $\sum_{n \in \mathbb{N}} f_n$ converges almost everywhere.
+  \textcolor{red}{See theorem}
+\end{theorem}
+\begin{proof}
+  We assume each $f_n$ is defined on $X \setminus S_n$ with $\mu(S_n) = 0$. We have to show that there exist a set $S$ with $\mu(S) = 0$ and $\forall x \notin S$,  $\sum_{n \in \mathbb{N}} f_n(x)$ converges.
+  Let \[
+    f(x) = \sum_{n \in \mathbb{N}} |f_n(x)|
+  \]
+  By MCT \[
+      \sum_{n \in \mathbb{N}} \int |f_n| \ d \mu = \int f \ d\mu \le \infty
+  \]
+  This implies $\{ x \ : \ f(x) = \infty \}$ has measure zero. Hence if $x \notin S_n$ nad $x \notin \{ x \ : f(x) = \infty \}$, then $ \sum_{n \in \mathbb{N}} f_n(x)$ converges absolutely. Thus $S = \cup_{n = 1}^{\infty}S_n \cup \{ x \ : \ f(x) = \infty \}$ is measure zero and $ x \in S^c$
+\end{proof}
+
+\begin{definition}
+  Let $(X, \mathcal{M}, \mu)$ be a measure space. If for any $E \in \mathcal{M}$ and $F \subset E$, $\mu(E) = 0$ implies $F \subset \mathcal{M}$, then $\mu$ is called complete.
+\end{definition}
+
+
+
+
+

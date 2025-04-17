@@ -1,0 +1,21 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 18/02/2025 }
+
+Moreover if $\|f\|_{\infty, \partial \mathbb{D}} = 0$ for some $f \in
+A(\mathbb{D})$, then the maximum modulus principle forces
+$\|f\|_{\infty, \mathbb{D}} = 0$. Hence we see that the restriction
+of $f$ to the circle is a injective linear map. Thus we can identify
+$A(\mathbb{D})$ with a closed subspace of $C(\partial \mathbb{D})$.
+
+\begin{example}
+  Consider $M : \ell^{2}(\mathbb{N}) \to \ell^{2}(\mathbb{N}):= (x_n)
+  \mapsto (\frac{x_n}{n})$. Show that $M$ is not onto.
+\end{example}
+\begin{proof}
+  If $Mx = 0$, this forces $x = 0$. Thus we see that $M$ is
+  injective. If $M$ were onto, then $M$ would have a bounded inverse
+  by open mapping theorem. Then working with the orthonormal basis
+  $\{ e_n \}$, we see that $M^{-1}(e_n)  = ne_n$, which shows that $
+  \|M^{-1}\| = \infty$, a contradiction.
+\end{proof}

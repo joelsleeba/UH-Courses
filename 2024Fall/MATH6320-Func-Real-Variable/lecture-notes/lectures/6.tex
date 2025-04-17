@@ -1,0 +1,122 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\section{Integrals}
+
+\begin{definition}
+  Define the integral of a measurable simple function $s: X \to [0, \infty]$ defined in the standard form as \[
+      s = \sum_{j = 1}^{n} \alpha_j \chi_{A_j}
+  \]
+  with $\{ \alpha_1, \alpha_2, \ldots, \alpha_n \}$ as the range of $S$ and $A_j = s^{-1}(\{ \alpha_j \})$ by \[
+    \int s \ d \mu = \sum_{j = 1}^{n} \alpha_j \mu(A_j)
+  \]
+\end{definition}
+We adopt the convention $0\times \infty = 0$ from now onwards.
+
+\begin{lemma}
+  Let $(X, \mathcal{M}, \mu)$ be a measure space. Let $A_1 , A_2 , \ldots , A_n \in \mathcal{M}$ and $B_1 , B_2 , \ldots , B_{n^\prime} \in \mathcal{M}$ with the $A_j$s are mutually disjoint, as well as $B_j$s, and \[
+      \bigcup_{j = 1}^{n}A_j = X = \bigcup_{j = 1}^{n^\prime}B_j
+  \]
+  Let $\alpha_1 , \alpha_2 , \ldots , \alpha_n \in [0, \infty]$ and $  \beta_1 , \beta_2 , \ldots , \beta_n^\prime \in [0, \infty]$ such that \[
+        t = \sum_{j = 1}^{n^\prime} \beta_j \chi_{B_j} \le s = \sum_{j = 1}^{n} \alpha_j \chi_{A_j}
+  \]
+  then \[
+    \sum_{j = 1}^{n^\prime} \beta_j \mu(B_j) \le \sum_{j = 1}^{n} \alpha_j \mu(A_j)
+  \]
+\end{lemma}
+\begin{proof}
+  \begin{align*}
+    \sum_{j = 1}^{n^\prime} \beta_j \mu(B_j) &=  \sum_{j = 1}^{n} \beta_j \mu\Big(B_j \bigcap \big(\bigcup_{l = 1}^{n} A_l\big)\Big) \\ 
+    &= \sum_{j = 1}^{n^\prime} \beta_j \mu \Big(\bigcup_{l = 1}^{n}B_j \cap A_l\Big) \\ 
+    &= \sum_{ j = 1}^{n^\prime} \sum_{l = 1}^{n} \beta_j\mu \Big( B_j \cap A_l\Big) \\ 
+  \end{align*}
+  By a similar deduction, we get that \[
+    \sum_{l = 1}^{n} \alpha_j \mu(A_j) = \sum_{ l = 1}^{n} \sum_{j = 1}^{n^\prime} \alpha_l \mu(A_l \cap B_j)
+  \]
+  Since we know that $t \le s$, comparing the values of the function at $A_l \cap B_j$, we get that $\beta_j \le \alpha_l$. This immediately gives us our needed result.
+\end{proof}
+
+\begin{corollary}
+  If a measurable simple function has two representations \[
+      s = \sum_{j = 1}^{n} \alpha_j \chi_{A_j} = \sum_{j = 1}^{n^\prime} \beta_j \chi_{B_j}
+  \]
+  with disjoint measurable sets as before, then \[
+    \int s \ d \mu = \sum_{j = 1}^{n} \alpha_j \mu(A_j) = \sum_{ j = 1}^{n^\prime} \beta_j \mu(B_j)
+  \]
+\end{corollary}
+\begin{proof}
+   Use the fact that $a = b$ is equivalent to $ a \le b$ and $ b \le a$ and use above lemma.
+\end{proof}
+
+\begin{definition}
+  Let $(X, \mathcal{M}, \mu)$ be a mesurable space, $s: X \to [0, \infty]$ a measurable simple function, \[
+      s = \sum_{j = 1}^{n} \alpha_j \chi_{A_j}
+  \]
+  with $\{ A_j \}_{j=1}^n$ disjoint, measurable, then we define for $E \in \mathcal{M}$ \[
+    \int_E s \ d \mu = \sum_{j = 1}^{n} \alpha_j \mu(A_j \cap E)
+  \]
+\end{definition}
+
+\begin{lemma}
+   If $s, t$ are non-negative measurable, simple fucntions and $t \le s$ and $E \in \mathcal{M}$, then \[
+       \int_E t \ d \mu \le \int_E s \ d \mu
+   \]
+\end{lemma}
+\begin{proof}
+  Proof is exactly like before lemma, just replacing $\mu(A_j)$ with $\mu(A_j \cap E)$.
+\end{proof}
+
+\begin{remark}
+  If $s: X \to [0, \infty]$ is simple and measurable, then   \[
+      \int s \ dx = \sup \{ \int_E t d \mu \ : \ 0 \le t \le s \textrm{ is measurable and simple.} \}
+  \]
+\end{remark}
+
+\begin{definition}
+  For $f: X \to [0, \infty]$ measurable, we define \[
+    \int_E f d \mu = \sup_{\substack{ 0\le t\le f \\ t \textrm{ is simple}}} \int_E t \ d \mu
+  \]
+\end{definition}
+\begin{example}
+  We will give some examples of measurable functions.
+  \begin{itemize}[]
+    \item $X = \mathbb{N}, \mathcal{M} = P(\mathbb{N}), \mu$ is the counting measure. $f: \mathbb{N} \to [0, \infty]$. Then let \[
+        s_N(n) = \begin{cases}
+          f(n), & n \le N \\ 
+          0, &\textrm{otherwise}
+        \end{cases}
+    \]
+      Now if $\sum_{j = 1}^{\infty} f(j) \le \infty$, then $f(j) \to \infty$ as $j \to \infty$. Thus if $t \le f$ and $t$ is simple, then there is $ N \in \mathbb{N}$ such that $t(j) = 0$ for each $ j \ge N$. Then by comparison, $0 \le t \le s_n \le f$ and finally, we have \[
+        \sum_{j = 1}^{\infty}  t(j) \le \sum_{ j = 1}^{\infty}  s_N(j) \le \sum_{ j = 1}^{\infty}  f(j)
+      \]
+      so taking supremums, we get \[
+        \sup_{\substack{0\le t \le f\\ t \textrm{ is simple}}}  \sum_{j = 1}^{\infty}  t(j) = \sup_{N \in \mathbb{N}}\sum_{ j \in \mathbb{N}} s_N(j) = \sum_{ j = 1}^{\infty}  f(j)
+      \]
+  \end{itemize}
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

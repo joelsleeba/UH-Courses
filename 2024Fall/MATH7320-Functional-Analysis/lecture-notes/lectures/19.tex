@@ -1,0 +1,161 @@
+% TeX_root = ../main.tex
+
+\marginnote{ \scriptsize 12/11/2024}
+
+\begin{lemma}
+  If $T \in B(\mathcal{H})$ is self adjoint. Then every eigenvalue of
+  $T$ is real.
+  \label{SelfAdjointOperatorsHaveRealEigenvals}
+\end{lemma}
+\begin{proof}
+  Let $\lambda \in \mathbb{C}$ be an eigenvalue of $T$ with
+  eigenvector $v_\lambda$. Then
+  \begin{align*}
+    \lambda \|v\|^2 = \langle \lambda v_\lambda ,  v_\lambda \rangle
+    = \langle T(v_\lambda) ,   v_\lambda \rangle  = \langle v_\lambda
+    ,  T(v_\lambda) \rangle  = \langle  v_\lambda ,  \lambda
+    v_\lambda \rangle = \overline{\lambda}\|v_\lambda\|^2
+  \end{align*}
+  forces $\lambda =  \overline{\lambda}$.
+\end{proof}
+
+\begin{example}
+  Let $\alpha_n \in c_{\textbf{0}}$. Define $T: \ell^2 \to \ell^2$,
+  $T(\delta_n) = \delta_n \delta_n$ for all $ n \in \mathbb{N}$. Then
+  the set of eigenvalues of $T$ is precisely the set of $\alpha_n$s.
+\end{example}
+
+\begin{lemma}
+  \label{lem:spectrum_norm_self_adj}
+  If $T \in B(\mathcal{H})$ is self adjoint, then $\|T\| =
+  \sup\{|\langle T \xi ,  \xi \rangle| \ : \ \xi \in \mathcal{H},
+  \|\xi\| \le 1\}$
+\end{lemma}
+\begin{proof}
+  $\langle T \xi ,  \xi \rangle \le \|T\|$ inequality is clear from
+  Cauchy-Schwarz and definition of operator norm.
+  To see the converse, let $\alpha, \beta \in \mathcal{H}$ with $
+  \|\alpha\| = \|\beta\| = 1$. Then by
+  the self-adjointness of $T$, we get
+  \begin{align*}
+    \langle T(\alpha + \beta) , \alpha + \beta \rangle  - \langle
+    T(\alpha - \beta) ,   \alpha - \beta \rangle  &= 2 (\langle  T
+    \alpha ,  \beta \rangle + \langle T \beta ,  \alpha \rangle  ) \\
+    &= 4 \Re \langle T \alpha ,  \beta \rangle
+  \end{align*}
+  Now with enough rotation on $\beta$, we get $\langle  T \alpha ,
+  \beta \rangle = \Re \langle T \alpha ,  \beta \rangle $. Moreover, if $A
+  = \sup\{|\langle T \xi ,  \xi \rangle| \ : \ \xi \in \mathcal{H},
+  \|\xi\| \le 1\}$, notice that $|\langle Tx , x \rangle | \le A
+  \|x\|^2$. Then we get
+  \begin{align*}
+    4 |\langle T \alpha ,  \beta \rangle | & \le A \|\alpha +
+    \beta\|^2 + A \|\alpha - \beta\|^2 \\
+    &=2 A(\|\alpha\|^2 + \|\beta\|^2) \\
+    &=4 A
+  \end{align*}
+  Thus we see that $\|T\| \le A$.
+\end{proof}
+
+\begin{lemma}
+  \label{EigenSpaceisFiniteDim}
+  Let $T \in \mathcal{K}(\mathcal{H})$ and $0 \neq \lambda \in \mathbb{C}$.
+  Then the space
+  \begin{align*}
+    \textrm{Ker}(T - \lambda I)
+  \end{align*}
+  is finite dimensional.
+\end{lemma}
+\begin{proof}
+  For the sake of contradiction, assume that $K = \textrm{Ker}(T -
+  \lambda I)$ is not finite dimensional. Then $\overline{T(K \cap
+  B_1^\mathcal{H})} = \lambda \overline{K \cap B_1^\mathcal{H}}$, is
+  a closed non-compact
+  (\autoref{ClosedUnitBallisCompactiffFiniteDim}) subspace of
+  $\overline{ T(B_1^\mathcal{H})}$. This contradicts the compactness of $T$.
+\end{proof}
+
+\begin{theorem}[Spectral theorem for compact self-adjoint operators]
+  \label{SpectralTheoremforCompactSAOperators}
+  Let $\mathcal{H}$ be a separable Hilbert space and $T \in K(\mathcal{H})$ be
+  self-adjoint. Then there is an orthonormal basis $ \{ e_n \}_{n \in
+  \mathbb{N}}$ and a sequence $\{\alpha_n\} \in c_{\textbf{0}}$ such that
+  \begin{align*}
+    T e_n = \alpha_n e_n
+  \end{align*}
+  for all $n \in \mathbb{N}$.
+\end{theorem}
+\begin{proof}
+  We claim that $T$ has an eigenvalue $\lambda \in \mathbb{R}$
+  (\autoref{SelfAdjointOperatorsHaveRealEigenvals}) such
+  that $|\lambda| = \|T\|$. By   \autoref{lem:spectrum_norm_self_adj}, $\exists
+  (\xi_n)$ of unit vectors in $\mathcal{H}$ such that
+  \begin{align*}
+    |\langle T  \xi_n , \xi_n \rangle| \to \|T\|
+  \end{align*}
+  Hence by taking a subsequence $\xi_{n_k}$, we get
+  \begin{align*}
+    \langle T \xi_{n_k} ,  \xi_{n_k} \rangle \to \lambda
+  \end{align*}
+  where $\lambda = \pm \|T\|$. Since $T$ is compact, by passing to a
+  subsequence, we may also assume $T \xi_{n_{k_j}} \to \eta \in \mathcal{H}$.
+  Then we have
+  \begin{align*}
+    \|(T - \lambda I)\xi_{n_{k_j}}\|^2 &= \|T \xi_{n_{k_j}}\|^2 +
+    \lambda^2 \|\xi_{n_{k_j}}\|^2 - 2 \Re \langle T \xi_{n_{k_j}}
+    , \lambda \xi_{n_{k_j}}  \rangle  \\
+    & \le \|T\|^2 + \lambda^2
+  \end{align*}
+  Now in the first equality above, since $2 \Re \langle T \xi_{n_{k_j}}
+  ,\lambda\xi_{n_{k_j}}  \rangle \to 2\lambda^2$ as $n \to \infty$, we get
+  that $T \xi_{n_{k_j}} - \lambda\xi_{n_{k_j}} \to 0$ and since $T \xi_{n_{k_j}}
+  \to \eta$, by the uniqueness of the limit, we get $\lambda
+  \xi_{n_{k_j}} \to \eta$ and thus applying $T$ to both sides, we get
+  \begin{align*}
+    \lambda T \xi_{n_{k_j}} \to  T \eta
+  \end{align*}
+  and hence we get $T \eta = \lambda \eta$. If $\eta= 0$, this will
+  contradict our precious assumption that $T$ is nonzero since
+  $|\langle T \xi_n , \xi_n \rangle | \to \|T\|$.
+
+  Note that the kernel of $T - \lambda I$, $H_1$ is invariant under
+  $T$ being the eigenspace, and has finite dimension
+  (\autoref{EigenSpaceisFiniteDim}).
+  Moreover, $T(H_1^\perp) \subset H_1^\perp$ by
+  \autoref{InvariantSubspacesofSelfAdjointOperatorsReduce}.
+  Therefore $T_1:= T|_{H_1^\perp}$ is
+  self adjoint. Since $T$ is compact, its restriction $T_1$ is
+  compact. Hence $T_1 \in \mathcal{K}(H_1^\perp)$. Applying the claim again it
+  follows that $T_1$ has an eigenvalue $\lambda_1$ such that
+  $|\lambda_1| = \|T_1\|$.
+
+  Continuing this construction, we get $|\lambda| \ge |\lambda_1| \ge
+  |\lambda_2| \ge \ldots$ such that the $\textrm{Ker}(T - \lambda_iI)
+  \perp \textrm{ Ker}(T - \lambda_j I)$ for all $i \neq j$.
+
+  For each $k$ (where $\lambda_k$ exist), choose an orthonormal basis
+  $E_k$ for $\textrm{Ker}(T - \lambda_k I)$ and let $E = \cup E_k$.
+  If $\mathcal{H}$ is finite dimensional, there is nothing new to
+  prove. Hence assume $\mathcal{H}$ is infinite dimensional. If
+  $\textrm{Ker}(T - \lambda_{n+1}I) = \big(\textrm{Ker}(T - \lambda
+    I) \oplus \textrm{Ker}(T - \lambda_1 I ) \oplus \ldots \oplus
+  \textrm{Ker}(T - \lambda_{n} I) \big)^\perp$, then the above lemma
+  gives $\lambda_{n+1} = 0$. In this case $E$ conatins finitely many
+  eigenvectors corresponding to nonzero eigenvalues and infinitely
+  many vectors corresponding to the $0$ eigenvalue. Hence we are done
+  in this case. This happens only when $T$ is finite rank.
+
+  Otherwise, $T$ has infinitely man eigenvalues and therefore $E$ is
+  an infinite set, hence by \autoref{CompactiffEigvalsconverge0},  the sequence
+  $\lambda_n \to 0$.
+
+  It remains to show that $E$ is an orthonormal basis for
+  $\mathcal{H}$. Let $F$ be the collection of all eigenvectors of $T$
+  and let $\mathcal{M} = \overline{ \textrm{span}}(F)$.
+  Then $T(\mathcal{M}) \subset \mathcal{M}$, and so
+  $T(\mathcal{M}^\perp) \subset \mathcal{M}^\perp$ by
+  \autoref{InvariantSubspacesofSelfAdjointOperatorsReduce}. Thus
+  $T|_{\mathcal{ M}^\perp}$ has no non-zero eigenvectors. Thus from
+  what we have proved in the first part, $\mathcal{M}^\perp$ must be $\{ 0 \}$.
+\end{proof}
+

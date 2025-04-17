@@ -1,0 +1,63 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 04/02/2025 }
+
+\begin{corollary}
+  Let $X, Y$ be Banach spaces. If $T: X \to Y$ is linear, bounded map
+  and $ T$ is one-to-one and onto, then $T^{-1}$ is bounded.
+\end{corollary}
+\begin{proof}
+  Use the fact the open mapping theorem gives that $T^{-1}$ is
+  continuous, and that continuity is boundedness in linear spaces.
+\end{proof}
+
+\begin{theorem}[Closed graph theorem]
+  Let $X, Y$ be Banach spaces, then the graph of $T$, defined as
+  $G(T) = \{ (x, Tx)  \ : \  x \in X \} \subset X \times Y$, under
+  the norm $\|(x, y)\| = \| x\|_X + \|y\|_Y$ is closed if and only if
+  $T$ is bounded.
+\end{theorem}
+\begin{proof}
+  Refer back to functional analysis notes.
+\end{proof}
+
+\section{Applications of Banach-Steinhaus}
+
+Let $C_{per}([-\pi, \pi])$ denote continuous functions $f: [-\pi,
+\pi] \to \mathbb{C}$ such that $f(\pi) = f(-\pi)$. Since each
+$C_{per}([-\pi, \pi]) \subset L^{2}([-\pi, \pi])$, each such $f$ has
+a Fourier series. Let
+\begin{align*}
+  c_n = \frac{1}{2\pi} \int_{-\pi}^{ \pi}  f(t) e^{int} \ dt
+\end{align*}
+and
+\begin{align*}
+  s_n(t) = \sum_{ j = -n}^{n} c_j e^{ijt}
+\end{align*}
+We know that $s_n \to f$ in $L^2$.
+
+But what about pointwise convergence. Let
+\begin{align*}
+  D_n = \sum_{j = -n}^{n} e^{ijt} =
+  \frac{\sin((n+\frac{1}{2})t)}{\sin(\frac{t}{2})}
+\end{align*}
+Observe that
+\begin{align*}
+  \frac{1}{2\pi} \int_{-\pi}^{ \pi}  f_n(t)D_n(x-t) \ dx &= \sum_{j =
+  -n}^{n} \Big( \frac{1}{2\pi} \int_{-\pi}^{ \pi} f(x) e^{-ijt} \ dt
+  \Big) e^{ijx} \\
+  &= \sum_{j = -n}^{n} c_j e^{ijx} = s_n(x)
+\end{align*}
+Choose linear functionals $\Lambda_n: C_{per}([-\pi, \pi]) \to
+\mathbb{C}$ defined as
+\begin{align*}
+  \Lambda_n(f) = \frac{1}{2\pi} \int_{-\pi}^{ \pi}  f(t)D_n(-t) \ dt = s_n(0)
+\end{align*}
+Putting sup norm on $C_{per}([-\pi, \pi])$, we get that $\Lambda_n$
+is linear, bounded, with
+\begin{align*}
+  |\Lambda_n(f)| &= \Big|\frac{1}{2\pi} \int_{-\pi}^{ \pi}
+  f(t)D_n(-t) \ dt \Big| \\
+  &\le \frac{1}{2 \pi}\|f\|_\infty\|D_n\|_1
+\end{align*}
+\textcolor{red}{Read the rest from Rudin}

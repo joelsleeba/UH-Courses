@@ -1,0 +1,176 @@
+% TeX_root = ../main.tex
+
+\begin{theorem}
+  Let $\mathcal{H}$ be a Hilbert space and let $C$ be a non-empty closed convex
+  subset of $\mathcal{H}$. Then there exist a unique vector $x \in C$ such that
+  $\|x\| \le \|\eta\|$ for all $\eta \in C$.
+\end{theorem}
+\begin{proof}
+  \marginnote{ \scriptsize \textit{\textcolor{red}{construction of the
+  proof is a bit tricky}}}
+  Let $d = \inf \{ \|\eta\|  \ : \ \eta \in C  \}$ and choose a
+  sequence $ \eta_n \in C$  such that $\|\eta_n\| \to d$. Let $
+  \epsilon > 0$. Choose $N \in \mathbb{N}$ such that $\|\eta_n\|^2 <
+  d^2 + \epsilon$ for all $n \ge N$. Then for all $m,n \ge N$, we have \[
+    \|\eta_n - \eta_m\|^2 = 2(\|\eta_n\|^2 + \|\eta_m\|^2) - 4 \|
+    \frac{1}{2}(\eta_n + \eta_m) \|^2 \le 4(d^2  + \epsilon) - 4d^2 = 4 \epsilon
+  \]
+  (Note that since $C$ is convex, $\frac{1}{2}\eta_n +
+    \frac{1}{2}\eta_m \in C$ and therefore, by the definition of $d$,
+  we get $\|\frac{1}{2}(\eta_n + \eta_m)\| \ge d$.) Hence the sequence
+  $\eta_n$ is Cauchy and hence convergent since
+  the space is complete. Let $\eta = \lim_{n \to \infty} \eta_n$.
+  Since $C$ is closed $\eta \in C$ and clearly $\|\eta\| = d$.
+
+  To see the uniqueness, assume $\alpha \in C$, and $\| \alpha\| = d$. Then
+  \begin{align*}
+    \|\eta - \alpha\|^2 &= 2(\|\eta\|^2 + \|\alpha\|^2) - 4 \|
+    \frac{1}{2}(\eta + \alpha) \|^2 \\
+    & \le 4d^2 - 4d^2 = 0
+  \end{align*}
+  Verify the second inequality.
+\end{proof}
+
+\begin{corollary}
+  Let $\eta \in \mathcal{H}$ and $C$ be as before. Then there exist a unique
+  vector $x \in C$ such that $d(\eta, C) = \|x - \eta\|$
+\end{corollary}
+\begin{proof}
+  Apply above theorem to $C^\prime = C - \eta$. Since $C$ is closed
+  and convex, so will be its translation $C - \eta$.
+\end{proof}
+
+\begin{proposition}[Pythagoras Theorem]
+  \label{PythagorasTheorem}
+  Let $ x, y \in \mathcal{H}$ an inner product space, and $x \perp y$, then
+  $\|x + y\|^2 = \|x\|^2 + \|y\|^2$.
+\end{proposition}
+
+\begin{lemma}
+  \label{lem:15}
+  Let $\mathcal{H}$ be a Hilbert space and $K$ be a nontrivial closed subspace.
+  Let $\eta \in \mathcal{H}$. Then $\xi \in K$ satisfy $\|\xi -
+  \eta\| = d(\eta, K)$ iff
+  $\xi - \eta \perp K$.
+\end{lemma}
+\begin{proof}
+  Let $\xi - \eta \perp K$ and $k \in K$. Then $\eta - k = (\eta -
+  \xi) + (\xi - k)$ and by Pythagoras theorem, we get
+  \begin{align*}
+    \|\eta - k\|^2 = \|\eta - \xi\|^2 + \|\xi - k\|^2 \ge \|\eta - \xi\|^2
+  \end{align*}
+  Thus we see that $\|\eta - \xi\| = d(\eta, K)$.
+
+  \marginnote{ \scriptsize  \textit{\textcolor{red}{cool proof technique}}}
+  Conversely, let  $\|\eta - \xi\|= d(\eta, K)$. Then for all $\rho
+  \in K$ and $t > 0$, we have
+  \begin{align*}
+    \|\eta - \xi\|^2 &\le \|\eta - (\xi + t\rho)\|^2  \\
+    & = \| \eta - \xi -  t\rho\|^2 \\
+    & = \|\eta - \xi\|^2 + t^2\|\rho\|^2 - 2t\Re \langle \eta - \xi ,
+    \rho \rangle
+  \end{align*}
+  Hence we see that $|2\Re \langle \eta - \xi , \rho \rangle| \le t\|\rho\|^2$
+  Since $t>0$ was arbitrary, limiting it to zero, we get $\Re \langle
+  \eta - \xi ,  \rho \rangle = 0$. Replacing $\rho$ with $-i \rho$
+  will give the imaginary part is also zero.
+\end{proof}
+
+\begin{remark}
+  \label{KplusKperpisX}
+  If $K$ is a closed subspace of the Hilbert space $\mathcal{H}$,
+  then $\mathcal{H} = K \oplus K^\perp$. To see this notice that $K
+  \cap K^\perp = \{ 0 \}$. Now if $x \in \mathcal{H}$, then there is
+  a $k_x \in K$ such that $d(x, K) = \|x- k_x\|$. Moreover, from
+  \autoref{lem:15}, we see that $x - k_x \in K^\perp$. Hence $x =
+  k_x + (x - k_x) \in K \oplus K^\perp$. Now replacing $K$ with
+  $K^\perp$, we see that $(K^\perp)^\perp = K$.
+\end{remark}
+
+\begin{theorem}[Reisz Representation Theorem]
+  Let $\mathcal{H}$ be a Hilbert space and $f \in \mathcal{H}^*$.
+  Then there exists a
+  unique $\eta_f \in \mathcal{H}$ such that $f(x) = \langle x , \eta_f \rangle $
+  for all $ x \in \mathcal{H}$. The map $\phi:  \mathcal{H}^* \to
+  \mathcal{H} := f \to \eta_f$ is
+  conjugate linear isometric bijection.
+\end{theorem}
+\begin{proof}
+  If $f$ is the zero linear functional, $n_f = 0$ and we're done. If
+  not let $K  = \textrm{Ker}(f)$. Then $K$ has co-dimension $1$.
+  Consider $f|_{K^\perp}$. Let $v \in K^\perp$ such that $f(v) = 1$.
+  Clearly $  K^\perp = \textrm{span}(v)$. And therefore for any
+  $\alpha  v \in K^\perp$, $f(\alpha  v) = \alpha = \langle \alpha v
+  , \frac{v}{\|v\|^2} \rangle $. Choose $\eta_f = \frac{v}{\|v\|^2}$.
+  Now verify.
+\end{proof}
+
+\section{Orthogonal Projections}
+
+\begin{theorem}
+  Let $\mathcal{H}_1, \mathcal{H}_2$ be Hilbert spaces, and $T:
+  \mathcal{H}_1 \to  \mathcal{H}_2$ be a bounded
+  linear map. Then there exists a unique bounded linear map $T^*: \mathcal{H}_2
+  \to \mathcal{H}_1$ satisfying $\langle  Tx , y
+  \rangle_{\mathcal{H}_2} = \langle x ,
+  T^*y \rangle_{\mathcal{H}_1}$ for all $x \in \mathcal{H}_1, y \in
+  \mathcal{H}_2$.
+\end{theorem}
+\begin{proof}
+  For every given $y \in \mathcal{H}_2$ define a linear functional $f^y: H_1
+  \to \mathbb{C}$ as $f^y(x) = \langle Tx , y \rangle$. Since $f^{y}$
+  is bounded, $f^y \in \mathcal{H}_1^*$. Hence by Reisz representation, there
+  is a unique $T^*(y) \in \mathcal{H}_1$ such that $\langle  Tx , y \rangle =
+  \langle x , T^*y \rangle$.
+
+  Uniqueness follows from the fact that in any inner product space
+  $X$, if $x, y \in X$ such that $ \langle x , z \rangle = \langle  y
+  , z \rangle $ for all $z \in X$, then $\langle  x-y , z \rangle =
+  0$ for all $z \in X$, in particular $z = x-y$. Then by the positive
+  definiteness of the inner product, we get $x = y$.
+\end{proof}
+
+\begin{theorem}
+  \label{OrthogoalProjectionsAreSelfAdjointContractions}
+  Let $\mathcal{H}$ be a Hilbert space and $K$ a closed subspace. For every
+  $\eta \in \mathcal{H}$, denote by $P_K(\eta)$, the unique closest vector in
+  $K$, closest to $\eta$. Then
+  \begin{enumerate}[label=(\arabic*)]
+    \item $P_K: \mathcal{H} \to \mathcal{H}$ is linear, bounded with $\|P_K\| =
+      1$ and idempotent.
+    \item $P_K^* = P_K$ (self-adjoint)
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item Let $\eta_1, \eta_2 \in \mathcal{H}$ and $\alpha \in \mathbb{C}$.
+      Then using \autoref{lem:15} for all $\xi \in K$, we have
+      \begin{align*}
+        \langle  \alpha \eta_1
+        +\eta_2 - \alpha P_K( \eta_1) - P_K(\eta_2) , \xi \rangle &=
+        \alpha \langle \eta_1 - P_K(\eta_1) , \xi  \rangle + \langle
+        \eta_2 - P_K(\eta_2) , \xi  \rangle  \\
+        &= 0
+      \end{align*}
+      Thus we get $P_K(\alpha \eta_1 + \eta_2) = \alpha P_K(\eta_1) +
+      P_K(\eta_2)$ again by the same \autoref{lem:15}. Moreover since
+      $P_K(x)$ is a vector in $K$ it the vector in $K$ closest to
+      $P_K(x)$ is $P_K(x)$ itself. Thus we see that $P^2_K(x) =
+      P_K(x)$. Hence idempotent. Moreover since $K$ is closed, we
+      have $X = K \oplus K^\perp$ (\autoref{KplusKperpisX}). Thus for
+      all $x \in X$, we can
+      write $ x = k_x + k^\prime_x$, where $ k_x \in K$ and $
+      k^\prime_x \in K^\perp$. Then $P_K(x) = k_x$ and triangle
+      inequality shows $ \|P_K(x)\| = \|k_x\| \le \|x\|$. Thus $\|P_K\| \le 1$.
+
+    \item Since $X = K \oplus K^\perp$, let $x = k_x + k^\prime_x$
+      and $y = k_y + k^\prime_y$. Then
+      \begin{align*}
+        \langle P(x) ,  y \rangle = \langle k_x , k_y + k^\prime_y
+        \rangle = \langle k_x , k_y \rangle = \langle k_x  +
+        k^\prime_x , k_y \rangle = \langle x , P_K(y) \rangle
+      \end{align*}
+      and the uniqueness of the adjoint proves that $P_K^* = P_K$
+  \end{enumerate}
+\end{proof}
+

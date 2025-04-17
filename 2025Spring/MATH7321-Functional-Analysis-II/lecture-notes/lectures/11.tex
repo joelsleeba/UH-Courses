@@ -1,0 +1,127 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 25/02/2025 }
+
+\begin{exercise}
+  Show that if $\omega_{\xi, \eta} \in B(\mathcal{H})^*$ such that
+  $\omega_{\xi, \eta}(T) = \langle T \xi ,  \eta \rangle $, then
+  $T_{\omega_{\xi, \eta}} = P_{\xi, \eta}$.
+\end{exercise}
+\begin{solution}
+  \textcolor{red}{verify}
+\end{solution}
+
+\begin{theorem}
+  $T_\phi \in \mathcal{K}(\mathcal{H})$ for every $\phi \in
+  \mathcal{K}(\mathcal{H})^*$
+\end{theorem}
+\begin{proof}
+  First assume $T_\phi \ge 0$. Let $T_\phi = \int_{0}^{\infty}
+  \lambda \ d E$ for a spectral measure $E$. Let $\epsilon > 0$ be
+  given. Let $P = \int_{\varepsilon}^{\infty}  \ dE$. We'll show that
+  $P$ is finite rank.
+
+  For the sake of contradiction, assume
+  otherwise. Let $\{ \xi_n \}_{n \in \mathbb{N}}$ be an orthonormal
+  set such that $P \xi_n =  \xi_n$ for all $n \in \mathbb{N}$.
+  $\forall N \in \mathbb{N}$, let $S_N = \sum_{n = 1}^{N} P_{\xi_n,
+  \eta_n}$. Then $S_N \in \mathcal{K}(\mathcal{H})$ is a finite rank
+  projection. In particular $\|S_N\| = 1$.
+
+  Then $\forall N \in \mathbb{N}$,
+  \begin{align*}
+    \|\phi\| & \ge |\phi(S_n)| \\
+    & = \Big| \sum_{ n = 1}^{N} \phi(P_{\xi_n, \xi_n}) \Big| \\
+    & = \sum_{n = 1}^{N} \langle T_\phi \xi_n , \xi_n \rangle \\
+    & = \sum_{n = 1}^{N} \int_{0}^{\infty}  \lambda \ d E_{\xi_n, \xi_n} \\
+    & \ge \sum_{n = 1}^{N} \int_{\varepsilon}^{\infty}  \lambda \ d
+    E_{\xi_n, \xi_n} \\
+    & \ge \varepsilon \sum_{n = 1}^{N} \int_{\varepsilon}^{\infty}
+    \ d E_{\xi_n, \xi_n} \\
+    &= \varepsilon N
+  \end{align*}
+  which is absurd, since we can take $N \to \infty$.
+
+  Now, we have
+  \begin{align*}
+    \|T_\phi - T_\phi P\| &= \Big \| \int_{0}^{\infty}  \lambda \ d E
+    - \int_{\varepsilon}^{\infty}  \lambda \ d E \Big \| \\
+    &= \Big \|\int_{0}^{\varepsilon}  \lambda \ d E \Big \| \\
+    & \le \varepsilon
+  \end{align*}
+  Hence we see that $T_\phi \in \mathcal{K}(\mathcal{H})$.
+
+  Now for the general case, let $T_\phi = V |T_\phi|$ be the polar
+  decomposition of $T_\phi$. Define $\psi \in \mathcal{K}(\mathcal{H})^*$, by
+  \begin{align*}
+    \psi(T) := \phi(TV^*)
+  \end{align*}
+  for every $T \in \mathcal{K}(\mathcal{H})$. Then $\langle T_\psi
+  \xi, \eta \rangle = \psi(P_{\xi, \eta}) = \phi(P_{\xi, \eta}V^*) =
+  \phi(P_{ \xi, V\eta}) = \langle   T_\phi  \xi ,  V\eta \rangle =
+  \langle V^* T_\phi \xi ,  \eta \rangle = \langle |T_\phi| \xi ,
+  \eta \rangle$. So $T_\psi = |T_\phi|$, and by the first part of the
+  proof, $|T_\phi| \in \mathcal{K}(\mathcal{H})$. Thus $T_\phi = V
+  |T_\phi| \in \mathcal{K}(\mathcal{H})$.
+\end{proof}
+
+\begin{theorem}
+  Let $\phi \in \mathcal{K}(\mathcal{H})^*$. Then there are
+  orthonormal basis $\{ \xi_i \}, \{ \eta_i \}$ for $ \mathcal{H}$
+  and $(\alpha_i) \in \ell^{1}(\mathbb{R})_{+}$ such that
+  \begin{align*}
+    \phi = \sum_{i \in \mathbb{N}} \alpha_i \omega_{\xi_i, \eta_i}
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  For every $T \in B(\mathcal{H})$, observe that $|\sum \alpha_n
+  \omega_{\xi_n, \eta_n}(T)| \le (\sum \alpha_i) \| T\|$.
+
+  By the previous theorem, there exists a $\alpha_i \in
+  \textbf{c}_0$, and orthonormal basis $\{ \xi_i \}, \{ \eta_i \}$
+  for $\mathcal{H}$ such that
+  \begin{align*}
+    T_\phi = \sum_{i \in \mathbb{N}} \alpha_i P_{\xi_i, \eta_i}
+  \end{align*}
+
+  Now let $(\beta_i) \in \textbf{c}_0$ be arbitrary. Let $S = \sum_{i
+  \in \mathbb{N}} \beta_i P_{\eta_i, \xi_i}$. Then $ S \in
+  \mathcal{K}(\mathcal{H})$, and $\|S\| \le \|(\beta_i)\|_\infty$. So,
+  \begin{align*}
+    \|\phi\| \|(\beta_i)\|_\infty & \ge |\phi(S)| \\
+    &= \Bigg | \phi \Big( \sum_{i \in \mathbb{N}} \beta_iP_{\eta_i,
+    \xi_i}\Big) \Bigg | \\
+    &= \Big | \sum_{i \in \mathbb{N}} \beta_i \langle T_\phi \eta_i ,
+    \xi_i \rangle \Big | \\
+    &= \Big | \sum_{i \in \mathbb{N}} \beta_i \big \langle \big(
+    \sum_{j \in \mathbb{N}} \alpha_j P_{\xi_j, \eta_j}\bigg) \eta_i ,
+    \xi_i \bigg \rangle \Big | \\
+    &= \Big | \sum_{i, j \in \mathbb{N}} \beta_i \alpha_j \langle
+    P_{\xi_j, \eta_j}(\eta_i) ,  \xi_i \rangle \Big | \\
+    &= \Big | \sum_{i \in \mathbb{N}} \beta_i \alpha_i \Big |
+  \end{align*}
+
+  Since $(\beta_i)$ was chosen arbitrarily, we get that $(\alpha_i)
+  \in \ell^{1}$. Thus the series $\sum_{i \in \mathbb{N}} \alpha_i
+  \omega_{\xi_i, \eta_i}$ converges in norm in $\mathcal{K}(\mathcal{H})^*$.
+\end{proof}
+
+\begin{exercise}
+  Show that every finite rank operator is in the span of $P_{\xi,
+  \eta}$, for $  \xi, \eta \in \mathcal{H}$.
+\end{exercise}
+
+\begin{definition}
+  An operator $T \in B(\mathcal{H})$ of the form $T = T_\phi$ for
+  some $\phi \in   \mathcal{K}(\mathcal{H})^*$ is called a trace
+  class operator. We denote by $\mathcal{T}(\mathcal{H})$, the space
+  of all trace class operators.
+\end{definition}
+
+\begin{exercise}
+  \begin{align*}
+    \Big \| \sum_{i \in \mathbb{N}} \alpha_i \omega_{\xi_i, \eta_i}
+    \Big \| = \|(\alpha_i)\|_1
+  \end{align*}
+  and $\|T_\phi\|\le \|\phi\|$
+\end{exercise}

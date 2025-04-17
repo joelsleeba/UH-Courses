@@ -1,0 +1,43 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\section{Vitali Sets}
+
+\begin{theorem}
+  If $\mathcal{M}$ is a $\sigma$-algebra on $\mathbb{R}$ and
+  $\lambda: \mathcal{M} \to [0, \infty]$ is a translation invariant
+  measure with $0 < \lambda([0, 1)) < \infty$, then there is $ E
+  \subset [0, 1)$ such that $E \notin \mathcal{M}$.
+\end{theorem}
+\begin{proof}
+  Endow $[0, 1)$ with an equivalence relation $a \sim b \iff a-b \in
+  \mathbb{Q}$. This gives a partition of $[0, 1)$ by the equivalence classes.
+  Now from each of these classes pick (by AOC) one representative element and
+  build the set $E$. Observe that for $r, s \in \mathbb{Q}$, $(E + s)
+  \cap (E + r) = \emptyset$ if and only if $r = s$.
+
+  Also note that  \[
+    [0, 1) \ \subset \ \cup_{r \in \mathbb{Q} \cap [-1, 1]}(E+r)
+  \]
+  Therefore \[
+    E \ \subset [0, 1) \ \subset  \ \cup_{r \in \mathbb{Q} \cap [-1, 1]}(E+r)
+    \ \subset \ [-1, 2)
+  \]
+  \textcolor{red}{verify the rest, its easy}.
+\end{proof}
+
+\begin{theorem}[Luzin's theorem]
+  Let $X$ be a locally compact Hausdorff space.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\mu$ is a regular measure on a $\sigma$-algebra
+      $\mathcal{M}$ containing $B(X)$
+    \item $f: X \to \mathbb{C}$ is measurable
+    \item there is a $A \in \mathcal{M}$ such that $\mu(A) < \infty$
+      and $f = 0$ on $A^c$
+  \end{enumerate}
+  Given $\epsilon> 0$ there is a $g \in C_c(X)$ such that $
+  \mu(\{ x \in X  \ : \  f(x) \neq g(x) \}) < \epsilon$
+\end{theorem}
+
+

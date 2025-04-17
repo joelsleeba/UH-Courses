@@ -1,0 +1,210 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH 6321 - Functions of a real variable \\ Homework  I}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  \question
+  \begin{solution}
+    For the sake of contradiction, assume that $M^\perp$ has
+    dimension more than one. Then the Gram-Schmidt orthonormalization
+    procedure guarantees the existence of orthonormal vectors $a, b
+    \in M^\perp$. Now consider the vector $L(b)a - L(a)b$. Since
+    $M^\perp$ is a subspace, we see that $L(b)a - L(a)b \in M^\perp$. Moreover
+    \begin{align*}
+      L( L(b) a - L(a) b) = L(b)L(a) - L(a)L(b) = \textbf{0}
+    \end{align*}
+    Hence $L(b) a - L(a) b \in M$. Thus $L(b) a  - L(a) b = 0$ and
+    since $L(a) \neq 0 \neq L(b)$, as $a, b \in M^\perp$, we see that
+    \begin{align*}
+      b = \frac{L(b)}{L(a)}a
+    \end{align*}
+    But this contradicts our assumption that $ a, b$ are orthonormal.
+    Hence we see that $M^\perp$ is a one dimensional subspace.
+  \end{solution}
+
+  \question
+
+  \begin{solution}
+    Let $f_k(t) = e^{ikt}$ for $k \in \mathbb{Z}$. Then we get that
+    \begin{align*}
+      \frac{1}{2\pi} \int_{- \pi}^{\pi}  f_k(t) \ dt  =
+      \begin{cases}
+        1, & \textrm{k = 0} \\
+        0, & \textrm{otherwise}
+      \end{cases}
+    \end{align*}
+    Also when $k \neq 0$,
+    \begin{align*}
+      \frac{1}{N}\sum_{n = 1}^{N} f_k(2 \pi n \alpha) &= \frac{1}{N}
+      \sum_{n = 1}^{N} e^{i2 \pi \alpha n k } \\
+      &= \frac{1}{N} \frac{e^{i2\pi \alpha Nk} - 1}{e^{i2\pi \alpha k} - 1} \\
+      &\le \frac{1}{N} \frac{2}{e^{i2\pi \alpha k} - 1}
+    \end{align*}
+    Since $\alpha$ is irrational, the denominator above cannot be
+    zero, and we get that the
+    \begin{align*}
+      \lim_{N \to \infty} \frac{1}{N} \sum_{n = 1}^{N} f_k(2 \pi n \alpha) = 0
+    \end{align*}
+    If $k = 0$, then $f_k(t) = e^{0} = 1$ and we get
+    \begin{align*}
+      \frac{1}{N} \sum_{n = 1}^{N} f_k(2 \pi n \alpha) = 1
+    \end{align*}
+    making the limit also equal to 1. Hence we have showed that the
+    given equality
+    \begin{equation}
+      \label{eq:2}
+      \lim_{N \to \infty} \frac{1}{N} \sum_{n = 1}^{N} f_k(2 \pi n
+      \alpha) = \frac{1}{2\pi}
+      \int_{- \pi}^{ \pi}  f_k(t) \ dt
+    \end{equation}
+    holds for all $f_k(t) = e^{ikt}$, where $k \in \mathbb{Z}$.
+
+    Now, we know that the family of sets $f_k(t) = \frac{1}{\sqrt{2
+    \pi}} e^{i k t}$ forms an orthonormal basis for $L^2([-\pi,
+    \pi])$. Moreover, we know that every $2\pi$ periodic continuous
+    function can be embedded into $L^2([-\pi, \pi])$. Hence if $f$ is
+    any $2 \pi$ periodic continuous function, then there exists $a_j
+    \in \mathbb{C}$ such that
+    \begin{align*}
+      f(t) = \sum_{j = 1}^{J} a_j f_{k_j}(t)
+    \end{align*}
+
+    Then by the properties of integration,
+    \begin{align*}
+      \frac{1}{2\pi} \int_{-\pi}^{ \pi}  f(t) \ dt \ = \ \frac{1}{2\pi}
+      \int_{-\pi}^{ \pi}  \sum_{j = 1}^{J} a_j f_{k_j}(t) \ dt \ = \
+      \sum_{j = 1}^{J} a_{j} \frac{1}{2 \pi} \int_{-\pi}^{\pi}
+      f_{k_j}(t) \ dt \\
+    \end{align*}
+
+    Moreover by \autoref{eq:2}, for each $f_{k_j}$, and $\varepsilon
+    > 0$, there is a $N_{k_j} \in \mathbb{N}$ such that for all $N > N_{k_j}$
+    \begin{align*}
+      \Bigg| \frac{1}{N} \sum_{n = 1}^{N} f_{k_j}(2\pi n \alpha) -
+      \frac{1}{2\pi} \int_{-\pi}^{\pi}  f_{k_j}(t) \ dt\Bigg| <
+      \frac{\varepsilon}{2^{j}|a_j|}
+    \end{align*}
+    Let $N_f = \max \{ N_{k_j}  \ : \  1 \le j \le J \}$, then for all $N > N_f$
+    \begin{align*}
+      \Bigg|\frac{1}{N} \sum_{n = 1}^{N} f(2\pi n \alpha) -
+      \frac{1}{2\pi} \int_{-\pi}^{\pi}  f(t) \ dt\Bigg| &=
+      \Bigg|\frac{1}{N}\sum_{n = 1}^{N} \sum_{j = 1}^{J} a_j
+      f_{k_j}(2 \pi n \alpha) - \frac{1}{2\pi}
+      \int_{-\pi}^{ \pi}  \sum_{j = 1}^{J} a_j f_{k_j}(t) \ dt \Bigg| \\
+      &= \Bigg|\sum_{j = 1}^{J} a_j \frac{1}{N}\sum_{n = 1}^{N}
+      f_{k_j}(2 \pi n \alpha) - \sum_{j = 1}^{J} a_j  \frac{1}{2\pi}
+      \int_{-\pi}^{ \pi}  f_{k_j}(t) \ dt \Bigg| \\
+      &\le \sum_{j = 1}^{J} |a_j| \Bigg|\frac{1}{N}\sum_{n = 1}^{N}
+      f_{k_j}(2 \pi n \alpha) -  \frac{1}{2\pi}
+      \int_{-\pi}^{ \pi}   f_{k_j}(t) \ dt\Bigg| \\
+      &< \sum_{j = 1}^{J} \frac{\varepsilon}{2^{j}} \\
+      &< \varepsilon
+    \end{align*}
+    Since $\varepsilon > 0$ was chosen arbitrary, this proves that
+    \begin{align*}
+      \lim_{N \to \infty} \frac{1}{N} \sum_{n = 1}^{N} f(2 \pi n
+      \alpha) = \frac{1}{2\pi}
+      \int_{- \pi}^{ \pi}  f(t) \ dt
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Consider $P_2(\mathbb{R})$ the set of polynomials with real
+    coefficients as a subspace of the inner product space $L^{2}([-1,
+    1])$. Clearly $1, x, x^2$ is a basis for $P_2(\mathbb{R})$. Now
+    by Gram-Schmidt orthonormalization, we see that $\big\{ \frac{1}{\sqrt 2},
+    \sqrt{\frac{3}{2}}x, \sqrt{\frac{5}{2}}x^2 \big\}$ is an
+    orthonormal basis for $P_2(\mathbb{R})$. Now we find the
+    projection of the cubic polynomial $x^3$ to $P_2(\mathbb{R})$. We
+    know that this projection will be
+    \begin{align*}
+      \Big \langle x^3 , \frac{1}{\sqrt{2}} \Big \rangle \frac{1}{\sqrt{2}} +
+      \Big \langle x^3 , \sqrt{\frac{3}{2}} x \Big \rangle \sqrt{\frac{3}{2}} x
+      + \Big \langle x^3 , \sqrt{\frac{5}{2}} x^2 \Big \rangle
+      \sqrt{\frac{5}{2}} x^2 = 0 + \frac{3}{5}x + 0 x^2
+    \end{align*}
+    Also we know that $\|x^3 - f\|$ will be minimum for $f \in
+    P_2(\mathbb{R})$, when $f$ is the projection of $x^3$ to
+    $P_2(\mathbb{R})$. Hence
+    \begin{align*}
+      \min_{a, b, c \ \in \ \mathbb{R}} \int_{-1}^{1} |x^3 - a - bx -
+      cx^2|^2 \ dx = \int_{-1}^{1} \Big|x^3 - \frac{3}{5}x\Big|^2
+      \ dx = \frac{8}{175}
+    \end{align*}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

@@ -1,0 +1,389 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions, var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS. https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+  }
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter 
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+% For exercise and solutions
+% \newif\ifshowsolutions
+% \showsolutionstrue % Change to \showsolutionsfalse to hide solutions
+
+% Custom environments for problems and solutions
+% \newcounter{exercise}
+% \newenvironment{problem}[1][]
+%   {\par\noindent\textbf{#1.}}
+%   {\par}
+%
+% \newenvironment{solution}
+%   {\ifshowsolutions \expandafter\solutioncontent \else \expandafter\comment \fi}
+%   {\ifshowsolutions \hfill \qedsymbol \else \expandafter\endcomment \fi \vspace{1em}}
+%
+% \newenvironment{solutioncontent}
+%   {\par\noindent\textit{Solution.}}
+%   {\par}
+\addbibresource{articles.bib}
+
+
+\begin{document}
+
+\title{Modern Algebra (MATH 6302), Fall 2024\\ Homework Assignment I}
+
+% author list
+\author{
+Joel Sleeba \\
+}
+
+\maketitle
+
+% \showsolutionstrue
+%\showsolutionsfalse %To hide solutions
+
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+ 
+\question
+\begin{solution}
+  \begin{parts}
+     \part False. 
+       Let $A = (0, 1), B = (-1, 1), C = (0, 1)$ and let $f: A \to B := x \to x$, $g: B \to C := x \to x^2$. Clearly $g \circ f : (0, 1) \to (0, 1) := x \to x^2$ is injective. But $g$ is not injective.
+     \part False. The same functions above give the counterexample.
+  \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  \begin{parts}
+    \part Yes. Let $B, C \in \mathcal{P}(X)$ be elements with $f(B) = f(C)$. That is $B^c = C^c$. Then taking complements on both sides preserve the equality and hence, we get \begin{align*}
+      (B^c)^c &= (C^c)^c \\
+      B &= C
+    \end{align*}
+    This shows that $f$ is one-to-one
+
+    \part Yes. Let $C \in \mathcal{P}(X)$. Now since $(C^c)^c = C$, we get that $f(C^c) = C$. Since $C$ was chosen arbitrarily, this holds true for any subset of $X$ and hence $f$ is onto.
+  \end{parts}
+\end{solution}
+
+
+\question
+\begin{solution}
+  \begin{parts}
+    \part We claim that the function $f_A$ is injective if and for if $A = X$. If $A=X$, and $f_A(B) = f_A(C)$ for subsets $B, C$ of $X$, then $B = A \cap B = f_A(B) = f_A(C) = A \cap C = C$ shows that $f_A$ is injective.
+
+    Conversely If $A \neq X$ and $X \neq \emptyset$, then there exists a $b \in X$ with $b \not\in A$. Now consider the subsets $\emptyset$ and $\{ b \}$ of $X$. Both $f_A(\emptyset) = \emptyset$ and $f_A(\{ b \}) = \emptyset$. But clearly $\{ b \} \neq \emptyset$. Therefore, $f_A$ cannot be injective.
+
+    Hence $f_A$ is injective if and only if $A = X$.
+
+    \part Again we claim that $f_A$ is surjective if and only if $A=X$. If $A=X$ and $C$ is an arbitrary subset of $X$, then $f_A(C) = A \cap C = X \cap C = C$. Since $C$ was arbitrary, this proves that $f$ is surjective.
+
+    Conversely if $A \neq X$ and $X \neq \emptyset$, then like in the last question we get an element $b \in X$ with $b \not\in A$. Since $f_A(B) = A\cap B \subset A$, and $b \notin A$, there is not any set $C \subset X$ for which $f_A(C) = \{ b \}$. Therefore, $f_A$ cannot be surjective.
+
+    Hence $f_A$ is surjective if and only if $A = X$
+  \end{parts}
+\end{solution}
+ 
+\question
+\begin{solution}
+   \begin{parts}
+     \part $f_A$ is injective for every set $A \subset X$. To see this, let $A, B$ be nonempty subsets of $X$ with $A \Delta B = A \Delta C$. We need to show $B = C$. Instead we will show that $B = (A \Delta B) \Delta A$ for all $B \subset X$. Then $B = (A \Delta B) \Delta A = (A \Delta C) \Delta A = C$, and this would prove the injectivity of $f_A$
+
+     Let $x \in (A \Delta B) \Delta A$, then there are two cases.
+     \begin{subparts}
+       \subpart $x \in A \Delta B = (A \setminus B) \cup ( B \setminus A)$ and $x \not \in B$. This implies $x \in A \setminus B$
+       \subpart $x \in A \setminus (A \Delta B)$, which implies $x \in A \cap B$
+     \end{subparts}
+     Combining both of them we get $x \in (A \setminus B) \cup (A \cap B) = A$, which gives $x \in A$. Therefore $A \subset (A \Delta B) \Delta A$ and retracing the argument back, we get the reverse inclusion. Hence $A = (A \Delta B) \Delta A$.
+
+     \part $f_A$ is surjective for all $A \subset X$. Let $C$ be an arbitrary subset of $X$. Since we know $ C = (A \Delta C) \Delta A = A \Delta (A \Delta C)$, we immediately see $f_A(A \Delta C) = C$, which completes our proof.
+   \end{parts}
+\end{solution}
+
+
+\question
+\begin{solution}
+   \begin{parts}
+     \part Using the euclidean algorithm, we get that the gcd of the given numbers is 1. \begin{align*}
+       106823 &= 3 \times 35603 + 14 \\ 
+       35603 &= 2543\times14 + 1 \\
+       1 &= 1\times1 + 0 
+     \end{align*}
+
+     \part We isolate 1 from the above calculation and work our way back to $a$ and $b$\begin{align*}
+       1 &= 35603 - 2543\times14 \\
+       &= 35603 - 2543\times(106823 - 3 \times 35603) \\ 
+       &= (1+ 2543 \times 3) \times 35603 - 2543 \times 106823 \\ 
+       &= 7630 \times 35603 - 2543 \times 106823
+     \end{align*}
+   \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+   \begin{parts}
+     \part Given that $n = p_1^{\alpha_1}p_2^{\alpha_2} \cdots p_k^{\alpha_k}$ is the prime factorization of $n$. Now if $m = q_1^{\beta_1}q_2^{\beta_2} \cdots q_l^{\beta_l}$ is the prime factorization of a divisor of $n$, then each $q_i$ must be equal to some $p_j$ with $\beta_i \le \alpha_j$. Therefore for each $i$, we have $(\alpha_i+1)$ choices (including zero) for the power of $p_i$ while constructing a divisor of $n$. Now using the multiplication principle of counting, we get the number of divisors to be equal to $(\alpha_1 + 1)(\alpha_2 + 1) \cdots (\alpha_k + 1)$
+
+     \part Let $n = p_1^{\alpha_1}p_2^{\alpha_2} \cdots p_k^{\alpha_k}$ be the prime factor of number below 1000 with exactly 15 divisors. Then $15 = (\alpha_1 + 1)(\alpha_2 + 1) \cdots (\alpha_k + 1)$. Also $15 = 3 \times 5 = 15 \times 1$. So the possible set of values of $\alpha_i$ is from the set $\{ 0, 2, 4, 14 \}$. But for any prime $p_i$, we have $p_i^{14} > 2^{14} > 1000$. Hence $\alpha_i$ cannot take the value $14$ for any $i$.
+
+     This gives that if $1000 > n$ has exactly 15 divisors, then the prime factorization of $n = p_1^2p_2^4$. Now since $p_1$ is atleast 2, we get $4 \times p_2^{4} \le n \le 1000$, which gives $p_2^4 \le 250$. Also, $4^4 = 256 > 250$, hence the only options for $p_2$ are $2$ and $3$.
+
+     Now we proceed in cases. If $p_2 = 3$, then the only choice for $p_1 = 2$, since $2^2 \times 3^4 = 324 \le 1000$, but for the very next prime different from 3, we have  $5^2 \times 3^4 = 2025 > 1000$.
+
+     If $p_2=2$, then we have a couple of more options. Specifically
+     \begin{itemize}
+       \item $3^2 \times 2^4 = 144$
+       \item $5^2 \times 2^4 = 400$
+       \item $7^2 \times 2^4 = 789$
+     \end{itemize}
+
+     Hence in total there are 4 distinct positive integers under 1000 with exactly 15 positive integer divisors.
+   \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  \begin{parts}
+    \part A binary operation on $S$ is a function from $f: S \times S \to S$. Since we know that $|S| = n$, $S \times S$ has $n^2$ elements. Moreover for every $x \in S \times S, f(x)$ has $n$ possible values. Then by the multiplication principle of counting, there are $n^{n^2}$ possibilities for $f$. Hence there are that many binary operations on $S$
+
+    \part Now imagine the Cayley table of a commutative binary operation $f: S \times S \to S$. Since $|S| = n$, the Cayley table has $n^2$ cells. Moreover, since the binary operation is commutative, the Cayley table must be symmetric about its main diagonal. Equivalently, the image of the upper triangular entries under $f$ completely determine $f$. Hence by the counting formula $1+ 2 + \ldots n = \frac{n(n+1)}{2}$, we get that there are $n^{ \frac{n(n+1)}{2}}$ commutative binary operations.
+  \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  Now we'll try to approch this question using Cayley tables. For this we'll draw the Cayley tables of all possible commutative binary operations on the set. From the above exercise, we get that there are 8 of them.
+
+  \begin{center}
+    \begin{tabular}{c c c c}
+      \begin{tabular}{c|c|c|}
+        \textit{I}
+         & 1 & 2 \\
+        \hline
+        1  &  1 & 1 \\
+        \hline
+        2 & 1 & 1 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{II}
+         & 1 & 2 \\
+        \hline
+        1 & 1 & 2 \\
+        \hline
+        2 & 2 & 1 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{III}
+         & 1 & 2 \\
+        \hline
+        1 & 1 & 1 \\
+        \hline
+        2 & 1 & 2 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{IV}
+         & 1 & 2 \\
+        \hline
+        1 & 2 & 2 \\
+        \hline
+        2 & 2 & 1 \\
+        \hline
+      \end{tabular} \\ \\ 
+
+      \begin{tabular}{c|c|c|}
+        \textit{V}
+         & 1 & 2 \\
+        \hline
+        1  & 2 & 2 \\
+        \hline
+        2 & 2 & 2 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{VI}
+         & 1 & 2 \\
+        \hline
+        1 & 2 & 1 \\
+        \hline
+        2 & 1 & 2 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{VII}
+         & 1 & 2 \\
+        \hline
+        1 & 1 & 2 \\
+        \hline
+        2 & 2 & 2 \\
+        \hline
+      \end{tabular}
+      &
+      \begin{tabular}{c|c|c|}
+        \textit{VIII}
+         & 1 & 2 \\
+        \hline
+        1 & 2 & 1 \\
+        \hline
+        2 & 1 & 1 \\
+        \hline
+      \end{tabular}
+    \end{tabular}
+  \end{center}
+
+  Now to verify if the binary operations are associative, we just need to verify associativity for the forms $(a \cdot a) \cdot a, (a \cdot b) \cdot a$, and $(a \cdot a) \cdot b$. Now by commutativity of the operation $\cdot$, we get \begin{itemize}[]
+    \item $(a \cdot a) \cdot a = a \cdot (a \cdot a)$
+    \item $(a \cdot b) \cdot a = a \cdot (a \cdot b) = a \cdot (b \cdot a)$
+  \end{itemize}
+
+  Hence on the above Cayley tables, we just need to verify if $(a \cdot a) \cdot b = a \cdot (a \cdot b)$. Moreover we see that tables \textit{V}-\textit{VIII} are just a relabelling of \textit{I}-\textit{IV}, in that order. So verifying $(a \cdot a) \cdot b = a \cdot (a \cdot b)$ when $ a \neq b$ for just the operations \textit{I}-\textit{IV}.
+
+  \begin{enumerate}[label=\Roman*]
+    \item Trivially associative since its constant 1
+    \item \begin{itemize}[]
+      \item $(1 \cdot 1) \cdot 2 = 1 \cdot 2 = 2 = 1 \cdot 2 = 1 \cdot (1 \cdot 2)$
+      \item $(2 \cdot 2) \cdot 1 = 1 \cdot 2 = 2 = 2 \cdot 1 = 2 \cdot (2 \cdot 1)$
+    \end{itemize}
+    \item \begin{itemize}[]
+      \item $(1 \cdot 1) \cdot 2 = 1 \cdot 2 = 1 = 1 \cdot 1 = 1 \cdot (1 \cdot 2)$
+      \item $(2 \cdot 2) \cdot 1 = 2 \cdot 1 = 1 = 2 \cdot 1 = 2 \cdot (2 \cdot 1)$
+    \end{itemize}
+    \item \begin{itemize}[]
+      \item $(1 \cdot 1) \cdot 2 = 2 \cdot 2 = 1 \neq 2 = 1 \cdot 2 = 1 \cdot (1 \cdot 2)$
+      \item $(2 \cdot 2) \cdot 1 = 1 \cdot 1 = 2 \neq 1 = 2 \cdot 2 = 2 \cdot (2 \cdot 1)$
+    \end{itemize}
+  \end{enumerate}
+
+  Hence the binary operations corresponding to \textit{I-III} are associative and by relabelling we get \textit{V-VII} are also associative. Hence they give the exhaustive list of binary operations in $\{ 1, 2 \}$ which are associative and commutative.
+
+\end{solution}
+
+\question
+\begin{solution}
+  To show injectivity, let $f_g(i) = f_g(j)$. Then we get $gi = gj$. Left multiplying by $g^{-1}$, we get $i = j$. To show surjectivity, let $h \in G$, then $f_g(g^{-1}h) = gg^{-1}h = h$. This shows $f_g$ is bijective.
+\end{solution}
+
+\question
+\begin{solution}
+  \begin{parts}
+    \part
+    To show injectivity, let $f_g(i) = f_g(j)$. This gives us $gig^{-1} = gig^{-1}$. Left multiplying by $g^{-1}$ and right multiplying by $g$, we get $g^{-1}gig^{-1}g = g^{-1}gjg^{-1}g$. Associativity of the group operation gives us $i = j$. Hence $f_g$ is injective.
+    Similarly, let $h \in G$, then $f_g(g^{-1}hg) = gg^{-1}hgg^{-1} = h$, shows that$ f_g$ is surjective. Hence $f_g$ is bijective.
+
+    \part Since the group operation is associative, we get 
+    \begin{align*}
+      f_g(h_1h_2) &= gh_1h_2g^{-1} \\
+      &= gh_1g^{-1}gh_2g^{-1} \\ 
+      &= f(h_1)f(h_2)
+    \end{align*}
+  \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  \begin{parts}
+    \part The function composition is associative. Let $f, g, h : \mathbb{R} \to \mathbb{R}$. Then consider $(f \circ g) \circ h$ and $f \circ (g \circ h)$. For any $x \in \mathbb{R}$
+    \begin{align*}
+      ((f\circ g) \circ h)(x) &= (f \circ g)(h(x)) \\ 
+      &= f(g(h(x)) \\ 
+      &= f((g \circ h)(x)) \\ 
+      &= ( f \circ (g \circ h))(x))
+    \end{align*}
+    Which gives $f\circ(g\circ h) = (f\circ g)\circ h$.
+
+  But the function composition is not commutative. Let $f(x) = x+1$ and $g(x) = x^2$. Then $(f \circ g)(x) = x^2 +1$, but $(g \circ f)(x) = (x+1)^2$, which are not equal.
+
+  \part
+  No. $(S, \circ)$ is not a group since there are elements in $S$ without inverses. For example $f: \mathbb{R} \to \mathbb{R}:= x \to x^2$ is not invertible.
+  \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  From above problem we see that the function composition is an associative binary operation. To show $S$ is a group, we need to show that $S$ has an identity element and that every element in $S$ has an inverse.
+
+  Let $I: \mathbb{R} \to \mathbb{R}:= x \to x$. Clearly $I \in S$ since it is bijective. Moreover for any $f \in S$ and $x \in \mathbb{R}$, $(f\circ I)(x) = f(I(x)) = f(x) = (I \circ f)(x)$. Therefore $I$ acts as the identity element in $S$
+
+  Since every element in $S$ is a bijective map, is has an inverse. Hence $(S, \circ)$ is a group.
+
+  But the group is non-Abelian. Let $f: \mathbb{R} \to \mathbb{R}:= x \to 2x + 1$ and $f: \mathbb{R} \to \mathbb{R}:= x \to x+1$. Then $f, g \in S$ and $f \circ g : x \to 2(x+1) + 1 = 2x +3$ and $g \circ f: x \to 2x+2$. Hence $f\circ g \neq g \circ f$
+\end{solution}
+
+\question
+\begin{solution}
+   \begin{parts}
+     \part By the properties of the dihedral group, we know that $sr^is = r^{-i}$. Then $(sr^i)^2 = sr^isr^i = r^{-i}r^i = e$
+     \part Since $r^{2m} = e$, $r^m = r^{-m}$. Now we need to show $xr^m = r^mx$ for all $x \in D_{2n}$. If $x = r^j$ for some $j \in \{ 0, 1, \ldots n-1\}$, then $r^jr^m = r^{(j+m) = r^mr^j}$.
+
+     If $x = sr^i$ for some $i \in \{ 0, 1, \ldots n-1 \}$, then $xr^m = sr^ir^m = sr^{i+m} = sr^mr^i = r^msr^i = r^mx$. Note that $sr^i = r^is$ since $sr^is = r^{-i}$.
+   \end{parts}
+\end{solution}
+
+\question
+\begin{solution}
+  $C_{20}, D_{20}, Z_{10} \otimes Z_2$.
+
+  $C_{20}$ is not isomorphic to $Z_{10}\otimes Z_{2}$ since $C_{20}$ is cyclic while the latter is not. Also see that $Z_{10}\otimes Z_{2}$ has three elements of order 2, $(0, 1), (5, 0)$ and $(5, 1)$, while the only element of order 2 in $C_{20}$ is $a^{10}$, where $a$ is any generator of $C_{20}$.
+
+  Both are not isomorphic to $D_{20}$ since $D_{20}$ is non-Abelian while the rest of them are Abelian.
+\end{solution}
+
+\end{questions}
+\end{document}

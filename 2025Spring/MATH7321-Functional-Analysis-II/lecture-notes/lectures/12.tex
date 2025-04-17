@@ -1,0 +1,35 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 27/02/2025 }
+
+$\mathcal{T}(\mathcal{H})$ is a two-sided ideal in $\mathcal{K}(\mathcal{H})$
+
+Showed that $\mathcal{T}(\mathcal{H})^* = B(\mathcal{H})$ and defined
+the Shatten-p class of operators.
+
+\begin{theorem}
+  $\mathcal{K}(\mathcal{H})$ is the unique closed two-sided ideal in
+  $B(\mathcal{H})$
+\end{theorem}
+\begin{proof}
+  Let $I \leqslant B(\mathcal{H})$ be a closed two-sided ideal. Then
+  $\mathcal{K}(\mathcal{H}) \leqslant I$. This is because I can find
+  one rank one projection in $I$, and then multiply it with unitary
+  operators to get all rank one operators. Now taking the closed span
+  gives me all the compact operators.
+
+  Let $0 \ge T \in I \notin \mathcal{K}(\mathcal{H})$. (Or take
+  $TT^*$). Then by spectral decomposition,
+  \begin{align*}
+    T = \int_{0}^{\infty}  \lambda \ d E(\lambda)
+  \end{align*}
+  Then there exist $\epsilon > 0$ such that
+  \begin{align*}
+    P = \int_{\varepsilon}^{\infty}  \ d E(\lambda)
+  \end{align*}
+  is infinite dimensional.
+
+  Now the bounded Borel function $g(x) = \chi_{[\varepsilon, \infty]}
+  \frac{1}{x}$ embedded into $B(\mathcal{H})$ when multiplied with
+  $T$ gives $P$.
+\end{proof}

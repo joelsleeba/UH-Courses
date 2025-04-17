@@ -1,0 +1,498 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH7320 - Functional Analysis \\ Homework 5}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    Since $\phi$ is distance preserving, we get
+    \begin{align*}
+      \|x\|^2 + \|y\|^2 - 2 \Re \langle x , y \rangle
+      &=\langle x-y, x-y \rangle  \\
+      &= \|x -y\|^2 \\
+      &= \|\phi(x) - \phi(y)\|^2 \\
+      &= \langle \phi(x) - \phi(y) ,  \phi(x) - \phi(y) \rangle \\
+      &= \|\phi(x)\|^2 + \|\phi(y)\|^2 - 2 \Re \langle \phi(x) ,
+      \phi(y) \rangle \\
+      &=  \|x\|^2 +  \|y\|^2 - 2 \Re \langle \phi(x) ,  \phi(y) \rangle
+    \end{align*}
+    Thus we get $\Re \langle x , y \rangle  = \Re \langle \phi(x) ,
+    \phi(y) \rangle $ for all $x, y \in \mathcal{H}$.
+
+    Now let $x, y \in \mathcal{H}$ and $p, q \in \mathcal{H}$ such
+    that $\phi(p) = r \phi(x), \phi(q) = s \phi(y)$, for $ r, s \in
+    \mathbb{R}$. Surjectivity of $\phi$ allows us to find $p, q$. Then
+    \begin{align*}
+      \|\phi(rx + sy) - \phi(p) - \phi(q)\|^2 &= \langle  \phi(rx +
+      sy) - \phi(p) - \phi(q) , \phi(rx + sy) - \phi(p) - \phi(q) \rangle \\
+      &= \|\phi(rx + sy)\|^2 + \|\phi(p)\|^2 + \|\phi(q)\|^2 - 2 \Re
+      \langle \phi(p) ,  \phi(q) \rangle   \\
+      & \quad  - 2 \Re \langle \phi(rx + sy) ,  \phi(p) \rangle - 2
+      \Re \langle \phi(rx + sy) ,  \phi(q) \rangle \\
+      &= \|\phi(rx + sy)\|^2 + r^2\|\phi(x)\|^2 + s^2\|\phi(y)\|^2 - 2\Re
+      \langle r \phi(x) ,  s\phi(y) \rangle   \\
+      & \quad  - 2\Re \langle \phi(rx + sy) , r\phi(x) \rangle - 2
+      \Re \langle \phi(rx + sy) , s\phi(y) \rangle \\
+      &= \|\phi(rx + sy)\|^2 + r^2\|\phi(x)\|^2 + s^2\|\phi(y)\|^2 - 2rs\Re
+      \langle \phi(x) ,  \phi(y) \rangle   \\
+      & \quad  - 2r\Re \langle \phi(rx + sy) , \phi(x) \rangle - 2s
+      \Re \langle \phi(rx + sy) , \phi(y) \rangle \\
+      &= \|rx + sy\|^2 + r^2\|x\|^2 + s^2\|y\|^2 - 2 \Re
+      \langle rx ,  sy \rangle   \\
+      & \quad  - 2 \Re \langle rx + sy ,  rx \rangle - 2
+      \Re \langle rx + sy ,  sy \rangle \\
+      &= \| rx + sy - rp - sq\|^2 \\
+      &= 0
+    \end{align*}
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    Since $S \perp S^\perp$, clearly $S \subset (S^\perp)^\perp$.
+    Moreover, we know that $(S^\perp)^\perp =
+    \textrm{Ker}(P_{S^\perp})$. Therefore $(S^\perp)^\perp$ is a
+    closed subspace. Hence $\overline{\textrm{span}}(S) \subset
+    (S^\perp)^\perp$. Conversely if $x \in (S^\perp)^\perp$, then $x
+    \perp S^\perp$
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    Let $T_n \in \mathcal{K}(\mathcal{X}, \mathcal{Y})$ be a Cauchy sequence.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Since we know that $I = P_{\mathcal{M}} + P_{\mathcal{M}^\perp}$,
+    we see that $X = \mathcal{M} \oplus \mathcal{M}^\perp$. Then for
+    all $x \in X$, $x = m + m^\prime$ for unique $m \in \mathcal{
+    M}, m^\prime \in \mathcal{M}^\perp$. Then $\pi(x) = m^\prime +
+    \mathcal{M}$ for $\pi: X \to X/\mathcal{M}$. Moreover
+    \begin{align*}
+      \|x\| = \|m\| + \|m^\prime\| \quad \textrm{ and } \quad
+      \|\pi(x)\| = \|m^\prime\|
+    \end{align*}
+    Thus we see that $\pi|_{\mathcal{M}^\perp}$ is isometric.
+  \end{solution}
+
+  \question
+  \textcolor{red}{verify}
+  \begin{solution}
+    From what's given, it is evident that whenever $f_i \to 0$ weak
+    *, $Tf_i \to 0$. Since the spaces $X, Y$ are linear this gives us that
+    $T$ is weak * continuous. Since the closed unit ball,
+    $\overline{B}$ is weak * compact by Banach-Alaoglu, and the
+    continuity of $ T$ gives that $T(\overline{B})$ is compact.
+
+  \end{solution}
+
+  \question
+  \label{q:6}
+  \begin{solution}
+    Without loss of generality, assume that $\|T\| \le 1$. Notice that
+    $\overline{T(B_1)}$, the closure of the image of the unit ball is
+    compact since $   T$ is a compact operator.
+    Let $T(e_{i_n})$ be an arbitrary subsequence of $T(e_{i})$.
+    Since $T(e_{i_n})$ is a sequence in a compact space, it has a
+    convergent subsequence $T(e_{i_{n_k}})$.
+    We claim $T(e_{i_{n_k}})$ converge to zero. Let $x = \lim_{k \to
+    \infty} T(e_{i_{n_k}})$. Since the convergence is in norm, we see
+    that $T(e_{i_{n_k}}) \to x$ weakly.
+
+    Now, for any $x \in \mathcal{H}$,
+    \begin{align*}
+      \|x\|^2 \ge \sum_{n \in \mathbb{N}} \langle x , e_n \rangle
+    \end{align*}
+    Hence $\langle  e_n , x \rangle  \to 0$ for any $x \in
+    \mathcal{H}$. Thus we see that $e_n \to 0$, weakly. Specifically,
+    we see that
+    \begin{align*}
+      \langle Te_n , y \rangle  = \langle e_n , T^*y \rangle \to 0
+    \end{align*}
+    for any $y \in \mathcal{H}$. Shows that $T(e_n) \to 0$ weakly.
+    Since weak topology is Hausdorff, we see that $x = 0$.
+
+    Since we have shown that any arbitrary subsequence of $T(e_n)$
+    has a subsequence that converge to $0$, we get that $T(e_j) \to
+    0$. Hence we are done.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part $(1 \implies 2)$ If $T$ is an isometry, then expanding
+      $\langle  Tx , Ty \rangle  = \langle x , y \rangle$ for some
+      $x, y \in \mathcal{H}$, we get
+      \begin{align*}
+        \langle Tx , Ty \rangle  + \langle Ty , Tx \rangle  = \langle
+        x , y \rangle  + \langle y , x \rangle
+      \end{align*}
+      which gives $\Re \langle x , y \rangle = \Re \langle Tx , Ty
+      \rangle$. Now replace $x$ with $ix$ to get $\Im \langle Tx , Ty
+      \rangle  = \Im \langle x , y \rangle $. Since real and
+      imaginary parts are equal, we see that $\langle Tx , Ty \rangle
+      = \langle x , y \rangle $
+      \part $(2 \implies 3)$ If $\langle Tx , Ty \rangle  = \langle x
+      , y \rangle $ for all $x, y \in \mathcal{H}$, then $\langle
+      T^*T x , y \rangle = \langle x , y \rangle $, which implies
+      $\langle (T^*T - I) x , y \rangle = 0$ for all $x , y \in
+      \mathcal{H}$. Then Reisz Representation theorem shows that if
+      $y \neq 0$, we must have $T^*T - I = 0$.
+      \part $(3 \implies 2)$ If $T^*T = I$, then
+      \begin{align*}
+        \|Tx\|^2 &= \langle Tx , Tx \rangle  \\
+        &= \langle T^*T x , x \rangle  \\
+        &= \langle x , x \rangle  \\
+        &= \|x\|^2
+      \end{align*}
+      which shows that $T$ is an isometry.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part $(1 \implies 3)$ If $T$ is normal isometry, we see that $
+      TT^* = T^*T$, and previous question proves that $TT^* = T^*T = I$.
+      \part ($3 \implies 2$) If $TT^* = T^*T = I$, then it is clear
+      from the previous question that $T$ is an isometry. To see that
+      it is a bijection, let $x \in H$, since $T(T^*(x)) = x$, we see
+      that $   x \in T(\mathcal{H})$. Hence $T$ is a bijection.
+      \part $(2 \implies 1)$. We just need to show normality of $T$.
+      Since $T$ is given to be an isometric bijection, $T$ has an
+      inverse, $P$. Since $T$ is bijective $P$ is also isometric and
+      linear. To see linearity, notice that
+      \begin{align*}
+        P(x + y) = P(T(Px) + T(Py)) = P(T(Px + Py)) = Px + Py
+      \end{align*}
+      We claim $P = T^*$. To see this, note that
+      \begin{align*}
+        \langle PTx , y \rangle = \langle  x , y \rangle = \langle
+        Tx , Ty \rangle = \langle T^*Tx , y \rangle
+      \end{align*}
+      Hence we see that $\langle  (PT - T^*T)x , y \rangle = 0 $ for
+      al $ x, y \in \mathcal{H}$. Therefore by Reisz representation,
+      we have $  PT - T^*T = (P-T^*)T = 0$. Since $T$ is bijective,
+      this forces $P = T^*$ and we get the normality.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $x \in \textrm{Ker}(T)$. Then $0 = \langle Tx , y \rangle =
+    \langle x , T^*y \rangle$ for any $y \in \mathcal{H}$, shows that
+    $y \in T(\mathcal{H})^\perp$.
+
+    Conversely if $x \in T^*(H)^\perp$. Then $0 = \langle x , T^*y
+    \rangle = \langle Tx , y \rangle = $ for any $y \in \mathcal{H}$
+    shows that $x \in \textrm{Ker}(T)$ by Reisz representation theorem.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Consider the map $T|_{\textrm{Ker}(T)^\perp}:
+    \textrm{Ker}(T)^\perp \to T(H)$. Clearly the map is surjective and
+    linear. Hence $ \textrm{Ker}(T)^\perp \cong T(H)$, which is
+    finite dimensional. From the previous question, we know that
+    $T^*(\mathcal{H}) = \textrm{Ker}(T)^\perp$. Hence we see that
+    $T^*$ is finite rank.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{align*}
+      \|Tf\|^2 &= \int |xf(x)|^2 \ d \mu \\
+      &\le \int |f|^2 \ d \mu \\
+      &= \|f\|^2
+    \end{align*}
+    shows that $T$ is a contraction. Hence $T \in B(L^2[0, 1])$.
+  \end{solution}
+  Moreover for any $f, g \in L^2([0, 1])$, we get
+  \begin{align*}
+    \langle Tf , g \rangle  = \int |xf(x)\bar{g}(x)|^2 \ d \mu =
+    \int |f(x)  \bar{x}g(x)|^2 \ d \mu = \langle f , Tg \rangle
+  \end{align*}
+  Hence $T^* =T$. To prove injectivity of $T$, assume $T(f) = T(g)$, then
+  \begin{align*}
+    0 = (T(f) - T(g))(x) = x(f(x) - g(x))
+  \end{align*}
+  forces $f = g$. (Note that the equalities above is almost
+  everywhere). To see that $T$ is not surjective, we claim that there
+  $T(f) \neq \chi_{[0, 1]} \in L^2([0, 1])$ for any $f \in L^2([0,
+  1])$. If such $f$ exist, then $f(x) = \frac{\chi_{[0, 1]}(x)}{x}
+  \not \in L^2([0, 1])$.
+
+  For the sake of contradiction, assume that $\lambda \in \mathbb{C}$
+  such that $Tf = \lambda f$ for some $f \in L^2([0, 1])$. Then
+  we must have
+  \begin{align*}
+    x f(x) = T(f)(x) = \lambda f(x)
+  \end{align*}
+  almost everywhere. This forces $x = \lambda$ or $f = 0$ almost
+  everywhere. Since $x$ cannot be equal to $\lambda$ except possibly
+  only at $x = \lambda$ (measure zero set), we see that $f = 0$
+  almost everywhere. Thus $\lambda$ cannot be an eigenvector of $T$.
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part Let $x = (x_n) \in \ell^2$. Then
+      \begin{align*}
+        \|T(x)\|_2^2 &= \sum_{n \in \mathbb{N}} |\alpha_n x_n|^2 \\
+        &\le \|(\alpha_n)\|_\infty^2 \sum_{n \in \mathbb{N}} |x_n|^2 \\
+        &= \|(\alpha_n)\|_\infty \|(x_n)\|_2^2
+      \end{align*}
+      shows that $\|T\| \le \|(\alpha_n)\|_\infty$. Moreover since
+      each $\|\delta_n\| = 1$, and
+      \begin{align*}
+        \|T(\delta_n)\| = |\alpha_n|
+      \end{align*}
+      taking supremum over $n$, we see $T$ attains the norm
+      $\|(\alpha_n)\|_\infty$.
+      \part One direction is the direct application of question
+      \ref{q:6}. Conversely if $(\alpha_n) \in c_\textbf{0}$, then
+      for any open cover $U$ which cover $T(B)$, we can find a finite
+      subcover by first taking an element which cover $0$, then there
+      can only by at most finite $T(\delta_n)$ outside that open ball.
+      Now by the fact that finite dimensional closed unit balls are
+      compact, we get compactness of $T$.
+
+      \part Notice that if $x = (x_n), y = (y_n) \in \ell^2$, then
+      \begin{align*}
+        x =  \sum_{n \in \mathbb{N}} x_n \delta_n, \quad
+        y =  \sum_{n \in \mathbb{N}} y_n \delta_n
+      \end{align*}
+      and
+      \begin{align*}
+        \langle Tx , y \rangle  = \sum_{n \in \mathbb{N}} \alpha_n
+        x_n \overline{y_n} = \sum_{n \in \mathbb{N}} x_n \overline{\alpha_n y_n}
+      \end{align*}
+      Since this is true for all $x, y \in \ell^2$, by the uniqueness
+      of the adjoint, we get our assertion.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part If $M$ is invariant under $T$, then $T(M) \subset M$,
+      This shows $T(m) = P_MT(m)$ for all $m \in M$. Thus $TP_M =
+      P_MTP_M$. Conversely if $TP_M = P_MTP_M$, then $T(m) = TP_M(m)
+      = P_MTP_M(m) = P_MT(m)$ for all $m \in M$, shows that $T(m)
+      \subset M$ for all $m \in M$. Thus $M$ is invariant under $T$.
+
+      \part If $M$ reduces $T$, then $M$ and $M^\perp$ is invariant
+      under $T$. Thus we see that for $x = m + m^\prime$ for $m \in
+      M, m^\prime \in M^\perp$,
+      \begin{align*}
+        P_MT(x) = P_M(T(m) + T( m^\prime)) = P_M(T(m)) = T(m) = T(P_M(x))
+      \end{align*}
+      Thus $P_MT = TP_M$.
+
+      Conversely, if $P_MT = TP_M$, then for $m \in M$, we get
+      \begin{align*}
+        P_MT(m) = TP_M(m) = T(m)
+      \end{align*}
+      which shows $T(m) \in M$ and for $m^\prime \in M^\perp$, we get
+      \begin{align*}
+        P_MT(m^\prime) = TP_M(m^\prime) = T(0) = 0
+      \end{align*}
+      Hence $T(m^\prime) \perp M$ which implies $T(m^\prime) \in M^\perp$.
+      Thus we see that $M$ reduces $T$.
+
+      \part If $M$ reduces $T$, then it is clear that $M$ is
+      invariant under $T$.
+      Let $m \in M$. Then for $x \in M^\perp$, we get
+      \begin{align*}
+        \langle T^*m , x \rangle = \langle m , Tx \rangle  = 0
+      \end{align*}
+      since $Tx \in M^\perp$. Thus $T^*(m) \in M$.
+
+      \part If $M$ reduces $T$ Then $\mathcal{H} = M \oplus M^\perp$
+      and $TP_M = P_MT$. Notice also that $T|_{M} = TP_M$. Then
+      \begin{align*}
+        P_MT^* = P_M^*T^* = (TP_M)^*
+      \end{align*}
+      Moreover, we know $M$ reduces $T^*$ also. Hence we get $P_MT^*
+      = T^*P_M$. Thus we get
+      \begin{align*}
+        (T|_M)^* = (TP_M)^* = P_MT^* = T^*P_M = T^*|_M
+      \end{align*}
+
+      \part No. Let $T: \mathbb{C}^2 \to \mathbb{C}^2$ be represented by
+      \begin{align*}
+        T =
+        \begin{pmatrix}%{c c}
+          1 & 1 \\
+          0 & 1
+        \end{pmatrix}
+      \end{align*}
+      Now take $M = \textrm{span}(e_1)$. The fact is evident.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    \begin{parts}
+      \part Given $P, Q$ are projections, if $P + Q$ is a projection,
+      then
+      \begin{align*}
+        P + Q = (P + Q)^2 = P^2 + PQ + QP + Q^2 = P + QP + PQ + Q
+      \end{align*}
+      shows that $PQ = - QP$. Then for any $x, y \in \mathcal{H}$,
+      \textcolor{red}{verify}
+
+      Conversely if $P(\mathcal{H}) \perp Q(\mathcal{H})$, then for
+      all $x, y \in \mathcal{H}$, we get
+      \begin{align*}
+        \langle x , PQy \rangle = \langle Px , Qy \rangle  = \langle
+        QPx , y \rangle = 0
+      \end{align*}
+      Then Reisz representation theorem forces $PQ = QP = 0$, thus we see
+      \begin{align*}
+        (P + Q)^2 = P^2 + PQ + QP + Q^2 = P + QP + PQ + Q = P + Q
+      \end{align*}
+      Also $(P + Q)^* = P^* + Q^* =  P + Q$. Hence we see that $P+ Q$
+      is a projection.
+
+      If this happens, then it is clear that $\textrm{Ker}(P) \cap
+      \textrm{Ker}(Q) \subset \textrm{Ker}(P+Q)$. Conversely let
+      $(P+Q)(y) = 0$, then $P(y) = -Q(y)$. But since $P(\mathcal{H})
+      \perp Q(\mathcal{H})$, this forces $P(y) = Q(y) = 0$. Hence
+      $\textrm{Ker}(P + Q) = \textrm{Ker}(P) \cap \textrm{Ker}(Q)$.
+
+      Moreover since $P(\mathcal{H}) \perp Q(\mathcal{H})$, we
+      immediately see that $(P+Q)(\mathcal{H}) = P(\mathcal{H})\oplus
+      Q(\mathcal{H})$
+
+      \part
+      \begin{itemize}[]
+        \item
+          If $PQ$ is a projection, we must have $(PQ)^* = PQ$. Then
+          for all $x, y \in \mathcal{H}$,
+          \begin{align*}
+            \langle PQ(x) ,  y \rangle = \langle Qx , Py \rangle =
+            \langle x , QPy \rangle
+          \end{align*}
+          Then uniqueness of the adjoint forces $PQ = QP$.
+        \item
+          If $PQ = QP$, then
+          \begin{align*}
+            (P + Q - QP)^2 &= P^2 + Q^2 + QPQP + PQ + QP - PQP - QQP
+            - QPP - QPQ \\
+            &= P + Q + QQPP + QP + QP - QPP - QQP - QPP - QQP \\
+            &= P + Q + QP + QP + QP - QP - QP - QP - QP \\
+            &= P + Q - QP
+          \end{align*}
+          and $(P + Q - QP)^* = P^* + Q^* - P^*Q^* = P + Q - PQ = P + Q - QP$.
+          shows that $P + Q - QP$ is a projection.
+        \item
+          If $P + Q - QP$ is a projection, then
+          \begin{align*}
+            P + Q - QP = (P + Q - QP)^* = P^* + Q^* - P^*Q^* = P + Q - PQ
+          \end{align*}
+          forces $QP = PQ$
+      \end{itemize}
+
+      If the above happens, then for any $x \in \mathcal{H}$, $PQ(x) =
+      QP(x)$ forces that $PQ(x) \in P(\mathcal{H})$ and $QP(x) \in
+      Q(\mathcal{H})$. Hence we see that $PQ(\mathcal{H}) \subset
+      P(\mathcal{H}) \cap Q(\mathcal{H})$. Conversely, if $y \in
+      P(\mathcal{H}) \cap Q(\mathcal{H})$, then for some $a, b \in
+      \mathcal{H}$, $P(a) = y = Q(b)$. Then $Q(P(a)) = Q(y) = Q^2(b)
+      = Q(b) = y$ and $P(Q(b)) = P(y) = P^2(a) = P(a) = y$ shows that
+      $y \in PQ(\mathcal{H})$. Hence we see that $P(\mathcal{H}) \cap
+      Q(\mathcal{H}) = PQ(\mathcal{H})$.
+
+      Similarly, if $y \in \textrm{Ker}(P), z \in \textrm{Ker}(Q)$,
+      then since $QP = PQ$, we get
+      \begin{align*}
+        (P+Q)(y + z) &= (P+Q)^2(y + z) \\
+        &= (P+Q)(P(z) + Q(y)) \\
+        &= P(z) + Q(y) + QP(z) + PQ(y) \\
+        &= P(z) + Q(y)
+      \end{align*}
+      \textcolor{red}{verify}
+    \end{parts}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+
+

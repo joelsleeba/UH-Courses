@@ -1,0 +1,132 @@
+% TeX_root = ../main.tex
+
+\begin{proposition}
+  $I-P_K = P_{K^\perp}$
+\end{proposition}
+\begin{proof}
+  Let $x \in X$ and $k \in K$. Then
+  \begin{align*}
+    \langle (I - P_k)(x), k \rangle &= \langle  x - P_k(x) , k \rangle \\
+    &= \langle  x , k \rangle - \langle P_k(x) ,  k \rangle  \\
+    &= \langle x , k \rangle  - \langle x , P_k(k) \rangle \\
+    &= \langle x , k \rangle  - \langle  x , k \rangle  \\
+    &= 0
+  \end{align*}
+  Shows that
+\end{proof}
+
+\begin{proposition}
+  Let $K$ be a closed subspace of $\mathcal{H}$. Let $E \subset K$ be
+  an orthonormal basis
+  for $K$. Extend $E$ to an orthonormal basis $\tilde{E}$ for
+  $\mathcal{H}$. Then \[
+    P_K|_E = I_K, \quad P_K|_{\tilde{E} \setminus E} = 0
+  \]
+\end{proposition}
+
+\begin{remark}[Parserval's Inequality]
+  Let $\mathcal{H}$ be a Hilbert space. Let $E$ be an orthonormal set. Then for
+  every vector $\eta \in \mathcal{H}$, \[
+    \|\eta\|^2 \ge \sum_{e \in E} |\langle \eta ,  e \rangle |^2
+  \]
+\end{remark}
+
+\begin{lemma}
+  \label{PerpPerpisSpan}
+  Let $S$ be a nonempty subset of $\mathcal{H}$. Then \[
+    (S^\perp)^\perp  = \overline{\textrm{span}}(S)
+  \]
+\end{lemma}
+\begin{proof}
+  Notice from the above proposition that $\textrm{Ker}(P_K) =
+  K^\perp$. Thus $(S^\perp)^\perp = \textrm{Ker}(P_{S^\perp})$. Since
+  $P_{S^\perp}(s) = 0$ for all $s \in S$, we see that $S \subset
+  \textrm{Ker}(P_{S^\perp})$. Moreover, since
+  $\textrm{Ker}(P_{S^\perp})$ is a closed subspace, we see that
+  $\overline{ \textrm{\textrm{span}}}(S) \subset
+  \textrm{Ker}(P_{S^\perp}) = ( S^\perp)^\perp$.
+
+  Now see that if $A \subset B$, then $B^\perp \subset A^\perp$. Note
+  that if $\langle  x , b \rangle  = 0$ for all $b \in B$, then
+  $\langle  x , a \rangle =0$ for all $a \in A$ since $A \subset B$.
+  Thus we see that $B^\perp \subset A^\perp$. Then since $S \subset
+  \overline{\textrm{span}}(S)$, we see that
+  $\overline{\textrm{span}}(S)^\perp \subset S^\perp$ and
+  $(S^\perp)^\perp \subset
+  (\overline{\textrm{span}}(S)^\perp)^\perp$. Thus by
+  \autoref{KplusKperpisX}, we see that $(S^\perp)^\perp \subset
+  \overline{\textrm{span}}(S)$.
+\end{proof}
+
+\begin{corollary}
+  \label{OrthonormalBaisEquiv}
+  Let $E$ be an orthonormal subset of $\mathcal{H}$. Then the
+  following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $E$ is an orthonormal basis
+    \item $(E^\perp)^\perp = \mathcal{H}$
+    \item $\overline{\textrm{span}}(E) = \mathcal{H}$
+    \item $\|\eta\|^2 = \sum_{e \in E} |\langle \eta ,  e \rangle
+      |^2, \ \forall \eta \in \mathcal{H}$
+  \end{enumerate}
+\end{corollary}
+\begin{proof}
+  $1 \implies 2 \implies 3$ follows easily from
+  \autoref{PerpPerpisSpan}. To see $3 \implies 4$, since $E$ is
+  orthonormal and $\overline{\textrm{span}}(E) = \mathcal{H}$,
+  we claim that it will be an orthonormal basis. Because if $y \perp E$, then $y
+  \perp \textrm{span}(E)$. If $x_n \in \textrm{\textrm{span}}(E)$
+  such that $x_n \to x$, then since $\langle y , x_n \rangle = 0$ for
+  each $n \in \mathbb{N}$, we get
+  \begin{align*}
+    |\langle x , y \rangle|  = |\langle x - x_n , y \rangle + \langle
+    x_n , y \rangle| = |\langle x - x_n , y \rangle| \le \|x-x_n\|\|y\|
+  \end{align*}
+  Since $x_n \to x$, we see that $\langle x , y \rangle = 0$. Thus we
+  see that $E$ is an orthonormal basis. Thus we see that for all
+  $\eta \in \mathcal{H}$,
+  \begin{align*}
+    \eta = \sum_{e \in E} \langle \eta ,  e \rangle e
+  \end{align*}
+  and Parseval's equality follows.
+
+\end{proof}
+
+\begin{theorem}
+  Let $P \in B(\mathcal{H})$ be an idempotent. Then the following are
+  equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $P = P_K$ for some closed subspace $K \leqslant \mathcal{H}$
+    \item $P = P^*$
+    \item $\|P\| = 1$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  $1 \implies 2, 3$ is proved in
+  \autoref{OrthogoalProjectionsAreSelfAdjointContractions}.
+  To see $2 \implies 1$. Let $K = \textrm{Im}(P)$. Let $\rho \in
+  K^\perp$. Then for all $\eta \in H$, \[
+    \langle P(  \rho) ,  \eta \rangle  = \langle \rho ,  P^*(\eta)
+    \rangle  = \langle \rho ,  P(\eta) \rangle = 0
+  \]
+  So $P|_{K^\perp} = 0$. Since $P^2 = P$, $P|_K = I$.  Hence $P = P_k$.
+
+  To see $3 \implies 1$, assume $P \neq P_K$. Then $\exists \rho \in K^\perp$
+  such that $P(\rho) \neq 0$. For each $n \in \mathbb{N}$, we have
+  $\|\rho + n P(\rho)\|^2 = \|\rho\|^2 + n^2 \|P(\rho)\|^2$ by
+  \autoref{PythagorasTheorem}.
+  And \[
+    \|P(\rho + n P(\rho))\|^2 = (n+1)^2 \|P(\rho)\|^2
+  \]
+  \marginnote{ \scriptsize \textit{\textcolor{red}{nice technique}}}
+  Hence we have
+  \begin{align*}
+    \|P(\rho + n P(\rho))\|^2 - \|\rho + n P(\rho)\|^2 = 2n
+    \|P(\rho)\|^2 + \|P(\rho)\|^2 - \|\rho\|^2
+  \end{align*}
+  So for large $n$, we have \[
+    \|P(\rho + n P(\rho))\| > \|\rho + P(\rho)\|
+  \]
+  so $\|P\| > 1$.
+\end{proof}
+

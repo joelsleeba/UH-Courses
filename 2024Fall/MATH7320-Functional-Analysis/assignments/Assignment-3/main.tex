@@ -1,0 +1,108 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions, var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS. https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+  }
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter 
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+
+\begin{document}
+
+\title{MATH7320 Functional Analysis \\ Homework  3}
+
+% author list
+\author{
+Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    We easily see that if $f:X \to \mathbb{C}$ is a bounded linear functional, then since $\{ 0 \}$ is closed in $\mathbb{C}$, then $\textrm{Ker}(f) = f^{-1}(0)$ is closed. Conversely, if $K = \textrm{Ker}(f)$, then the canonical map $q: X \to X/K$ and the map $\tilde{f}: X/K \to \mathbb{C}$ defined as $\tilde{f}([x]) = f(x)$ is continuous since $X/K$ is finite dimensional and all linear maps between finite dimensional spaces are continuous. Now $f = \tilde{f}\circ q$ gives that $f$ is continuous.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $x_n$ be a Cauchy sequence in $X$. Then $[x_n]$ is Cauchy in $X/Y$ since $\|[x_n] - [x_m]\| = \|[x_n -  x_m]\| \le \|x_n - x_m\|$. Therefore $[x_n] \to [x]$ in $X/Y$. Let $x_{n_k}$ be a subsequence of $x_n$ such that $\|x_{n_k} - x_{n_{k+1}}\| < \frac{1}{2^{k+1}}$. Then $\|[x_{n_k} - x_{n_{k+1}}]\| < \frac{1}{2^{k+1}}$ and for all $k$, there exists $y_k \in Y$ such that $\|x_{n_k} - x - y_k\| < \frac{1}{2^k}$.
+
+    We claim that $y_k$ is a Cauchy in $Y$. Let $0 < n \le m$, then \begin{align*}
+      \|y_m - y_n\| &= \|(x_{n_n} - x - y_n) - (x_{n_m} - x - y_m) - (x_{n_n} - x_{n_m})\|  \\ 
+               & \le \|(x_{n_n} - x - y_n)\|  + \|(x_{n_m} - x - y_m)\| + \|x_{n_n} - x_{n_m}\|  \\ 
+               & < \frac{1}{2^n} + \frac{1}{2^m} + \frac{1}{2^n} \\ 
+               & \le \frac{3}{2^n}
+    \end{align*}
+    Therefore $y_n$ is Cauchy and converges to $y \in Y$. Hence $x_{n_k} \to x+y$. Since the space is Hausdorff we get that $x_n \to x+y$.
+  \end{solution}
+
+
+  \question
+  \begin{solution}
+    Let $S = \{ y_n \in Y \}$ be dense in $Y$ and $T = \{ [x_n] \in X/Y \}$ be dense in $X/Y$. Construct a new collection $U$ of elements of $X$ using the axiom of choice by selecting an element $x \in [x_n]$ for each $[x_n] \in T$. Now we claim that the set $Z = S+U = \{ y+x  \ : \  y \in S, x \in U \}$ is dense in $X$. Clearly we see that $Z$ is countable since the cardinality of $Z$ is the cardinality of $S \times U$.
+
+    Let $x \in X$ and $\epsilon > 0$. Then by density of $T$ in $X/Y$, there exist an $[x_n]$ such that $\|[x] - [x_n]\| = \|[x - x_n]\| < \frac{\epsilon}{3}$. Then there is a $y \in Y$ such that $\|x - x_n - y\|  < \frac{2\epsilon}{3}$. Now again by the density of $S$ in $Y$, there is a $y_n \in S$  such that $\|y - y_n\| < \frac{\epsilon}{3}$. Then \[
+      \|x - (x_n + y_n)\| = \|x - x_n - y_n + (y_n - y)\| \le \|x - x_n - y\| + \|y - y_n\| < \frac{2\epsilon}{3} + \frac{\epsilon}{3} = \epsilon
+    \]
+     Hence we see that $Z$ is dense in $X$.
+  \end{solution}
+
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

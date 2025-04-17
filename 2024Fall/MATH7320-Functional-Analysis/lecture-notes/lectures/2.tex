@@ -1,0 +1,58 @@
+% TeX_root = ../main.tex
+
+\begin{corollary}
+  \begin{itemize}
+    \item Every finite dimensional normed space is complete
+    \item If $X$ is a normed space and $Z$ is a finite dimensional
+      subspace of $X$, then $Z$ is the closed in $X$
+  \end{itemize}
+\end{corollary}
+\begin{proof}
+  \begin{itemize}
+    \item Let $(X, \|\cdot\|)$ be a finite dimensional normed space.
+      Let $\|\cdot\|_2$ be the euclidean norm on $X$. Then by the
+      theorem above there exists $M \in \mathbb{R}$ such that
+      $\frac{1}{M}\|x\|_2 \le \|x\| \le M \|x\|_2 $ for all $x \in X$.
+
+      Let  $(x_n)_{n \in \mathbb{N}}$ be a Cauchy sequence in $(X,
+      \|\cdot\|)$. Then $(x_n)_{ n \in \mathbb{N}} $ is also Cauchy
+      in $(X, \|\cdot\|_2)$. Since the latter space is complete, so
+      is $(X, \|\cdot\|)$.
+    \item \textcolor{red}{verify}
+  \end{itemize}
+\end{proof}
+\begin{note}
+  If $T, S : X \to Y$ are continuous linear maps between normed
+  space, then $T+S$ is also continuous. Also, $\forall \alpha \in
+  \mathbb{F}$, $\alpha T$ is continuous.
+
+  Thus the space $B(X, Y)$ of all continuous linear maps from $X$ to
+  $Y$ is a subspace of all linear maps between $X$ and $Y$.
+\end{note}
+
+\begin{definition}
+  Let $X, Y$ be normed spaces. and $T \in B(X, Y)$. We define the
+  operator norm of $T$ as \[
+    \|T\| = \sup \Big \{ \frac{\|T(x)\|}{\|x\|} \ : \ x \in X, x \neq 0 \Big \}
+  \]
+\end{definition}
+
+\begin{lemma}
+  Let $T \in B(X, Y)$. Then the following are equivalent
+  \begin{itemize}
+    \item $\|T\|$
+    \item $\sup \{ \|T(x)\| \ : \ x \in X , \|x\| \le 1 \}$
+    \item $\sup \{ \|T(x)\| \ : \ x \in X , \|x\| < 1 \}$
+    \item $\inf \{ M \ge 0 \ : \ \|T(x)\| \le M \|x\|, \forall x \in X \}$
+  \end{itemize}
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{proposition}
+  The operator norm is a norm in $B(X, Y)$
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}

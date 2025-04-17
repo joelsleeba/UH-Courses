@@ -1,0 +1,117 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\section{Approximations by simple or continuous functions}
+\begin{theorem}
+  Let $(X, \mathcal{M}, \mu)$ be a measure space, denote by $S$, the
+  collection of simple measurable functions with finite measurable support.
+  Then for $1 \le p < \infty$, $ S \subset L^p(\mu)$ and $S$ is
+  dense in $L^p(\mu)$.
+\end{theorem}
+\begin{proof}
+  Given $f \in L^p(\mu)$, we need to find a sequence $s_n$ in $S$
+  such that $s_n \to f$ in $L^1(\mu)$. First suppose that $f: X \to
+  [0, \infty)$. We know a sequence of simple measurable functions
+  $s_n$ such that $0 \le s_1 \le s_2 \le \ldots$ and \[
+    \lim_{n \to \infty} s_n(x) = f(x)
+  \]
+  for each $x \in X$. Applying dominated convergence theorem, since
+  $|s_n - f| \le f$, for $f \in L^p(\mu)$ gives \[
+    \|f - s_n\|^p_p = \int |f - s_n|^p \ d \mu \le \int |f|^p \ d \mu < \infty
+  \]
+  we get $\|f - s_n\|_p \to 0$
+
+  Now taking a general $f \in L^p(\mu)$, writing $f = u_+ - u_- +
+  i(v_+ - v_-)$ and repeating the process for these gives $s = s_+ -
+  s_- + i(t_+ - t_-)$ where $s_\pm, t_\pm \in S$ and \[
+    \|s_\pm - u_\pm\|_p, \|t_\pm - v_\pm\|_p < \varepsilon
+  \]
+  hence by triangle inequality, we get \[
+    \|s - f\|_p < 4 \varepsilon
+  \]
+  We can make RHS arbitarily small, so $S$ is dense in $L^p(\mu)$.
+\end{proof}
+
+\begin{theorem}
+  Let $X$ be a locally compact Hausdorff space with $1 \le p <
+  \infty$, then $C_c(X)$ is dense in $L^p(\mu)$.
+\end{theorem}
+\begin{proof}
+  It is enough to show $\overline{C_c(X)}$ includes $S$. Given $s \in
+  S$, let $A = \{ s \neq 0  \}$ with $ \mu(A) < \infty$. Then by
+  Luzin's theorem, there is a $g \in C_c(X)$ such that \[
+    \|g\|_\infty \le \|s\|_\infty \quad \textrm{and} \quad
+    \mu(E_\varepsilon) < \varepsilon
+  \]
+  where $E_\varepsilon = \{ x \in X \:\ g(x) \neq s(x) \}$. Since
+  $|g(x) - s(x)| \le 2 \|s\|_\infty$, we get
+  \begin{align*}
+    \|g - s\|_p &= \Big( \int |g - s|^p \ d \mu\Big)^{\frac{1}{p}} \\
+    &= \Big( \int_{E_\varepsilon} | g - s|^p \ d \mu \Big)^{\frac{1}{p}}
+  \end{align*}
+
+  On this set, $|g - s| \le 2 \|s\|_\infty$ gives
+  \begin{align*}
+    \|g - s\|_\infty & \le \Big( \int_{E_\varepsilon} (2
+    \|s\|_\infty)^p \ d \mu \Big)^{\frac{1}{p}} \\
+    & < 2 \|s\|_\infty \varepsilon^{1/p}
+  \end{align*}
+  Since we can make $\varepsilon$ arbitrarily small, we get the density.
+\end{proof}
+
+\begin{remark}
+  This theorem proves that $L^p(\mu)$ is the completion of
+  $(C_c(\mathbb{R}^k), d_p)$ where for $f, g \in C_c(\mathbb{R}^k)$,
+  $ d_p(f, g) = \| f - g\|_p$.
+  The limit of a Cauchy sequence in $C_c(\mathbb{R}^k)$ is determined
+  almost everywhere.
+
+  If $p = \infty$, then the completion of $C_c(\mathbb{R}^k)$ is not
+  $L^\infty(m)$, but $C_o(\mathbb{R}^k)$.
+\end{remark}
+
+\begin{definition}
+  Let $X$ be locally compact Hausdorff, we say a continuous function
+  $f$ vanishes at infinity and write $f \in C_o(X)$ if for
+  $\varepsilon>0$, we can find a compact set $K$ such that $|f(x)| <
+  \varepsilon$ for all $x \notin K$.
+\end{definition}
+
+\begin{theorem}
+  Let $X$ be locally compact Hausdorff, then $C_o(X)$ is the
+  completion of $C_c(X)$ with $\|\cdot\|_\infty$.
+\end{theorem}
+\begin{proof}
+  Let $f \in C_o(X), \varepsilon > 0$, we can choose $K$ such that
+  $K$ is compact and $|f(x)| < \varepsilon$ for all $x \in K^c$.
+  Using Urysohn's lemma, threre is a $g \in C_c(X)$ such that $\chi_K
+  \le g \le 1$, then $h = fg \in C_c(X)$ and
+  \begin{align*}
+    \|h - f\|_\infty &= \|f(1 - g)\|_\infty \\
+    &= \|f(1-g) \chi_{K^c}\|_\infty \\
+    &\le \varepsilon \|1 -g\|_\infty \\
+    &\le \varepsilon
+  \end{align*}
+\end{proof}
+
+\marginnote{ \scriptsize 12-11-2024}
+\begin{proposition}
+  Show that if $\mu(X) < \infty$, with $p \le r \le \infty$, then
+  \begin{align*}
+    L^r(\mu) \subset L^p(\mu)
+  \end{align*}
+  Given $f \in L^r(\mu)$.
+\end{proposition}
+\begin{proof}
+  Let $f \in L^r(\mu)$. Then,
+  \begin{align*}
+    \|f\|_p^p &= \int |f|^p \ d m \\
+    &\le \Bigg(\int |f|^{r} \ d m \Bigg) ^{p/r} \Bigg(\int 1 \ d
+    m\Bigg)^{1 - p/r} \\
+    &\le \|f\|_r^p \mu(X)^{1- \frac{p}{r}} \\
+    &< \infty
+  \end{align*}
+\end{proof}
+
+

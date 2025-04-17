@@ -1,0 +1,77 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{theorem}
+  If $f: X \to [0, \infty]$ is measurable, then there exists a sequence $(s_n)_{ n \in \mathbb{N}}$ of simple non-negative real valued functions such that \begin{enumerate}[label=\roman*]
+    \item each $s_n$ is measurable
+    \item sequence $(s_n)$ is non-decreasing
+    \item $(s_n)$ converge pointwise to $f$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Define a 'staircase to plateau' functions, (defined in the homework-2, question 3) defined as \[
+    \phi_n(x) = \begin{cases}
+      0, & x < 0 \\ 
+      k2^{-n}, & k2^{-n} \le x < (k+1)2^{-n}, \ k \in \{0, 1, 2, \ldots,  \} \\ 
+      n, & x \ge n
+    \end{cases}
+  \]
+  and then let $s_n = \phi_n \circ f$. We first prove the theorem for the special case $f = \phi : [0, \infty) \to [0, \infty):= \phi(t) = t$.
+
+  We have $0 \le \phi_1(t) \le \phi_2(t) \le \ldots$ for each $t \in \mathbb{R}$ and for $t \le n$, \[
+    |\phi_n(t) - \phi(t)| \le \frac{1}{2^n}
+  \]
+   so since $\phi(t) < \infty$, $\phi_n(t) \to \phi(t)$ for each fixed $ t \in \mathbb{R}$. We also known from he homework that each $ \phi_n$ are Borel measurable. 
+
+   For the general case, we take $s_n = \phi_n \circ f$. Then similar to what we got above, we get $0 \le s_1 \le s_2 \le \ldots$ while each $s_n$ is simple. Also for each $ t \in \mathbb{R}$, $s_n(t) \to f(t)$.
+\end{proof}
+
+\begin{definition}
+  Let $(X, \mathcal{M})$ be a measurable space, and $Z = [0, \infty]$ or $Z = \mathbb{C}$. A function $\mu: \mathcal{M} \to Z$ is called countably additive (or $\sigma$-additive) if given $A_1, A_2, \ldots \in \mathcal{M}$ such that $A_i \cap A_j = \emptyset$ if $i \neq j$, we have \[
+    \mu \Big( \bigcup_{j = 1}^{\infty} A_j\Big) = \sum_{j = 1}^{n} \mu(A_j)
+  \]
+
+  If $Z = [0, \infty]$ and  if there is a $A \in \mathcal{M}$ such that $\mu(A) \le \infty$, then we say that $\mu$ is a measure (or a positive measure). And we call $(X, \mathcal{M}, \mu)$ a measure space.
+
+  If $Z = \mathbb{C}$, then we call $\mu$ a complex measure.
+\end{definition}
+
+\begin{example}
+  We give examples of different measures.
+  \begin{itemize}[]
+    \item $X = \mathbb{N}, \mathcal{M} = P(\mathbb{N}), \mu(S) = |S|$.
+      This is called the counting measure.
+    \item $X = \mathbb{N}, \mathcal{M} = P(\mathbb{N}), \mu(S) = \sum_{j \in S} \frac{1}{2^j}$
+  \end{itemize}
+\end{example}
+
+\section{Properties of Measures}
+\begin{proposition}
+  Let $\mu$ be a (positive) measure on a $\sigma$-algebra $\mathcal{M}$. Then \begin{enumerate}[label=(\arabic*)]
+    \item $\mu(\emptyset) = 0$
+    \item $A_1, A_2, \ldots , A_n$ with $A_i \cap A_j = \emptyset$ for each $i \neq j$, then  \[
+        \mu \Big( \cup_{j = 1}^{n}A_j\Big) = \sum_{j = 1}^{n} \mu(A_j)
+    \]
+  \item If $A, B \in \mathcal{M}$ with $A \subset B$, then $\mu(A) \le \mu(B)$. And if $\mu(B) \le \infty$, then \[
+      \mu(B \setminus A)  = \mu(B) - \mu(A)
+  \]
+    \item If $A_1 \subset A_2 \subset \ldots$ with all $A_j \in \mathcal{M}$, then \[
+        \mu \Big( \cup_{j = 1}^{\infty}A_j\Big) = \lim_{j \to \infty} \mu( A_j)
+    \]
+  \item If $A_1 \supset A_2 \supset \ldots $ with all $A_j \in \mathcal{M}$, and ther is $j_o \in \mathbb{N}$ with $\mu(A_{j_o}) \le \infty$, then \[
+      \mu \Big( \cap_{j = 1}^{\infty}A_j\Big) = \lim_{j \to \infty} \mu(A_j)
+  \]
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}[label=\arabic*]
+    \item Let $A \in \mathcal{M}$ with $\mu(A) \le \infty$. 
+    \item 
+    \item 
+    \item WLOG assume $j_o = 1$. Consider the sets $B_j = A_1 \setminus A_j$. Then we apply the above property to get \[
+        \mu \Big( \bigcup_{j = 1}^{\infty}(A_1 \setminus A_j)\Big) = \mu(A_1) - \lim_{j \to \infty} \mu(A_j)
+    \]
+      But we see that $\cup_{j = 1}^{\infty}(A_1 \setminus A_j) = \cup_{ j = 1}^{\infty}(A_1 \cap A_j^c)$. Now since each $A_j \subset A_1$, we get this to be equal to $A_1 \setminus \cup_{j = 1}^{\infty}A_j^c = A_1 \cap  $
+  \end{enumerate}
+\end{proof}

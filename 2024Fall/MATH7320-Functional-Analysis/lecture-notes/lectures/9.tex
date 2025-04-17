@@ -1,0 +1,88 @@
+% TeX_root = ../main.tex
+
+\begin{definition}
+  Let $X$ and $Y$ be normed spaces and $T \in B(X, Y)$. The adjoint
+  of $T$, denoted by $T^{*} \in B(Y^{*}, X^{*})$, is the map $T^{*}:
+  f \to f\circ T$
+\end{definition}
+
+\begin{proposition}
+  $\|T\| = \|T^*\|$
+\end{proposition}
+\begin{proof}
+  $|T^*(f)| \le \|f \circ T\| \le \|T\|\|f\|$ implies $ \|T^{*}\| \le \|T\|$
+  \begin{align*}
+    \|T^*\| & = \sup \{ \|T^{*}(\phi)\| \ : \ \phi \in Y^*, \|\phi\| \le 1 \} \\
+    &= \sup \{ |\phi(T(x))| \ : \ \phi \in Y^*, x \in X, \|\phi\| \le
+    1, \|x\| \le 1 \} \\
+    &= \|T\|
+  \end{align*}
+  Note that the last equality is a consequence of HBT since it
+  guarantees the existence of $\phi_y \in Y^*$ with $\|\phi_y\|\le 1$
+  and $\phi_y(y) = |y|$.
+\end{proof}
+
+\begin{lemma}
+  For any $T \in B(X, Y)$, $T^*: Y^* \to X^*$ is weak * continuous
+  (in both spaces)
+\end{lemma}
+\begin{proof}
+  Let $\phi_i \to \phi$ weakly in $Y^*$. Then by definition for all
+  $y \in Y$, $\phi_i(y) \to \phi(y)$. Then for $x \in X$,
+  $T^*(\phi_i)(x) = \phi_i(T(x)) \to \phi(T(x)) = (T^*(\phi))(x)$
+  which shows the continuity of $T^*$.
+\end{proof}
+
+\begin{lemma}
+  For any normed space $X$, $i_X(X)$ is weak * dense in $X^{**}$.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{example}
+  Is $i_{X^*}$ weak * - weak * continuous.
+\end{example}
+
+\section{Locally Convex Topological Vector Spaces}
+
+\begin{lemma}
+  Let $X$ be a normed space and $x_1 , x_2 , \ldots , x_n \in X$ and
+  $\epsilon_1 , \epsilon_2 , \ldots , \epsilon_n \ge 0$. Then the set \[
+    \bigcup_{x_1 , x_2 , \ldots , x_n, \epsilon_1 , \epsilon_2 ,
+    \ldots , \epsilon_n}(\phi)
+  \]
+  is convex.
+  \marginnote{ \scriptsize Review convexity arguments in Arveson's
+  `Subalgebras of C* Algebras'}
+  Moreover any topological vector spaces with the topology induced by
+  a family of seminorms is locally convex.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{definition}
+  Let $X$ be a vector space and $E \subset X$ be a convex subset. An
+  element $a \in E$ is called an extreme point of $E$ if whenever $x,
+  y \in E$, $0 \le t \le 1$ with $a  = tx + (1-t) y$, then $x = y = a$.
+\end{definition}
+\begin{example}
+  Let $\bar{D} = \{ \alpha \in \mathbb{C} \ : \ |\alpha| \le 1 \}$.
+  Then $\bar{D}$ is convex with $\textrm{Ext}(\bar{D}) = S^1$
+\end{example}
+
+\begin{theorem}[Krein-Milman Theorem]
+  Let $X$ be a locally convex space, and let $K$ be a compact convex
+  subset of $X$. Then the $ \textrm{Ext}(K) \neq \emptyset$ and
+  indeed $K = \overline{\textrm{co}}(\textrm{Ext}(K))$
+\end{theorem}
+
+\begin{definition}
+  Let $V$ be a vector space and $S\subset V$. The convex hull of $S$
+  is defined as \[
+    \textrm{co}(S) = \Big \{ \sum_{i = 1}^{n} t_i x_i \ \Big| \ 0 \le
+    t \le 1, \sum t_i = 1, x_i \in S \Big\}
+  \]
+\end{definition}
+

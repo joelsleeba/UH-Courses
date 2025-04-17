@@ -1,0 +1,43 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{note}[Warm up]
+  Let $(X, \mathcal{M}, \mu)$ be a measure space and  $f: X \to [0, \infty]$, with $f \in L^{1}(\mu)$. Let $ E = \{ x \in X \ : \ f(x) \ge 1 \}$. Then show $\mu(E) < \infty$.
+
+  This is Chebyshev's inequality for general measures.
+\end{note}
+
+\begin{remark}
+  Consider the distance (semi-metric) between sets in $\mathcal{M}$, defined as $\mu(A \Delta B)$. Let $f: X \to [0, \infty]$ be a function $f \in L^{1}(\mu)$. Now let $\phi$ be a measure defined as $d \phi = f d \mu$. Then define $\tilde{ d}(A, B) = \phi(A \Delta B) = \int_{A \Delta B}  f \ d \mu$. Then if $d(A_n , B) \to 0$ will imply $\tilde{ d}(A_n, B) \to 0$.
+\end{remark}
+
+\begin{theorem}
+  Any measure space $(X, \mathcal{M}, \mu)$ can be equipped with a complete extension of $\mu$ on the collection of sets, $\mathcal{M}^{*} = \{ E \subset X : \exists A, B \in \mathcal{M}, \mu(B \setminus A) = 0 \}$
+  in which case we define $\mu^{*}(E) = \mu(A)$, which gives a complete measure on $\mathcal{M}^{*}$.
+\end{theorem}
+\begin{proof}
+  First, we establish $\mu^{*}$ is well defined, that is it does not depend on the particular choice of the subset $A \subset E$. To see this, let $A^\prime \subset E \subset B^\prime$ such that $\mu(B^\prime \setminus A^\prime) = 0$. By the inclusions, $A \subset E \subset B^\prime$. So we get \[
+       A \setminus A^\prime \ \subset \  E \setminus A^\prime \ \subset \ B^\prime\setminus A^\prime
+  \]
+  Thus by monotonicity of $\mu$, we get $\mu(A\setminus A^\prime) = 0$. Moreover by symmetry of $A$ and $A^\prime$, we get $\mu(A^\prime \setminus A) = 0$.
+  Thus we get $\mu(A) = \mu(A \setminus A^\prime) + \mu(A \cap A^\prime) = \mu(A^\prime \setminus A) + \mu(A^\prime \cap A) = \mu(A^\prime)$. Hence we see that the definition of $\mu^{*}$ is well defined.
+
+  Now we show that $\mathcal{M}^*$ is actually a $\sigma$-algebra. We immediately see that $\mu^{*}(\emptyset) = 0$. \begin{itemize}
+    \item $\mathcal{M} \subset \mathcal{M}^{*}$ implies $X \in \mathcal{M}^{*}$
+    \item Let $E \in \mathcal{M}^*$, then there are $ A, B \in \mathcal{M}$ with $A \subset E \subset B$ and $ \mu(B\setminus A) = 0$. Thus $B^c \subset E^c \subset A^c$. Then $\mu(A^c \setminus B^c) = \mu(A^c \cap B) = \mu(B \cap A) = 0$ shows $ E^c \in \mathcal{M}^*$.
+    \item Let $(E_j)$ be a countable collection of disjoint sets in $\mathcal{M}^{*}$. Then there are subsets $A_j, B_j \in \mathcal{M}$ with $A_j \subset E_j \subset B_j$, with $\mu(B_j \setminus A_j) = 0$. Then let \[
+        A = \bigcup_{j = 1}^{\infty}A_j \quad E = \bigcup_{j = 1}^{\infty}E_j \quad B = \bigcup_{j = 1}^{\infty}B_j
+    \]
+      Then we have $A \subset E \subset B$. Moreover since each $E_j$ are disjoint, we get $A_j$ are disjoint.
+  \end{itemize}
+
+  Now show $\mu^{*}$ is countably additive and then show $\mu^{*}$ is complete. \textcolor{red}{verify}
+\end{proof}
+
+\begin{remark}
+  Consider $C([0, 1])$ equipped with the sup norm. Recall that this is a Banach space. Let $\lambda: C([0, 1]) \to \mathbb{C}$ be defined as \[
+    \lambda(f) = \int_{0}^{1} f(x) \ dx
+  \]
+  Recall also that $|\lambda(f)| \le \lambda(|f|) \le \|f\|_\infty$. Hence we see $\lambda$ is a bounded linear functional. Therefore we see that we can associate the Riemann integral with a linear functional. We ask if we can go back i.e if we have a linear functional on $C([0, 1])$, can we get a measure to integrate functions on $C([0, 1])$
+\end{remark}

@@ -1,0 +1,94 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{remark}
+  Consider the counting measure $\mu$, on $\mathbb{N}$. Find a
+  sequence of functions $f_n : \mathbb{N} \to [0, \infty)$, such that
+  $\|f_n\|_1 \to 0$ and $g = \sup_{n} f_n \notin L^1(\mu)$.
+\end{remark}
+
+\begin{lemma}
+  Let $(f_n) \in L^p( \mu)$ be a Cauchy sequence in $1 \le p \le
+  \infty$. Then there exists a subsequence $(f_{n_j})$ which is convergent
+  pointwise almost everywhere.
+\end{lemma}
+\begin{proof}
+  First suppose, $p < \infty$. Starting from a Cauchy sequence,
+  choose a subsequence $n_1 < n_2 < \ldots$ such that for each $ k
+  \in \mathbb{N}$ \[
+    \|f_{n_k} - f_{n_{k+1}}\| < \frac{1}{2^k}
+  \]
+  Let \[
+    g_l = \sum_{k = 1}^{l} |f_{n_{k+1}} - f_{n_k}| \quad g = \sum_{k
+    = 1}^{\infty} |f_{n_{k+1}} - f_{n_k}|
+  \]
+  Then $g_n^p \le g_{n+1}^p \le \ldots$ and $g_n^p \to g^p$. Then by
+  monotone convergence theorem, \[
+    \int g_n^p \ d \mu \to \int g^p \ d \mu
+  \]
+  Moreover, using Minkowski's inequality, we get
+  \begin{align*}
+    \|g_l\|_p &\le \sum_{k = 1}^{l} \|f_{n_{k+1}} - f_{n_k}\| \\
+    &\le \sum_{k = 1}^{\infty}  \|f_{n_{k+1}} - f_{n_k}\| \\
+    &\le 1
+  \end{align*}
+  By monotone convergence, we get $\|g\|_p \le 1$. In particular $g$
+  is finite almost everywhere. Hence \[
+    f = \sum_{k = 1}^{\infty} (f_{n_{k+1}} - f_{n_k})
+  \]
+  is absolutely convergent almost everywhere. So by telescoping
+  series for almost every $x \in X$
+  \begin{align*}
+    f(x) &= \lim_{l \to \infty} \sum_{k = 1}^{l} (f_{n_{k+1}} - f_{  n_k})(x) \\
+    &= \lim_{ l \to \infty} (f_{n_{l+1}}(x) - f_{n_1}(x))
+  \end{align*}
+  So $f_{n_l}$ converges for almost every $x \in X$.
+
+  Next, we consider $p = \infty$.  For $n, k \in \mathbb{N}$, let
+  \begin{align*}
+    E_{n, k} = \{ x \in X  \ : \  |f_n(x) - f_k(x)|> \|f_n - f_k\|_\infty \}
+  \end{align*}
+  Then $\mu(E_{n, k}) = 0$, by the definition of essential supremum.
+  Moreover $E = \cup_{n, k = 1}^{\infty} E_{n, k}$ also has measure $0$.
+  On $E^c$, for each $k , n \in \mathbb{N}$, we have \[
+    |f_n(x) - f_k(x)| \le \| f_n - f_k\|
+  \]
+  This means $f_n|_E^c$ converges uniformly.
+\end{proof}
+
+\begin{theorem}
+  For $1 \le p \le \infty$, $L^p(\mu)$ is a complete metric space.
+  (After identifying functions that are equal almost everywhere.)
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item For $p = \infty$, the proof in the above lemma is the proof
+    \item For the rest of  the $p$, consider the Cauchy sequence
+      $f_n$ in $L^p(\mu)$, $p < \infty$. It has c pointwise almost
+      everywhere converging subseqence converging to $f$. We need to
+      show that $ f \in L^p(\mu)$ and convergence is in norm. That is
+      $  \|f_n - f\|_p \to 0$.
+
+      We apply Fatou's lemma to the function $g_k = |f_n - f_{n_k}|^p$ to get
+      \begin{align*}
+        \lim_{k \to \infty} \inf \int |f_n - f_{n_k}|^p \ d \mu &\ge
+        \int \lim_{k \to \infty} \inf |f_n - f_{n_k}|^p \ d \mu \\
+        & =  \|f_n - f\|^p
+      \end{align*}
+
+      Given $\epsilon > 0$, since $f_n$ is Cauchy in $ L^p(\mu)$,
+      there is a $ N$ such that for $n, m \ge N$, we have \[
+        \epsilon^p > \|f_n - f_m\|^p_p = \int |f_n - f_m|^p \ d \mu
+      \]
+      By taking $m = n_k \to \infty$, we then get  \[
+        \epsilon^p \ge \|f_n - f\|_p^p
+      \]
+      This implies $f \in L^p(\mu)$, by \[
+        \|f\|_p \le \|f - f_n\|_p  + \|f_n\|_p
+      \]
+      Now that fact that $\|f - f_n\|_p \to 0$, we get $f \in L^1(\mu)$.
+  \end{enumerate}
+\end{proof}
+
+

@@ -1,0 +1,75 @@
+% TeX_root = ../main.tex
+
+\marginnote{ \scriptsize 19/11/24}
+
+\begin{theorem}[Orthogonal Projections]
+  If $M$ is a closed subspace of a Hilbert space $\mathcal{H}$, then
+  for each $h \in \mathcal{H}$, there is a unique pair $m \in M$ and
+  $ n \in M^\perp$ such that $h = m + n$ and $\|h\|^2 = \|m\|^ +
+  \|n\|^2$. Moreover, the maps $P(h) = m$, $Q(h) = n$ are linear and
+  write $m = Ph, n = Qh$
+\end{theorem}
+\begin{proof}
+  Fix $h \in \mathcal{H}$. Pick $m \in M$ that is nearest to $h$,
+  using precedent lemma. Let $n = h-m$. We will show $ n \in
+  M^\perp$. For any $ x \in M$, $\alpha \in \mathbb{C}$, consider
+  \begin{align*}
+    \|n - \alpha x\|^2 &= \|n\|^2 - 2 \Re (\alpha \langle x , n
+    \rangle ) + |\alpha|^2 \|x\|^2
+  \end{align*}
+  and $\|h\|^2 = \|m\|^2 + \|n\|^2$. Suppose $\langle  x , n \rangle
+  \neq 0$. Choose $\alpha = \frac{t}{\langle x , n \rangle }$ for $t \in
+  \mathbb{R}$. Then
+  \begin{align*}
+    \|n - \alpha x\|^2 &= \|n\|^2 - 2t + \frac{t^2\|x\|^2}{|\langle x
+    , n \rangle |^2}
+  \end{align*}
+  For sufficiently small $t$, we have $2t >
+  \frac{t^2\|x\|^2}{|\langle x, n \rangle |^2}$. Then we'd get
+  \begin{align*}
+    \|n - \alpha x\|^2 < \|n\|^2
+  \end{align*}
+  Replacing $n$ with $h -m$, we get
+  \begin{align*}
+    \|h - (m + \alpha x)\|^2 < \| h -m\|^2
+  \end{align*}
+  which contradicts the optimality of $m$ for distance to $h$. We
+  conclude $ \langle x , n \rangle = 0$.
+  This is true for each $x \in M$. Thus, we get $ n \in M^\perp$.
+
+  Now to see that the choice of $m$(and $n$) is unique, let $h =
+  m^\prime + n^\prime$, with $m^\prime \in M, n^\prime \in M^\perp$.
+  Then $m + n = m^\prime + n^\prime$, which implies
+  \begin{align*}
+    \underbrace{m - m^\prime}_{\in M} = \underbrace{n^\prime - n}_{\in M^\perp}
+  \end{align*}
+  which forces $ m = m^\prime, n = n^\prime$, since $ M \cap M^\perp = \{ 0 \}$
+
+  Now for the linearity of $P, Q$, let $h = h_1 + \alpha h_2$, where
+  $h_1 = m_1 + n_1, h_2 = m_2 + n_2$ for $ m_i \in M,
+  n_i \in M^\perp$. Then
+  \begin{align*}
+    h = \underbrace{m_1 + \alpha m_2}_{\in M} + \underbrace{ n_1 +
+    \alpha n_2}_{\in M^\perp}
+  \end{align*}
+  This shows $P: h \to m, Q: h \to n$ are linear maps.
+\end{proof}
+
+\begin{definition}
+  The maps $P, Q$ above are called orthogonal projections onto $M$
+  and $M^\perp$, respectively.
+\end{definition}
+
+\begin{corollary}
+  Let $M$ be a proper closed subspace in a Hilbert space
+  $\mathcal{H}$. Then $M^\perp \neq \{ 0\}$.
+\end{corollary}
+
+\begin{exercise}
+  Let $M \subset L^2(\mathbb{R})$ such that
+  \begin{align*}
+    M = \{ f \in L^2(\mathbb{R})  \ : \  f(x) = \alpha_n  \textrm{
+    for almost every } x \in [n, n+1) \}
+  \end{align*}
+\end{exercise}
+

@@ -1,0 +1,194 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6303 - Modern Algebra II \\ Homework  4}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part Since $\textrm{Tor}(M) \subset M$ by the definition, the
+      distributivity properties of the $R$-addition and
+      $R$-multiplication hold. We only need to prove that
+      $\textrm{Tor}(M)$ is a subgroup of $M$ to show that it is a
+      submodule. Let $g, h \in \textrm{Tor}(M)$, then there exits
+      $r_g, r_h \in R\setminus \{0\}$ such that $r_gg = r_h h = 0$.
+      Since $R$ is an integral domain, $r_g r_h \neq 0$, and by the
+      commutativity of the ring $R$,
+      \begin{align*}
+        r_gr_h(g + h) = r_gr_h g + r_g r_h h = r_h r_g g + 0 = 0
+      \end{align*}
+      Thus $g + h \in \textrm{Tor}(M)$. To see $-g \in
+      \textrm{Tor}(M)$, notice that
+      \begin{align*}
+        0 = r_g g = (-r_g)(-g)
+      \end{align*}
+      Thus $\textrm{Tor}(M)$ is a subgroup of $M$, and hence a submodule of $M$
+
+      \part Consider the ring $Z_6:= \mathbb{Z}/ 6 \mathbb{Z}$ and
+      the module $Z_6$ over $Z_6$. Then $\textrm{Tor}(Z_6) = \{ 0, 2,
+      3, 4 \}$. Clearly this is not a submodule since $2 + 3 \not\in
+      \textrm{Tor}(Z_6)$.
+
+      \part Let $a \in \mathbb{R}$ be a zero divisor such that $ab =
+      0$ for some $b \neq 0 \in \mathbb{R}$. If $M =
+      \textrm{Tor}(M)$, we are done. So Let $x \in M \setminus
+      \textrm{Tor}(M)$. Then
+      $a(bx) = (ab) x = 0$
+      shows that $bx \in \textrm{Tor}(M)$. Since $x \not\in
+      \textrm{Tor}(M)$, $bx \neq 0$, and we are done.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $A_N = \{ r \in R \ | \ rn = 0, \ \forall n \in N \}$ be the
+    annihilator of the submodule $N$ of $M$. If $a, b \in A_N$, then
+    clearly $a + b, ab \in A_N$ since for any $n \in N$
+    \begin{align*}
+      (a + b)n = an + bn = 0 + 0 = 0 \\
+      (ab)n = a(bn) = a(0) = 0
+    \end{align*}
+    Thus $A_N$ is a subring of $R$. Now let $c \in R$, then for any
+    $n \in N$, $cn \in N$ since $N$ is a submodule. Also
+    \begin{align*}
+      (ac)n = a(cn) = 0
+    \end{align*}
+    thus $ac \in A_N$. Since $(ca)n = c(an) = c0 = 0$, we also get
+    $ca \in A_N$ proving that $A_N$ is a two sided ideal of $R$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $I$ be a right ideal of $R$ and $N_I = \{ m \in M  \ | \  am
+    = 0, \ \forall a \in I \}$. By the submodule criterion, we'll be
+    done if we show that $r(x - y) \in N_I$ for all $x, y \in N_I$
+    and $r \in R$. Let $x, y \in N_I$. Then for any $a \in I$,
+    \begin{align*}
+      ar(x - y) = (ar)x - (ar)y = 0 - 0 = 0
+    \end{align*}
+    where $arx, ary  = 0$ since $ar \in I$ as $ I$ is a right-ideal.
+    Thus $N_I$ is a submodule of $M$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part Let $I$ be the annihilator of $M$ in $\mathbb{Z}$, then by the
+      definition of annihilator $n \in I$ if and only if $nm = 0$ for all $m \in
+      M$. A typical element of $M$ is of the form $(x, y, z)$, where $x
+      \in \mathbb{Z}/24\mathbb{Z}$, $ y \in \mathbb{Z}/15\mathbb{Z}$,
+      and $ z \in \mathbb{Z}/50\mathbb{Z}$. Therefore $n(x, y, z) =
+      (nx, ny, nz) = 0$ if and only if $24|nx, 15|ny$ and $50|nz$.
+      Since this must
+      hold true for all $x, y, z$, the least positive integer $n$ which
+      satisfy all the three conditions is $n = \textrm{lcm}(24, 15, 50)
+      = 600$. Hence $ I = \langle 600 \rangle = 600 \mathbb{Z}$.
+
+      \part Given that $I = 2\mathbb{Z}$. Let $N_I \subset M$ be the
+      annihliator of $I$ in $M$. Then by the definition of $N_I$,
+      $(x, y, z) \in N_I$ (where $x, y, z$ are as before) if and only
+      if $(ax, ay, az) = 0$ for all $a \in I$. Since $I = 2
+      \mathbb{Z}$, for $a = 2n$, this reduces to having $24|2nx,
+      15|2ny, 50|2nz$ for all $ n \in \mathbb{Z}$. Thus, we see that
+      $12|x, 15|y, 25|z$.
+
+      Thus $N_I = \langle (12, 0, 0), \ (0, 0, 25)  \rangle \cong
+      \mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/2 \mathbb{Z}$
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    From what we have done in the lecture, we know that submodules of
+    $F[x]$ correspond to the invariant subspaces of $T$. Thus we'll
+    be done if we show that the invariant subspaces of $T :
+    \mathbb{R}^2 \to \mathbb{R}^2 := (x, y) \mapsto (0, y)$ are
+    precisely $\{ 0 \}, \mathbb{R}^2$, $x$-axis and the $y$-axis.
+    Clearly all of these are invariant subspaces by basic verification.
+
+    Now let $V$ be any proper non-trivial invariant subspace of $V$ with $(x, y)
+    \in V$. Since $V$ is proper, $V = \textrm{span}\{ (x, y) \}$. If
+    either $x = 0$ or
+    $y = 0$, then $V$ would be $x$-axis or $y$-axis respectively.
+    Hence for the sake of contradiction, assume $x, y \neq 0$. But
+    $T(x, y) = (0, y)$ and since $(x, y), (0, y)$ are linearly
+    independent, invariance of $V$ under $T$ forces $V =
+    \mathbb{R}^2$ which contradicts the proper subspace assumption.
+    Hence we are done.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

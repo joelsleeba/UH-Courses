@@ -1,0 +1,161 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 16/01/2025 }
+
+\begin{exercise}
+  Find an orthonormal basis for $\ell^{2}(X)$
+\end{exercise}
+\begin{solution}
+  We want an orthonormal family $(u_\alpha)_{\alpha \in A}$ such that
+  \begin{align*}
+    \|h\|^2 = \sum_{\alpha \in  A} |\langle h , u_\alpha \rangle |^2
+  \end{align*}
+  But here $\|h\|^2 = \sum_{x \in X} |h(x)|^{2}$, and
+  \begin{align*}
+    \langle h , g \rangle = \sum_{x \in X} h(x) \overline{g(x)}
+  \end{align*}
+  If we choose $u_x = \chi_{x}$, then we see that this satisfy our
+  required properties.
+\end{solution}
+
+We formulate consequences of the characterization of orthonormal bases.
+
+\begin{theorem}
+  Let $(u_\alpha)_{\alpha \in A}$ be an orthonormal basis for a
+  Hilbert space $\mathcal{H}$. Let
+  \begin{align*}
+    A_o = \{ \alpha  \ : \   \langle h , \alpha \rangle \neq 0 \}
+  \end{align*}
+  \marginnote{ \scriptsize \it Use the connection between inner
+  product and evaluation from above to see that $A_o$ is at most countable.}
+  Then enumerating  $A_o$ by $A_o = \{  \alpha_1 ,  \alpha_2 , \ldots
+  \}$ and considering
+  \begin{align*}
+    h_n = \sum_{j = 1}^{n} \langle h , u_{\alpha_j} \rangle  u_{\alpha_j}
+  \end{align*}
+  gives $h_n \to h$.
+\end{theorem}
+\begin{proof}
+  We saw that $h_n$ forms a cauchy sequence bases on the last oproof and choose
+  \begin{align*}
+    A_j = \{ \alpha_k  \ : \  1 \le k \le j \}
+  \end{align*}
+  Let $g = \lim_{n \to \infty} h_n$. Then the continuity of the inner
+  product gives $ \langle h-g , u_\alpha \rangle = 0$ for each $\alpha \in A$.
+  Thus
+  \begin{align*}
+    \|h - g\|^2 = \sum_{\alpha \in  A} |\langle h-g , u_\alpha \rangle |^2 = 0
+  \end{align*}
+  so $h = g$.
+\end{proof}
+
+\begin{corollary}
+  If $(u_\alpha)_{\alpha \in \mathbb{N}}$ is an orthonormal basis for
+  a Hilbert space $\mathcal{H}$,
+  then for each $h \in  \mathcal{H}$,
+  \begin{align*}
+    h = \sum_{n \in \mathbb{N}} \langle h , u_n \rangle u_\alpha
+  \end{align*}
+  Conversely, if $\sum_{n \in \mathbb{N}} |c_n|^2 < \infty$, then
+  \begin{align*}
+    \sum_{n \in \mathbb{N}} c_n u_n \in \mathcal{H}
+  \end{align*}
+\end{corollary}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{remark}
+  We can also take $  \mathbb{Z}$ instead of $\mathbb{N}$ in the above cases.
+\end{remark}
+
+\begin{example}
+  Consider $L^2([-\pi, \pi])$, then
+  \begin{align*}
+    e_n(x) = \frac{1}{\sqrt{2\pi}} e^{inx}
+  \end{align*}
+  defines an orthonormal basis $(e_n)_{n \in \mathbb{Z}}$ for
+  $L^{2}([-\pi, \pi])$
+\end{example}
+\begin{proof}
+  It is clear that the above is an orthonormal family. We show that
+  finite linear combinations of $e_n$s are dense in
+  $L^{2}([-\pi, \pi])$.
+  Find a $g \in C([-\pi, \pi])$, $\varepsilon/3$ away from $g$. Now
+  find a $h$ periodic which is $ \frac{\varepsilon}{3}$ away from
+  $g$. Now use Stone-Weierstrass theorem.
+\end{proof}
+
+\begin{corollary}[Reisz-Fischer Theorem]
+  If $f \in L^{2}([-\pi, \pi])$, then $$f = \sum_{n \in \mathbb{Z}}
+  \langle f , e_n \rangle e_n$$ and $\|f\|^2 = \sum_{n \in \mathbb{Z}}
+  |\langle f , e_n \rangle ^2|$.
+  Moreover, if $c \in \ell^{2}(\mathbb{Z})$, then
+  \begin{align*}
+    g = \sum_{n \in \mathbb{Z}} c_ne_n \in L^{2}([-\pi, \pi])
+  \end{align*}
+\end{corollary}
+
+\begin{remark}
+  For $f \in L^{2}([-\pi, \pi])$, $c_n = \langle f , e_n \rangle$ are
+  called Fourier coefficients.
+\end{remark}
+
+\begin{theorem}
+  Let $\mathcal{H}$ be a Hilbert space, then $\mathcal{H}$ has an
+  orthonormal basis.
+\end{theorem}
+\begin{proof}
+  We will show this using Zorn's lemma. Let $$\mathscr{S} = \{ U \subset H
+  \ : \  U \textrm{ is an orthonormal set} \}$$
+  It is easy to see that $\mathscr{S}$ is nonempty. Order
+  $\mathscr{S}$ by set inclusion. Let $\mathscr{C}$ be a chain in
+  $\mathscr{S}$, then
+  \begin{align*}
+    U_{\mathscr{C}} = \bigcup_{C \in \mathscr{C}} C
+  \end{align*}
+  will be an orthonormal set in $\mathscr{S}$. (Use the standard
+  arguments to see this). Therefore $U_{\mathscr{C}}$ is the upper
+  bound for the chain $\mathscr{C}$. Hence we see that $\mathscr{S}$ has a
+  maximal element by the Zorn's lemma. Hence $\mathcal{H}$ has an
+  orthonormal basis.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{H}, \mathcal{K}$ be Hilbert space. A linear map $V:
+  \mathcal{H} \to \mathcal{K}$ is an isometry if
+  \begin{align*}
+    \langle Vh , Vg \rangle_{\mathcal{K}} = \langle h , g \rangle_{
+    \mathcal{H}}
+  \end{align*}
+  for each $h, g \in \mathcal{H}$.
+  If $V$ is onto, we say $V$ is unitary. Then we say $\mathcal{H}$
+  and $\mathcal{K}$ are isomorphic.
+  (From preservation of preservation of norm, $V$ is one-one).
+\end{definition}
+
+\begin{proposition}
+  A linear map $V: \mathcal{H} \to \mathcal{K}$ is an isometry if and
+  only if for every $h \in \mathcal{H}$,
+  \begin{align*}
+    \|Vh\|_{\mathcal{K}} = \|h\|_{\mathcal{H}}
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  One way is easy. That is if the inner product is preserved, then
+  the norm is preserved. Conversely, we use the polarization identity.
+  \begin{align*}
+    \langle h, g \rangle = \frac{1}{4}\sum_{j = 1}^{4} i^j\|h + i^j
+    g\|^2,  \quad ( i = \sqrt{-1})
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  Let $\mathcal{H} = \ell^{2}(\mathbb{N})$. Define
+  \begin{align*}
+    S : \mathcal{H} \to \mathcal{H} := (x_1 , x_2 , \ldots) \mapsto
+    (0, x_1 , x_2 , \ldots , x_n)
+  \end{align*}
+  Then $S$ is clearly an isometry, but not unitary since nothing maps
+  to $(1, x_1 , x_2 , \ldots)$
+\end{example}

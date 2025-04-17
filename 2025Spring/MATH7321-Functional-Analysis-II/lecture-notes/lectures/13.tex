@@ -1,0 +1,80 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 04/03/2025 }
+
+\section{Tensor Product of Normed Spaces}
+
+\subsection{Few Facts}
+
+Suppose $T : X \to X^\prime$ and $S: Y \to Y^\prime$ are linear. Then
+there exist a unique linear map $T \otimes S : X \otimes Y \to
+X^\prime \otimes Y^\prime$, such that
+\begin{align*}
+  (T \otimes S)(x \otimes y) = T(x) \otimes S(y)
+\end{align*}
+
+\begin{lemma}
+  \label{lem:13}
+  Let $x_1 , x_2 , \ldots , x_n \in X$, and $y_1 , y_2 , \ldots , y_n
+  \in Y$. Then the following are equivalent
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\sum_{i = 1}^{n} x_i \otimes y_i = 0$
+    \item $\sum_{i = 1}^{n} \phi(x_i) \psi(y_i) = 0$ for all $\phi \in
+      X^\dagger, \sigma \in Y^\dagger$
+    \item $\sum_{i = 1}^{n} \psi(y_i) x_i = 0$
+    \item $\sum_{i = 1}^{n} \phi(y_i) x_i = 0$
+  \end{enumerate}
+  where $X^\dagger$ is the collection of all linear functionals of
+  $X$ and similarly $Y^\dagger$ for $Y$.
+\end{lemma}
+\begin{proof}
+  Notice that we only need to prove $2 \implies 1$, and the rest is
+  trivial \textcolor{red}{verify}.
+  Let $z = \sum_{j = 1}^{k} \sum_{i = 1}^{m} c_{ij}(e_i \otimes
+  d_j)$, where $c_{ij} \in \mathbb{C}$, $e_i$, $ d_j$ are linearly
+  independent in $X, Y$ respectively. For each $1 \le i_o, j_o \le m$ by
+  Hahn-Banach theorem, there is a $\phi \in X^*, \psi \in Y^*$ such
+  that $\phi(e_i) = \delta_{i, i_o}, \psi(d_j) = \delta_{j, j_o}$.
+\end{proof}
+
+\begin{definition}
+  Define for every $z \in X \otimes Y$,
+  \begin{align*}
+    \|z\|_{\wedge} = \inf \Big \{ \sum_{i = 1}^{n} \|x_i\|\|y_i\| \ : \  z =
+    \sum_{i = 1}^{n} x_i \otimes y_i \Big \}
+  \end{align*}
+\end{definition}
+\begin{proof}
+  Scalar product comes out easily. \textcolor{red}{See that tringle
+  inequality might also be satisfied}.
+
+  Suppose $\|z\|_{\wedge} = 0$. Let $ \varepsilon > 0$ be given. Then there
+  exists $x_1 , x_2 , \ldots , x_n \in X$, $y_1 , y_2 , \ldots , y_n
+  \in Y$ such that $z = \sum_{i = 1}^{n} x_i \otimes y_i$, and
+  \begin{align*}
+    \sum_{i = 1}^{n} \|x_i\|\|y_i\| < \varepsilon
+  \end{align*}
+  Let $\phi \in X^\dagger$ with $\|\phi\| = 1$. Then
+  \begin{align*}
+    \Big \| \sum_{i = 1}^{n} \phi(x_i) y_i \Big \| < \varepsilon
+  \end{align*}
+  Then similarly for any $\psi \in Y^\dagger$, with $\|\psi\| = 1$, we get
+  \begin{align*}
+    \big|(\phi \otimes \psi)(z)\big| = \Big \|\sum_{i = 1}^{n}
+    \phi(x_i) \psi(y_i) \Big \| < \varepsilon
+  \end{align*}
+  Notice that $\phi \otimes \psi \in (X \otimes Y)^\dagger$ since
+  $\mathbb{C} \otimes \mathbb{C} = \mathbb{C}$.
+  By appropriate rotation on each $x_i, y_i$, the above inequality becomes
+  \begin{align*}
+    \sum_{i = 1}^{n} |\phi(x_i)||\psi(y_i)| < \varepsilon
+  \end{align*}
+  Now by the \autoref{lem:13}, we are done.
+\end{proof}
+
+\begin{exercise}
+  Show that
+  \begin{align*}
+    \|x \otimes y\|_{\wedge} = \|x\|\|y\|
+  \end{align*}
+\end{exercise}

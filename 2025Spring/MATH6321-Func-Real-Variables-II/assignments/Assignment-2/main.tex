@@ -1,0 +1,410 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6321 - Theory of functions of one real variable \\ Homework  I}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    For the sake of contradiction, assume that $\|(f + g)/2\|_p = 1$.
+    That is $\|f + g\|_p = 2$, while $ \|f\|_p = \|g\|_p = 1$. Thus
+    we have an equality in the Minkowski's inequality.
+    We know that equality in Minkowski's inequality for $1 < p <
+    \infty$ occour if and only if $ f = \lambda g$ for some scalar
+    $\lambda \in \mathbb{C}$. Thus we see that $f = \lambda g$.
+    Then
+    \begin{align*}
+      2 = \|f + g\|_p = \|(1 + \lambda)f\|_p = |1 + \lambda|\|f\|_p =
+      |1 + \lambda|
+    \end{align*}
+    and
+    \begin{align*}
+      1 = \|g\|_p = \|\lambda f\|_p = |\lambda|\|f\|_p = |\lambda|
+    \end{align*}
+    The only complex number which satisfy both of them are $\lambda =
+    1$. But this would give $f = g$, which is a contradiction. Hence
+    we are done.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $f_n$ be a cauchy sequence in $M$. Then $f_n \to f$ in $C([0,
+    1])$, since $C([0, 1])$ is complete under sup norm. For
+    $\varepsilon > 0$, let  $N_\varepsilon \in \mathbb{N}$ such that
+    $\|f_n - f\|_\infty < \varepsilon$ for all $n > N_\varepsilon$.
+    Then
+    \begin{align*}
+      \frac{-\varepsilon}{2} \le \int_{0}^{\frac{1}{2}} f - f_n \ d
+      \mu \le \frac{\varepsilon}{2}
+    \end{align*}
+    and similarly
+    \begin{align*}
+      \frac{-\varepsilon}{2} \le \int_{\frac{1}{2}}^{1} f - f_n \ d
+      \mu \le \frac{\varepsilon}{2}
+    \end{align*}
+    Together, they give us
+    \begin{align*}
+      \frac{-\varepsilon}{2} + \frac{-\varepsilon}{2} \le
+      \int_{0}^{\frac{1}{2}} f - f_n \ dx - \int_{\frac{1}{2}}^{1} f - f_n
+      \ dx \le \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+    \end{align*}
+    Thus, we see that
+    \begin{align*}
+      \Bigg|\int_{0}^{\frac{1}{2}} f \ dx - \int_{\frac{1}{2}}^{1} f
+      \ dx - 1 \Bigg| &= \Bigg|\Big(\int_{0}^{\frac{1}{2}} f \ dx -
+      \int_{\frac{1}{2}}^{1} f \ dx \Big) -  \Big(\int_{0}^{\frac{1}{2}} f_n
+      \ dx - \int_{\frac{1}{2}}^{1} f_n \ dx \Big) \Bigg|\\
+      &= \Bigg| \int_{0}^{\frac{1}{2}} f - f_n \ dx -
+      \int_{\frac{1}{2}}^{1} f - f_n \ dx \Bigg| \\
+      &\le \varepsilon
+    \end{align*}
+    But since $\varepsilon > 0$ was chosen arbitrarily, we get that $f \in M$.
+
+    Now if $f, g \in M$, and $h = t f + (1-t) g$ for $ t \in [0, 1]$, then
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} h(x) \ dx - \int_{\frac{1}{2}}^{1} h(x)
+      \ dx &= \int_{0}^{\frac{1}{2}} t f(x) + (1-t) g(x) \ dx -
+      \int_{\frac{1}{2}}^{1} t f(x) - (1-t) g(x)\ dx \\
+      &= t \Big(\int_{0}^{\frac{1}{2}} f(x) \ dx -
+      \int_{\frac{1}{2}}^{1} f(x) \ dx  \Big) + (1-t)
+      \Big(\int_{0}^{\frac{1}{2}} g(x) \ dx - \int_{\frac{1}{2}}^{1}
+      g(x) \ dx\Big) \\
+      &= t 1 + (1-t)1 \\
+      &= 1
+    \end{align*}
+    Thus we get that $M$ is convex.
+
+    % work from here onwards.
+    Now we'll show that if $ f \in M$, then $ \|f\|_\infty > 1$.
+    Let $f \in C([0, 1])$, such that $\|f\|_\infty \le 1$.
+    Then
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f(x) \ dx \le  \Big |
+      \int_{0}^{\frac{1}{2}} f(x) \ dx \Big | \le
+      \int_{0}^{\frac{1}{2}} |f(x)| \ dx \le \int_{0}^{\frac{1}{2}} 1
+      \ dx = \frac{1}{2}
+    \end{align*}
+    and by a similar reasoning, we get
+    \begin{align*}
+      - \int_{\frac{1}{2}}^{1} f(x) \ dx \le
+      \Big|\int_{\frac{1}{2}}^{1} f(x) \ dx\Big| \le
+      \int_{\frac{1}{2}}^{1} |f(x)| \ dx \le \int_{\frac{1}{2}}^{1} 1
+      \ dx = \frac{1}{2}
+    \end{align*}
+    which gives
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f(x) \ dx - \int^{1}_{\frac{1}{2}} f(x) \ dx \le 1
+    \end{align*}
+    Thus equality in the above inequalities hold only when
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f(x) \ dx = \frac{1}{2} = -
+      \int_{1}^{\frac{1}{2}} f(x) \ dx
+    \end{align*}
+    Now if $f(x) = u(x) + iv(x)$, where $u(x), v(x)$ are real valued
+    functions, this would imply that
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} u(x) \ dx = \frac{1}{2} = -
+      \int_{1}^{\frac{1}{2}} u(x) \ dx
+    \end{align*}
+    and
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} v(x) \ dx = 0 =
+      \int_{1}^{\frac{1}{2}} v(x) \ dx
+    \end{align*}
+    This is rather replacing $f(x)$ with $u(x)$, and therefore
+    without loss of generality, we might very well assume that $f$ is
+    a real valued function. Moreover
+    \begin{align*}
+      \frac{1}{2} = \int_{0}^{\frac{1}{2}} f(x) \ dx \le
+      \int_{0}^{\frac{1}{2}} |f(x)| \ dx \le \frac{1}{2}
+    \end{align*}
+    shows that $f = |f|$ almost everywhere in $[0, \frac{1}{2}]$.
+    Again since $\|f\|_\infty \le 1$, \  $\chi_[0, \frac{1}{2}] - f$ is
+    a non-negative function in $[0, \frac{1}{2}]$
+    which satisfy
+    \begin{align*}
+      \int_{0}^{\frac{1}{2}} f - \chi_{[0, \frac{1}{2}]} \ dx =
+      \int_{0}^{\frac{1}{2}} f \ dx - \int_{0}^{\frac{1}{2}}
+      \chi_{[0, \frac{1}{2}]} \ dx = \frac{1}{2} - \frac{1}{2} = 0
+    \end{align*}
+    Then by a result we proved before which states that if
+    \begin{align*}
+      \int_E  f \ d \mu = 0
+    \end{align*}
+    either $\mu(E) = 0$ or $f = 0$ almost everywhere, we get that $f
+    = \chi_{[0, \frac{1}{2}]}$ almost everywhere in $[0,
+    \frac{1}{2}]$. By continuity of $f$, we see that $f(x) = 1$ for
+    all $x=[0, \frac{1}{2})$.
+    By a similar reasoning we get $f(x) = \frac{-1}{2}$ for all $x
+    \in (\frac{1}{2}, 1]$. But such a continuous function do not
+    exist. Hence we have shown that if $f \in M$, then $\|f\|_\infty > 1$.
+
+    Now we'll find a sequence of functions $f_i \in M$ such that
+    $\|f_i\|_\infty \to 1$. Define
+    \begin{align*}
+      f_n(x) =
+      \begin{cases}
+        1 + \frac{1}{n}, & 0 \le x \le \frac{1}{2} - \frac{1}{n} \\
+        (n+1)(\frac{1}{2} - x), & \frac{1}{2} - \frac{1}{n} < x \le
+        \frac{1}{2} + \frac{1}{n} \\
+        -1 - \frac{1}{n}, & \frac{1}{2} + \frac{1}{n} < x \le 1
+      \end{cases}
+    \end{align*}
+    Then $f_n \in M$ for all $n \ge 2$ and $\|f_n\|_\infty = 1 +
+    \frac{1}{n}$. Hence $ \|f_n\|_\infty \to 1$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $f \in M$, then
+    \begin{align*}
+      1 = \int f \ d m \le \int |f| \ d m = \|f\|_1
+    \end{align*}
+    Thus the minimal norm of elements of $M$ is $1$. Now let $f_n = n
+    \chi_{[0, 1/n]}$. Clearly, each $f_n \in L^{1}([0, 1])$ and
+    \begin{align*}
+      \|f_n\|_1  = \int |f_n| \ d m = \int f_n \ d m = \int n
+      \chi_{[0, \frac{1}{n}]} \ d m = n m([0,1/n]) = 1
+    \end{align*}
+    Thus $f_n$ is an example of infinitely many elements in $M$
+    attaining minimal norm.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \textbf{Part I: $X_m$ is closed}\\
+    We'll first show that the collection $X_m = \{ f \in C([0, 1])
+      \ : \ \exists x \in [0, 1], \forall y \in [0, 1], \ |f(x) - f(y)|
+    \le m |x - y|  \}$ is closed. Let $(f_n)$ be a cauchy sequence in
+    $X_m$. Since $X_m \subset C([0, 1])$ and $C([0 ,1 ])$ is closed
+    under the sup norm, $f_n \to f \in C([0, 1])$. We'll show that
+    $f \in X_m$.
+    Let $x_n \in [0, 1]$ correspond to each $f_n$ such that for
+    all $y \in [0, 1]$,
+    \begin{align*}
+      |f_n(x_n) - f_n(y)| \le m |x_n - y|
+    \end{align*}
+    Since $[0, 1]$ is compact, $x_n$ has a convergent subsequence
+    $x_{n_k}$ which converge. Let $x_{n_k} \to x_0$ and $\varepsilon
+    > 0$. Since $f_{n_k} \to f$ in the sup norm, by a slight abuse of
+    notation assume $x_n \to x_0$.
+    Let $N_\varepsilon \in \mathbb{N}$ such that for all $n >
+    N_\varepsilon$, we have $\|f - f_n\|_\infty < \varepsilon$. Let
+    $M_\varepsilon \in \mathbb{N}$ such that for all $n >
+    M_\varepsilon$, $|x_0 - x_n| < \varepsilon/m$. Then for $n > N :=
+    \max\{N_\varepsilon, M_\varepsilon\}$ and $y \in [0, 1]$,
+    \begin{align*}
+      |f(x_0) - f(y)| &\le |f(x_0) - f_n(x_0)| + |f_n(x_0) - f_n(x_n)|
+      + |f_n(x_n) - f_n(y)| + |f_n(y) - f(y)| \\
+      &< \varepsilon + m |x_n - x_0| + m|x_n - y| + \varepsilon \\
+      &< \varepsilon + \varepsilon + m |x_n - y| + \varepsilon \\
+      &= 3 \varepsilon + m|x_n - x_0 + x_0 - y| \\
+      &\le 3 \varepsilon + m |x_n - x_0| + m |x_0 - y| \\
+      &< 4 \varepsilon + m |x_0 - y|
+    \end{align*}
+    Since $\varepsilon > 0$ was chosen arbitrarily, this gets that
+    $|f(x_0) - f(y)| \le m | x_0 - y|$. Thus $f \in X_m$, and we get
+    that $X_m$ is closed. We restate one of of the results we proved,
+    since we'll reuse it in below.
+
+    \begin{proposition}
+      \label{prop:4}
+      If $f_n \to f$, uniformly in $X_m$, and $x_n \in
+      [0, 1]$ such that  for all $y \in [0, 1]$,
+      \begin{align*}
+        |f_n(x_n) - f_n(y)| = m |x_n - y|
+      \end{align*}
+      Then for any convergent subsequence $x_{n_k} \to x_0 \in [0,
+      1]$, we have
+      that for all $y \in [0, 1]$
+      \begin{align*}
+        |f(x_0) - f(y)| \le m |x_0 - y|
+      \end{align*}
+    \end{proposition}
+
+    \textbf{Part II: $X_m$ has empty interior}\\
+    Now to show that $X_m$ has empty interior, for any $\varepsilon >
+    0$ we'll find an $h \in B_\varepsilon(f)$ such that $h \not\in
+    X_m$. Let $f \in X_m$, and $\varepsilon > 0$ be given. Assume for
+    contradiction that $B_\varepsilon(f) \subset X_m$. Let
+    $h_{p, q}(x) := f(x) + \varepsilon/p\sin(qx)$ for $p, q \in \mathbb{N}$
+    \begin{align*}
+      \|f - h_{p, q}\|_\infty = \| \varepsilon/p \sin(qx)\| =
+      \frac{\varepsilon}{p}
+    \end{align*}
+    shows that $h_{p, q} \in B_\varepsilon(f) \subset X_m$.
+    Then there exist $x_{p, q} \in [0, 1]$ such that for all $y \in [0, 1]$,
+    \begin{align*}
+      |f(x_{ p, q}) - f( y) + \varepsilon/p (\sin(q x_{p, q}) - \sin( qy))| =
+      |h_{p, q}(x_{p, q}) - h_{p, q}(y)| \le m |x_{ p, q} - y|
+    \end{align*}
+    Then for all $y \in [0, 1]$
+    \begin{align*}
+      \big||f(x_{p, q}) - f(y)| -  \varepsilon/p |\sin(qx_{p, q}) - \sin(qy)|
+      \big| \le m |x_{p, q} - y|
+    \end{align*}
+    which gives that
+    \begin{align*}
+      \varepsilon/p |\sin(qx_{p, q}) - \sin(q y)| \le |f(x_{p, q}) - f(y)| + m
+      |x_{p, q} - y|
+    \end{align*}
+    by choosing $a = |f(x_{p, q})|, b = 1/p |\sin(q x_{p, q}) -
+    \sin(qy)|$, and $c = m |x_{p, q} - y|$, and using the fact that
+    \begin{align*}
+      &|a - b| \le c \\
+      \implies &-c \le a - b \le c \\
+      \implies &-c - a \le -b \le c - a \\
+      \implies & b \le a + c
+    \end{align*}
+    But since for a fixed $q \in \mathbb{N}$, $h_{p, q}$, as a
+    sequence indexed by $p$ converge uniformly to $f$, by
+    \autoref{prop:4}, for a subsequence of $x_{p, q}$ (indexed by
+    $p$), converging to $x_q$, we have for all $y \in [0, 1]$,
+    \begin{align*}
+      |f(x_q) - f(y)| \le m |x_q - y|
+    \end{align*}
+    Without loss of generality, assume that for any fixed $q$, $x_{p,
+    q} \to x_q$ as a sequence in $p$. Then for all $\delta > 0$ there
+    exists an $M_p \in \mathbb{N}$, such that for all $p > M_p$,
+    $|x_{p, q} - x_q| < \frac{\delta}{m}$. Then for $p > M_p$,
+    \begin{align*}
+      |f(x_{p, q}) - f(y)| + m|x_{p, q} - y| &\le |f(x_{p, q}) -
+      f(x_q)| + |f(x_q) - f( y)| + m | x_{p, q} - y| \\
+      &\le m |x_{p, q} - x_q| + m|x_q - y| + m |x_{p, q} - y| \\
+      &< \delta + m|x_{q} - x_{p, q}| + m|x_{p, q} - y| + m| x_{p,q} - y| \\
+      &< \delta + \delta + 2m |x_{p, q} - y| \\
+      &= 2\delta + 2m|x_{p, q} - y|
+    \end{align*}
+    Since $\delta > 0$ was arbitrary, this shows that for $p > M_p$,
+    for all $y \in [0, 1]$
+    \begin{align*}
+      \varepsilon/p|\sin(qx_{p, q}) - \sin(qy)| < 2m |x_{p, q} - y|
+    \end{align*}
+    But we know that for $q > 15 > 4\pi$ (some estimate), either
+    $[x_{p, q} - \frac{2\pi}{q}, x_{p, q}]$ or $[x_{p, q}, x_{p, q} +
+    \frac{2\pi}{q}]$ is a subset of $[0, 1]$. Let us call this subset
+    $A$, then there is $y \in A$ such that $|\sin(q x_{p, q}) -
+    \sin(q y)|> 1$. Moreover for such $y$, we'll have $|x_{p, q} - y|
+    < \frac{2\pi}{q}$. Thus we get that for a fixed $p > M_p$,
+    \begin{align*}
+      \frac{\varepsilon}{p} \le \varepsilon/p|\sin(qx_{p, q}) -
+      \sin(qy)| < 2m |x_{p, q} - y| \le \frac{4m\pi}{q}
+    \end{align*}
+    Since this is true for all $q$, and a fixed $\varepsilon, p$,
+    this gives a contradiction as $q \to \infty$ and $\frac{4m\pi}{q} \to 0$.
+
+    \textbf{Part III: $G_\delta$ dense set of nowhere differentiable
+    functions}\\
+    Since each $X_n$ is closed and has empty interior, each $X_n$ are
+    nowhere dense. Then $X_n^c$ are dense open subsets of $C([0, 1])$.
+    Then by the Baire category theorem, we get that
+    \begin{align*}
+      X = \bigcap_{n = 1}^{\infty} X_n^c
+    \end{align*}
+    is a dense $G_\delta$ subset of $C([0, 1])$. We'll show that $X$
+    is precisely the set of nowhere differentiable functions. Let $f
+    \in C([0, 1])$ be differentiable at $x \in [0, 1]$. Then by the
+    definition of the derivative, there is
+    a $\delta > 0$ such that
+    \begin{align*}
+      |x - y|< \delta \implies \bigg|
+      \frac{f(x)-f(y)-f^\prime(x)(x-y)}{x-y}\bigg|< 1
+    \end{align*}
+    Then for $y \in B_\delta(x)$,
+    \begin{align*}
+      \Big||f(x) - f(y)| - |f^\prime(x)(x- y)|\Big| < |x-y|
+    \end{align*}
+    By taking $a = |f(x) - f(y)|, b =
+    |f^\prime(x)(x-y)|$, and $c = |x - y|$ and using the same
+    reasoning as in part II, we get
+    \begin{align*}
+      |f(x) - f(y)| \le (|f^\prime(x)| + 1)|x - y|
+    \end{align*}
+    Let $\mathbb{N} \ni N_1 \ge |f^\prime(x)| + 1$.
+    If $y \not\in B_\delta(x)$, then choose $M = \|f\|_\infty$ and
+    $N_2 \in \mathbb{N}$ such that $2M < N_2 \delta$. Then
+    \begin{align*}
+      |f(x) - f(y)| \le 2 M < N_2 \delta \le N_2 |x - y|
+    \end{align*}
+    Now for $N = \max \{ N_1, N_2 \}$, we see that for all $y \in [0, 1]$
+    \begin{align*}
+      |f(x) - f(y)| \le N |x - y|
+    \end{align*}
+    and therefore $f \in X_N$. Thus we see that if $f \in X$, then
+    $f$ is not differentiable anywhere in $[0, 1]$. Hence we are done.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

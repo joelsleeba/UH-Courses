@@ -1,0 +1,96 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\section{Warm up}
+Let $\mathcal{M}$ be a $\sigma$-algebra on $X$ and $A_1, A_2, \ldots , A_n \in \mathcal{M}$. Why does \[
+  f(x) = \sum_{i = 1}^{n} c_j \chi_{A_j}
+\]
+define a measurable function?
+\begin{proof}
+  Use 
+   \autoref{prop:algebra_of_measure_functions}. Interpreting $c_j \chi_{A_j}$ as product of $\chi_{A_j}$ with a constant function, we observe $c_j \chi_{A_j}$ is measurable. Then using that the sum of two measurable functions is measurable in an inductive fashion, we get that the finite sum defining $f$ also measurable.
+\end{proof}
+
+\section{Continues}
+
+\begin{lemma}
+  Let $f: X \to [-\infty, \infty]$. Then $f$ is measurable if and only if $f^{-1}((a, \infty])$ is measurable for each $a \in \mathbb{R}$
+\end{lemma}
+\begin{proof}
+  $(\implies)$ If $f$ is measurable, then by $(a, \infty]$ being open, we get that $f^{-1}((a, \infty])$ is measurable. This is true for all $   a \in \mathbb{R}$. So the claimed property holds.
+
+  $(\impliedby)$ Suppose for each $a \in \mathbb{R}$, $f^{-1}((a, \infty])$ is measurable. Then since we also have that $(f^{-1}(a, \infty])^c = f^{-1}((a, \infty]^c) = f^{-1}([-\infty, a])$, Now therefore $f^{-1}([-\infty, a])$ is measurable for all $   a \in \mathbb{R}$.
+
+  Now $$[-\infty, b) = \bigcup_{ n = 1}^{\infty}\Big[-\infty, b- \frac{1}{n} \Big]$$
+  so, \begin{align*}
+    f^{-1}([-\infty, b)) &= f^{-1}\Big(\bigcup_{n = 1}^{\infty}[-\infty, b- \frac{1}{n} ]\Big) \\ 
+    & =  \bigcup_{n = 1}^{\infty}f^{-1}\Big([-\infty, b- \frac{1}{n} ]\Big) \in \mathcal{M}
+  \end{align*}
+
+  Next we use $(a, b) = [-\infty, b) \cap (a, \infty]$ so we get $f^{-1}(a, b)$ to be measurable. Thus we have shown measurability for inverse images of a basis. Now let $V \subset [-\infty, \infty]$ be an open set. Then there are four cases. \begin{enumerate}[]
+    \item $V$ is a countable union of rational open intervals. i.e $-\infty, \infty \notin V$
+    \item $-\infty \in V, \infty \notin V$. Then $ V = [-\infty, b) \cup V_o$, where $V_o$ is of case 1, and $[-\infty, b)$ is the union of countable sequence of rational half-infinite intervals. ( Let $b_n$ be a rational sequence monotonically increasing to $b$, then $\cup_{n = 1}^{\infty}[-\infty, b_n] = [-\infty, b)$).
+    \item $-\infty \notin V, \infty \in V$. Then $V = V_o \cup (a, \infty]$, where $V_o$ is a countable union of open intervals in $\mathbb{R}$.
+    \item $-\infty, \infty \in V$. Then $V = [-\infty, b) \cup V_o \cup (a, \infty]$, where $V_o$ is a countable union of open intervals in $\mathbb{R}$.
+  \end{enumerate}
+  In all these cases, we get $f^{-1}(V)$ to be measurable.
+\end{proof}
+
+\begin{remark}
+  Given a sequence $(a_n)$ in $[-\infty, \infty]$, let $b_j = \sup_{n \le j} a_n$. Then for each $j$, $b_{j+1} \le b_j$. So $\beta = \lim_{n \to \infty} b_j$ exists in $[-\infty, \infty]$.
+\end{remark}
+
+\begin{definition}
+  Let $(a_n)$ be a sequence in $[-\infty, \infty]$ and $(b_j)$ be as above, then $\beta = \inf_{j \in \mathbb{N}} b_j$ is known as the $\lim_{j \to \infty} \sup a_j$ or $\overline{\lim_{n \to \infty}} a_j$
+
+  Similarly defining $c_j = \inf_{n \ge j} a_n$ gives $\lim_{j \to \infty} \inf a_j = \sup c_j$
+\end{definition}
+
+\begin{definition}
+  Let $f_n :X \to [-\infty, \infty]$ be a sequence of functions, define the limit supremum of the sequence of functions as \[
+    (\lim_{n \to \infty} \sup f_n)(x) = \lim_{n \to \infty} \sup f_n(x)
+  \]
+\end{definition}
+
+\begin{remark}
+  If $(f_n(x))$ converges for each $x$, then we say the sequence of functions converges pointwise.
+\end{remark}
+
+\begin{proposition}
+  Let $(f_n)$ be a sequence of $[-\infty, \infty]$ value functions, then \[
+    g(x)  = \sup_{n \ge n_0} f_n(x), \quad h(x) = \lim_{n \to \infty} \sup f_n(x)
+  \]
+  are measurable functions.
+\end{proposition}
+\begin{proof}
+  We only need to show that $g^{-1}(a, \infty]$ is measurable for each $a \in \mathbb{R}$. We consider \[
+    g^{-1}((a, \infty]) = \{   x \in X \ : \ g(x) > a) \}
+  \]
+  Now $g(x) > a$,  then $f_n(x) \ge a$ for all $n \ge n_0$. Thus we get \begin{align*}
+    g^{-1}((a, \infty]) &= \bigcup_{n = n_0}^{\infty} \{ x \in X  \ : \  f_n(x) > a \} \\ 
+    &= \bigcup_{n = n_0}^{\infty} f^{-1}((a, \infty])
+  \end{align*}
+
+   Thus we see $g$ is measurable. Similarly we can show this holds true if we replace $\sup$ with $\inf$ in the definition of $g$
+
+   Now since we know that composition of measurable functions are measurable, we get that $\inf \sup f_n(x) = h(x)$ is measurable.
+
+   Similarly we can also show that $\sup \inf f_n$ is also measurable.
+\end{proof}
+
+\begin{definition}
+   Let $X$ be a set, a function $s: X \to \mathbb{C}$ is called a simple function if the range of $s$ is finite.
+\end{definition}
+\begin{proposition}
+   A function $s: X \to \mathbb{C}$ is simple if and only if there exists mutually disjoint sets $A_1, A_2, \ldots , A_n \subset X$, and $ \alpha_1, \alpha_2, \ldots , \alpha_n \in \mathbb{C}$ with \[
+        s = \sum_{j = 1}^{n} \alpha_j \chi_{A_j}
+   \]
+\end{proposition}
+\begin{proof}
+  ($\implies$) by definition.
+
+  ($\impliedby$) Let $s$ be a simple function with range $ \{ \alpha_1, \alpha_2, \ldots , \alpha_n \}$. Then take $A_j = s^{-1}(\alpha_j)$. Then $A_j$s partition $X$ and \[
+    s(x) = \sum_{ j = 1}^{n} \alpha_j \chi_{A_j}(x)
+  \]
+\end{proof}

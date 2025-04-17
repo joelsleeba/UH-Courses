@@ -1,0 +1,188 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH 6321 - Theory of functions of a real variable \\ Homework 9}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  \question
+  \begin{solution}
+    Let $f \in L^{1}(\mathbb{R})$ and $x \in \mathbb{R}$ be a
+    Lebesgue point. Then by the definition, we have
+    \begin{align*}
+      \lim_{r \to 0} \frac{1}{m(B_r(x))} \int_{B_r(x)} |f(x) - f(y)|
+      \ d m( y) \ = \ 0
+    \end{align*}
+    Thus for every $\varepsilon > 0$, there is a $r_\varepsilon >0$
+    such that for all $r < r_\varepsilon$,
+    \begin{align*}
+      \frac{1}{m(B_r(x))} \int_{B_r(x)} |f(x) - f(y)|
+      \ d m( y) < \varepsilon
+    \end{align*}
+    Since $|\int f \ d \mu| < \int |f| \ d \mu$, we get
+    \begin{align*}
+      \Big|f(x) \ - \ &\frac{1}{m(B_r(x))} \int_{B_r(x)} f(y) \ d m(y)
+      \Big| \\
+      &= \Big|\frac{1}{m(B_r(x))} \int_{B_r(x)} f(x) \ d m(y) -
+      \frac{1}{m(B_r(x))} \int_{B_r(x)} f(y) \ d m(y)\Big| \\
+      &\le \frac{1}{m(B_r(x))} \int_{B_r(x)} |f(x) - f(y)| \ d m( y) \\
+      &< \varepsilon
+    \end{align*}
+    and thus
+    \begin{align*}
+      |f(x)| - \Big|\frac{1}{m(B_r(x))}
+      \int_{B_r(x)} f(y) \ d m(y) \Big|  \ < \varepsilon
+    \end{align*}
+    which gives
+    \begin{align*}
+      |f(x)| < \frac{1}{m(B_r(x))}
+      \int_{B_r(x)} |f| \ d m + \varepsilon
+    \end{align*}
+    Since $\varepsilon >0$ was chosen arbitrarily, taking
+    $\varepsilon \to 0$ and taking supremum over all $r > 0$ gives
+    \begin{align*}
+      |f(x)| \le \sup_{r > 0}\frac{1}{m(B_r(x))}
+      \int_{B_r(x)} |f| \ d m = \mathcal{M}f(x)
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    For the sake of contradiction, assume that there exists $c_1 >
+    c_2 > 0$ such that for $A_i := \{ x \in \mathbb{R} \ :
+    \ |f(x)| \ge c_i\}$,  we have $c_i\mu(A_i) = \|f\|_1$.
+    Then
+    \begin{align*}
+      \|f\|_1 \ge \int |f|\chi_{A_i} \ d \mu \ge \int  c_i \chi_{A_i}
+      \ d \mu = c_i \mu(A_i) = \| f\|_1
+    \end{align*}
+    Thus
+    \begin{align}
+      \label{eq:2}
+      \int_{A_i}  |f| - c_i \ d \mu  = 0
+    \end{align}
+    Since $\|f\|_1, c_i > 0$, by assumption, we see $\mu(A_i) > 0$.
+    Moreover $|f(x)| - c_i > 0$ for all $x \in A_i$ by definition.
+    Thus $\autoref{eq:2}$ forces $|f(x)| = c_i$ almost everywhere in
+    $A_i$. But since by definition $A_1 \subset A_2$, this gives a
+    contradiction as $|f|$ cannot be a.e equal to $c_1$ and $c_2$
+    simultaneously in $A_2$ unless $c_1 = c_2$.
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    Let $x \in \mathbb{R}$ and $g_x : [x - 1, x+ 1] \to \mathbb{R} :
+    g_x(y) := |f(x) - f(y)|^2$. Note that since $f \in L^{2}([x- 1, x
+    + 1])$, by Holder's inequality, $f \in L^{1}([x - 1, x + 1])$. Also
+    \begin{align*}
+      \int_{[x-1, x+1]}  |g_x| \ d m &= \int_{[x - 1, x + 1]}  |f(x)
+      - f(y)|^2 \ d m(y) \\
+      &\le \int_{[x-1, x +1]} |f(x)|^2 + 2|f(x)||f(y)| + |f(y)|^2 \ d \mu \\
+      &\le 2|f(x)|^2 + 2|f(x)| \|f\|_1 + \|f\|_2 \\
+      &< \infty
+    \end{align*}
+    Thus $g_x \in L^{1}([x - 1, x + 1])$. Thus almost every $y \in [x
+    - 1, x + 1]$ is a Lebesgue point of $g_x$ by the Lebesgue
+    differentiation theorem.
+
+  \end{solution}
+
+  \question
+  \begin{solution}
+    We know that $\mu(A):= \int_A  f \ d m$, defines a measure on
+    $\mathbb{R}$. By the properties of the measure $\mu$, for any $x< y
+    \in \mathbb{R}$,
+    \begin{align*}
+      \int_{(x, y]} f \ dm = \int_{(-\infty, y]} f \ dm -
+      \int_{(-\infty,x]} f \ dm = 0 - 0 = 0
+    \end{align*}
+    Any open interval $(x, y) = \cup_{n = 1}^{\infty}(x,
+    y- \frac{1}{n})$. By the continuity of the measure $\mu$ from
+    below, we get
+    \begin{align*}
+      \int_{(x, y)}  f \ d m = \lim_{n \to \infty}   \int_{(x, y-
+      \frac{1}{n}]}  f \ d m = 0
+    \end{align*}
+    Since $f \in L^{1}(m)$, we know that almost all $x \in
+    \mathbb{R}$ are Lebesgue points of $f$. That is for almost every
+    $x \in \mathbb{R}$,
+    \begin{align*}
+      f(x) = \lim_{r \to 0} \frac{1}{m(B_r(x))} \int_{B_r(x)} f \ d m
+      = \lim_{r \to 0} 0 = 0
+    \end{align*}
+    Thus we are done.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

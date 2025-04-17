@@ -1,0 +1,396 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH6302 - Modern Algebra \\ Homework 6}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  Assume $G$ acts transitively on a finite set $A$ and $H$ be a
+  normal subgroup of $G$. Let $\mathcal{O} = \{ \mathcal{O}_1 ,
+  \mathcal{O}_2 , \ldots , \mathcal{O}_r \}$
+  be distinct orbits of $H$ on $A$.
+  \begin{parts}
+    \part Prove that $G$ permutes the set $\mathcal{O}$ and that the
+    action of $G$ is transitive on $\mathcal{O}$. Deduce that all the
+    orbits $\mathcal{O}_k$ have the same cardinality.
+    \part Prove that if $a \in \mathcal{O}_1$, then $|\mathcal{O}_1| =
+    |H : H \cap G_a|$ and show that $r = |G : HG_a|$
+  \end{parts}
+  \begin{solution}
+    For notational convenience we'll use $\mathcal{O}^{a}$ for the
+    orbit of $a \in A$ under the action of $H$ and $\mathcal{O}_k$ for the
+    corresponding order in $\mathcal{O}$ as given in the question.
+    Moreover we note that $\{\mathcal{O}^a \ : \ a \in A \} =
+    \mathcal{O}$ by definition.
+    \begin{parts}
+      \part Let $g \in G, a \in A$, and $ga = b$. Since $ a \in
+      \mathcal{O}^a$, we get $b \in g \mathcal{O}^a$. We claim that
+      $g \mathcal{O}^a = \mathcal{O}^b$.
+      Let $gx \in g \mathcal{O}^a$. By the definition of the orbit, $x
+      = ha$ for some $h \in H$. Since $H \trianglelefteq G$, $gH =
+      Hg$, and $gh = \tilde{h}g$ for some $\tilde{h} \in H$. Then
+      $$gx = g(ha) = (gh)a = (\tilde{ h}g)a = \tilde{h}(ga) = \tilde{h}b$$
+      shows $gx \in \mathcal{O}_b$. Conversely, if $hb \in
+      \mathcal{O}^b$, again by the normality of $H$ in $G$, there is some
+      $\tilde{h} \in H$ such that $hg = g\tilde{h}$. Then \[
+        hb = h(ga)= (hg) a = (g \tilde{h}) a = g(\tilde{ h}a) \in g
+        \mathcal{O}^a
+      \]
+      Hence we see that $g \mathcal{O}^a = \mathcal{O}^b$. In essence, we
+      have verified that the map $\phi_g: \mathcal{O} \to \mathcal{O} :=
+      \mathcal{O}^a \to \mathcal{O}^{ga}$ is well defined for all $g \in G$.
+
+      Since $\mathcal{O}$ is a finite set, to show that $\phi_g$ is a
+      permutation (bijection), we just need to verify surjectivity.
+      Let $\mathcal{O}^b \in \mathcal{O}$. Then $\phi_g(\mathcal{O}^{g^{-1}b}) =
+      \mathcal{O}^{g g^{-1}b} = \mathcal{O}^{b}$ shows that $\phi_g$
+      is a permutation. Moreover if $g^\prime \in G$, then
+      $\phi_{gg^\prime}(\mathcal{O}^{a}) = \mathcal{O}^{gg^\prime a}
+      = \phi_g(\mathcal{O}^{ga}) =
+      \phi_g(\phi_{g^\prime}(\mathcal{O}^a))$ shows that $
+      \phi_{gg^\prime} = \phi_g \circ \phi_{g^\prime}$.
+
+      Therefore, $\phi: G \to S_{\mathcal{O}} := g \to \phi_g$ is a well
+      defined action (permutation representation) of $G$ on
+      $\mathcal{O}$. Moreover if $\mathcal{O}^a, \mathcal{O}^b \in
+      \mathcal{O}$, since $G$ acts transitively on $A$, there is a $g
+      \in G$ such that $ga = b$. Then $$\phi_g(\mathcal{O}^{a}) =
+      \mathcal{O}^{ga} = \mathcal{O}^b$$
+      shows that $G$ acts transitively on $\mathcal{O}$.
+
+      Now from the orbit-stabilizer theorem, we know that
+      $|\mathcal{O}^a| = |H:H_a|$
+      where $H_a$ is the stabilizer of $a \in A$ under the action by
+      $H$. Since the cosets of $H_a$ partition $H$ sets of equal
+      cardinality, we'll be proving $|\mathcal{O}^{a}| =
+      |\mathcal{O}^b|$, if we show $|H_a| = |H_b|$ for any $ a, b \in
+      A$. Since $G$ acts transitively on $A$ there is a $ g \in G$
+      such that $ga = b$. Then we claim $H_b = gH_ag^{-1}$. This
+      follows from the following equivalences.
+      \begin{align*}
+        h \in H_a & \iff ha = a \\
+        & \iff hg^{-1}b = g^{-1}b \\
+        & \iff ghg^{-1}b = b \\
+        & \iff ghg^{-1} \in H_b
+      \end{align*}
+      Moreover $gH_ag^{-1}$ and $H_a$ has the same cardinality since
+      the map $H_a \to gH_ag^{-1}:= h \to ghg^{-1}$ has an inverse $
+      gH_ag^{-1} \to H_a:= x \to g^{-1}xg$. Then we're done.
+
+      \part To prove $|\mathcal{O}^a| = |H : H \cap G_a|$, it is
+      enough to show that $H_a = H \cap G_a$, then the relation will
+      easily follow from the first theorem we proved in class.
+      Since $H$ borrows the action of $G$ on $A$, $H_a = H \cap G_a$
+      follows from the definition of the stabilizer of $a$.
+
+      Now we'll go on to show that $r = |G:HG_a|$. Since $G$ acts
+      transitively on $\mathcal{O}$, the orbit of
+      $\mathcal{O}^a$ under this action is the whole $\mathcal{O}$.
+      Also, since $H$ is normal, we notice that $HG_a = G_aH$.
+      Hence by a similar reasoning as above, to show $ r = |\mathcal{O}| = |G :
+      HG_a|$, it is enough to show that $HG_a$ is the stabilizer of
+      $\mathcal{O}^a$. That is $G_{\mathcal{O}^a} = HG_a$.
+
+      If $g \in G_{\mathcal{O}^a}$, then $g \mathcal{O}^a =
+      \mathcal{O}^a$. This implies for all $h \in H$ , there is a
+      $\tilde{h} \in H$ such that $gha = \tilde{h}a$. Hence
+      $ga = gh^{-1}g^{-1}gha = gh^{-1}g^{-1} \tilde{h}a$. By the
+      normality of $H$, $ gh^{-1}g^{-1} = h^\prime \in H$ and gives
+      $ga = h^\prime \tilde{h}a$ and hence $(h^\prime \tilde{h})^{-1}
+      g a = a$. This gives $(h^\prime \tilde{h})^{-1}g \in G_a$ and
+      therefore $g \in HG_a$.
+
+      Conversely, by the normality of $H$, for all $h \in H$, there
+      exist a $\tilde{h} \in H$ such that $gh = \tilde{h}g$. If
+      $h^\prime g \in HG_a$ then $h^\prime g \mathcal{O}^a = h^\prime
+      gHa = \{ h^\prime gha  \ : \ h \in H  \} = \{ h^\prime
+      \tilde{h}ga  \ : \ \tilde{h} \in H  \} = \{ h^\prime
+      \tilde{h}a  \ : \  \tilde{h} \in H \} = Ha = \mathcal{O}^a$.
+      Hence $h^\prime g \in G_{\mathcal{O}^a}$
+
+      Thus we've shown that $G_{\mathcal{O}^{a}} = HG_a$ and the result follows.
+
+    \end{parts}
+
+  \end{solution}
+
+  \question
+  Prove that if $H$ has finite index $n$, then there is a normal
+  subgroup $K$ of $G$ with $K \leqslant H$ such that $|G:K| \le n!$
+  \label{q:2}
+  \begin{solution}
+    Consider $G/H$, the collection of left cosets of $H$ in $G$. Let
+    $G$ act on $G/H$ by left multiplication. We see that if $gH$ is
+    any coset of $H$, its stabilizer
+    \begin{align*}
+      G_{gH} & = \{ x \in G  \ : \  xgH = gH \} \\
+      &= \{ x \in G  \ : \  x \in gHg^{-1} \} \\
+      &= gHg^{-1}
+    \end{align*}
+    Therefore the kernel of the action is $K = \cap_{g \in G}G_{gH} =
+    \cap_{ g \in G}gHg^{-1}$. We claim that this is our required subgroup $K$.
+
+    Since $K$ is the kernel of the left multiplication action on
+    $G/H$, it is the kernel of the corresponding permutation
+    representation $\phi: G \to S_{G/H}$. Therefore we see that $K$ is
+    normal. Moreover by definition $K = \cap_{ g \in G}gHg^{-1}
+    \subset H$, shows that $K \leqslant H$.
+
+    Now by the first isomorphism theorem, $G/K$ is isomorphic to a
+    subgroup of $S_{G/H}$. Hence $|G:K| = |G/K| \le |S_{G/H}|$. Since
+    $|G/H| = n$, $S_{G/H}$ is isomorphic to $S_n$, which have $n!$
+    elements. Thus, $|G:K| \le n!$
+  \end{solution}
+
+  \question
+  Let $G$ be a group and $ \pi: G \to S_G$ be the left regular
+  \label{q:order_mod}
+  representation. Prove that if $x$ is an element of order $n$ and
+  $|G| = mn$, then $\pi(x)$ is a product of $m$ $n$-cycles. Also
+  prove that if $\pi(x)$ is an odd permutation, then $m$ is odd and $n$ is even.
+  \begin{solution}
+    Since $|x| = n$, and the map $\pi$ is an injective homomorphism, we see that
+    $\pi(x)$ is also of order $n$.
+    Now if $\pi(x)$ has a cycle of order less than $n$, then we get
+    that there is a $g \in G$ such that $\pi(x)^kg = x^kg = g$ for
+    some $k < n$. But this forces $x^k = e$ for $k < n$,
+    contradicting the order assumption on $x$. Therefore we see that
+    $\pi(x)$ is a product of $n$-cycles.
+
+    Moreover, if $\pi(x)$ is not a product of $m$ $n$-cycles, then
+    there is some element $g \in G$ that if fixed by $\pi(x)$. That
+    is $\pi(x)g = xg = g$. But this forces $x = e$ again
+    contradicting the order assumptions on $x$.
+    Hence we see that $\pi(x)$ is precisely a product of $m$ $n$-cycles.
+
+    Since we have shown that $\pi(x)$ is a product of $m$ $n$-cycles,
+    we get that the sign of $\pi(x)$ is the parity of $m \times (n-1)$.
+    Now if $\pi(x)$ is an odd permutation, we get that both $m$ and
+    $n-1$ has to be odd which forces $|x| = n$ to be even and
+    $\frac{|G|}{|x|} = m$ to be odd.
+  \end{solution}
+
+  \question
+  \label{q:3}
+  Let $G, \pi$ as in the previous exercise. Prove that if $G$
+  contains an odd permutation, then $G$ has a subgroup of index 2.
+  \begin{solution}
+    Since $\pi(G)$ contains an odd permutation, we see that $\pi(G)
+    \nleqslant A_G$, the alternating subgroup of $S_G$. Note that
+    since $G$ is a finite group, elements of $G$ can be indexed and
+    therefore $S_G$ can be identified with $S_n$ where $n = |G|$. Similarly we
+    can identify $A_G$ with $A_n$.
+
+    Now exercise 3 from section 3.3 of the textbook shows that if $H
+    \trianglelefteq G$ is a subgroup of prime index $p$, then for all
+    $K \leqslant G$ either
+    \begin{enumerate}[label=(\arabic*)]
+      \item $K \leqslant H$ or
+      \item $G = HK$ and $|K : K \cap H| = p$
+    \end{enumerate}
+
+    Replace $G = S_n, H = A_n, K = \pi(G)$ to the above
+    statement. Since $|S_n : A_n| = 2$ and  $\pi(G) \nleqslant A_n$,
+    we get that $|\pi(G): \pi(G) \cap A_n| = 2$. Since the left
+    regular representation is faithful (injective), the preimage of
+    $\pi(G) \cap A_n$ under $\pi$ will have index 2 in $G$.
+
+  \end{solution}
+
+  \question
+  Prove that if $|G| = 2k$ where $k$ is odd then $G$ has a subgroup
+  of index $2$.
+  \begin{solution}
+    Since $ G$ is a finite group and $2\big||G|$, $G$ has an element
+    $x$ with $|x| = 2$ by Cauchy's theorem. Since $|x| = 2$ is even
+    and $\frac{|G|}{|x|} = k$ is odd, by question \ref{q:order_mod}, for
+    the regular representation $\pi: G \to S_G$, we get that $\pi(x)$
+    is a odd permutation. Now by question \ref{q:3}, we get that $G$
+    has a subgroup of index 2.
+
+  \end{solution}
+
+  \question
+  Prove that if $M$ is a maximal subgroup of $G$, either $N_G(M) = M$
+  or $N_G(M) = G$. Deduce that if $M$ is a maximal subgroup of $G$
+  that is not normal in $G$, then the number of non-identity elements
+  of $G$ that are contained in the conjugates of $M$ is at most $(|M|
+  - 1)|G:M|$.
+  \begin{solution}
+    Assume $M$ is a maximal subgroup of $G$. Then $N_G(M)$ is a
+    subgroup of $G$ which contains $M$ since $mMm^{-1} = M$ for all
+    $m \in M$. Hence the maximality of $M$ forces $N_G(M)$ to be
+    either $G$ or $M$.
+
+    Now if $M$ is not normal, we get that $N_G(M) = M$. Moreover
+    $gMg^{-1} = hMh^{-1}$ if and only if $M =
+    (g^{-1}h)M(g^{-1}h)^{-1}$ if and only if $g^{-1}h \in N_G(M) = M$.
+
+    Consider the conjugate action of $G$ on the subsets of $G$. We
+    get that the number of conjugate classes (number of elements in
+    the orbit) of $M$ is equal to $|G:N_G(M)| = |G:M|$. Moreover each
+    conjugate classes of $M$ have $|M|-1$ non-identity elements. Then
+    it is evident that the number of elements of $G$ which are in the
+    conjugate classes of $G$ is atmost $(|M|-{1})|G:M|$.
+  \end{solution}
+
+  \question
+  Assume that $H$ is a proper subgroup of the finite group $G$, Prove
+  $G \neq \cup_{g \in G}gHg^{-1}$.
+  \begin{solution}
+    Let $H$ be a proper subgroup of $G$. Then $H \leqslant M$ for
+    some maximal subgroup $M$ of $G$. Existence of such a maximal
+    subgroup is guaranteed because the group
+  is a finite, and have only a finite number of subgroups).
+  % We'll argue for the existence
+  % of $M$ using Zorn's lemma.
+  %
+  % Let $\mathscr{G}$ be the collection of all subgroups of $G$ that
+  % contain $H$. Order it by set inclusion. Then for any chain
+  % $\mathscr{C} \subset \mathscr{G}$,
+  Then $gHg^{-1} \subset gMg^{-1}$ for all $g \in G$.
+
+  If $M$ is normal, then $gMg^{-1} = M$ for all $g \in G$ and thus $gHg^{-1}
+  \subset M$ for all all $g \in G$ proves our statement.
+  If $M$ is not normal, from the above problem, we get that \[
+    \big|\bigcup_{g \in G}gMg^{-1}\big| \le (|M| - 1)|G:M| + 1 =
+    \frac{|M|-1}{|M|}|G| + \frac{|M|}{|M|} = |G| + (1 - \frac{|G|}{|M|}) < |G|
+  \]
+  where the $1$ is added above to include the identity element in
+  the conjugates and the last inequality is because $|M| < |G|$.
+
+  Hence $|\cup_{g \in G}gHg^{-1}| \le |\cup_{g \in G}gMg^{-1}| <
+  |G|$ which proves our assertion.
+\end{solution}
+
+\question
+Let $p, q$ be primes with $p < q$. Prove that a non-abelian group $G$
+of order $pq$ has a non-normal subgroup of index $q$, so that there
+exists an injective homomorphism into $S_q$. Deduce that $G$ is
+isomorphic to a subgroup of the normalizer in $S_q$ of the cyclic
+group generated by the $q$-cycle $(1, 2, \ldots q)$.
+\begin{solution}
+  Since $p < q$, we know that every subgroup $G$ of index $p$ is
+  normal. If every subgroup of index $q$ is also normal, this would
+  force every subgroup of $G$ to be normal. Then if $H_p, H_q$ are
+  any subgroups of order $p, q$ respectively, since they are both
+  normal with $H_p \cap H_q = \{ e \}$ and $H_qH_p = H_pH_q = G$
+  (this is because $H_pH_q$ have $H_p$ and $H_q$ as subgroups and
+  Lagrange's theorem forces $H_pH_q = G$), we get that $G \cong H_p
+  \times H_q \cong \mathbb{Z}_p \times \mathbb{Z}_q$. Hence we see
+  that $G$ is Abelian. Hence if our group is non-Abelian, we must have a
+  non-normal subgroup $H$ of index $q$ (order $p$).
+
+  Now consider the left regular action of $G$ on $G/H$, the left
+  cosets of $G$. We know from question \ref{q:2} that the kernel of
+  this action is $K = \cap_{g \in G}gHg^{-1} \leqslant H$. Since $K
+  \leqslant H$ and $|H| = p$(prime), by Lagrange's theorem, either $K
+  = H$ or $K = \{ e \}$.
+  If $K = H$, then this would force $gHg^{-1} = H$ for all $g \in H$,
+  making $H$ normal and contradicting our assumption. Therefore, $K =
+  \{ e \}$. This shows that the action of $G$ on $G/H$ is faithful.
+  Hence the corresponding homomorphism $\phi:G \to S_{G/H}$ is injective.
+  Since $|G/H| = q$, indexing elements of $G/H$ by the numbers $1, 2,
+  \ldots q$ gives an injective homomorphism from $G \to S_q$.
+
+  Since $q$ is also a prime that divides the order of $|G|$,
+  Cauchy's theorem guarantees the existence of a subgroup $K
+  \leqslant G$ of order
+  $q$. Moreover any subgroup of order $q$ must have index $p$,
+  and since $p$ is the smallest prime dividing the order of the group, we
+  see that $K$ must be normal in $G$. Then $HK = KH = G$ since it
+  contains elements of order $p, q$. Now let $k$ be a generator
+  of $K$. We can choose to index the elements in $S_{G/H}$ with $1,
+  2, ... q$ such that $\phi(k) = (1, 2, \ldots q)$. Then clearly
+  $\phi(k) \in N_{S_q}\langle (1, 2, \ldots q)\rangle$. If $h$ is a
+  generator of our above subgroup $H$, then for any element $(1, 2,
+  \ldots q)^n \in \langle (1,2, \ldots q) \rangle $, we have
+  \begin{align*}
+    \phi(h)(1, 2, \ldots q)^n\phi(h)^{-1} &= \phi(h)\phi(k)\phi(h^{-1}) \\
+    &= \phi(hk^nh^{-1}) \\
+    &= \phi(k^m) \quad \quad \textrm{ by the normality of }  K \\
+    &= (1, 2, \ldots q)^m  \quad \in \quad \langle (1, 2, \ldots q)  \rangle
+  \end{align*}
+  This shows that $\phi(h) \in N_{S_q}\langle (1, 2, \ldots q)  \rangle$.
+\end{solution}
+Now since $h, k$ are generators for $H$ and $K$ respectively,
+$\langle  h , k \rangle = G$ (since $HK = G$). Hence $\phi(h), \phi(k)
+\in N_{ S_q}\langle (1, 2, \ldots q)\rangle$ gives $\phi(G)
+\leqslant N_{S_q}\langle (1, 2, \ldots q)\rangle$.
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+
+

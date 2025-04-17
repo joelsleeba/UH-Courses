@@ -1,0 +1,99 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions, var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS. https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+  }
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter 
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+
+\begin{document}
+
+\title{MATH 7320 Functional Analysis\\ Homework 2}
+
+% author list
+\author{
+Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  
+  \question
+  \begin{solution}
+    One side is easy using the conitnuity of the functional, for the other way, use the functional $d(x, \mathcal{M})$
+  \end{solution}
+  
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part If $X$ is reflexive, the map $X \to X^{**}:= x \to \textrm{ev}_x$ is an isometric isomorphism. Moreover we know that $X^{**} = B(X^{*}, \mathbb{C})$ is complete since $\mathbb{C}$ is complete. Therefore by the isometric isomorphism, we get that $X$ is complete.
+      \part Let $i_X: X \to X^{**}: x \to \textrm{ev}_x$ be the canonical injection map. Then first we show that $i_{X^{**}} = (i_X)^{**}$, that is the canonical injection of the double dual is the double dual of the canonical injection. 
+
+      First we notice that since $i_X: X \to X^{**}$, the dual of it $i_X^*: X^{***} \to X^{*}$ and $i_X^{**}: X^{**} \to X^{****}$ as the usual dual of linear transformations. Moreover $i_{ X^{**}}: X^{**} \to X^{****}$ shows that the domain and codomain of the maps are same, therefore considering the equality of the maps makes sense. (Notice that actually $i_{ X^{**}}$ is a map from $X^{**} \to (X^{**})^{**}$, but by definition it follows that $(X^{**})^{**} := (X^{***})^* = X^{****}$).
+
+      Let $f: X^{***} \to C$
+
+      \part Let $M \subset X$ be a closed subset of a reflexive space $X$. Consider the subset $F \subset X^{*}$ such that $F = \{ f \in X^{*} \ : \ f|_M = \textbf{0} \}$. Show that $X^{*}/F \cong^{ \textrm{iso}} M^{*}$ (For this it is enough to show that the restriction map $f \to f|_M$ has its kernel $F$. And for isometry, play with the quotient norm).
+    \end{parts}
+  \end{solution}
+
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

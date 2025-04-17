@@ -1,0 +1,114 @@
+% TeX_root = ../main.tex
+
+\begin{lemma}
+  If $T \in B(\mathcal{H})$ is compact, then $T(\mathcal{H})$ is separable.
+\end{lemma}
+\begin{proof}
+  For the sake of contradiction, assume that $T(\mathcal{H})$ is not
+  separable. Then $T(\mathcal{H})$ must have an uncountable orthonormal set $E$.
+  This is because if $E$ is a countable basis, then $\mathbb{Q}E + i
+  \mathbb{Q}E$ will be a countable dense subset of
+  $T(\mathcal{H})$ making it separable. \textcolor{red}{verify}
+\end{proof}
+
+\begin{corollary}
+  The set $\mathcal{K}(\mathcal{H})$ of all compact operators on $
+  \mathcal{H}$ is a closed
+  two-sided ideal in $B(\mathcal{H})$.
+\end{corollary}
+\begin{proof}
+  Use the fact that compact operators are
+  the closure of finite rank operators.
+\end{proof}
+
+\begin{corollary}
+  $T \in \mathcal{K}(\mathcal{H})$ implies $T^* \in \mathcal{K}(\mathcal{H})$.
+\end{corollary}
+\begin{proof}
+  Use the fact that $T$ is finite rank
+  implies $T^*$ is finite rank.
+\end{proof}
+
+\begin{example}
+  Let \[
+    T: L^2([0, 1], m) \to L^2([0, 1], m)
+  \]
+  be defined as $T(f)(x) = xf(x)$. Prove that $T = T^*$ and that $T$
+  has no eigenvectors.
+
+  Only for joseph: If $\xi = \eta$ almost everywhere, then show that  $f \xi = f
+  \eta$ almost everywhere if $ f \in C([0, 1])$
+\end{example}
+\begin{proof}
+  See homework-5
+\end{proof}
+
+\begin{example}
+  Let $\alpha_n$ be a bounded sequence in $\mathbb{C}$. Consider $T :
+  \ell^2 \to \ell^2$, such that \[
+    T(\delta_n) = \alpha_n \delta_n
+  \]
+  for all $n \in \mathbb{N}$. Then $T$ is bounded with $\|T\| =
+  \|(\alpha_n)\|_\infty$.
+\end{example}
+
+\begin{example}
+  \label{CompactiffEigvalsconverge0}
+  Prove that the $T$ above is compact if and only if $(\alpha_n) \in c_{\bf 0}$
+  Prove that $T^*(\delta_n) = \overline{\alpha_n}\delta_n$
+\end{example}
+\begin{proof}
+  See homework-5
+\end{proof}
+
+\section{Spectral Theorem for Compact Normal Operators}
+We'll be working to prove the following theorem.
+\begin{theorem}
+  Let $\mathcal{H}$ be separable Hilbert space and $T\in
+  \mathcal{K}(H)$ be normal. i.e
+  $TT^* = T^*T$. Then there exist an orthonormal basis $\{ e_n  \ :
+  \  n \in \mathbb{N} \}$ of $\mathcal{H}$, and a sequence $(\alpha_n) \in
+  c_{\bf 0}$, such that $T(e_n) = \alpha_n e_n$.
+\end{theorem}
+
+\begin{lemma}
+  Let $T \in \mathcal{K}(\mathcal{H})$ be self-adjoint. Then there
+  exist a non-zero $\lambda \in \mathbb{C}$ such that $
+  \textrm{Ker}(T - \lambda I) \neq \{ 0 \}$.
+\end{lemma}
+\begin{proof}
+  See the first part of the proof of
+  \autoref{SpectralTheoremforCompactSAOperators}.
+\end{proof}
+
+\begin{definition}
+  Let $T \in B(\mathcal{H})$. A subspace $W \leqslant H$ is said to be
+  invariant under $T$ if $T(W) \subset W$. We say $W$ reduces $T$, if
+  $T(W) \subset W$ and $T(W^\perp) \subset W^\perp$
+\end{definition}
+
+\begin{example}
+  Let $T \in B(\mathcal{H})$.
+  Prove that $W \subset \mathcal{H}$ is invariant under $T$ if and
+  only if $P_WT = TP_W$
+  Prove that $W$ reduces $T$ if and only if $P_WT = TP_W$ and
+  $P_{W^\perp}T = T P_{W^\perp}$.
+\end{example}
+\begin{proof}
+  See homework-5
+\end{proof}
+
+\begin{proposition}
+  \label{InvariantSubspacesofSelfAdjointOperatorsReduce} Let $T \in
+  B(\mathcal{H})$ be self adjoint with $T(\mathcal{M}) \subset
+  \mathcal{M}$, where $\mathcal{M}$ is a closed subspace of
+  $\mathcal{H}$. Then $\mathcal{M}$ reduces $T$.
+\end{proposition}
+\begin{proof}
+  Let $m \in \mathcal{M}$ and $x \in \mathcal{M}^\perp$. Then
+  \begin{align*}
+    \langle T(x) ,  m \rangle = \langle x , T(m) \rangle = 0
+  \end{align*}
+  shows that $T(\mathcal{M}^\perp) \subset \mathcal{M}^\perp$.
+\end{proof}
+

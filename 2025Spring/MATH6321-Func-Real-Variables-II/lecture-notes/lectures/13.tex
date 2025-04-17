@@ -1,0 +1,99 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 01/04/2025 }
+
+\begin{lemma}
+  Let $X$ be locally compact Hausdorff and $\lambda: C_c(X) \to
+  \mathbb{R}$ be bounded linear functional. Then there are positive
+  bounded linear functionals $\lambda_+, \lambda_-$ such that
+  $\lambda = \lambda_+ - \lambda_-$.
+\end{lemma}
+\begin{proof}
+  For this, we find bounded linear functional $\rho$,
+  \begin{align*}
+    |\lambda(f)| \le \rho(|f|) \le C \| f\|_\infty
+  \end{align*}
+  and then let $\lambda_+ = \frac{1}{2}(\lambda + \rho)$ and
+  $\lambda_- = \frac{1}{2}(\rho - \lambda)$
+
+  We define the map $\rho :   C_c(X)^+ \to  \mathbb{C} := f \mapsto
+  \sup \{ |\lambda(h) \ | \ h \in C_c(X), |h| \le f \}$, where
+  $C_c(X)^+$ is the set of non-negative real valued functions in $C_c(X)$.
+  Let $ f, g \in C_c(X)^+$, then there is a $ h_1, h_2 \in C_c(X)$
+  such that $|h_1| \le f, |h_2| \le g$ with $\rho(f) \le |
+  \lambda(h_1)| + \varepsilon$ and $\rho(g) \le |\lambda(h_2)| + \varepsilon$.
+  So, $\rho(f) + \rho(g) \le |\lambda(h_1)| + |\lambda(h_2)| + 2 \varepsilon$.
+  Let $\alpha_1, \alpha_2 \in \{ \pm 1 \}$ such that
+  $\lambda(\alpha_i h_i) = \alpha_i \lambda(h_i) \ge 0$. Then,
+  \begin{align*}
+    |\lambda(\alpha_1h_1)| + |\lambda( \alpha_2 h_2)| =
+    \lambda(\alpha_1 h_1) + \lambda(\alpha_2 h_2)  =
+    \lambda(\alpha_1 h_1 + \alpha_2 h_2)
+  \end{align*}
+  So,
+  \begin{align*}
+    \rho(f) + \rho(h) & \le \lambda(\alpha_1 h_1 + \alpha_2 h_2) +
+    \varepsilon \\
+    & \le \rho(|\alpha_1h_1 + \alpha_2 h_2|) + 2 \varepsilon  \quad
+    \textrm{since } \alpha_1h_2 +
+    \alpha_2 h_2 \le |\alpha_1h_1 + \alpha_2h_2|\\
+    & \le \rho(|h_1| + |h_2|) + 2 \varepsilon \quad \textrm{since }
+    \rho \textrm{ is order preserving} \\
+    & \le \rho(f + g) + 2 \varepsilon \quad \textrm{since }
+    \rho \textrm{ is order preserving}
+  \end{align*}
+  Since this holds for any $\varepsilon > 0$, we get $\rho(f + g) \ge
+  \rho(f) + \rho(g)$.
+
+  To show the reverse inequality, let $f, g \in C_c(X)^+$, and $h \in
+  C_c(X)$ be such that $|h| \le f + g$. We define
+  \begin{align*}
+    h_1(x) =
+    \begin{cases}
+      \frac{f(x)}{f(x) g(x)}h(x), &f(x) + g(x) > 0 \\
+      0, &\textrm{else}
+    \end{cases} \\
+  \end{align*}
+  and $h_2(x) = h(x) - h_1(x)$. Then $|h_1| \le f, |h_2| \le g$.
+  Moreover, $h_1, h_2$ are continuous where $ f(x) + g(x) \ge 0$. Next,
+  \begin{align*}
+    |\lambda(x)| &= |\lambda(h_1 + h_2)| \\
+    & \le | \lambda(h_1)| + | \lambda(h_2)| \\
+    & \le \rho(f) + \rho(g)
+  \end{align*}
+  Taking supremum over $h$, we get $\rho(f + g) \le \rho(f) +
+  \rho(g)$. We have established additivity of $\rho$ for $f, g \ge 0$.
+  For general $ f, g \in C_c(X)$, split $f, g, h$ into differences of
+  positive and negative parts and rearrange to apply $\rho$ with
+  linearity. Thus we'll get $\rho(f +g) = \rho(f) + \rho(g)$.
+
+  Now to show homogeneity, let $  c \in \mathbb{R}$ and $f \in
+  C_c(X)$. If $c < 0$,
+  \begin{align*}
+    \rho(cf^+) & = - \rho((cf^+)^-) \\
+    &= - \rho(|c|f^+) \\
+    &= - |c| \rho(f^+) \\
+    &= c \rho(f^+)
+  \end{align*}
+  Again by splitting $f = f^+ - f^-$, we get the homogeneity. Thus we
+  get $\rho$ is linear.
+\end{proof}
+
+\begin{lemma}
+  If $\nu$ is a $\sigma$-finite regular positive measure on a locally compact
+  Hausdorff space, and $  \mu$ is a complex measure with $|\mu| \ll
+  \nu$, then $\mu$ is regular.
+\end{lemma}
+\begin{proof}
+  Using Radon-Nikodym theorem, for a measurable set $E$, we have
+  \begin{align*}
+    \mu(E) = \int_E h \ d \nu
+  \end{align*}
+  with $h \in L^{1}(\mu)$. Considering that $\mu$ is regular, there
+  are sequences  of open sets $V_j \supset E$, $\nu(V_j \setminus E)
+  \stackrel{ j \to \infty}{\longrightarrow} 0$ and compact sets $K_j
+  \subset E$, such that $\nu(E \setminus K_j) \stackrel{j \to
+  \infty}{\longrightarrow} 0$.
+
+  Next, by dominated convergence theorem,
+\end{proof}

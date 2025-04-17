@@ -1,0 +1,129 @@
+% TeX_root = ../main.tex
+
+\marginnote{ \scriptsize 19/11/2024}
+
+Given $T$ as above, denote by $\sigma(T)$, the set of eigenvalues of
+$T$ and  for each eigenvalue $ \lambda \in \sigma(T)$, denote
+$P_\lambda:= P_{\textrm{Ker}(T- \lambda I)}$. Then spectral theorem gives
+\begin{align*}
+  T = \sum_{\lambda \in  \sigma(T)}  \lambda P_\lambda
+\end{align*}
+
+% \begin{exercise}
+%   Show $\sum_{\lambda \in  \Lambda}  f(\lambda) P_\lambda$
+%   convergences pointwise and in norm. i.e
+%   \begin{align*}
+%     \Big( \sum_{i = 1}^{N} f(\lambda_i) P_{\lambda_i}\Big)
+%   \end{align*}
+% \end{exercise}
+% \begin{proof}
+%   \textcolor{red}{verify}
+% \end{proof}
+
+\begin{definition}
+  Let $\Xi$ be a non-empty subset of $B(\mathcal{H})$. The commutant
+  of $\Xi$, is the set $\Xi^\prime = \{ S \in B(\mathcal{H})  \ : \    ST
+  = TS, \forall T \in \Xi \}$
+\end{definition}
+
+\begin{exercise}
+  \begin{enumerate}
+    \item  Prove that for any set $\Xi^\prime$ is a closed subspace
+      of $B(\mathcal{H})$.
+    \item $\Xi^\prime = \textrm{span}(\Xi)^\prime$
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item Let $(S_n)$ be a sequence in $\Xi^\prime$ such that $S_n
+      \to S$ in $ B(\mathcal{H})$. Then by the continuity of the map
+      $m_T: B(\mathcal{H}) \to B(\mathcal{H}):= R \to TR$ as $
+      \|m_T(R)\| \le \|T\| \|R\|$, we see that $S_nT \to ST$ and
+      similarly by the continuity of $m^\prime_T: S \to TS$, we see that
+      $TS_n \to TS$. Then by the algebra of limits, for $ T \in \Xi$,
+      we see that
+      \begin{align*}
+        0 = S_nT - TS_n \to ST - TS
+      \end{align*}
+      which forces $S \in \Xi^\prime$.
+    \item
+  \end{enumerate}
+\end{proof}
+
+\section{Functional Calculus}
+
+\begin{theorem}[Functional calculus for compact normal operators]
+  Let $T \in B(\mathcal{H})$ be compact normal with spectral decomposition
+  \begin{align*}
+    T = \sum_{\lambda \in  \sigma(T)} \lambda P_\lambda.
+  \end{align*}
+  For each $f \in L^\infty(\mathbb{C})$, define $f(T) := \sum_{ \lambda \in
+  \sigma(T)}  f(\lambda)   P_\lambda$. Then
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\forall f \in \ell^\infty(\mathbb{C}), \|f(T)\| = \sup \{
+      |f(\lambda)|  \ : \  \lambda \in \sigma(T) \}$
+    \item The map $\ell^\infty(\mathbb{C}) \to B(\mathcal{H})$
+      defines as $f \to f(T)$ is linear.
+    \item $\forall f, g \in \ell^\infty(\mathbb{C}), (fg)(T) = f(T)g(T)$
+    \item $\overline{f}(T) = f(T)^*$
+    \item $ \{ f(T)  \ : \   f \in \ell^\infty(\mathbb{C}) \} = \{ T
+      \}^{\prime \prime}$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item \textcolor{red}{exercise}
+    \item \textcolor{red}{exercise}
+    \item \textcolor{red}{exercise}
+    \item \textcolor{red}{exercise}
+    \item Let $f \in \ell^\infty(\mathbb{C})$, and let $S \in
+      \{T\}^\prime$. Since $ ST = TS$, by
+      \autoref{CommutingOperatorsPreserveInvariantSpaces} for every $
+      \lambda \in \sigma(T)$, the eigenspace $\textrm{Ker}(T - \lambda I)$ is
+      invariant under $S$. Hence they are all reducing for $S$. i.e
+      $SP_\lambda = P_\lambda S$. Thus,
+      \begin{align*}
+        Sf(T) &= S \sum_{\lambda \in  \sigma(T)}  f(\lambda)   P_\lambda \\
+        &= \sum_{\lambda \in  \sigma(T)} f( \lambda) S P_\lambda \\
+        &= \sum_{\lambda \in  \sigma(T)} f(  \lambda) P_\lambda  S \\
+        &= f(T) S
+      \end{align*}
+      So we get $f(T) \in \{ T \}^{\prime \prime}$
+
+      Let $ R \in \{ T \}^{\prime\prime}$. Note that $\forall \lambda \neq
+      \lambda^\prime \in \sigma(T)$, $P_\lambda P_{\lambda^\prime} = 0$ by
+      \autoref{DistinctEigenvectorsAreOrthogonal}. Then for all $\gamma \in
+      \sigma(T)$, we get $$P_\gamma T = P_\gamma \sum_{\lambda \in
+      \sigma(T)}  \lambda P_\lambda  = \gamma P_\gamma$$
+      So $P_\gamma \in \{ T \}^\prime$. Thus $RP_\gamma = P_\gamma R$ for
+      all $ \gamma \in \sigma(T)$.
+
+      Fix $\gamma \in \sigma(T)$. Given $A \in
+      B(P_\gamma(\mathcal{H}))$. Let $    S:= P_\gamma A P_\gamma :
+      \mathcal{H} \to \mathcal{H}$. Then
+      \begin{align*}
+        ST &= P_\gamma AP_\gamma \sum_{\lambda \in  \sigma(T)}
+        \lambda P_\lambda \\
+        &= \gamma P_\gamma AP_\gamma \\
+        &= \gamma S \\
+        &= TS
+      \end{align*}
+      Thus $RS = SR$. This shows that $R|_{P_\gamma(\mathcal{H})}$
+      commutes with every $A \in B(P_\gamma(\mathcal{H}))$. Hence
+      there exist such a scalar $    f(\gamma) \in \mathbb{C}$ such
+      that $R|_{P_\gamma(\mathcal{H})} = f(\gamma) I_{
+      P_\gamma(\mathcal{H})}$. Thus $R = \sum_{\lambda \in
+      \sigma(T)}  f(\gamma) P_\gamma$ and $ f \in \ell^\infty(\mathbb{C})$.
+  \end{enumerate}
+
+  \begin{corollary}
+    The mapping above restricted to $\sigma(T)$ is an isometric
+    bijective linear multiplicative $*$-preserving map.
+  \end{corollary}
+
+  \begin{definition}
+    Let $T \in B(\mathcal{H})$. Define $\sigma(T) = \{ \lambda \in
+    \mathbb{C}  \ : \   T - \lambda I \textrm{ is not invertible} \}$
+  \end{definition}
+\end{proof}
+

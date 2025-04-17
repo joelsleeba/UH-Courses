@@ -1,0 +1,149 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{theorem}
+  Let $X$ be a locally compact Hausdorff space. If $X$ is
+  $\sigma$-compact and a Borel measure $\nu$, that assigns each
+  compact set $K$ the measure $\nu(K) < \infty$ then the $\mu$ given
+  by Reisz representation theorem satisfies
+  \begin{enumerate}
+    \item If $E \in \mathcal{M}$, $\epsilon > 0$, there is an open
+      set $V$ and a closed set $C$ with $C \subset E \subset V$ and
+      $\mu(V\setminus C) < \epsilon$.
+    \item If $E \in \mathcal{M}$, then there is an $F_\sigma$ set $F$
+      (countable union of closed sets) and  an $G_\delta$ set $G$
+      (countable intersection of open sets) with $F \subset E \subset
+      G$ and $\mu(G \setminus F) = 0$.
+    \item $\mu$ is regular
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}
+    \item If $\mu(E) < \infty$, then it holds by Reisz representation theorem.
+      Next consider $E \in \mathcal{M}$ with $\mu(E) = \infty$. Recall
+      that $X = \cup_{j = 1}^{\infty}K_j$, where each $K_j$ is compact.
+      Let $\epsilon > 0$. Take intersection with $K_j$, then we have
+      $\mu(E \cap K_j) < \infty$. So we have open sets $V_j$ such that
+      $K_j \cap E \subset V_j$ and $\mu(V_j\setminus (K_j \cap E)) <
+      \frac{\epsilon}{2^{j+1}}$. $V_j$s are guaranteed by the (4) in
+      the Reisz representation theorem.
+      Take $V = \cup_{ j = 1}^{\infty}V_j$. We have $V\setminus E
+      \subset \cup_{j = 1}^{\infty}(V_j \setminus (K_j \cap E))$. So we
+      get $\mu(V\setminus E) < \frac{\epsilon}{2}$.
+
+      Again consider $ E^{c}$ and using the same analysis, we get an
+      open set $W$ such that $E^c \subset W$ and $\mu(W\setminus E^{c})
+      < \epsilon/2$. Now let $C = W^c$, this gives $\mu(E\setminus C) =
+      \mu(W\setminus E^c) = \frac{\epsilon}{2}$.
+      \textcolor{red}{Now show that $\mu(W\setminus C) < \epsilon$}.
+      Then we're done.
+
+  \item Repeat i) for a sequence of $\epsilon_n = \frac{1}{n}$. Then we
+    get a corresponding $C_n \subset E \subset V_n$. Take $V = \cap_{n
+    = 1}^{\infty}V_n, C = \cup_{n = 1}^{\infty} C_n$. Then we're done.
+
+  \item (4), (5) of Reisz representation theorem gives the outer
+    regualarity, and outer regularity when $\mu(E) < \infty$. We only
+    need to show inner regularity when $\mu(E) = \infty$. Therefore, we
+    need a sequence $A_n$ of compact sets such that $A_n \subset E$ for
+    each $n \in \mathbb{N}$ and $\lim_{n \to \infty} \mu(A_n) = \infty$.
+    From (1), taking $\epsilon = 1$, we have $C \subset E$, where
+    $\mu(E \setminus C) < 1$. Hence we see $\mu(C) = \infty$.
+
+    Now from the $\sigma$-compactness, we get $X = \cup_{n =
+    1}^{\infty}K_n$ for $K_n$ compact. We can further demand $K_n$s are
+    increasing since if not we can take finite unions of everything
+    below. Now let $C_n = K_n \cap C$ and we have \[
+      \infty = \mu(C) = \lim_{n \to \infty} \mu(C_n)
+    \]
+\end{enumerate}
+\end{proof}
+
+\section{Lebesgue Measure}
+
+\begin{definition}
+A $k$-cell in $\mathbb{R}^n$ is a set of the form \[
+  A = \{ \lambda = (x_1 , x_2 , \ldots , x_k)  \ : \ a_j \le^\circ x_j
+  \le^\circ b_j, \ \   \le^\circ \in \{ \le, < \} \}
+\]
+We define $ \textrm{vol}(A) =  \Pi_{j = 1}^k (b_j - a_j)$
+\end{definition}
+
+\begin{theorem}
+There is a $\sigma$-algebra $\mathcal{M}$ including Borel sets on
+$\mathbb{R}^n$ and measure $m$ on $\mathcal{M}$ such that
+\begin{enumerate}[label=(\arabic*)]
+  \item $m(V) = \textrm{vol}(V)$ if $V$ is a $k$-cell
+  \item $m$ restricted to Borel sets is a regular measure
+  \item $m$ is translation invariant
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For any $f \in C_c(\mathbb{R}^{k})$. Let $\Lambda(f) = \int f \ dV$
+be the Riemann integral. Then $ \Lambda$ is a positive linear
+functional on $C_c(\mathbb{R}^k)$. Reisz representation theorem gives
+a measure $m$ out of $\Lambda$ which has regularity and defined on a
+$\sigma$-algebra $\mathcal{M}$ which contains the Borel sets.
+\begin{enumerate}[label=(\arabic*)]
+  \item   Let $V$ be an open $k$-cell. Pick compact $k$-cells nested
+    increasing with with union $V  = \cup_{j = 1}^{\infty} V_j$. By
+    Urysohn's lemma, there are $f_n \in C_c(\mathbb{R}^n)$ such that
+    $\chi_{V_n} \le f_n \le \chi_V$ where $V_n$ is compact and $V$ is
+    open. Then \[
+      m(V_n) = \int  \chi_{V_n} \ d m \le \int  f_n \ d m \le \int
+      \chi_{V} \ d m = m(V)
+    \]
+    Now taking $ n \to \infty$, by monotone convergence theorem, we get
+    $m(V_n) \to m(V)$. Hence by sandwich, we get $\int  f_n \ d m \to m(V)$.
+
+    Similarly $$\textrm{vol}(V_n) \le \int  f_n \ dV \le \textrm{vol}(V)$$
+    Then we can choose $V_k$ such that $\textrm{vol}(V_k) \to
+    \textrm{vol}(V)$, then we get
+
+  \item Property of Reisz representation measure
+  \item Fix $a \in \mathbb{R}^k$ and define $ \lambda: \mathcal{M} \to
+    [0, \infty] := \lambda(E) = m(a+E)$.
+    \textcolor{red}{Verify that
+    $\lambda$ is a measure on $\mathcal{M}$}.
+
+    Also define translation of functions $f \in C_c(\mathbb{R}^k)$ as
+    $f \to f_a$, where $ f_a(x) = f( x-a)$.
+    We have seen for Riemann integrals that \[
+      \int_{\mathbb{R}^k}  f \ d V = \int_{\mathbb{R}^k}  f_a \ d V
+    \]
+    By the extension (Reisz, i guess), \[
+      \int  f \ d m = \int  f_a \ d m
+    \]
+    Moreover if $K$ is compact, and $V$ open with $K \subset V$, we
+    have $f \in C_c( \mathbb{R}^k)$ with $\chi_K \le f \le \chi_V$.
+    Then $\chi_{K+a} \le f_a \le \chi_{V+a}$.
+
+    Next choose any compact set $K$ in $\mathbb{R}^k$. Define a
+    distance from $K$ as $\phi_k(x) = \inf_{y \in K}|x - y|$. Then
+    $\phi_K$ is uniformly continuous on $\mathbb{R}^k$. Pick $V_k =
+    \phi_K^{-1}(( \frac{-1}{n}, \frac{1}{n}))$. Then $ V_n \supset
+    V_{n+1} \supset \ldots$ and $K = \cap_{n = 1}^{\infty}V_n$.
+
+    Now choose a sequence $(f_n) \in C_c( \mathbb{R}^k)$ such that
+    $\chi_k \le f_n \le \chi_{V_n}$ and $ f_1 \ge f_2 \ge \ldots$ (By
+    choosing minima among the first few functions).
+
+    Then we get
+    \begin{align*}
+      m(K) &= \inf_{n \in \mathbb{N}} \int  f_n \ dm \\
+      & = \inf_{n \in \mathbb{N}} \int  (f_n)_a \ dm \\
+      & =
+      & = \lambda(K)
+    \end{align*}
+
+    Now we have showed that $ \lambda = \mu$ for compact sets in $
+    \mathbb{R}^k$. Now we should prove the same for the open sets of
+    $\mathbb{R}^k$. Now by the $\sigma$-compactness of
+    $\mathbb{R}^k$, we get our desired translation invariance.
+
+\end{enumerate}
+\end{proof}
+
+

@@ -1,0 +1,109 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 21/11/2024 }
+
+\begin{definition}
+  A Banach algebra $\mathcal{A}$ is a Banach space with a
+  multiplicatit a ring with addition satisfying $\|ab\| \le
+  \|a\|\|b\|$ for all $ a, b \in \mathcal{A}$. We say $\mathcal{A}$
+  is unital if the ring above is unital with multiplicative identity
+  $1_{\mathcal{A}}$. Units (invertible elements)
+  may also exist similarly.
+\end{definition}
+
+\begin{definition}
+  Given a Banach algebra $\mathcal{A}$, and $a \in \mathcal{A}$, the
+  spectrum of $a$, denoted by
+  \begin{align*}
+    \sigma(a) = \{ \lambda \in \mathbb{C}  \ : \  \lambda
+    1_{\mathcal{A}} - a \textrm{ is not invertible in } \mathcal{A} \}
+  \end{align*}
+\end{definition}
+
+\begin{example}
+  Let $(\alpha_n) \in \textbf{c}_0$ and $T: \ell^{2} \to \ell^{2}$
+  such that $T((x_n)) = (\alpha_n x_n)$. We claim that
+  \begin{align*}
+    \sigma(T) = \{ \alpha_n  \ : \  n \in \mathbb{N} \} \cup \{ 0 \}
+  \end{align*}
+\end{example}
+\begin{proof}
+  Since $T$ is a compact operator (see Homework-5), we must have $0
+  \in \sigma(T)$. Otherwise if $T$ is invertible, we'll get $I  = T
+  \circ T^{-1}$ be also compact, which is a contradiction since
+  $\ell^{2}$ is infinite dimensional. Moreover since $(T - \alpha_n I
+  )(e_n) = 0$, we have $ \alpha_n \in \sigma(T)$.
+
+  Now assume that $\beta \notin \{ \alpha_n  \ : \  n \in \mathbb{N}
+  \} \cup \{ 0 \}$. Then let $S \in B(\ell^{2})$ defined by
+  \begin{align*}
+    S(e_n) = \frac{1}{\alpha-\beta} e_n
+  \end{align*}
+  Then \textcolor{red}{show that indeed $S \in B(\ell^{2})$} and $(T
+  - \beta I)S = S(T - \beta I) = I$
+\end{proof}
+
+\begin{example}
+  Let $T \in B(L^{2}([0, 1]))$ such that $T(f)(x) = xf(x)$ for all $
+  f \in L^{2}([0, 1])$. Then $  \sigma(T) = [0, 1]$.
+\end{example}
+\begin{proof}
+  First let us see that $0 \in \sigma(T)$. Suppose $  S = T^{-1}$
+  exists. Then $\forall n \in \mathbb{N}$ if $ f = S \chi_{[0, 1]}$,
+  then $Tf = \chi_{[0, 1]}$. So $x f(x) =
+  \chi_{[0, 1]}$. But this is absurd, since $\frac{1}{x} \chi_{[0,
+  1]} \notin L^2([0, 1])$.
+\end{proof}
+
+\begin{lemma}
+  Let $S \in B(\mathcal{H})$ such that $\|S - T\| \le 1$. Then $S$ is
+  invertible.
+\end{lemma}
+\begin{proof}
+  Since $\|S  -I\| \le 1$,
+  \begin{align*}
+    \sum_{n \in \mathbb{N}} \|(S-I)^n\| \le \sum_{n \in \mathbb{N}} \|S - I\|^n
+  \end{align*}
+  Moreover since $B(\mathcal{H})$ is a Banach space, absolutely
+  convergent sequences converge and this gives that
+  $\sum_{n \in \mathbb{N}} (I - S)^n$ converges. Thus
+  \begin{align*}
+    R = \sum_{n=1}^\infty (I - S)^n
+  \end{align*}
+  exists. Now for each $N \in \mathbb{N}$, we have
+  \begin{align*}
+    S \Big(\sum_{n = 0}^{N} (I - S)^n\Big) = (I - (I -
+    S))\Big(\sum_{n = 1}^{N} (I - S)^n\Big) &= \sum_{n = 0}^{n} (I -
+    S)^n - \sum_{n = 0}^{N} (I-S)^{n+1}\\
+    &= I - (I-S)^{N+1}
+  \end{align*}
+  which converges to $0$ as $n \to \infty$.
+\end{proof}
+
+\begin{corollary}
+  The set of invertible operators is open in $B(\mathcal{H})$.
+\end{corollary}
+\begin{proof}
+  Let $S$ be invertible. Then
+  \begin{align*}
+    \|T - S\| = \|S(S^{-1}T - I)\| \le \| S\| \|S^{-1}T - I\|
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  For any $T \in B(\mathcal{H})$, $\sigma(T)$ is a non-empty, compact
+  subspace of $\mathbb{C}$.
+\end{theorem}
+\begin{proof}
+  Observe that the function $f: \lambda \to T - \lambda I$ is
+  continuous. Then $f^{-1}(G(\mathcal{A}))$ is open, where
+  $G(\mathcal{A})$ is the collection of all invertible elements of
+  $B(\mathcal{H})$. But $\sigma(T)^{c} = f^{-1}(G(\mathcal{A}))$.
+  So we see $\sigma(T)$ is closed. Moreover let $\lambda \in
+  \mathbb{C}$ with $\|T\| < |\lambda|$. Then,
+  \begin{align*}
+    -T + \lambda I = \lambda(\frac{-T}{\lambda} + I)
+  \end{align*}
+  Then $\|S - I\| = \| \frac{T}{\lambda}\| = \frac{\|T\|}{|\lambda|} < 1$
+  Hence show that $\sigma(T)$ is bounded.
+\end{proof}

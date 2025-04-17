@@ -1,0 +1,283 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{MATH6320 - Theory of Functions of a Real Variable \\ Assignment 9 }
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part Let $r < p < s$, where $ r, s \in E$. Then by the
+      convexity of $[r, s] \subset \mathbb{R}$, there is a $ t \in
+      [0, 1]$ such that $p = tr + (1-t)s$. Then Holder's
+      inequality on $\frac{1}{t}$ and $\frac{1}{(1-t)}$ gives,
+      \begin{align*}
+        \int |f|^p \ d  \mu &= \int |f|^{tr}|f|^{(1-t)s} \ d \mu \\
+        &\le \Bigg( \int |f|^{\frac{tr}{t}} \ d m \Bigg)^{t} \Bigg( \int
+        |f|^{\frac{(1-t)s}{(1-t)}} \ d m\Bigg)^{1-t} \\
+        &= \Bigg( \int |f|^{r} \ d m \Bigg)^{t} \Bigg( \int
+        |f|^{s} \ d m\Bigg)^{1-t} \\
+        &= \| f\|_r^{rt} \| f\|_s^{s(1-t)}
+      \end{align*}
+      Thus we get $\|f\|_p \le \|f\|_r^{\frac{rt}{p}}
+      \|f\|_s^{\frac{s(1-t)}{p}}$
+
+      For the sake of contradiction, assume that $\|f\|_p >
+      \max\{\|f\|_r, \|f\|_s\}$. Then by the monotonicity of the
+      function $x \to x^k$, where $k >0$, we get
+      \begin{align*}
+        \|f\|_p^{\frac{rt}{p}} > \|f\|_r^{\frac{rt}{p}} \quad
+        \textrm{ and } \quad
+        \|f\|_p^{\frac{s(1-t)}{p}} > \|f\|_s^{\frac{s(1-t)}{p}}
+      \end{align*}
+      Then we'll get
+      \begin{align*}
+        \|f\|_p = \|f\|_p^{\frac{rt}{p}} \|f\|_p^{\frac{s(1-t)}{p}} >
+        \|f\|_r^{\frac{rt}{p}} \|f\|_s^{\frac{s(1-t)}{p}}
+      \end{align*}
+      contradicting our previous result. Hence we see that $\|f\|_p
+      \le \max\{\|f\|_r, \|f\|_s\}$
+
+      \part Let $0 < \epsilon$. Consider the set $A_\epsilon = \{ x
+      \in X  \ : \  \|f\|_\infty < |f(x)| + \epsilon \}$. Then
+      \begin{align*}
+        \int_X |f|^p \ d \mu &\ge \int_{A_\epsilon} |f|^p \ d \mu \\
+        &\ge \int_{A_\epsilon} (\|f\|_\infty - \epsilon)^p \ d \mu \\
+        &= ( \|f\|_\infty - \epsilon)^p \mu(A_\epsilon)
+      \end{align*}
+      Since we are given that $\|f\|_\infty \in (0, \infty]$, there
+      is an $\varepsilon > 0$ such that $ \|f\|_\infty > \varepsilon$.
+      Moreover since $\|f\|_r < \infty$, the above inequality forces
+      $\mu(A_\varepsilon) < \infty$. Then taking power $\frac{1}{p}$
+      to the above inequality, we get
+      \begin{align*}
+        \|f\|_p \ge (\|f\|_\infty - \epsilon) \mu(A_\varepsilon)^{\frac{1}{p}}
+      \end{align*}
+      Now taking limits, we get
+      \begin{align*}
+        \lim_{p \to \infty} \inf \|f\|_p \ge (\|f\|_\infty - \varepsilon)
+      \end{align*}
+      since $ \mu(A_\varepsilon)^{\frac{1}{p}} \to 1$ as $ p \to \infty$.
+      Again since $ \varepsilon >0 $ was arbitrary, we get
+      \begin{align*}
+        \lim_{p \to \infty} \inf \|f\|_p \ge \|f\|_\infty
+      \end{align*}
+
+      Now to get the other inequality, observe that for $p > r$
+      \begin{align*}
+        \int |f|^p \ d \mu &= \int |f|^r \  |f|^{p-r} \ d \mu \\
+        &\le \| f\|_\infty^{p-r} \int |f|^r \ d \mu \\
+      \end{align*}
+      Hence we get
+      \begin{align*}
+        \|f\|_p = \Big( \int |f|^p \ d \mu\Big)^{1/p} \le \|
+        f\|_\infty^{\frac{p-r}{p}} \Big( \int |f|^r \ d
+        \mu\Big)^{\frac{1}{p}} = \|f\|_\infty^{ \frac{p-r}{p} }
+        \|f\|_r^{\frac{r}{p}}
+      \end{align*}
+      Thus taking limits, we see that
+      \begin{align*}
+        \lim_{p \to \infty} \sup \|f\|_p \le \|f\|_\infty
+      \end{align*}
+      as $\|f\|_r^{\frac{r}{p}} \to 0$ as $  p \to \infty$ since $
+      \|f\|_r < \infty$
+
+      Combining both the inequalities, we see
+      \begin{align*}
+        \lim_{p \to \infty} \sup \|f\|_p \le \|f\|_\infty \le \lim_{p
+        \to \infty} \inf \|f\|_p
+      \end{align*}
+      Thus
+      \begin{align*}
+        \lim_{p \to \infty} \|f\|_p = \|f\|_\infty
+      \end{align*}
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Since $f_n \to f$ in $L^p(\mu)$, there is a subsequence $f_{n_k}$
+    such that $f_{n_k} \to f$ pointwise everywhere. Let $A \subset X$
+    such that $\mu(A) = 0$ and $f_{n_k}(x) \to f(x)$ for all $x \in A^c$.
+    Let $B$ be the set such that $\mu(B) = 0$ and $f_n(x) \to g(x)$
+    for all $x \in B^c$. Therefore $f_{n_k}(x) \to g(x)$ for all $x
+    \in B^c$, being a subsequence of $f_n$. Then for all $x \in
+    (A\cup B)^c$, we have $g(x) = f(x)$ by the uniqueness of the
+    pointwise limit in $\mathbb{C}$. Moreover $\mu(A \cup B) \le
+    \mu(A) + \mu(B) = 0$. Hence $f = g$ almost everywhere.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let's define a new measure $\nu:= |f|^p \mu$ defined as
+    \begin{align*}
+      \nu(A) = \int_A |f|^p \ d \mu
+    \end{align*}
+    for all $A \in \mathcal{M}$. Then since $\|f\|_p < \infty$, we
+    get $\nu(X) < \infty$. Thus by Egorov's theorem, for all
+    $\epsilon>0$ there exist a
+    set $A^\prime \in \mathcal{M}$ such that $\nu(A^\prime)<
+    \frac{\epsilon}{2}$ and $f_n$ converges to $f$ uniformly on $A^{\prime c}$.
+
+    Now, for $r > 0$, let $ A_r = \{ x \in X  \ : \  |f(x)|^p < r
+    \}$. Since $f \in L^p(\mu)$, and $|f|^p \chi_{A_r^c} \ge r
+    \chi_{A_r^c}$, we get
+    \begin{align*}
+      \infty > \int_{A_r^c} |f|^p \ d \mu \ge \int r \chi_{A^c_r} \ d
+      \mu = r \mu(A_r^c)
+    \end{align*}
+    Thus we see that $\mu(A_r^c) < \infty$ for all $r > 0$. Again $ f
+    \in L^p(\mu)$ forces $f$ to be finite almost everywhere. Thus
+    $|f|^p \chi_{A_r} \to 0$ almost everywhere. Moreover $| f|^p
+    \chi_{A_r}$ is dominated by $|f|^p \in L^1(\mu)$. Hence by the
+    Lebesgue dominated convergence theorem, we see that
+    \begin{align*}
+      \lim_{r \to \infty} \int |f|^p \chi_{A_r} \ d \mu = 0
+    \end{align*}
+    Hence there is a $r_\epsilon >0$ such that $\int_{A_{r_\epsilon}}
+    |f|^p \ d \mu < \frac{\epsilon}{2}$.
+
+    Let $A = A^\prime \cup A_{r_\epsilon}$. Then since $\nu(A') < \epsilon/2$
+    \begin{align*}
+      \int_A |f|^p \ d \mu \le \int_{A^\prime} |f|^p \ d \mu +
+      \int_{A_{r_\epsilon}} |  f|^p \ d \mu < \frac{\epsilon}{2} +
+      \frac{\epsilon}{2} = \epsilon
+    \end{align*}
+    Then for $B = A^c$, since $B \subset A^{\prime  c}$, we get $f_n
+    \to f$ uniformly on $B$. Moreover since $B \subset
+    A_{r_\epsilon}^c$, we get $\mu(B) \le \mu(A_{r_\epsilon}) < \infty$.
+
+    Now let's evaluate $\|f_n  - f\|_p$. Since $A \cup B = X$, we see that
+    \begin{align}
+      \label{eq:1}
+      \|f_n - f\|_p^p = \int |f_n - f|^p \ d \mu = \int_A |f_n - f|^p
+      \ d \mu + \int_B|f_n - f|^p \ d \mu
+    \end{align}
+    Since $f_n \to f$ uniformly on $B$, there is an $N_\epsilon \in
+    \mathbb{N}$ such that for all $n \ge N_\epsilon$, $|f_n(x) - f(x)|
+    < \sqrt[p]{\frac{\epsilon}{\mu(B)}}$.
+
+    Then for $n \ge N_\epsilon$, we get
+    \begin{align*}
+      \int_B |f_n - f|^p \ d \mu \le \int_B \frac{\epsilon}{\mu(B)}
+      \ d \mu = \epsilon
+    \end{align*}
+  \end{solution}
+  % To evaluate the other integral, notice that by Minkowski's inequality
+  % \begin{align*}
+  %   \Big( \int_A |f_n - f|^p \ d \mu
+  %   \Big)^{1/p} \le \Big(\int_A |f_n|^p \ d \mu \Big)^{1/p} + \Big( \int_A
+  %   |f| \ d \mu \Big)^{1/p}
+  % \end{align*}
+  Since $X = A \cup B$, we note that
+  \begin{align*}
+    \int_A |f_n|^p \ d \mu = \|f_n\|_p^p - \int_B |f_n|^p \ d \mu
+  \end{align*}
+  Then by Fatou's lemma, and the fact that $\|f_n\| \to \|f\|$ we get
+  \begin{align*}
+    \lim_n \sup \int_A |f_n|^p \ d \mu &= \lim_n \sup \|f_n\|_p^p -
+    \lim_n \inf \int_B |f_n|^p \ d \mu \\
+    &\le \|f\|_p^p - \int_B \lim_n \inf |f_n|^p \ d \mu \\
+    &= \int_X |f|^p \ d \mu - \int_B |f|^p \ d \mu \\
+    &= \int_{X \setminus B} |f|^p\ d \mu \\
+    &= \int_A |f|^p \ d \mu
+  \end{align*}
+  where $\lim \inf |f_n|^p = |f|^p$ in $B$ since $f_n \to f$ uniformly  on $B$.
+  Since we know that $\int_A |f|^p \ d \mu < \epsilon$, we see that
+  there is an $M_\epsilon \in \mathbb{N}$ such that for all $n > M_\epsilon$,
+  \begin{align*}
+    \int_A |f_n|^p \ d \mu \le \sup_{m \ge n} \int_A |f_n|^p \ d \mu
+    \le \int_A |f|^p \ d \mu \le \epsilon
+  \end{align*}
+
+  Then for all $n > M_\epsilon$, Minkowski inequality gives
+  \begin{align*}
+    \int_A |f_n - f| \ d \mu &\le \Bigg[\Big(\int_A |f_n|^p \ d \mu
+    \Big)^{1/p} + \Big(\int_A |f|^p \ d \mu \Big)^{1/p} \Bigg]^p \\
+    &\le (\epsilon^{1/p} + \epsilon^{1/p})^p = 2^p \epsilon
+  \end{align*}
+  We note that $2^p \epsilon \to 0$ as $\epsilon \to 0$.
+
+  Hence we see from \autoref{eq:1} that for $n > \max\{N_\epsilon,
+  M_\epsilon\}$,
+  \begin{align*}
+    \|f_n - f\|^p_p < (2^p + 1)\epsilon
+  \end{align*}
+  Since $\epsilon>0$ was arbitrary, and $(2^p + 1)\epsilon \to 0$ as
+  $ \epsilon \to 0$, we see that $\|f_n - f\|_p^p \to 0$. Now by the
+  continuity of the function
+  $x \to x^{1/p}$, we see that $\|f_n - f\| \to 0$.
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}
+

@@ -1,0 +1,189 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 28/01/2025 }
+
+\begin{example}
+  Let $(X, \Sigma, \mu)$ be a measure space. Define $E : \Sigma \to
+  B(L^{2}(X, \mu)):= A \to M_{\chi_A}$. It is easy to see that $E$
+  satisfies the first 3 properties of a spectral measure.
+  To verify the fourth property, let $A_1 , A_2 , \ldots \in \Sigma$
+  be disjoint collection. Then
+  \begin{align*}
+    M_{\chi_{\cup_{n = 1}^{\infty}A_n}}(f) &= \chi_{\cup_{n =
+    1}^{\infty}A_n}f = \sum_{n = 1}^{\infty} \chi_{A_n} f = \sum_{ n
+    = 1}^{\infty}  M_{\chi_{A_n}}  f
+  \end{align*}
+  shows that the fourth property is also satisfied.
+\end{example}
+
+\begin{proposition}
+  \label{prop:spectral_measure_gives_complex_measure}
+  Let $E$ be a spectral measure on $(X, \Sigma, \mathcal{H})$. Then
+  for every $\xi, \eta \in \mathcal{H}$.
+  \begin{align*}
+    E_{\xi, \eta}(A) = \langle  E(A) \xi ,  \eta \rangle
+  \end{align*}
+  defines a finite measure on $(X, \Sigma)$ with $\|E_{\xi, \eta}\|
+  \le \|\xi\| \|\eta\|$.
+\end{proposition}
+\begin{proof}
+  That $E_{\xi, \eta}(\emptyset) = 0$ is evident. Hence we only need
+  to verify the countable disjoint additivity to show that $E_{\xi,
+  \eta}$ is a measure. Let $A_1 , A_2 , \ldots \in \Sigma$ be a
+  mutually disjoint collection. Then
+  \begin{align*}
+    E_{\xi, \eta} \Big( \bigcup_{n = 1}^{\infty}A_n \Big) &= \Big
+    \langle E \Big( \bigcup_{n = 1}^{\infty} A_n \Big) \xi ,  \eta
+    \Big \rangle \\
+    &= \Big \langle  \sum_{n = 1}^{\infty} E(A_n) \xi ,  \eta
+    \Big \rangle \\
+    &= \sum_{n = 1}^{\infty} \big \langle E(A_n) \xi, \eta \big \rangle  \\
+    &= \sum_{n = 1}^{\infty}  E_{\xi, \eta}(A_n)
+  \end{align*}
+  Taking the summation outside the inner product is justified by the
+  below lemma. Thus we see that $E_{\xi, \eta}$ is a complex measure.
+  Moreover, since $|\langle E(A) \xi ,  \eta \rangle| \le \|\xi\|
+  \|\eta\|$, as $E(A)$ is a projection, we see that the measure is
+  finite (Although this is implicit in complex measures). To see that
+  $ \|E_{\xi, \eta}\| \le \|\xi\| \|\eta\|$, use the definition of
+  bounded variation and the lemma below.
+\end{proof}
+
+\begin{lemma}
+  Let $\{ P_i \}_{i \in I}$ be a family of pairwise orthogonal
+  projections on a Hilbert space $\mathcal{H}$. Then there exist a
+  unique projection $P$ on $\mathcal{H}$ such that $\forall \xi, \eta
+  \in \mathcal{H}$,
+  \begin{align*}
+    \sum_{i \in I} \langle P_i \xi ,  \eta \rangle = \langle P \xi ,
+    \eta \rangle
+  \end{align*}
+\end{lemma}
+This means the convergence of orthogonal projections is not in the
+norm sense, but rather in the sense above. For example
+\begin{example}
+  Consider $P_n = P_{\delta_n}$ in $B(\ell^{2}(\mathbb{N}))$, and let
+  $  Q_n = \sum_{i = 1}^{n} P_i$. Then clearly $Q_i$ doesn't converge
+  in norm, but rather in the above sense to the identity map in
+  $B(\ell^{2}(\mathbb{N}))$.
+\end{example}
+
+\begin{lemma}[Reisz representation for sesquilinear forms]
+  \label{lem:resiz_representation_for_sesquilinear}
+  \marginnote{ \scriptsize \it \textcolor{red}{I'm not convinced.
+  Need to verify}}
+  Let $B(\cdot, \cdot)$ be a bounded sesquilinear form on a Hilbert
+  space $\mathcal{H}$. Then there exist a unique $T \in
+  B(\mathcal{H})$ such that for all $\xi, \eta \in \mathcal{H}$,
+  \begin{align*}
+    B(\xi, \eta) = \langle T \xi ,  \eta \rangle
+  \end{align*}
+\end{lemma}
+
+\begin{proposition}
+  \label{prop:spectral_measure_and_integration}
+  \marginnote{ \scriptsize \it \textcolor{red}{verify if $\phi$ is a
+  linear functional}}
+  Let $E$ be a spectral measure on $(X, \Sigma, \mathcal{H})$, and
+  $\phi$ be a bounded linear functional on $X$. Then
+  there exist a unique $  T_\phi \in B(\mathcal{H})$ such that for
+  all $\xi, \eta \in \mathcal{H}$
+  \begin{align*}
+    \int_X \phi \ d  E_{\xi, \eta} = \langle T_\phi \xi ,  \eta \rangle
+  \end{align*}
+  and we denote $T_\phi:= \int_X \phi \ d  E$
+\end{proposition}
+\begin{proof}
+  See that the integral is sesquilinear on $\xi, \eta$ for simple
+  functions. Then use
+  \autoref{lem:resiz_representation_for_sesquilinear}.
+\end{proof}
+
+Note that the set $\mathcal{M}(X)$ of all bounded measurable functions on $X$,
+equipped with sup norm is a Banach space. Moreover with pointwise
+product and complex conjugation, it turns into a commutative C$^*$ algebra.
+
+\begin{theorem}
+  Let $E$ be a spectral measure on $(X, \Sigma, \mathcal{H})$ and
+  \marginnote{ \scriptsize \it \textcolor{red}{verify if $\phi$ is a
+  linear functional}}
+  $\phi$ be a bounded measurable function. The map
+  \begin{align*}
+    \mathcal{M}(X) \to B(\mathcal{H}):= \phi \mapsto \int_ X \phi \ d E
+  \end{align*}
+  is a contractive $*$-homomorphism.
+\end{theorem}
+\begin{proof}
+  To show that it is a $*$-homomorphism, observe that
+  $\overline{E_{\xi, \eta}} = E_{\eta, \xi}$. This follows since
+  \begin{align*}
+    \overline{E_{\xi, \eta}(A)} = \overline{ \langle E(A) \xi , \eta
+    \rangle } = \langle \eta , E(A) \xi \rangle = \langle E(A)  \eta , \xi
+    \rangle = E_{\eta,  \xi}(A)
+  \end{align*}
+  Now let $T_{\overline{\phi}} \in B(\mathcal{H})$ corresponding to
+  $\phi$ as in \autoref{prop:spectral_measure_and_integration}. Then
+  by definition,
+  \begin{align*}
+    \int_X \overline{\phi} \ d  E_{\xi, \eta} &= \langle T_{\overline{
+    \phi}}  \eta, \psi  \rangle
+  \end{align*}
+  Now the left integral is equal to
+  \begin{align*}
+    \overline{\int_X  \phi \ d E_{\eta, \xi}} = \overline{\langle
+    T_{\phi} \eta ,  \xi \rangle } = \langle \xi ,  T_\phi \eta
+    \rangle = \langle T_\phi^* \xi ,  \eta \rangle
+  \end{align*}
+  Thus we get that $T_{\overline{\phi}} = T_{\phi}^*$ and hence the
+  map preserve the involution.
+
+  To show that the map is multiplicative, we need to show that
+  \begin{align*}
+    \int_X \phi \psi \ d  E = \int_X \phi \ d  E \circ \int_X \psi \ d  E
+  \end{align*}
+  Notice that by \autoref{prop:spectral_measure_and_integration}, we'll
+  done if we show that for all $\xi, \eta \in \mathcal{H}$,
+  \begin{align*}
+    \int_X \phi \psi \ d E_{\xi, \eta} = \int_X \phi \ d  E_{(\int_X
+    \psi \ d E) \xi, \eta}
+  \end{align*}
+  But for this, it is enough to show the equivalence of the measures
+  $\psi dE_{\xi, \eta}$ and $E_{(\int_X \psi \ d E)\xi, \eta }$. That
+  is for all $A \in \Sigma$, we need to show that
+  \begin{align}
+    \label{eq:4}
+    \Big \langle E(A)\Big(\int_X  \psi \ d  E\Big)\xi ,  \eta \Big
+    \rangle = \int \psi \chi_A \ d  E_{\xi, \eta}
+  \end{align}
+  But again, the left hand side of the inner product is
+  \begin{align*}
+    \Big \langle \Big( \int_X \psi \ d E\Big) \xi ,  E(A) \eta \Big \rangle
+  \end{align*}
+  since $E(A)$ is a projection. Again by
+  \autoref{prop:spectral_measure_and_integration}, we see that the
+  above inner product is
+  \begin{align*}
+    \int_X \psi \ d E_{\xi, E(A) \eta}
+  \end{align*}
+  Then \autoref{eq:4} reduces to showing
+  \begin{align*}
+    \int_X \psi \ d E_{\xi, E(A) \eta} = \int \psi \chi_A \ d  E_{\xi, \eta}
+  \end{align*}
+  Again using the same reasoning, it is enough to show that the
+  measures are the same. That is for any $B \in \Sigma$, we must have
+  \begin{align*}
+    E_{\xi , E(A) \eta}(B) =     \int_X \chi_A \chi_B \ dE_{\xi, \eta}
+  \end{align*}
+  But this is equivalent to
+  \begin{align*}
+    \langle E(A) \xi ,  E(B) \eta \rangle = \langle E(A)E(B) \xi ,
+    \eta \rangle =  \langle  E(A \cap B) \xi , \eta \rangle = \int_X
+    \chi_{A\cap B} \ d E_{ \xi, \eta} = E_{\xi, \eta}(A \cap B)
+  \end{align*}
+  which is true by a property of the Spectral measure.
+\end{proof}
+
+% \begin{definition}
+%   A C$^*$ algebra is a Banach *-algebra satifying the norm equality
+%   $\|a^*a\| = \|a\|^2$, for all $a \in \mathcal{A}$.
+% \end{definition}

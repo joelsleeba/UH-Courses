@@ -1,0 +1,311 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6321 - Theory of functions of a real variable \\ Homework 8}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    Let $X_n$ be a countable collection of finite measurable sets
+    such that $X = \cup_{n = 1}^{\infty} X_n$. Additionally assume
+    that $X_n \subset X_{n + 1}$ for each $n \in \mathbb{N}$. If this
+    is not the case, then we can modify the collection by taking $Y_i
+    = \cup_{n = 1}^{i}X_n$. Let $E_n = \{ x \in X_n \ : \ |g(x)|< n
+    \}$. Clearly each $ E_n$ is measurable and $E_n \subset E_{n +
+    1}$. Let $g_n = g \chi_{E_n}$ and define linear functionals
+    \begin{align*}
+      T_n : L^{p}(X) \to \mathbb{C} := f \mapsto \int fg_n \ d \mu
+    \end{align*}
+    Since
+    \begin{align*}
+      \int |g_n|^q \ d \mu = \int |g \chi_{E_n}|^q \ d \mu = \int
+      |g|^q \chi_{E_n} \ d \mu \le  n^q \mu(E_n)
+    \end{align*}
+    $\|g_n\|_q \le n \mu(E_n)^{\frac{1}{q}} < \infty$. Thus by
+    Holder's inequality, $\|T_n\| \le n \mu(E_n)^{\frac{1}{q}}$ and
+    thus $T_n$ are bounded linear functionals on $L^{p}(X)$.
+
+    Now we claim that $\sup_{n} |T_n(f)| < \infty$, for all $ f \in
+    L^{p}(X)$. Let $ f  \in L^{p}(X)$, then
+    \begin{align*}
+      |T_n(f)| = \Bigg| \int fg_n \ d \mu \Big| \le \int  |fg
+      \chi_{E_n}| \ d \mu \le \int |fg| \ d \mu < \infty
+    \end{align*}
+    where the last inequality is by our assumption. Thus by uniform
+    boundedness principle, we get that
+    \begin{align*}
+      \sup_{n} \|T_n\| < \infty
+    \end{align*}
+    Let $\sup_{n} \|T_n\| = M$. Again since $fg_n \to fg$ pointwise
+    in $n$, and since $ fg \in L^{p}(X)$, by dominated convergence theorem,
+    \begin{align*}
+      T_n(f) = \int fg_n \ d \mu \to \int fg \ d \mu = T(f)
+    \end{align*}
+    Now let $ f \in L^{p}(X)$. Since $T(f) = \lim_{n \to \infty} T_n(f)$
+    \begin{align*}
+      |T(f)| = |\lim_{n \to \infty} T_n(f)| = \lim_{n \to \infty}
+      |T_n(f)| \le \lim_{n \to \infty}  M \|f\|_p = M \|f\|_p
+    \end{align*}
+    Thus $\|T\| \le M$, and hence we see that $T$ is a bounded linear
+    functional on $L^{p}(X)$.
+
+    By the duality of $L^{p}(X)$ and $L^{q}(X)$, there exist a unique
+    $h \in L^{q}(X)$, such that
+    \begin{align*}
+      T(f) = \int fg \ d \mu =  \int fh \ d \mu = \Lambda_h
+    \end{align*}
+    We claim that the set $E = \{ x \in X \ : \ h \neq g \}$ has
+    measure zero. If not, then for some $n \in \mathbb{N}$, $\mu(E
+    \cap X_n) \neq 0$. Let $f = \chi_{E \cap X_n} \frac{\overline{g -
+    h}}{|g - h|}$. Then clearly $f \in L^{p}(X)$, and
+    \begin{align*}
+      T(f) - \Lambda(f) = \int \chi_{E \cap X_n} \frac{\overline{g -
+      h}}{|g - h|} (g - h) \ d \mu = \int_{E \cap X_n} |g - h| \ d \mu
+    \end{align*}
+    Since $|g - h|$ is a positive function on $\chi_{E \cap X_n}$ and
+    $\mu(E \cap X_n) \neq 0$, by a result we proved in the first
+    semester mid-term exam
+    \begin{align*}
+      T(f) - \Lambda(f) = \int_{E \cap X_n} |g - h| \ d \mu > 0
+    \end{align*}
+    But this contradicts our assumption that $T = \Lambda_h$. Thus
+    $\mu(E) = 0$, and $  h = g$ almost everywhere forcing $g \in L^{q}(X)$
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Since the following result seems plays an integral role, we state
+    is separately.
+    \begin{proposition}
+      If $\{ f_n \}$ is uniformly integrable, then $ \{ |f_n| \}$ is
+      uniformly integrable.
+    \end{proposition}
+    \begin{proof}
+
+      We'll show that $\{|f_n|\}$ is uniformly integrable whenever $\{
+      f_n \}$ is uniformly integrable. Since
+      \begin{align*}
+        \Bigg| \int f \ d \mu \Bigg| = \Bigg| \int \textrm{Re}(f) \ d
+        \mu + i \int
+        \textrm{Im}(f) \ d \mu \Bigg| \ge \Bigg| \int \textrm{Re}(f)
+        \ d \mu \Bigg| , \Bigg| \int  \textrm{Im}(f) \ d \mu \Bigg|
+      \end{align*}
+      we see that if
+      \begin{align*}
+        \Bigg| \int_E f \ d \mu \Bigg| < \varepsilon
+      \end{align*}
+      then
+      \begin{align*}
+        \Bigg| \int_E \textrm{Re}(f) \ d \mu \Bigg|, \Bigg| \int_E
+        \textrm{Im}(f) \ d \mu  \Bigg| < \varepsilon
+      \end{align*}
+      Thus we see that if $\{f_n\}$ is uniformly integrable, then $\{
+      \textrm{Re}(f_n) \}, \{  \textrm{Im}(f_n) \}$ are uniformly
+      integrable with the same $(\varepsilon,\delta)$ pair as in $\{ f_n \}$.
+
+      Now assume $\{ f_n \}$ is a  set of real valued functions with
+      $f_n = f_n^+ - f_n^-$, where
+      $f_n^+(x) = \max \{ f_n(x), 0 \}, f_n^-( x) = \max \{ -f_n(x), 0
+      \}$. Notice that for $P_n = \{ x \in X \ : \ f_n(x) \ge 0 \}$ and
+      $N_n = X \setminus P_n$, $f_n^+ = f_n \chi_{P_n}$ and $f_n^- =
+      f_n \chi_{N_n}$. Now let $\varepsilon > 0$ be given. Then there
+      is a $\delta > 0$ such that for all $f_n$
+      \begin{align*}
+        \mu(E) < \delta \implies \Bigg| \int_E f_n \ d \mu \Bigg| <
+        \varepsilon
+      \end{align*}
+      But since
+      \begin{align*}
+        \Bigg| \int_E f_n^+ \ d \mu \Bigg| = \Bigg| \int_E f_n
+        \chi_{P_n} \ d \mu \Bigg| = \Bigg| \int_{E \cap P_n} f_n
+        \ d \mu \Bigg|
+      \end{align*}
+      and $\mu(E \cap P_n) \le \mu(E)$, we get that
+      \begin{align*}
+        \mu(E) < \delta \implies \Bigg| \int_E f_n^+ \ d \mu \Bigg| <
+        \varepsilon
+      \end{align*}
+      Thus we see that $\{ f_n^+ \}$ is uniformly integrable when $\{
+      f_n \}$ is uniformly integrable with again the same
+      $(\varepsilon, \delta)$ pair as in $\{ f_n \}$. Using a similar
+      reasoning, we can show that $\{ f_n^- \}$ is also uniformly
+      integrable with the same $(\varepsilon, \delta)$ pair as $\{ f_n \}$.
+
+      Now let $\delta > 0$ be such that for all $f_n$
+      \begin{align*}
+        \mu(E) < \delta \implies \Bigg| \int_E f_n \ d \mu \Bigg| <
+        \frac{\varepsilon}{4}
+      \end{align*}
+      Then what we have done before, we see that
+      \begin{align*}
+        \Bigg |\int_E \textrm{Re}(f_n) \ d \mu
+        \Bigg| , \Bigg| \int_E
+        \textrm{Im}(f_n) \ d \mu \Bigg| < \frac{\varepsilon}{4}
+      \end{align*}
+      and since $\textrm{Re}(f_n), \textrm{Im}(f_n)$ are real valued
+      functions, we get
+      \begin{align*}
+        \Bigg| \int_E \textrm{Re}(f_n)^+ \ d \mu
+        \Bigg|, \Bigg| \int_E \textrm{Re}(f_n)^- \ d \mu \Bigg|, \Bigg|
+        \int_E \textrm{Im}(f_n)^+ \ d \mu \Bigg|, \Bigg| \int_E
+        \textrm{Im}(f_n)^- \ d \mu \Bigg| < \frac{\varepsilon}{4}
+      \end{align*}
+      Since
+      \begin{align*}
+        \int_E |f_n| \ d \mu = \int_E \textrm{Re}(f_n)^+ \ d \mu + \int_E
+        \textrm{Re}(f_n)^- \ d \mu + \int_E \textrm{Im}(f_n)^+ \ d \mu +
+        \int_E \textrm{Im}(f_n)^- \ d \mu
+      \end{align*}
+      by triangle inequality, we get that
+      \begin{align*}
+        \Bigg|\int_E |f_n| \ d \mu \Bigg| = \int_E |f_n| \ d \mu  <
+        \varepsilon
+      \end{align*}
+      Thus we get that $\{|f_n|\}$ is uniformly integrable whenever $\{
+      f_n \}$ is uniformly integrable.
+    \end{proof}
+
+    Let $\varepsilon > 0$ be given. Since $\{ |f_n| \}$ is uniformly
+    integrable by the above proposition, let $\delta > 0$ be such that
+    whenever $\mu(E) < \delta$,
+    \begin{align*}
+      \int_E |f_n| \ d \mu  < \frac{\varepsilon}{3}
+    \end{align*}
+    for all $f_n$.
+    Since $f_n \to f$ pointwise
+    almost everywhere, by Egoroff's theorem, there exists
+    $E_\varepsilon \in \mathcal{M}$ such that $f_n$ converges
+    uniformly to $f$ on
+    $E_\varepsilon$ and $ \mu(E_\varepsilon^c)< \delta$. Now let $N
+    \in \mathbb{N}$ such that for all $n > N$, $\|f_n - f\|_\infty <
+    \frac{\varepsilon}{3 \mu(E_\varepsilon)}$ in $E_\varepsilon$.
+    Then for all $n > N$,
+    \begin{align*}
+      \int |f_n - f| \ d \mu &= \int_{E_\varepsilon} |f_n - f| \ d
+      \mu + \int_{E^c_\varepsilon}
+      |f_n - f| \ d \mu \\
+      &\le \frac{\varepsilon}{3} + \int_{E_\varepsilon^c} |f_n| \ d
+      \mu + \int_{E_\varepsilon^c} |f| \ d \mu \\
+      &\le \frac{\varepsilon}{3} + \frac{\varepsilon}{3} +
+      \int_{E_\varepsilon^c} |f| \ d \mu
+    \end{align*}
+    where the last inequality is because $\mu(E_\varepsilon^c) <
+    \delta$. Note that we'll be done, if we show that
+    $\int_{E_\varepsilon^c} |f| \ d \mu < \frac{\varepsilon}{3}$. For
+    this notice that since $f_n \to f$ almost everywhere,
+    \begin{align*}
+      |f| = \lim \inf |f_n|
+    \end{align*}
+    almost everywhere.
+    Thus
+    \begin{align*}
+      \int_{E_\varepsilon^c} |f| \ d \mu = \int_{E^c_\varepsilon}
+      \lim \inf |f_n| \ d \mu \le \lim \inf \int_{E_\varepsilon^c}
+      |f_n| \ d \mu \le \lim \inf \frac{\varepsilon}{3} =
+      \frac{\varepsilon}{3}
+    \end{align*}
+    due to Fatou's lemma and our choice of $\delta$. Thus $f_n$
+    converge to $ f$ in $L_1$ norm and by the completeness of the
+    space, we get $ f \in L^{1}(\mu)$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Notice that because of problem 2, we'll be done if we show that
+    $\{ f_n \}$ is
+    uniformly integrable. Again, see that by Holder inequality for
+    $f_n$ and the constant function $1$
+    \begin{align*}
+      \Bigg| \int_E f_n \ d \mu \Bigg| \le \int_E |f_n| \ d \mu \le
+      \Big( \int_E |f_n|^p \ d \mu\Big)^{\frac{1}{p}} \Big( \int_E 1^q
+      \ d \mu\Big)^{\frac{1}{q}} \le \|f_n\|_p \mu(E)^{\frac{1}{q}}
+    \end{align*}
+    But since we know that $\|f_{n}\|_p^p < C$ for all $n \in
+    \mathbb{N}$, we get
+    \begin{align*}
+      \Bigg| \int_E f_n \ d \mu \Bigg| \le C^p \mu(E)^{\frac{1}{q}}
+    \end{align*}
+    Now let $\varepsilon > 0$ be given. Then for $E \in \mathcal{M}$ with
+    $\mu(E) < \delta = (\frac{\varepsilon}{C^p})^q$ the above inequality gives
+    \begin{align*}
+      \Bigg| \int_E f_n \ d \mu \Bigg| \le C^p \mu(E)^{\frac{1}{q}} <
+      \varepsilon
+    \end{align*}
+    Thus we see that $\{ f_n \}$ is uniformly integrable, and thus
+    the result follows.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

@@ -1,0 +1,162 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 23/01/2025 }
+
+\begin{lemma}
+  \label{lem:3}
+  Let $\mathcal{A}$ be a unital commutative Banach $*$-algebra such
+  that for all $a \in \mathcal{A}$, $\|a^*a\| = \|a\|^2$. Then for
+  self adjoint $a \in \mathcal{A}$, and  $\tau \in
+  \textrm{sp}(\mathcal{A})$, $\tau(a) \in \mathbb{R}$.
+\end{lemma}
+\begin{proof}
+  Let $\tau(a) = \alpha + i \beta$ for $\alpha, \beta \in
+  \mathbb{R}$. $\forall t \in \mathbb{R}$, we have
+  \begin{align*}
+    |\tau(a) + it|^2 &= |\tau(a + it 1)|^2 \\
+    &\le \| a + i t\|^2 \\
+    &= \|(a - i t 1)(a + it 1)\| \\
+    &= \| a^2 + t^2 I \| \\
+    &\le \|a^2\| + t^2 \\
+    &= \|a\|^2 + t^2
+  \end{align*}
+  But $|\tau(a) + it|^2 = |\alpha|^2 + |\beta + t|^2 = |\alpha|^2 +
+  |\beta|^2 + 2|t \beta| + |t|^2$ to begin with. But this gives
+  \begin{align*}
+    \alpha^2 + \beta^2 + 2|t \beta| \le \|a\|^2
+  \end{align*}
+  for all $t \in \mathbb{R}$, which is absurd unless $\beta = 0$.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:3.1}
+  Let $\mathcal{A}$ be as in the above lemma, then
+  \begin{align*}
+    \tau(a^*) = \overline{\tau(a)}
+  \end{align*}
+  for all $a \in \mathcal{A}, \tau \in \textrm{sp}(\mathcal{A})$
+\end{lemma}
+\begin{proof}
+  Let $a = u + iv$, where $u, v \in \mathcal{A}_{sa}$. Then $a^* = u - iv$, and
+  \begin{align*}
+    \tau(a^*) = \tau(u - iv) = \tau(u) - i \tau(v) =
+    \overline{\tau(u) + i \tau(v)} = \overline{\tau(u + iv)} =
+    \overline{\tau(a)}
+  \end{align*}
+  by the above lemma.
+\end{proof}
+And as a direct consequence, we get $\Phi(a^*) = \overline{\Phi(a)}$.
+
+\begin{theorem}
+  Let $\mathcal{A}$ be a unital commutative Banach $*$-algebra such
+  that for all $a \in \mathcal{A}$, $\|a^*a\| = \|a\|^2$. Then the
+  Gelfand transform is a bijective isometric $*$-homomorphism.
+\end{theorem}
+\begin{proof}
+  We already have shown that $\Phi: \mathcal{A} \to
+  C(\textrm{sp}(\mathcal{A}))$ is a contractive algebra homomorphism.
+  And by \autoref{thm:beurling} for every self adjoint $a \in
+  \mathcal{A}$, $\|\Phi(a)\| = \|a\|$. As a consequence of
+  \autoref{lem:3.1}, we get that $\Phi(a^*) = \overline{\Phi(a)}$. Then
+  \begin{align*}
+    \|\Phi(a)\|^2 &= \|\Phi(a)^* \Phi(a)\| \\
+    &= \|\Phi(a^*) \Phi(a)\| \\
+    &= \|\Phi(a^* a)\| \\
+    &= \|a^*a\| \quad \textrm{since $a^*a$ is self adjoint} \\
+    &= \|a\|^2
+  \end{align*}
+  and we see that $\Phi$ is isometric.
+
+  It remains to show that $\Phi$ is surjective. First note that
+  $\Phi(\mathcal{A})$ is a unital $*$-subalgebra of
+  $C(\textrm{sp}(\mathcal{A}))$. Thus by Stone-Weierstrass, we only
+  need to show that $\Phi(\mathcal{A})$ separates points of
+  $\textrm{sp}(\mathcal{A})$. Let $\tau_1 \neq \tau_2 \in
+  \textrm{sp}(\mathcal{A})$. Then $\exists a \in \mathcal{A}$ such
+  that $\Phi(a)(\tau_1) = \tau_1(a) \neq \tau_2(a) =
+  \Phi(a)(\tau_2)$. Hence we are done.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:algebra_spanned_by_normal_operator_isomorphic_to_continuous_functions_in_spectrum}
+  Let $T \in B(\mathcal{H})$ be a normal operator, and let
+  $\mathcal{A} = \overline{\textrm{span}} \{ T^n T^{*m}  \ : \ m, n
+  \in \mathbb{N} \cup \{ 0 \}  \}$. Then the Gelfand transform $\Phi:
+  \mathcal{A} \to C(\textrm{sp}(\mathcal{A}))$ is halal (preserve all
+  structure).
+\end{corollary}
+\begin{proof}
+  Observe that $\mathcal{A}$ is a Banach * algebra with $\|T^*T\| =
+  \|T\|^2$. Now we are left to prove that the C* identity hold in
+  $\mathcal{A}$. But this is true because $B(\mathcal{H})$ is a C* algebra.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:spectrum_is_homeomorphic_to_spectrum_of_normal_operator}
+  In the above corollary, the map $\psi: \textrm{sp}(\mathcal{A}) \to
+  \sigma(T) := \tau \mapsto \tau(T)$ is a bijective homeomorphism.
+\end{lemma}
+\begin{proof}
+  \autoref{specturm_of_comm_alg_and_spectrum_of_element} shows that
+  $\psi$ is a well defined surjection. Assume $\psi(\tau) =
+  \psi(\pi)$ for $ \tau, \pi \in \textrm{sp}(\mathcal{A})$.
+  That is $\tau(T) = \pi(T)$. Then $\tau(T^m) = \pi(T^m)$
+  and $\tau(T^{*m}) = \pi(T^{*m})$ for all $m \in \mathbb{N} \cup \{
+  0 \}$. Moreover since $\tau, \pi$ are multiplicative by the
+  definition, we see that $\tau, \pi$ agree on $\textrm{span}\{
+  T^nT^{*m}  \ : \   m, n \in \mathbb{N} \cup \{ 0 \} \}$. Thus $\tau
+  = \pi$. Hence we see that $\psi$ is a bijective map.
+
+  Now to prove the continuity, let $\tau_\alpha$ be a net weak * converging
+  to $\tau \in \textrm{sp}(\mathcal{A})$. Then $\tau_\alpha(T) \to
+  \tau(T)$ by definition. Thus we see that $\psi$ is a continuous
+  map. Now since $\textrm{sp}(\mathcal{A})$ is compact as we proved
+  in \autoref{lem:spectrum_is_compact}, and $\sigma(T) \subset
+  \mathbb{C}$ is compact, by a general fact in topology, we get that
+  $\psi$ is a homeomorphism.
+\end{proof}
+
+Thus for the above algebra $\mathcal{A} = C^*(T)$, we'll use
+$\textrm{sp}(\mathcal{A})$ and $\sigma(T)$ interchangeably according our need.
+
+\section{Continuous Functional Calculus}
+
+\begin{theorem}[Continuous functional calculus]
+  Let $T \in B(\mathcal{H})$ be normal. Then $\exists$ a unique
+  isometric $*$-homomorphism $\Xi: C(\sigma(T)) \to  B(\mathcal{H})$
+  such that for any polynomial $p(z, \bar{z}) \in C(\sigma(T))$, we have
+  \begin{align*}
+    \Xi(p(x)) = p(T, T^*)
+  \end{align*}
+
+  For every $f \in C(\sigma(T))$, we denote $f(T) := \Xi(f)$ and call
+  this the continuous functional calculus of $T$.
+\end{theorem}
+\begin{proof}
+  Existence of the map $\Xi$ is guaranteed by
+  \autoref{cor:algebra_spanned_by_normal_operator_isomorphic_to_continuous_functions_in_spectrum}
+  and \autoref{lem:spectrum_is_homeomorphic_to_spectrum_of_normal_operator}.
+  For the uniqueness note that the image of $\Xi$ is the algebra in
+  \autoref{cor:algebra_spanned_by_normal_operator_isomorphic_to_continuous_functions_in_spectrum}
+  and that the identity map $\sigma(T) \to
+  \sigma(T)$ must be mapped to $T \in B(\mathcal{H})$.
+  Since the algebra $\mathcal{A}$ is generated by $T$, the
+  $*$-homomorphism ensure the uniqueness of $\Xi$.
+\end{proof}
+
+\begin{definition}
+  Let $(X, \mathcal{A})$ be a measurable space and $\mathcal{H}$ be a
+  Hilbert space. A \textbf{spectral measure} on the triple $(X, \mathcal{A},
+  \mathcal{H})$ is a map $E : \mathcal{A} \to  B(\mathcal{H})$ such that
+  \begin{enumerate}[label=(\arabic*)]
+    \item $E(A)$ is a projection, $\forall A \in \mathcal{A}$
+    \item $E(A \cap B) = E(A)E(B), \forall A, B \in \mathcal{A}$
+    \item $E(\emptyset) = 0, E(X) = I$
+    \item If $\{ A_n \}_{n \in \mathbb{N}}$ is a countable family of
+      disjoint measurable sets, then
+      \begin{align*}
+        E \Big( \bigcup_{n \in \mathbb{N}}A_n \Big) = \sum_{n \in
+        \mathbb{N}} E(A_n)
+      \end{align*}
+  \end{enumerate}
+\end{definition}

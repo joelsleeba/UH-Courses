@@ -1,0 +1,72 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 06/03/2025 }
+
+Observe if $\phi \in X^*, \psi \in Y^*$, $z \in X \otimes Y$. Let $z
+= \sum_{i = 1}^{n} x_i \otimes y_i$. Then $|\phi \otimes \psi| \le
+\|\phi\| \|\psi\| \sum_{i = 1}^{n} |x_i| |y_i|$. This shows that
+$\|\phi \otimes \psi\|_{\wedge} \le \|\psi\| \|\phi\|$.
+\begin{exercise}
+  Show that $\|\phi \otimes \psi\|_{\wedge} = \|\phi\| \|\psi\|$.
+\end{exercise}
+
+\begin{definition}
+  Let $X, Y$ be Banach spaces, then completion of $X \otimes Y$ with
+  respect to $ \|\cdot\|_{\wedge}$ is called the projective tensor
+  product of $X$ and $Y$, denoted by $X \hat{\otimes} Y$.
+\end{definition}
+
+\begin{proposition}
+  Let $T: X \to W, S: Y \to Z$ be bounded linear maps between Banach
+  spaces. Then there is a unique bounded linear map $T \otimes S: X
+  \hat{\otimes} Y \to W \hat{\otimes} Z$ such that $T \otimes S: x
+  \otimes y \to T(x)\otimes T(y)$. Furthermore, $\|T \otimes
+  S\| = \|T\| \|S\|$.
+\end{proposition}
+
+\begin{definition}
+  If $X$ is a normed space, for every $1 \le p \le \infty$, we define the space
+  \begin{align*}
+    \ell^{p}(X) := \{ (x_n)_{n \in \mathbb{N}}  \ : \ x_n \in X,
+    (\|x_n\|) \in \ell^{p}(\mathbb{N})  \}
+  \end{align*}
+  equipped with the $\|(x_n)\|_p := \|(\|x_n\|)\|_p$ is a normed
+  space which is complete if $X$ is complete.
+\end{definition}
+
+\begin{theorem}
+  Let $X$ be a Banach space. Then
+  \begin{align*}
+    \ell^{1} \hat{\otimes} X \cong \ell^{1}(X)
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Define the bilinear map $b: \ell^{1} \hat{\otimes} X \to \ell^{1}(X)$ by
+  \begin{align*}
+    (b(f \otimes x))(n) := f(n)x
+  \end{align*}
+  There exists a unique linear map $B: \ell^{1}\otimes X \to
+  \ell^{1}(X)$ such that
+  \begin{align*}
+    B(f \otimes x) = b(f, x)
+  \end{align*}
+  Let $z \in \ell^{1}\otimes X$. Let $z = \sum_{i = 1}^{n} f_i
+  \otimes x_i$ be a representation of $z$. Then
+  \begin{align*}
+    \|B(z)\| \le \sum_{i = 1}^{n} \|B(f_i \otimes x_i)\| = \sum_{i =
+    1}^{ m} \Big( \|x_i\| \sum_{n \in \mathbb{N}} |f_i(n)|\Big) =
+    \sum_{i = 1}^{m} \|x_i\| \|f_i\|_1
+  \end{align*}
+  So it follows that
+  \begin{align*}
+    \|B(z)\| \le \|\phi\|_{\wedge}
+  \end{align*}
+
+  To prove the reverse inequality, let $\varepsilon > 0$ be given.
+  Let $z = \sum_{i = 1}^{n} g_i \otimes x_i$ be a representative such that
+  \begin{align*}
+    \sum_{i = 1}^{k} \|g_i\|_1 \|x_i\| < \|\phi\|_{\wedge} + \varepsilon
+  \end{align*}
+  Choose $g_1^\prime , g_2^\prime , \ldots , g_k^\prime \in c_{00}$
+  such that $\|g_i - g_i^\prime\| < \varepsilon$, for all $i = 1, 2, \ldots k$.
+\end{proof}

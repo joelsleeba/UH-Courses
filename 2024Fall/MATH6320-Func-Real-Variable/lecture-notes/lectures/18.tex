@@ -1,0 +1,108 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{definition}
+  A function $f$ of a topological space $X$ is called lower
+  semi-continuous if for all $\alpha \in \mathbb{R}$, $\{ x \in X
+  \ : \  f(x) > \alpha \}$ is open.
+\end{definition}
+\begin{example}
+  If $V$ is open, then $\chi_V$ is lower semi-continuous because the
+  $\{ x \in X  \ : \  f(x) > \alpha \}$ has choices $ \phi, V, X$,
+  all of them are open.
+\end{example}
+
+\begin{definition}
+  A function is called upper semi-continuous if for all $\alpha \in
+  \mathbb{R}$, the set $\{ x \in X  \ : \  f(x) < \alpha \}$ is open.
+\end{definition}
+
+\begin{remark}
+  If $f: X \to \mathbb{R}$ is lower semi-continuous, then $-f$ is
+  upper semi-continuous.
+\end{remark}
+
+\begin{example}
+  If $V$ is open, then $\chi_{V^c} = 1- \chi_{V}$ is upper semi-continuous.
+\end{example}
+
+\begin{proposition}
+  If $f, g$ are lower semi-continuous, so is $f+g$.
+\end{proposition}
+\begin{proof}
+  \begin{align*}
+    \{ x \in X  \ : \  f(x)+g(x) > \alpha \} & = \bigcup_{r \in
+    \mathbb{R}} \big( \{ x \ : \  f(x) > r \}  \cap  \{ x
+    \ : \  g(x)< \alpha - r \}\big)
+  \end{align*}
+\end{proof}
+
+\begin{proposition}
+  If $u_1 \le u_2 \le \ldots$ are all lower semi-continuous, then so
+  is $\lim_{n \to \infty} u_n = u$.
+\end{proposition}
+\begin{proof}
+  \[
+    \{ u > \alpha \} = \bigcup_{n \in \mathbb{N}} \{ u_\alpha > \alpha \}
+  \]
+\end{proof}
+
+\begin{corollary}
+  A monotone increasing sequence of continuous functions converges to
+  a lower semi-continuous function.
+\end{corollary}
+
+\begin{theorem}[Vitali-Caratheodory Theorem]
+  Let $X$ be locally compact and Hausdorff, $\mu$ be a regular Borel
+  measure. If $f: X \to \mathbb{R}$ in $L^1(\mu)$, then there is an
+  upper semi-continuous function $u$ and a lower semi-continuous
+  function $v$ such that $u \le f \le v$ and $\int(v-u) \ d \mu < \epsilon$.
+\end{theorem}
+\begin{proof}
+  Assume $f \ge 0$. There exists an increasing sequence of simple functions
+  $(s_n)$ converging (pointwise) to $f$. Considering  as before,
+  $t_n = s_n - s_{n-1}$ with $s_0 = 0$, we see that each $t_n$ is
+  simple and $f = \sum_{n \in \mathbb{N}} t_n$.
+
+  Then since of the $t_n$ are simple, expanding them out into the
+  standard simple function form and re-indexing them, we get  \[
+    f = \sum_{j = 1}^{\infty}  c_j \chi_{E_j}
+  \]
+  Note that we're not claiming $E_j$s are disjoint. Since $ f \in
+  L^1(\mu)$, we can apply monotone convergence theorem. Thus \[
+    \sum_{j = 1}^{\infty} \underbrace{ \int c_j \chi_{E_j} \ d \mu
+    }_{c_j \mu(E_j)} = \int  f \ d \mu < \infty
+  \]
+  If $c_j = 0$, discard. Otherwise we see that $\mu(E_j) < \infty$
+  for each $j \in \mathbb{N}$. By regularity, $\exists K_j$ compact
+  and $ V_j$ open such that $K_j \subset E_j \subset V_j$ and $
+  \mu(V_j \setminus K_j) < \frac{\epsilon}{2^jc_j}$. As a consequence
+  of convergence of $ \sum_{j = 1}^{\infty}  c_j \mu(E_j)$, we have
+  $N \in \mathbb{N}$ such that $ \sum_{j = N+1}^{\infty}  c_j
+  \mu(E_j) < \epsilon$. Let \[
+    u = \sum_{j = 1}^{N} c_j \chi_{K_j} \quad \textrm{and} \quad v =
+    \sum_{j = 1}^{\infty} c_j \chi_{V_j}
+  \]
+  Then we see that $u$ is upper semi-continuous and $v$ is lower
+  semi-continuous and  \[
+    v - u = \sum_{j = 1}^{N} c_j \chi_{V_j \setminus K_j} + \sum_{ j
+    = N+1}^{\infty}  c_j \chi_{V_j}
+  \]
+  Thus,
+  \begin{align*}
+    \int  (v- u) \ d \mu &= \int \big( \sum_{j = 1}^{N} c_j \chi_{V_j
+  \setminus K_j} + \sum_{ j = N+1}^{\infty}  c_j \chi_{V_j}\big)) \ d \mu \\
+  &= \sum_{j = 1}^{N} c_j \mu(V_j\setminus K_j) + \sum_{ j =
+  N+1}^{\infty}  c_j \mu(V_j) \\
+  & \le \sum_{j = 1}^{N} c_j \frac{\epsilon}{2^jc_j} +    \\
+  & < \epsilon +
+\end{align*}
+
+Now to complete the proof, apply this result to $f^+$ and $f^-$. Then
+since $f = f^+ - f^-$ and we get upper and lower semi-continuous
+functions $u_+, v_+$ for $f^+$ and $u_{-}, v_-$ for $f^-$. Let $u =
+u_+ - v_-, v = v_+ - u_-$ gives $u \le f \le v$ and satisfy the properties.
+\end{proof}
+
+

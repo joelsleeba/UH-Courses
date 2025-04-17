@@ -1,0 +1,64 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{theorem}[Urysohn Lemma]
+  Let $X$ be a locally compact Hausdorff space. If $X$ is compact,
+  $V$ is open and $K \subset V$, then there is a function $f \in
+  C_c(X)$ with $$\chi_K \le f \le \chi_V$$.
+\end{theorem}
+\begin{proof}
+  Get a finite cover for $K$ whose closure is contained in $V$
+\end{proof}
+
+\begin{definition}
+  Let $X$ be locally Hausdorff. A linear functional $\lambda: X \to
+  \mathbb{C}$ is positive, if $\lambda(x) \ge 0$ for each $x \in X$.
+\end{definition}
+
+\begin{remark}
+  Suppose $X$ is locally compact, $\mu$ a measure on a
+  $\sigma$-algebra $\mathcal{M}$, $\mathcal{M}$ containing Borel
+  sets. If $f \in C(X)$ and $f(x) \ge 0$ for each $x \in X$, then
+  $\int  f \ d \mu \ge 0$.
+
+  If every compact set has finite measure, then each $f \in C_c(X)$
+  is in $L^{1}(\mu)$. And $\lambda(f) = \int  f \ d \mu$ defines a
+  positive linear functional on $C_c(X)$. Conversely, if each $f \in
+  C_c(X)$ is in $L^1(\mu)$, then we know for each compact $K$, we
+  have $\mu(K) < \infty$. To see this, take $V$ open with $K \subset
+  V$, $\overline{V}$ compact and use Urysohn's Lemma to construct $f
+  \in C_c(X)$, $\chi_K \le f \le \chi_V$. Then by monotonicity, \[
+    0 \le \int X_k \ d \mu \le \int  f \ d \mu < \infty
+  \]
+\end{remark}
+
+\begin{theorem}[Reisz Representation Theorem]
+  Let $X$ be a locally compact Hausdorff space. If $\lambda$ is a
+  positive linear functional on $C_c(X)$, then there exists a
+  $\sigma$-algebra $\mathcal{M}$ and a  complete (positive) measure
+  $\mu$, uniquely
+  determined by $\lambda$ such that
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\mathcal{M} \supset B(X)$, the Borel sigma algebra.
+    \item $\lambda(f) = \int  f \ d \mu$ for each $f \in C_c(X)$.
+    \item $\mu(K) < \infty$ for each compact $K$.
+    \item for $E \in \mathcal{M}$, \[
+        \mu(E) = \inf_{\substack{V \textrm{ is open} \\ E \subset V}} \mu(V)
+      \]
+    \item If $E$ is open or $E \in \mathcal{M}$ and $\mu(E) < \infty$, then \[
+        \mu(E) = \sup \{ \mu(K)  \ : \   K \subset E,\  K \textrm{ is
+        compact} \}
+      \]
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We will only prove the uniqueness and refer Rudin for the proof.
+  Assume $\mu_{1}, \mu_{2} $ satisfy these properties. Take $K$
+compact, $\epsilon > 0$, then from iv) we know that there exist open
+sets $V_{1} , V_{2} $ containing $K$ and $\mu_i(V_i) - \epsilon <
+\mu_i(K)$. Take $V = V_{1} \cap V_{2} \cap V_{3} $ with $V$.
+\textcolor{red}{prove the rest}.
+\end{proof}
+
+

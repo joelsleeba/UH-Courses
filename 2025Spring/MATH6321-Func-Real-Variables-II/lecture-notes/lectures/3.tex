@@ -1,0 +1,150 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 23/01/2025 }
+
+\begin{example}
+  Given an infinite dimensional Hilbert space with orthonormal basis
+  $(u_n)_{n \in \mathbb{N}}$, show that $\{ u_n \}$ is not compact.
+\end{example}
+\begin{proof}
+  Since $\|u_\alpha - u_\beta\| = \sqrt{2}$, take
+  $\frac{1}{\sqrt{2}}$ radius balls around each $u_\alpha$ to get a
+  collection of open balls that cover the set with no finite subcover.
+
+  Another way to see is to use the sequential compactness criterion
+  and see that the  sequence $(u_n)$ does not have any convergent subsequence.
+  Since this is a metric space, sequential compactness is equivalent
+  to compactness.
+\end{proof}
+
+\begin{theorem}[Every Hilbert space is $\ell^{2}(A)$]
+  Let $\mathcal{H}$ be a Hilbert space, $(u_\alpha)_{\alpha \in A}$
+  is an orthonormal basis, then there is a unitary map $U:
+  \mathcal{H} \to \ell^{2}(A)$ such that $U(u_\alpha) = \chi_\alpha$
+\end{theorem}
+\begin{proof}
+  We first note that by linearity, if $p \in \textrm{span}\{ u_\alpha
+  \ : \ \alpha \in A \}$, then $U(p)$ is determined by $\chi_\alpha$.
+  Next, by Bessel's inequality,
+  \begin{align*}
+    \|U(p)\|_{\ell^{2}(A)} \le \|p\|
+  \end{align*}
+  Hence $U$ is bounded. Hence it can be continuously extended to
+  $\mathcal{H} = \overline{\textrm{span} \{ u_\alpha \}}$ as a limit
+  of sequences. Also, by the equivality in the Bessel's inequality,
+  we get that $U$ is an isometry, hence one-to-one.
+
+  Now it remains to show that $U$ is onto. Given $g \in \ell^{2}(A)$,
+  we know that there exists at most a countable set $ \{ \alpha_1 ,
+  \alpha_2 , \ldots \} = A_0$ such that $g(\alpha_i) \neq 0$. Consider
+  \begin{align*}
+    h_n = \sum_{j = 1}^{n} g(\alpha_j) u_{\alpha_j}
+  \end{align*}
+  then,
+  \begin{align*}
+    u(h_n)(\alpha) =
+    \begin{cases}
+      g(\alpha_j), & \alpha_j \in A_0 \\
+      0, & \textrm{otherwise}
+    \end{cases}
+  \end{align*}
+  Moreover,
+  \begin{align*}
+    \Big \| U(h_n) - g \Big \|_{\ell^{2}(A)}^2 = \sum_{j =
+    n+1}^{\infty} |g(\alpha_j)|^2 \to 0
+  \end{align*}
+  Now if
+  \begin{align*}
+    h = \sum_{j = 1}^{\infty}  g(\alpha_j) u_{\alpha_j} \in
+    \mathcal{H} \quad (\textrm{ since } g \in \ell^{2}(A))
+  \end{align*}
+  we get
+  \begin{align*}
+    \|h - h_n\|^2 = \|U(h_n) - g\|^2_{\ell^{2}(A)} \to 0
+  \end{align*}
+  and the injectivity of $U$ shows that $U(h) = g$.
+\end{proof}
+
+\chapter{Banach Space Techniques}
+\begin{definition}
+  If $X$ is a real or complex normed vector space with a norm, and
+  the complete in the topology induced by the norm, it is called a Banach space.
+\end{definition}
+
+\begin{definition}
+  If $X, Y$ are normed vector spaces over $\mathbb{R}$ or
+  $\mathbb{C}$, $\Lambda: X \to Y$ linear, then the norm of the operator
+  \begin{align*}
+    \|\Lambda\| = \sup \{ \|\Lambda x\|  \ : \  \|x\|< 1 \}
+  \end{align*}
+  If $\|\Lambda\| < \infty$, then we say that $\Lambda$ is bounded.
+\end{definition}
+
+\begin{proposition}
+  Given $\Lambda: X \to Y$, a linear map between normed linear
+  spaces, the following are equivalent
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\Lambda$ is bounded
+    \item $\Lambda$ is continuous
+    \item $\Lambda$ is continuous at some $x_o \in X$
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  $(1 \implies 2)$
+  \begin{align*}
+    \|\Lambda(x - y)\| \le \|\Lambda\| \|x - y\|
+  \end{align*}
+  gives $\|\Lambda\|$-Lipschitz continuity.
+
+  $(2 \implies 3)$ Follows from the definition.
+
+  $(3 \implies 1)$ For each $\varepsilon > 0$, there is $\delta > 0$
+  such that for each $x \in X$, with $\|x - x_o\| < \delta$, then
+  $\|\Lambda x - \Lambda x_o\| < \varepsilon$.
+  Thus for $ \|y \| < \delta$,  by linearity of $\Lambda$, we get
+  \begin{align*}
+    \|\Lambda y\| = \|\Lambda(x_o + y) - \Lambda x_o\| < \varepsilon
+  \end{align*}
+  Again using linearity, we get for $\|y^\prime\| < 1$,
+  \begin{align*}
+    \|\Lambda y^\prime\| < \frac{\varepsilon}{\delta} < \infty
+  \end{align*}
+  Now since $\overline{ B_1(0)} \subset B_2(0)$, we see that
+  $\|\Lambda\| < \frac{2\varepsilon}{\delta} < \infty$.
+\end{proof}
+
+\section{Consequence of Baire category theorem}
+
+\begin{theorem}[Baire Category Theorem]
+  \label{thm:Baire-Category-Rudin}
+  If $(X, d)$ is a complete metric space, and $V_1 , V_2 , \ldots$
+  are dense subsets, then
+  \begin{align*}
+    \bigcap_{n = 1}^{\infty} V_n
+  \end{align*}
+  is dense in $X$.
+\end{theorem}
+\begin{proof}
+  We show that for any non-empty open set $W \subset X$,
+  \begin{align*}
+    \bigcap_{n = 1}^{\infty} V_j \cap W \neq \emptyset
+  \end{align*}
+  We write $B_r(x) = \{ y \in X  \ : \  d(x, y)< r \}$. Since $V_1$
+  is dense and open, $V_{1} \cap W$ is open and dense in $W$. Thus we
+  can find an $r_{1} > 0$ such that $\overline{B_{r_{1}}(x_1)}
+  \subset W \cap V_1$. (First find an $r^\prime > 0$ such that
+    $B_{r^\prime}(x_1) \subset W \cap V_{1}$. Then take $r_{1} =
+  \frac{r^\prime}{2}$).
+
+  We inductively proceed by taking $x_n \in V_n \cap
+  B_{r_{n-1}}(x_{n-1})$ such that $\overline{B_{r_n}(x_n)} \subset
+  V_n \cap B_{r_{n-1}}(x_{n-1})$. Without loss of generality, choose
+  $0 < r_n < \frac{1}{n}$. This gives a sequence which satisfies for
+  $i, j > n$ that $x_i, x_j \in B_{r_n}(x_n) \implies d(x_i, x_j) <
+  2r_n < \frac{2}{n}$. Hence $x_n$ is Cauchy. By completeness $x_n
+  \to x \in \overline{B_{r_n}(x_n)} \subset V_n \cap W$ for all $n$.
+  Thus $x \in W$ and
+  \begin{align*}
+    x \in \bigcap_{n = 1}^{\infty}V_n
+  \end{align*}
+\end{proof}

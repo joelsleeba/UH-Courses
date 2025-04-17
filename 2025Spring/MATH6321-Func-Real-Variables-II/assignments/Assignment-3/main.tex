@@ -1,0 +1,214 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH 6321 - Theory of Functions of a Real Variable \\ Homework III}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part Let
+      \begin{align*}
+        A^M = \{ x \in X  \ : \  |f_n(x)|<M, \ \forall n \in \mathbb{N} \}
+      \end{align*}
+      Since for all $x \in X$, $f_n(x) \to f(x) \in \mathbb{C}$,
+      there is some $M \in \mathbb{N}$ such that $|f_n(x)| < M$ for
+      all $n \in \mathbb{N}$. Then $x \in A^M$. Thus we see that
+      \begin{align*}
+        X = \bigcup_{M \in \mathbb{N}} A^M
+      \end{align*}
+      Then by the Baire category theorem, we get that for one of $M_0
+      \in \mathbb{N}$, $\overline{A^{M_0}}$ has a nonempty interior.
+      Let $V \subset \overline{A^{M_0}}$ be a non-empty open set.
+      We'll show that $V$ is the set we're looking for.
+
+      Let $x \in V$, and $n \in \mathbb{N}$ be given. Then by the
+      continuity of $f_n$, there exists an $y \in A^{M_0} \cap V$
+      such that $|f_n(x) - f_n(y)| < 1$. Thus
+      \begin{align*}
+        |f_n(x)| < |f_n(y)| + 1 < M_0 + 1
+      \end{align*}
+      Since $n \in \mathbb{N}$ was arbitrary, we get that this holds
+      for all $ n \in \mathbb{N}$. Hence $V$ is the non-empty open
+      set and $M_0 + 1$ is the integer we need.
+
+      \part
+      Let $\varepsilon > 0$ be given, and
+      \begin{align*}
+        A^N = \Big \{ x \in X  \ : \ |f_n(x) - f_m(x)| \le
+        \frac{\varepsilon}{2}, \ \forall n, m \ge N \Big \}
+      \end{align*}
+      Since $f_n(x) \to f(x)$ pointwise, we get that
+      \begin{align*}
+        X = \bigcup_{N \in \mathbb{N}} A^N
+      \end{align*}
+      Moreover, since each
+      \begin{align*}
+        A^N = \bigcap_{ n, m > N \in \mathbb{N}} (f_n -
+        f_m)^{-1}(\bar{B}_{\frac{\varepsilon}{2}}(0))
+      \end{align*}
+      we get that each $A^N$ is closed being the
+      intersection of closed sets.
+      Now by the same argument as for the previous part, there exist
+      a non-empty open set $W \subset \overline{A^{N_0}} = A^{N_0}$ for some
+      $N_0 \in \mathbb{N}$. We'll show that $W$ is the non-empty open
+      set and $N_0$ is the integer we need.
+
+      Let $x \in W$ and $n \ge N_0$. Since $f_n(x)
+      \to f(x)$, there exists an $m \ge N_0$ such that
+      \begin{align*}
+        |f_m(x) - f(x)| < \frac{\varepsilon}{2}
+      \end{align*}
+      Then for that $m$, we get that
+      \begin{align*}
+        |f_n(x) - f(x)| &\le |f_n(x) - f_m(x)| + |f_m(x) - f(x)| \\
+        &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+        &= \varepsilon
+      \end{align*}
+      where $|f_n(x) - f_m(x)| \le \frac{\varepsilon}{2}$ since $ x
+      \in W \subset A^{N_0}$ and $n, m \ge N_0$. Hence we are done.
+    \end{parts}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    \begin{parts}
+      \part We'll first show that $\|M_f\| \le \|f\|_\infty$. To see
+      this, notice that for any $g \in L^{2}(\mu)$, we have
+      \begin{align*}
+        \|fg\|_2^2 = \int |fg|^2 \ d \mu \le \int \|f\|_\infty^2 |g|^2 \ d \mu =
+        \|f\|_\infty^2 \|g\|_2^2
+      \end{align*}
+      Thus $\|M_fg\|_2 = \|fg\|_2 \le \|f\|_\infty \|g\|_2$. Now it follows from
+      the definition of the operator norm, that $\|M_f\| \le \|f\|_\infty$.
+
+      \begin{definition}
+        A measure $\mu$ on $(X, \Sigma)$ is called seminfinite
+        whenever $\mu(A) = \infty$, there is a $\Sigma \ni B \subset
+        A$ such that $0 < \mu(B) < \infty$.
+      \end{definition}
+
+      We'll show that seminiteness of the measure $\mu$ is sufficient
+      for $\|M_f\| = \|f\|_\infty$ for all $f \in L^{\infty}(\mu)$.
+      Let $f \in L^{\infty}(\mu)$ be given. Let
+      \begin{align*}
+        A_n = \Big \{ x \in X  \ : \  \|f\|_\infty^2 < |f(x)|^2 +
+        \frac{1}{n} \Big \}
+      \end{align*}
+      By the definition of the essential supremum, we get that
+      $\mu(A_n) > 0$ for each $n \in \mathbb{N}$. Let $B_n \subset
+      A_n$ be a measurable set such that $0 < \mu(B_n) < \infty$.
+      Now, let $g_n(x) = \frac{1}{\mu(B_n)} \chi_{B_n}$, clearly
+      $\|g_n\|_2 = 1$, and
+      \begin{align*}
+        \|M_f(g_n)\|_2^2  &= \int |fg_n|^2 \ d \mu \\
+        &= \frac{1}{\mu(B_n)}\int_{B_n} |f|^2 \ d \mu \\
+        &\ge \frac{1}{\mu(B_n)}\int_{B_n} \|f\|_\infty^2 -
+        \frac{1}{n} \ d \mu \\
+        &= \frac{1}{\mu(B_n)}\int_{B_n} \|f\|_\infty^2 \ d \mu  \ - \
+        \frac{1}{\mu(B_n)}\int_{B_n} \frac{1}{n} \ d \mu \\
+        &= \|f\|_\infty^2 - \frac{1}{n}
+      \end{align*}
+      Hence
+      \begin{align*}
+        \sqrt{\|f\|_\infty^2 - \frac{1}{n}} \ \le \ \|M_f(g_n)\|_2 \ \le \
+        \|f\|_\infty \|g\|_2 = \|f\|_\infty
+      \end{align*}
+      Thus, as $n \to \infty$, we see that $\|M_f(g_n)\|_2 \to
+      \|f\|_\infty$. Hence $\|M_f\| = \|f\|_\infty$. Since $ f \in
+      L^{\infty}( \mu)$ was arbitrary, this holds for every $ f \in
+      L^{\infty}(\mu)$.
+      \part We claim that the $M_f$ is an onto function from
+      $L^{2}(\mu) \to L^{2}(\mu)$ if
+      \begin{align*}
+        0 \ \not\in \ R_f:= \{ w \in
+          \mathbb{C}  \ : \  \mu(f^{-1}(B_\varepsilon(w)))>0, \ \forall
+        \varepsilon > 0 \}
+      \end{align*}
+      the essential range of $f$. If $0 \not\in R_f$,
+      then there exist $\varepsilon > 0$ such that
+      $\mu(f^{-1}(B_\varepsilon(0))) = 0$. That implies $|f(x)| \ge
+      \varepsilon$ almost everywhere. Then $\frac{1}{|f(x)|} <
+      \frac{1}{\varepsilon}$ almost everywhere. Hence $\frac{1}{f}
+      \in L^{\infty}(\mu)$. Then by the first part, for any $g \in L^{2}(\mu)$,
+      \begin{align*}
+        \frac{g}{f} \in L^{2}(\mu)
+      \end{align*}
+      Hence $M_f( \frac{g}{f}) = g$, which shows that $M_f$ is onto.
+    \end{parts}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

@@ -1,0 +1,98 @@
+% TeX_root = ../main.tex
+
+\chapter{Hilbert Spaces}
+
+\begin{definition}
+  Recall that a complex inner product o a complex vector space is a
+  map \[
+    \langle \ , \  \rangle : X \times X \to \mathbb{C}
+  \]
+  such that
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\langle x , x \rangle \ge 0$ for all $x \in X$
+    \item $\langle  x , y \rangle  = \overline{\langle y , x \rangle }$
+    \item $\langle \alpha x + z, y \rangle  = \alpha \langle x , y
+      \rangle  + \langle z , y \rangle $
+  \end{enumerate}
+\end{definition}
+
+Recall the norms induced by the inner product and the Cauchy-Schwarz inequality.
+
+\begin{definition}
+  Complete inner product spaces are called Hilbert spaces
+\end{definition}
+
+\begin{proposition}
+  Let $X$ be an inner product space. Then the inner product of $X$
+  extends to an inner product on the completion (unique metric space
+  completion) of $X$, turns it into
+  a Hilbert space.
+\end{proposition}
+
+\begin{definition}
+  If $x, y \in H$, the Hilbert space, we say $x \perp y$ if $ \langle
+  x , y \rangle  = 0$
+\end{definition}
+
+\begin{definition}
+  Given a set $S \subset H$, $S^\perp = \{ y \in H  \ : \  \langle x
+  , y \rangle  = 0 \}$
+\end{definition}
+
+\begin{proposition}
+  Let $H, K$ be Hilbert spaces and $T: H \to K$ be linear. Then the
+  following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $T$ is isometry
+    \item $\langle  Tx , Ty \rangle = \langle x , y \rangle $ for all
+      $x, y \in H$
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  See Homework-5
+\end{proof}
+
+\begin{proposition}
+  For all $x, y \in H$, a Hilbert space, then \[
+    \|x + y\|^2 + \|x-y\|^2  = 2(\|x\|^2 + \|y\|^2)
+  \]
+\end{proposition}
+
+\begin{example}
+  Show that $c_{00}$ under the usual inner product is not complete
+  and its completion is $\ell^2(\mathbb{N})$.
+\end{example}
+\begin{proof}
+  Consider the sequence $x_n = (1, \frac{1}{2}, \frac{1}{3}, \ldots,
+    \frac{1}{n}, 0,
+  \ldots)$. Then clearly $x_n \in \textbf{c}_0$. Moreover $x_n \to x
+  = (1, \frac{1}{2}, \ldots \frac{1}{n}, \frac{1}{n+1}, \ldots)$ in
+  the norm by the inner product. But $x \notin \textbf{c}_{00}$. But $ x
+  \in \ell^2(\mathbb{N})$. Moreover, the same process can be used to
+  approximate any  element in $\ell^2(\mathbb{N})$ by elements in
+  $\textbf{c}_{00}$. Thus we see that $ \textbf{c}_{00}$ is dense in
+  $\ell^{2}(\mathbb{N})$
+\end{proof}
+
+\begin{example}
+  $L^2(\mathbb{R},  \mu)$ with \[
+    \langle f , g \rangle  = \int_\mathbb{R}  f \overline{g} \ d \mu
+  \]
+  is a Hilbert space.
+\end{example}
+
+\begin{example}
+  Let $J$ be any set $\ell^2(J) = \{  f: J \to \mathbb{C}  \ : \
+  \sum_{j \in J} |f(j)|^2 < \infty  \}$ with the usual inner product
+  is a Hilbert space.
+\end{example}
+
+\begin{definition}
+  An orthonormal basis for $H$ is a maximal orthonormal set.
+\end{definition}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $J$ be an orthonormal basis for $H$.
+  Then there exists a bijective linear isometry $T : H \to \ell^2(J)$.
+\end{theorem}
+

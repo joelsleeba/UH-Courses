@@ -1,0 +1,81 @@
+% TeX_root = ../main.tex
+
+\chapter{Topological Vector Spaces}
+
+\begin{example}
+  Let $X$ be a vector space and let $f: X \to \mathbb{C}$ be a linear
+  map. Define $\phi: X \to R^{+} := \phi(x) = |f(x)|$. Then $\phi$ is
+  a seminorm.
+\end{example}
+
+\section{Weak and Weak * Topologies}
+\begin{remark}
+  Let $X$ be a TVS and $A \subset X^{*}$. We denote by $ \sigma(X,
+  A)$, the topology on $X$ defined by $A$. ( initial topology).
+  Recall that $\sigma(X, A)$ is Hausdorff if and only if $A$ separate
+  points of $X$.
+
+  $\sigma(X, X^{*})$ is called the weak topology on $X$.
+
+  Also recall that $X \hookrightarrow X^{**}$ by the evaluation maps.
+  Hence we can view $X$ as a subset $X^{**}$. And with this
+  identification, we call $\sigma(X^{*}, X)$ the weak $*$ topology on $X^{*}$
+
+\end{remark}
+
+\begin{definition}
+  Let $S$ be any set. Let $I$ be a directed set. A net in $S$ indexed
+  by $\Lambda$ is a function $f:\Lambda \to S$. We denote the net by
+  $(x_\lambda)_{\lambda \in \Lambda}$.
+
+  \marginnote{ \scriptsize See how nets become the topological
+    equivalent of sequences in metric spaces. Find what
+    property of the metric space makes it enough to be indexed by a
+  countable totally ordered set for openness.}
+
+  In addition if $S$ is a topological space, we say a net
+  $(x_\lambda)_{\lambda \in \Lambda}$ converges to a point $x \in S$
+  if  for all open set $U$ in $S$ with $x \in U$, there exists an
+  $\lambda_0 \in \Lambda$ such that for all $\lambda \ge \lambda_0$
+  we have $x_\lambda \in U$.
+\end{definition}
+
+\begin{remark}
+  By definition, a basis of open neighborhoods of a point $x_0 \in X$
+  in $\sigma(X, A)$ is given \[
+    \bigcup_{\substack{p_1 , p_2 , \ldots , p_n \in A \\ \epsilon_1 ,
+    \epsilon_2 , \ldots , \epsilon_n > 0}}\bigcap_{i = 1}^{n} \{ z
+    \in Z | p_k(z-x_0) < \epsilon_k \}
+  \]
+
+  So the basis in a weak topology is \[
+    \bigcup_{\substack{f_1 , f_2 , \ldots , f_n \in X^{*} \\ \epsilon_1 ,
+    \epsilon_2 , \ldots , \epsilon_n > 0}}(x_0) = \{  z \in Z \Big|
+    |f_k(z- x_0)|< \epsilon_k, \textrm{ for all } k = 1, 2, \ldots n \}
+  \]
+\end{remark}
+
+\begin{example}
+  Let $S$ be a topological space, $E \subset S$, $x_0 \in
+  \overline{E}$. Then there is a net $(x_\alpha) \subset E$ such that
+  $x_\alpha \to x_0$.
+\end{example}
+\begin{proof}
+  Consider the collection $\mathscr{T}$ of all open sets of $S$ that
+  contain $x_0$. Order $\mathscr{T}$ by the reserve inclusion. That
+  is $A \le B$ if $B \subset A$. This makes $\mathscr{T}$, a directed
+  set. Now each $ \lambda \in \mathscr{T}$ has a nonempty
+  intersection with $E$ being an open set containing the limit point
+  $x_0$ of $E$. For each $\lambda \in \mathscr{T}$ choose an
+  $x_\lambda \in \lambda\cap E$. Then we claim that the net
+  $(x_\lambda) \to x_0$.
+\end{proof}
+
+\begin{example}
+  Let $X = \ell^{1}$. Then $X^{*} = \ell^{\infty}$. Then the weak *
+  topology on $\ell^{\infty}$ is given by the pointwise convergence
+  of a net $(f_\alpha) \subset \ell^{\infty}$ converges to $f \in
+  \ell^{\infty}$ if and only if $f_\alpha(n) \to f(n)$ for all $ n
+  \in \mathbb{N}$
+\end{example}
+

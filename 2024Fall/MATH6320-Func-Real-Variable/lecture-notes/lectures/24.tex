@@ -1,0 +1,111 @@
+% TeX_root = ../main.tex
+
+\marginnote{ \scriptsize 13/11/2024}
+
+\begin{theorem}
+  Let $\mathcal{H}$ be a vector space over $\mathbb{C}$ with a
+  positive semidefinite sesquilinear $ \langle \cdot , \cdot \rangle
+  $ form and the associated seminorm $ \|\cdot\|$, then for all $x, y
+  \in \mathcal{H}$,
+  \begin{align*}
+    \|x+y\| \le \|x\| + \|y\|
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{remark}
+  If $\langle \cdot , \cdot \rangle $ is an inner product space, then
+  $\|\cdot\|$ defines a norm in $ \mathcal{H}$.
+\end{remark}
+
+\begin{definition}
+  If $ \mathcal{H}$ be an inner product. If $\mathcal{H}$ is complete
+  with respect to the topology induced by the inner product, then it
+  is called a Hilbert space.
+\end{definition}
+
+\begin{example}
+  $L^2(\mu)$, with functions identified that agrees almost everywhere
+  is a Hilbert space when endowed with the inner product
+  \begin{align*}
+    \langle f , g \rangle  = \int f \overline{g} \ d \mu
+  \end{align*}
+\end{example}
+
+\begin{proposition}
+  Let $\mathcal{H}$ be a Hilbert space. Then for $g \in \mathcal{H}$
+  \begin{align*}
+    \lambda_g : \mathcal{H} \to \mathbb{C} := f \to \langle f , g \rangle
+  \end{align*}
+  is a linear, uniformly continuous functional.
+\end{proposition}
+\begin{proof}
+  Use Cauchy-Schwarz inequality.
+\end{proof}
+
+\begin{definition}
+  Let $H$ be a Hilbert space. We say $x, y \in \mathcal{H}$ are
+  orthogonal if $\langle  x , y \rangle  = 0$. We also write $x \perp y$.
+
+  If $ S \subset \mathcal{H}$, define
+  \begin{align*}
+    S^\perp = \{ x \in \mathcal{H}  \ : \   x \perp s, \forall s \in S \}
+  \end{align*}
+\end{definition}
+
+\begin{theorem}
+  If $S \subset H$, then $S^\perp$ is a closed subspace of $\mathcal{H}$.
+\end{theorem}
+\begin{proof}
+  Let $z \in \mathcal{H}$. Then $K_z = z^\perp =
+  \textrm{Ker}(\lambda_z)$ is closed. Observe that
+  \begin{align*}
+    S^\perp = \bigcap_{s \in S}K_s
+  \end{align*}
+  is closed as well.
+\end{proof}
+
+\begin{lemma}
+  Let $\mathcal{M}$ be a closed subspace of a Hilbert space
+  $\mathcal{H}$, and $h \in \mathcal{H}$, then there is a unique $m
+  \in \mathcal{M}$ that minimizes the distance to $h$
+\end{lemma}
+\begin{proof}
+  We recall the parallelogram law
+  \begin{align*}
+    \|x + y\|^2 + \|x -y\|^2 = 2 ( \|x\|^2 + \|y\|^2)
+  \end{align*}
+  and write for $x, y \in \mathcal{H}$,
+  \begin{align*}
+    \|x - y\|^2 = 2 (\|x\|^2 + \|y\|^2) - \|x + y\|^2
+  \end{align*}
+  Let $\delta = \inf \{ \|m - h\|  \ : \  m \in \mathcal{M}  \}$.
+  There there is a sequence of $m_j \in \mathcal{M}$ such that $\|m_j
+  - h\| \to \delta$. To show that $m_j$ is a Cauchy seqeunce,
+  consider $x = m_j -h, y = m_i - h$. Then
+  \begin{align*}
+    \frac{x+y}{2} = \frac{m_i + m_j}{2} - h
+  \end{align*}
+  and we see that
+  \begin{align*}
+    \Big\|\frac{x+y}{2}\Big\| = \Big|\frac{m_i+m_j}{2} - h\Big|
+  \end{align*}
+  Then by prarllelogram law,
+  \begin{align*}
+    \|m_j - m_i\|^2 &= 2(\|x\|^2 + \|y\|^2) - \|x + y\|^2 \\
+    &=2(\|m_j - h\|^2 + \|m_i - h\|^2 - \|m_i + m_j - 2h\|^2) \\
+  \end{align*}
+  \textcolor{red}{verify}
+
+  This shows that, we can make $\|m_i - m_j\|$ arbitrarily small by
+  requiring $ i, j \in \mathbb{N}$ for a similarly large
+  $\mathbb{N}$, meaning $ m_j $ is Cauchy. Since $ \mathcal{M}$ is
+  closed and a closed and a closed subset of a complete metric space,
+  $\mathcal{M}$ is complete, so there is a point $m \in \mathcal{M}$,
+  where $m_j$ converges to.
+  We'll prove the uniqueness in the next lecture.
+\end{proof}
+
+

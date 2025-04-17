@@ -1,0 +1,95 @@
+% TeX_root = ../main.tex
+
+\chapter{Inner Product Spaces}
+
+\begin{definition}
+  Let $\mathcal{H}$ be a vector space over $\mathbb{C}$. A
+  sesquilinear form is a function
+  \begin{align*}
+    \langle \cdot , \cdot \rangle : \mathcal{H} \times \mathcal{H}
+    \to \mathbb{C}
+  \end{align*}
+  satisfying
+  \begin{itemize}[]
+    \item $\langle  x , y \rangle  = \overline{\langle y , x \rangle }$
+    \item $\langle  x + \alpha z , y \rangle  = \langle x , y \rangle
+      + \alpha \langle x , z \rangle $
+  \end{itemize}
+  for all $x, y, z \in \mathcal{H}, \alpha \in \mathbb{C}$.
+  It is said to be positive semidefinite (positive definite) if $
+  \langle x , x \rangle
+  \ge 0$ ($\langle  x , x \rangle > 0$ for all $x \in
+  \mathcal{H}\setminus \{0\}$) for all $x \in \mathcal{H}$.
+
+  A positive definite sesquilinear forms makes $\mathcal{H}$ an inner
+  product space.
+\end{definition}
+
+\begin{example}
+  Take $L^2(\mu)$ (functions identified almost everywhere) with the
+  natural inner product is an inner product.
+\end{example}
+
+\begin{proposition}
+  If $\mathcal{H}$ is a complex vector space with a positive
+  semidefinite sesquilinear form and $\langle  x , x \rangle = 0$,
+  then $\langle  x , y \rangle  = 0$ for all $y \in \mathcal{H}$.
+\end{proposition}
+\begin{proof}
+  Take $\alpha \in \mathbb{C}$ and consider
+  \begin{align*}
+    \langle x + \alpha y , x  +\alpha y \rangle  & = \langle x , x
+    \rangle  + \alpha \langle y , x \rangle  + \overline{\alpha}
+    \langle y , y \rangle  \\
+    &= 2 \Re \big(  \overline{\alpha} \langle x , y \rangle  \big) +
+    |\alpha|^2 \langle y , y \rangle
+  \end{align*}
+  Now if $\langle  x , y \rangle \neq 0$, then either $\langle  y , y
+  \rangle  = 0$ or nonzero. If $\langle  y , y \rangle = 0$, take
+  $\alpha = - \langle x , y \rangle $ to get
+  \begin{align*}
+    \langle x +\alpha y , x + \alpha y \rangle = \underbrace{2\Re \big( -
+    \overline{\langle x , y \rangle }\langle x , y \rangle \big)}_{< 0}
+  \end{align*}
+  which is a contradiction.
+
+  Now if $\langle  y , y \rangle  \neq 0$, take $\alpha = i \langle
+  x , y \rangle $ to get a similiar contradiction, which makes $\Re(
+  \overline{\alpha} \langle x , y \rangle) = 0$
+\end{proof}
+
+\begin{definition}
+  If $\langle  \cdot , \cdot \rangle $ is a positive semidefinite
+  sesquilinear form, then
+  \begin{align*}
+    \|x\| =  \langle x , x \rangle^{\frac{1}{2}}
+  \end{align*}
+  is a seminorm.
+
+  If $\langle \cdot , \cdot \rangle $ is positive definite, then $x
+  \to \|x\|$ is a norm.
+\end{definition}
+
+\begin{theorem}[Cauchy-Schwarz]
+  If $\langle \cdot , \cdot \rangle $ is a positive semidefinite
+  sesquilinear form on $\mathcal{H}$, then for $x, y \in \mathcal{H}$
+  \begin{align*}
+    |\langle x , y \rangle | \le \|x\| \|y\|
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  If $\|y\| = 0$, then previous proposition takes care of the proof.
+  If not, choose $ \alpha =  \frac{\langle x , y \rangle }{ \langle y
+  , y \rangle } $ and consider
+  \begin{align*}
+    0 &\le \langle x - \lambda y , x- \lambda y \rangle \\
+  & = \|x\|^2 - 2 \Re \big( \lambda \langle y , x \rangle \big)) +
+  |\lambda|^2 \langle y , y \rangle \\
+  &= \|x\| - 2 \frac{\langle x , y \rangle^2}{\|y\|^2} +
+  \frac{\langle x , y \rangle^2}{\|y\|^2} \\
+  &= \|x\|^2 - \frac{|\langle x , y \rangle |^2}{\|y\|^2}
+\end{align*}
+which gives our inequality.
+\end{proof}
+
+

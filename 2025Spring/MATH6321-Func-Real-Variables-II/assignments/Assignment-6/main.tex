@@ -1,0 +1,156 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH 6321 - Theory of functions on a real variable \\ Homework  6}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    Let $f : X \to \mathbb{C}$ be a function. Then
+    \begin{align*}
+      \|f\|_1 = |f(a)| \mu(\{ a \}) + |f(b)| \mu(\{ b \}) = |f(a)| +
+      |f(b)|\cdot \infty
+    \end{align*}
+    and
+    \begin{align*}
+      \|f\|_\infty = \max \{ |f(a)|, |f(b)| \}
+    \end{align*}
+  \end{solution}
+  Then it is clear that $f \in L^{1}(X)$ iff $f(b) = 0$ and $|f(a)| <
+  \infty$. Then $\|f\|_1 = |f(a)|$. Thus $L^{1}(X) =
+  \textrm{span}\{\delta_a\}$, where $\delta_a : X \to \mathbb{C}$
+  such that $\delta_a(a) = 1$ and $\delta_a(b) = 0$. If $f \in
+  L^{1}(X)$, then $f = f(a)\delta_a$. Thus $L^{1}(X)$ is a
+  one-dimensional vector space.
+
+  But $L^{\infty}(X) = \textrm{span}\{ \delta_a, \delta_b \}$, since
+  any $f \in L^{\infty}(X)$ can be written as $f = f(a)\delta_a +
+  f(b)\delta_b$. Thus $L^{2}(X)$ is a two-dimensional vector space.
+
+  Since $L^1(X), L^\infty(X)$ are of different dimensions, their dual
+  spaces will also be non-isomorphic.
+
+  \question
+
+  \begin{solution}
+    By a warm-up exercise we did in the lecture, $f \in L^{1}(\mu)$
+    forces $f$ to be zero except on a countable set. Thus $fg$ is
+    zero everywhere except a countable set. Hence $fg$ is measurable.
+    Moreover, since $|g(x)| < 1$
+    \begin{align*}
+      \Big|\int fg \ d \mu\Big| \le \int |fg| \ d \mu \le \int |f| \ d \mu
+    \end{align*}
+  \end{solution}
+  Thus the map $\Lambda: f \to \int_E  f \ d \mu$ is a contraction.
+  That $\Lambda$ is a linear functional follows form the linearity of
+  the integration. Thus $\Lambda$ is a bounded linear map.
+
+  Now to see that $g$ is not measurable, notice that $g^{-1}([0,
+  \frac{1}{2}]) = [0, \frac{1}{2}]$ is uncountable with it's
+  complement $(\frac{1}{2}, 1]$ also uncountable, while $[0,
+  \frac{1}{2}]$ belongs to the Borel-sigma algebra of $\mathbb{R}$.
+
+  \question
+  \begin{solution}
+    Recall that $C(I)$ is closed under the sup-norm. Let $f \in
+    L^{\infty}(m)\setminus C(I)$ with $\|f\|_\infty = 1$. Define $\Lambda:
+    \overline{\textrm{span}}(C(I) \cup \{ f \}) \to \mathbb{C}$ such
+    that $\Lambda|_{C(I)} = 0$ and $\Lambda(f) = 1$ and linearily
+    extending to the whole of $\overline{\textrm{span}}(C(I) \cup \{
+    f \})$. Clearly $\|\Lambda\|  = 1$. Then by Hahn-Banach extension
+    theorem, $\Lambda$ can be extended to a linear functional, (say
+    $\Lambda$ by an abuse of notation) to the
+    whole of $L^{\infty}(I)$ preserving the norm. Then $\Lambda$ is
+    an example of a linear functional which is non-zero but vanishes
+    on all of $C(I)$.
+
+    For the sake of contradiction, assume that $\Lambda =  \Lambda_g$
+    for some $g \in L^{1}(m)$. By the density of $C(I)$ in
+    $L^{1}(I)$, there is a sequence of continuous functions $g_n$
+    which converge to $ g$ in $L_1$ norm. Then $fg_n \to fg$ in $L_1$
+    norm for all
+    $f \in L^{\infty}( I)$, since
+    \begin{align*}
+      \int |fg_n - fg| \ d m & \le \|f\|_\infty \int |g_n - g| \ d m
+    \end{align*}
+    Specifically for $f = g_m$, we get that
+    \begin{align*}
+      \int g_m g_n \ d m \to \int g_m g \ d m = \Lambda(g_m) = 0
+    \end{align*}
+    This should force $g = 0$ almost everywhere which will give a contradiction.
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

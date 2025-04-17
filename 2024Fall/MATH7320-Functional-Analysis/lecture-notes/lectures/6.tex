@@ -1,0 +1,102 @@
+% TeX_root = ../main.tex
+\section{Open Mapping Theorem and Closed Graph Theorem}
+\begin{theorem}[Open Mapping Theorem]
+  Let $X$ and $Y$ be Banach spaces and $T: X \to Y$ be a surjective
+  bounded linear map. Then $T$ is an open map i.e $T(E)$ is open in
+  $Y$ i.e if $E \subset X$, then $T(E)$ is open in $Y$.
+\end{theorem}
+\begin{proof}[Steps of proof]
+  \begin{itemize}
+      See Prof. Blecher's Notes on Functional Analysis
+    \item Use Baire category theorem to show that
+      $\overline{T(B_r(0))}$ has a non-empty interior.
+    \item Then use linearity of $T$ to show that $0 \in
+      \overline{T(B_{2r}(0))}$.
+  \end{itemize}
+\end{proof}
+\begin{proof}
+  Since $Y$ is complete, by the Baire catergory theorem it is of the
+  second category. Let $r \ge 0$, then
+  \begin{align*}Y &= T(X)  \\
+    &= T\Big(\bigcup_{n = 1}^{\infty}B_{nr}(0)\Big) \\
+    &= T\Big(\bigcup_{n = 1}^{\infty} n B_r(0)\Big) \\
+    &= \bigcup_{n = 1}^{\infty} n \overline{T(B_r(0))} \\
+  \end{align*}
+  Then by BCT, there exist some $ n \in \mathbb{N}$ such that
+  $\textrm{int}(\overline{T(B_r(0))}) \neq \emptyset$. Let $y_0 \in
+  \textrm{int}(\overline{T(B_r(0))})$. So there exists $\epsilon >
+  0$, such that $B_\epsilon(y_0) \subset \overline{T(B_r(0))}$. Let
+  $w \in B_Y(0, \epsilon)$. Then $y_0 + w \in B_Y(y_0, \epsilon)$,
+  and $\exists (x_n) \subset B_X(0, r)$ such that $T(x_n) \to y_0 +
+  w$. Also $\exists(z_n) \in B_X(0, r)$ such that $T(z_n) \to y_0$.
+  Then $T(x_n - z_n) \to w$, so $w \in \overline{T(B_{X}(0, 2r))}$.
+  Since $w$ was an arbitrary element in $B_{Y}(0, \epsilon)$ we see
+  that $B_Y(0, \epsilon) \subset \overline{T(B_X(0, 2r))}$. So $0 \in
+  \textrm{int}(\overline{T(B_X(0, s))})$ for $s > 0$.
+
+  Now fix $t > 0$ and let $y_0 \in \overline{T(B_X(0, t))}$. By the
+  above there exists $\epsilon > 0$ such that $B_Y(0, \epsilon)
+  \subset \overline{T(B_X(0, {\frac{t}{2}}))}$. Then $(y_0 + B_Y(0,
+  \epsilon)) \cap T(B_X(0, {\frac{t}{2}}))  \neq \emptyset$. So
+  $\exists x \in B_t(0)$ such that $T(x_1) = y_0 - y_1$ where $y_1
+  \in B_Y(0, \epsilon) \subset \overline{T(B_X(0, {\frac{t}{2}}))}$.
+
+  Similarly $\exists y_2 \in \overline{T(B_{\frac{t}{4}}(0))}$ and
+  $x_2 \in B_{\frac{t}{2}}(0)$ such that $T(x_2) = y_1 - y_2$. Thus
+  inductively we can choose $y_{n+1} \in
+  \overline{T(B_{\frac{t}{2^{n+1}}}(0))}$ and $x_{n+1} \in
+  B_{\frac{t}{2^n}}(0)$ such that $T(x_{n+1}) = y_n - y_{n+1}$. Now
+  since we constructed nicely, $\sum_{i = 0}^{\infty}  x_n$ converge.
+  \textcolor{red}{verify}.
+  Moreover for all $N \in \mathbb{N}$, we have \[
+    \sum_{n = 1}^{N} T(x_n) = y_0 - y_N
+  \]
+  Also notice that $y_n \to 0$. Hence $y_0 = \lim_{N \to \infty} (y_0
+  - y_N) = \lim_{N \to \infty} \sum_{n = 1}^{N} a_n T(x_n) = \lim_{N
+  \to \infty} T( \sum_{n = 1}^{N} x_n) = T(x) \in T( B_{2t}(0))$. So \[
+    \overline{T(B_t(0))} \subset T(B_{2t}(0))
+  \]
+
+  Now to complete the proof, let $E$ be an open subset of $X$. Let
+  $x_0 \in E$ be such that $y_0 = T(x_0)$. Let $\epsilon > 0$ be such
+  that $ x_0 + B_\epsilon(0) = B_\epsilon(x_0) \subset E$. So $y_0 +
+  T(B_\epsilon(0)) = T(B_\epsilon(x_0)) \subset T(E)$. By the above
+  $\exists \delta > 0$ such that $ B_\delta(0) \subset T(B_\epsilon(0))$
+\end{proof}
+\textcolor{red}{Find examples where this fails if we slack the conditions}
+
+\begin{corollary}
+  Let $X$ and $Y$ be Banach spaces and $T: X \to Y$ be a bijective
+  bounded linear map. Then $T^{-1}: Y \to X$ is bounded.
+\end{corollary}
+\begin{proof}
+  By open mapping theorem, $T$ is a bi-continuous map. Now use
+  \autoref{EquivalentDefnsofContinuity}
+\end{proof}
+
+\begin{theorem}[Closed Graph Theorem]
+  Let $X$ and $Y$ be Banach spaces and $T: X \to Y$ be a linear map.
+  Then $T$ is bounded if and only if graph of $T$, defined as $g(T) =
+  \{ (x, T(x)) \ : \ x \in X \}$ is closed in the product topology of
+  $ X \times Y$.
+\end{theorem}
+\begin{proof}
+  Define the norm $\|(x, y)\| = \|x\|_X + \|y\|_Y$ on $X \times Y$.
+  Notice that $(x_n, y_n) \to (x, y)$ if and only if $x_n \to x$, and
+  $y_n \to y$. Hence $(X \times Y, \|\cdot\|)$ is a Banach space.
+
+  Assume $T$ is continuous. Then if $(x_n, T(x_n))$ is Cauchy in
+  $g(T)$ then $x_n$ and $T(x_n)$ must be cauchy in $X$ and $Y$
+  respectively. By the completeness of the spaces $X$ and $Y$, we get
+  $x_n \to x \in X$ and $T( x_n) \to y \in Y$. Moreover by continuity
+  of $T$, we get $T(x_n) \to T(x)$. Since the Banach space is Hausdorff,
+  we get $y = x$ and that $(x_n, T(x_n)) \to (x, T(x)) \in g(T)$
+  making it closed.
+
+  Conversely,  define $S: X \to g(T)$ as $S(x) = (x, T(x))$. $S$ is
+  linear and bijective. Assume $ g(T)$ is closed, hence a Banach space.
+  Observe that $S^{-1}: g(T) \to X$ is bounded(contractive). By the
+  open mapping theorem, $S$ is bounded. Assume $x_n \to z$. So
+  $S(x_n) \to S(z)$. Then $(x_n, T(x_n)) \to (z, T(z))$, which gives
+  $  T(x_n ) \to T(z)$.
+\end{proof}

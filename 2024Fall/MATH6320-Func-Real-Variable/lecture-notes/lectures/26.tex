@@ -1,0 +1,98 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 21/11/2024 }
+
+\section{Reisz Representation Theorem}
+
+\begin{theorem}[Reisz Representation Theorem]
+  Let $\Lambda: \mathcal{H} \to \mathbb{C}$ be a continuous linear
+  functional on a Hilbert space. Then there is a unique $y \in
+  \mathcal{H}$ such that $\Lambda(x) = \langle x , y \rangle $
+\end{theorem}
+\begin{proof}
+  Assume that $\Lambda \neq 0$. Then $M = \textrm{Ker}(\Lambda)$ is a proper
+  closed linear subspace of $\mathcal{H}$. Then so is $M^\perp$. Let
+  $0 \neq v, w \in M^\perp$. Then $\Lambda(v) \neq 0 \neq
+  \Lambda(w)$. Then since
+  \begin{align*}
+    \Lambda \Big( \frac{v}{\Lambda(v)} - \frac{w}{\Lambda(w)} \Big) = 0
+  \end{align*}
+  forces $\frac{v}{\Lambda(v)} - \frac{w}{\Lambda(w)} \in M \cap
+  M^\perp = \{ 0 \}$. Hence $v \in \textrm{span}(w)$. Thus we see
+  that $M$ has co-dimension 1. i.e $M^\perp$ has dimension $1$.
+
+  Now consider $P$, the orthogonal projection to $M$ and $Q = 1 - P$.
+  Then $ x = Px + Qx$ for all $ x \in \mathcal{H}$. Hence
+  \begin{align*}
+    \Lambda(x) = \Lambda(Px + Qx)  = \Lambda(Qx)
+  \end{align*}
+  Since $M^\perp$ is a one dimensional subspace $ Qx = \alpha v$ for
+  $ \alpha \in \mathbb{C}$ and $0 \neq v \in M^\perp$ with
+  $\Lambda(v) = 1$. This gives that
+  \begin{align*}
+    \Lambda(x) &= \alpha \Lambda(v)  \\
+    &= \alpha \\
+    &= \alpha \langle v , \frac{v}{\|v\|^2} \rangle \\
+    &= \langle \alpha v , \frac{v}{\|v\|^2} \rangle \\
+    &= \langle Qx , \frac{v}{\|v\|^2} \rangle  + 0\\
+    &=\langle Qx , \frac{v}{\|v\|^2} \rangle + \langle Px ,
+    \frac{v}{\|v\|^2} \rangle \quad (\textrm{Since } Px \perp M^\perp) \\
+    &= \langle Qx + Px , \frac{v}{\|v\|^2} \rangle \\
+    &= \langle x , \frac{v}{\|v\|^2} \rangle
+  \end{align*}
+\end{proof}
+
+\section{Orthonormal Sets}
+\begin{definition}
+  A family $\{ u_\alpha \}_{\alpha \in A}$ is called orthonormal if $
+  \langle u_\alpha ,  u_\beta \rangle = \delta_{a, b}$ for each
+  $\alpha, \beta \in A$.
+
+  If $x \in \mathcal{H}$, then $\langle  x , u_\alpha \rangle $ is
+  called a Fourier coefficient of $x$ relative to $u_\alpha$.
+\end{definition}
+
+We consider finite orthonormal sets first.
+\begin{proposition}
+  Let $\{ u_\alpha \}_{\alpha \in A}$ be an orthonormal set and $ F
+  \subset A$ be finite. Let $M_F = \textrm{span}\{ u_\alpha \}_{\alpha \in F}$.
+  \begin{enumerate}[label=(\alph*)]
+    \item  If $\phi: A \to \mathbb{C}$, $\phi|_{A \setminus F}  = 0$,
+      then there is $ y \in M_F$ such that
+      \begin{align*}
+        y = \sum_{\alpha \in  F} \phi(\alpha)   u_\alpha
+      \end{align*}
+      and $\phi(\alpha) = \langle y , u_\alpha \rangle $ for each $a
+      \in A$. Also
+      \begin{align*}
+        \|y\|^2 = \sum_{\alpha \in  F} |\phi(\alpha)|^2
+      \end{align*}
+
+    \item If $x \in \mathcal{H}$, then
+      \marginnote{ \scriptsize This says that the orthogonal projection is
+      the best approximation to the subspace}
+      \begin{align*}
+        \Big \| x = \sum_{\alpha \in  F} \langle x , u_\alpha \rangle
+        u_\alpha \Big \| \le \|x - s\| \quad \textrm{for any } s \in M_F
+      \end{align*}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item Straightforward.
+    \item Let $S(x) = \sum_{\alpha \in  F} \langle x , u_\alpha
+      \rangle  u_\alpha$. Note that $ \langle S(x) ,  u_\alpha
+      \rangle = \langle x , u_\alpha \rangle$ for each $ \alpha \in
+      F$. Thus we see that $ \langle x - S(x) , u_\alpha \rangle = 0$
+      for each $ \alpha \in F$. Because $M_F = \textrm{span}\{
+      u_\alpha  \ : \   \alpha \in F \}$, we see that $(x - S(x))
+      \perp v$ for any $v \in M_F$. Thus $(x - S(x))\perp (S(x) -
+      v)$. Thus be Pythagoras theorem, we get
+      \begin{align*}
+        \|x - v\|^2 &= \|x - S(x)\|^2 + \|v - S(x)\|^2 \ge \|x - S(x)\|^2
+      \end{align*}
+      Thus we see that $S(x)$ is the best approximation of $x$ on to the
+      space $M_F$. Thus we see that $S$ is the orthogonal projection to $ M$.
+  \end{enumerate}
+\end{proof}
+

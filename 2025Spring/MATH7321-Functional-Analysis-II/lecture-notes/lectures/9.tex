@@ -1,0 +1,152 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 13/02/2025 }
+
+\begin{theorem}[Bicommutant Theorem]
+  Let $A \subset B(\mathcal{H})$ be a unital $*$-subalgebra, where
+  $\mathcal{H}$ is separable. Then $\overline{ \mathcal{A}}^{SOT} =
+  \mathcal{A}^{\prime \prime}$
+\end{theorem}
+\begin{proof}
+  Let $T \in \overline{\mathcal{A}}^{SOT}$, and $S \in
+  \mathcal{A}^\prime$. Let $(T_i) \in \mathcal{A}$ be a net
+  converging in SOT to $T$. Then for all $\xi \in \mathcal{H}$,
+  \begin{align*}
+    TS \xi = \lim_{i} T_iS \xi = \lim_{i} ST_i \xi = S \lim_i T_i \xi = ST \xi
+  \end{align*}
+  shows that $T \in \mathcal{A}^{\prime\prime}$.
+
+  To see the converse, let $T \in \mathcal{A}^{\prime \prime}$, fix
+  $\xi \in \mathcal{H}$, and $\varepsilon >
+  0$ and let $K = \overline{\mathcal{A} \xi}$. Then notice that $K$
+  is a reducing subspace for all operators in $\mathcal{A}$.
+  \textcolor{red}{verify}. Then $P_K T = TP_K$ by our results on
+  reducing subsapces in last semester. Thus $P_K \in \mathcal{A}^\prime$.
+
+  %Prof version
+  Let $\xi_1 , \xi_2 , \ldots , \xi_n \in \mathcal{H}$, $\varepsilon>
+  0$ be given. Let
+  \begin{align*}
+    \mathcal{K} = \Big \{
+      \begin{bmatrix}%{c}
+        A \xi_1 \\
+        \vdots \\
+        A \xi_n
+    \end{bmatrix}  \ : \  A \in \mathcal{A} \Big \}
+  \end{align*}
+  For each $A \in \mathcal{A}$, let $\mathcal{A}^{(n)} = I_n \otimes A\in
+  B(\mathcal{H}^n)$. Let $\mathcal{A}^n = \{ A^{(n)}  \ : \  A \in
+  \mathcal{A} \}$. Observe that $\mathcal{A}^{(n)}(\mathcal{K})
+  \subset \mathcal{K}$. Also observe that $\mathcal{K}$ is reducing
+  for all $A^{(n)} \in \mathcal{A}^{(n)}$. So $P_{\mathcal{K}} \in
+  (\mathcal{A}^{(n)})^\prime = M_n(\mathcal{A}^\prime)$.
+  \textcolor{red}{verify the rest}.
+\end{proof}
+
+\begin{definition}
+  For every $\xi, \eta \in \mathcal{H}$, denote $\omega_{\xi, \eta}
+  \in B(\mathcal{H})^*$ such that
+  \begin{align*}
+    \omega_{\xi, \eta}(T) = \langle T \xi ,  \eta \rangle
+  \end{align*}
+\end{definition}
+
+\begin{theorem}
+  $B(\mathcal{H}) = \overline{\textrm{span}}\{ \omega_{\xi, \eta}
+  \ : \    \xi, \eta \in \mathcal{H} \}^*$
+\end{theorem}
+
+\begin{proposition}
+  For $T \in B(\mathcal{H})$, the following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\langle T \xi ,  \xi \rangle \ge 0, \forall \xi
+      \in \mathcal{H}$
+    \item $\exists S \in B(\mathcal{H})$ such that  $T = S^*S$
+    \item $\exists S \ge 0$ such that $T = S^2$. In this case we
+      write $S = T^{\frac{1}{2}}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  $2 \implies 1$ is obvious.
+
+  Now for the other one, it is clear that $T$ is self adjoint. So we
+  get that $\Xi: C(\textrm{sp}(T)) \to B(\mathcal{H})$. We claim that
+  $\textrm{sp}(T) \subset \mathbb{R}^{\ge 0}$, which then completes
+  the proof by the identification of $T$ with the multiplication
+  operator corresponding to the identity function in $C(\textrm{sp}(T))$.
+
+  Let $\lambda < 0$. Then for all $\xi \in \mathcal{H}$,
+  \begin{align*}
+    \|(T - \lambda I) \xi\|^2 &= \langle (T - \lambda I) \xi , (T -
+    \lambda I) \xi \rangle \\
+    &= \|T \xi\|^2 - 2 \lambda \langle T \xi ,
+    \xi \rangle + \lambda^2 \|\xi\|^2 \\
+    & \ge \lambda^2 \|\xi\|^2
+  \end{align*}
+  which shows that $T - \lambda I$ is injective. Then it has a linear
+  left inverse $S$. Then $S : (T - \lambda I) \xi \mapsto  \xi$. Thus
+  we get $\|S\| \le \frac{1}{\lambda}$. Also $S(T- \lambda I) = I$
+  implies $(T - \lambda I) S^* = I$, which shows that $T - \lambda I$
+  is not invertible. Hence $\lambda \not\in \sigma(T)$.
+\end{proof}
+
+\begin{definition}
+  $T \in B(\mathcal{H})$ is called positive if it satisfies any of
+  the above conditions.
+\end{definition}
+
+\begin{definition}
+  Let $T \in B(\mathcal{H})$. We define $|T| = (T^*T)^{ \frac{1}{2}}$
+\end{definition}
+
+\begin{definition}
+  Given $\xi, \eta \in \mathcal{H}$, we denote $P_{\xi, \eta}:
+  \mathcal{H} \to  \mathcal{H} := \rho \mapsto  \langle \rho ,  \eta
+  \rangle  \xi$.
+\end{definition}
+
+\begin{lemma}
+  $\forall T \in B(\mathcal{H})$, $\exists S \in B(\mathcal{H})$ such
+  that $T = S|T|$.
+\end{lemma}
+\begin{proof}
+  For every $\xi \in \mathcal{H}$, define the map $S_1 :
+  \textrm{Image}(|T|) \to  \textrm{Image}(T) := |T|\xi \mapsto  T
+  \xi$. If $|T|\xi = 0$, then $ \langle |T|\xi , |T|\xi \rangle =
+  \langle |T|^2 \xi,  \xi \rangle = \langle T^*T \xi ,  \xi \rangle =
+  \|T \xi\|^2 = 0$. Moreover \textcolor{red}{$S_1$ is linear}. Thus
+  the map is well defined.
+
+  We have $\|S_1 |T|(\xi)\|^2 = \|T \xi\|^2 = \langle T \xi ,  T \xi
+  \rangle = \langle T^*T \xi ,  \xi \rangle  = \langle |T|\xi , |T|
+  \xi \rangle = \||T|\xi\|^2$. Hence $S_1$ is an isometry. Thus it
+  extends to an isometry from $\overline{\textrm{Image}(|T|)}$ onto
+  $\overline{\textrm{Image}(T)}$. Now define $S \in B(\mathcal{H})$
+  to be $S = S_1P_{\overline{ \textrm{Image}(|T|)}}$. Then $  S^*S =
+  P_{\overline{ \textrm{Image}(|T|)}}$, and $SS^* = P_{\overline{
+  \textrm{Image}(T)}}$.
+\end{proof}
+
+\begin{theorem}
+  If $T \in \mathcal{K}(\mathcal{H})$, $\exists$ orthonormal basis
+  $\{ \xi_n \}, \{ \eta_n \}$ for $\mathcal{H}$ and $(\alpha_n) \in
+  \textbf{c}_0$ such that
+  \begin{align*}
+    T = \sum_{n \in \mathbb{N}} \alpha_n P_{\xi_n, \eta_n}
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  By the lemma, $T = S|T|$. Observe $|T| \in
+  \mathcal{K}(\mathcal{H})$. There exists an orthonormal basis
+  $\xi_n$ and $(\alpha_n) \in \textbf{c}_0(\mathbb{R})_+$ such that
+  $|T| = \sum_{n} \alpha_n P_{\xi_n}$. Then $T = S |T| = \sum_{n}
+  \alpha_n SP_{\xi_n, \eta_n} = \sum_{n} a_n P_{S \eta_n, \xi_n}$.
+  Work on with previous lemma to show that $S
+  \xi_n$ is orthonormal basis.
+\end{proof}
+
+\begin{definition}
+  Let $f \in \mathcal{K}(\mathcal{H})^*$. Define $T_f \in
+  B(\mathcal{H})$ to be the unique operator satisfying $\langle T_f
+  \xi ,  \eta \rangle = f(P_{\xi, \eta})$. Then the map $f \to T_f$ is linear.
+\end{definition}

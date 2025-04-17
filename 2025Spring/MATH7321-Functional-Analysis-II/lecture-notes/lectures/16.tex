@@ -1,0 +1,54 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 20/03/2025 }
+
+\begin{definition}
+  A bounded linear map $T: X \to Y$ between normed spaces is called a
+  quotient map if it is surjective and
+  \begin{align*}
+    \|y\| = \inf \{ \|x\|  \ : \ T(x) = y \}
+  \end{align*}
+  for all $y \in Y$
+\end{definition}
+
+\begin{proposition}
+  Quotient map between normed spaces extends to a quotient map between
+  their completion.
+\end{proposition}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{theorem}
+  Let $T : X \to W$ and $S: Y \to Z$ be quotient maps between normed
+  spaces. Then
+  \begin{align*}
+    T \hat{\otimes} S : X \hat{\otimes} Y \to W \hat{\otimes} Z
+  \end{align*}
+  is also a quotient map.
+\end{theorem}
+\begin{proof}
+  To see that $T \hat{\otimes} S$ is a surjection, first observe that
+  $T \otimes S : X \otimes Y \to W \otimes Z$ is a surjection.
+  See that $ T \otimes S$ is also a quotient map. Now use the above proposition.
+\end{proof}
+
+\begin{note}
+  If $X$ is a Banach space, then there is a set $I$ such that there
+  is a quotient map from $L^{1}(I) \to X$.
+\end{note}
+\begin{proof}
+  Notice that we can take $I = X_1$, the unit ball of $X$.
+\end{proof}
+
+\begin{proposition}
+  Let $X, Y $ be Banach spaces. Let $I$ be a set such that $T:
+  \ell^{1}(I) \to X$ is a quotient map. Then
+  \begin{align*}
+    T \hat{\otimes} Id_Y : \ell^{1}(I, Y) \to X \hat{\otimes} Y
+  \end{align*}
+  is a quotient map.
+\end{proposition}
+\begin{proof}
+  Let $z \in X \hat{\otimes} Y$. \textcolor{red}{verify}
+\end{proof}

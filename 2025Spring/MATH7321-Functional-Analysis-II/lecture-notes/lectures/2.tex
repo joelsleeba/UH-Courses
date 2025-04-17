@@ -1,0 +1,186 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 16/01/2025 }
+
+\begin{definition}
+  An ideal $I \subsetneq \mathcal{A}$ is called maximal if for any
+  ideal $I \subset J$, then either $J = I$ or $J = \mathcal{A}$
+\end{definition}
+
+\begin{proposition}
+  Recall that $R/I$ is a field if and only if $I$ is a
+  maximal ideal of the ring $R$.
+\end{proposition}
+
+\begin{remark}
+  While we consider ideals of an algebra, since the algebra has a
+  vector space structure, we demand the ideal to be subspace with
+  respect to the underlying linear operations
+\end{remark}
+
+\begin{lemma}
+  If $\mathcal{A}$ is a (unital) Banach algebra, and $I$ is a closed
+  ideal, then $\mathcal{A}/I$ is a (unital) Banach algebra.
+\end{lemma}
+\begin{proof}
+  Since $I$ is an ideal, the ring structure of $A/I$ is well defined.
+  Moreover since $\mathcal{A}$ is a Banach space and $I$ is a closed
+  subspace, we know that $\mathcal{A}/I$ is a Banach space. Thus, we
+  just need to verify the norm inequality
+  \begin{align*}
+    \|ab + I\| \le \|a + I\|\|b + I\|
+  \end{align*}
+  By the definition of the quotient norm for any $\varepsilon > 0$,
+  there exist a $i_a, i_b \in
+  I$ such that
+  \begin{align*}
+    \|a + i_a\| \le \|a + I\| + \varepsilon, \quad \|b + i_b\| \le
+    \|b + I\| + \varepsilon
+  \end{align*}
+  Then,
+  \begin{align*}
+    \|ab + I\| &\le \|ab + i_ab + i_b a + i_aib\|  \\
+    &= \|(a + i_a)( b + i_b)\| \\
+    &\le \| a + i_a\| \|b + i_b\| \\
+    &\le (\|a + I\| + \varepsilon)(\|b + I\| + \varepsilon) \\
+    &\le \|a + I\|\|b + I\| + \varepsilon \|b  + I\| + \varepsilon
+    \|a + I\| + \varepsilon^2
+  \end{align*}
+  Since $\varepsilon$ was chosen arbitrarily, this gives our result.
+\end{proof}
+
+\begin{lemma}
+  In a unital Banach algebra, every maximal ideal is closed.
+\end{lemma}
+\begin{proof}
+  Take a maximal ideal, take its closure, then it must be either the
+  ideal itself or the whole of the algebra. If it contains the whole
+  of the algebra, then the unital element must be there. Then the
+  original ideal must contain invertible elements by the openness of
+  the set of invertible elements. This will make the original ideal,
+  the whole of the algebra, which is a contradiction.
+\end{proof}
+
+\begin{lemma}
+  If $\mathcal{A}$ is a Banach algebra that is a division ring (If
+  every non-zero element has an inverse), then
+  $\mathcal{A} = \mathbb{C}$.
+  \label{2:A=C}
+\end{lemma}
+\begin{proof}
+  Let $0 \neq a \in \mathcal{A}$. Let $\lambda \in \sigma(a)$. Then
+  $\lambda1 - a$ is not invertible. Hence $\lambda1 - a = 0$. So $a =
+  \lambda 1$. Hence $\mathcal{A} = \mathbb{C}$.
+\end{proof}
+
+\begin{corollary}
+  Let $\mathcal{A}$ be a unital commutative Banach algebra, and $I$
+  be a maximal ideal. Then $\mathcal{A}/I = \mathbb{C}$.
+\end{corollary}
+
+\begin{lemma}
+  \label{specturm_of_comm_alg_and_spectrum_of_element}
+  For every $a \in \mathcal{A}$, a commutative unital Banach algebra,
+  \begin{align*}
+    \sigma(a) = \{ \tau(a)  \ : \   \tau \in \textrm{sp}(\mathcal{  A}) \}
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Let $\tau \in \textrm{sp}(\mathcal{A})$, then $\tau(\tau(a)1 -
+  a) = 0$ and therefore $\tau(a)1 - a \in \textrm{Ker}(\tau)$,
+  hence it is not invertible. Hence $\tau(a) \in \sigma(a)$.
+
+  Conversely, let $ \lambda \in \sigma(a)$, then $\lambda 1 - a$ is
+  not invertible, thus the ideal $I = \langle \lambda1 - a \rangle$
+  is a proper ideal, since $r(\lambda 1 - a)$ will not be invertible
+  for any $r \in \mathcal{A}$. So $1 \notin \langle \lambda1 - a
+  \rangle$. By Zorn's lemma, $\langle \lambda1 -a \rangle $ is
+  contained in a maximal ideal $I_\lambda$.
+
+  Define $\tau: \mathcal{A} \to \mathbb{C} = \mathcal{A}/I_\lambda :=
+  x \mapsto x + I_\lambda$. Then $\tau \in \textrm{sp}(\mathcal{A})$,
+  and $\tau(a) = a + I_\lambda = \lambda + I_\lambda$ since
+  $\lambda1 - a \in I_\lambda$. Now by the identification of $A/I_\lambda$
+  with $\mathbb{C}$ as in \autoref{2:A=C}, we see that $\tau(a) =
+  \lambda$.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{A}$ be a commutative Banach algebra. Define
+  \begin{align*}
+    \Phi :  \mathcal{A} \to  C(\textrm{sp}(\mathcal{A})) :=
+    \Phi(a)(\tau) = \tau(a)
+  \end{align*}
+  for all $a \in \mathcal{A}, \tau \in \textrm{sp}(\mathcal{A})$. The
+  map $\Phi$ is called the \textbf{Gelfand transform}.
+\end{definition}
+
+\begin{theorem}
+  $\Phi$ is a contractive algebra homomorphism with $\| \Phi(a)\| = r(a)$.
+\end{theorem}
+\begin{proof}
+  That $\Phi$ is contractive follows easily from
+  \begin{align*}
+    \|\Phi(a)(\tau)\| = \|\tau(a)\| \le \|a\|
+  \end{align*}
+  since $\tau$ is a contraction as proved in
+  \autoref{lem:spectrum_is_compact}. Linearity and multiplicativity
+  of $\Phi$ follows form the fact that every element $\tau \in
+  \textrm{sp}(\mathcal{A})$ is linear and multiplicative on $\mathcal{A}$.
+\end{proof}
+
+\begin{remark}[Maximal ideals of $\mathcal{A}$ and $\textrm{sp}(\mathcal{A})$]
+  Let $\mathcal{A}$ be unital commutative Banach algebra. Let $\tau
+  \in \textrm{sp}(\mathcal{A})$, then $\textrm{Ker}(\tau)$ is a
+  closed ideal of $\mathcal{A}$, and $A/\textrm{Ker}(\tau) \cong
+  \mathbb{C}$ by the first isomorphism theorem. So
+  $\textrm{Ker}(\tau)$ is a maximal ideal. The converse of this is
+  also true. Natural map to the quotient space of a maximal ideal
+  (which is now a filed isomorphic to $\mathbb{C}$) gives an element
+  of the $\textrm{sp}(\mathcal{A})$. Hence $\textrm{sp}(\mathcal{A})$
+  can be identified with the maximal ideals of $\mathcal{A}$.
+\end{remark}
+
+\begin{remark}
+  Suppose $\tau, \tau^\prime \in \textrm{sp}(\mathcal{A})$, with
+  $\textrm{Ker}(\tau) =\textrm{Ker}(\tau^\prime)$. Let $a \in
+  \mathcal{A}$, then $\tau(a)1 - a \in \textrm{Ker}(\tau) =
+  \textrm{Ker}(\tau^\prime)$ implies $\tau(a) = \tau^\prime(a)$ for
+  all $a \in \mathcal{A}$.
+\end{remark}
+
+\begin{remark}
+  Combining both of the above, we see that $\textrm{Ker}(\Phi)$ is
+  the intersection of all maximal ideals of $\mathcal{A}$, that is
+  the radical of $\mathcal{A}$.
+\end{remark}
+
+\begin{theorem}
+  \label{thm:beurling}
+  Let $\mathcal{A}$ be a Banach algebra. Then $\forall a \in
+  \mathcal{A}$, we have
+  \begin{align*}
+    r(a) = \lim_{n \to \infty} \|a^n\|^{1/n}
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{corollary}
+  If $\|a^2\| = \|a\|^2$, then $r(a) = \|a\|$ and the Gelfand
+  transform will be halal.
+  \marginnote{ \scriptsize \it \textcolor{red}{not sure. Might need
+  C* algebra structure}}
+\end{corollary}
+
+\begin{example}
+  Let $T \in B(\mathcal{H})$ be self-adjoint. Let $\mathcal{A} =
+  \overline{\textrm{span}}\{ T^n  \ : \  n \in \mathbb{N} \cup {0}
+  \}$. Then $\mathcal{A}$ is a unital Banach algebra. Moreover we have
+  \begin{align*}
+    \|T^2\| = \|T\|^{2}
+  \end{align*}
+  by the self adjointness of $T$. Thus the Gelfand transform $\Phi$
+  is isometric on $\mathbb{R}$-$\overline{\textrm{span}}\{T^n\}$.
+\end{example}

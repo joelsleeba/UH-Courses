@@ -1,0 +1,228 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6303 - Modern Algebra II \\ Homework 5}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+
+  \question
+  \begin{solution}
+    By the properties of tensor product
+    \begin{align*}
+      2 \otimes 1 = 2(1 \otimes 1) = 1 \otimes 2
+    \end{align*}
+    Since $2 = 0$ in $\mathbb{Z}/ 2 \mathbb{Z}$, we get that $2
+    \otimes 1 = 1 \otimes 2 = 1 \otimes 0 = 0$ in $\mathbb{Z} \otimes
+    \mathbb{Z}/2 \mathbb{Z}$.
+
+    Now let $1 \otimes 2k \in \mathbb{Z}/ 2 \mathbb{Z} \otimes 2
+    \mathbb{Z}$ be an arbitrary non-zero tensor. By the properties of
+    the tensor product, $1 \otimes
+    2k = k( 1 \otimes 2)$, and thus $1 \otimes 2$ generate
+    $\mathbb{Z}/ 2 \mathbb{Z} \otimes 2 \mathbb{Z}$.
+
+    Now to show that $1 \otimes 2 \neq 0$ in $\mathbb{Z}/2 2\mathbb{Z}
+    \otimes \mathbb{Z}$, by the universal property of the tensor
+    products, we just need to find a $\mathbb{Z}$-module homomorphism,
+    $\phi: \mathbb{Z}/2 \mathbb{Z} \times 2\mathbb{Z} \to
+    \mathbb{Z}/2 \mathbb{Z}$
+    such that $\phi(1, 2) \neq 0$. Define
+    \begin{align*}
+      \phi(x, y) = x \frac{y}{2} \mod 2
+    \end{align*}
+    Then for $a, b \in \mathbb{Z}$, $x, y \in \mathbb{Z}/2
+    \mathbb{Z}$, and $p, q \in 2 \mathbb{Z}$,
+    \begin{align*}
+      \phi(ax+ y, bp + q) &= (a x + y) \frac{(bp+q)}{2} \mod 2 \\
+      &= \Big(b(ax + y) \frac{p}{2} \mod 2 + (ax + y) \frac{q}{2}
+      \mod 2\Big) \mod 2 \\
+      &= \Big(abx \frac{p}{2} \mod 2 + by \frac{p}{2} \mod 2 + a x
+      \frac{q}{2} \mod   2 + y \frac{q}{2} \mod 2\Big) \mod 2 \\
+      &=  ab\phi(x, p) + b \phi(y, p) + a\phi(x, q) + \phi(y, q)
+    \end{align*}
+    where the last sum is in $\mathbb{Z}/ 2 \mathbb{Z}$. Thus, we see
+    that $\phi$ is bilinear with $ \phi(1, 2) = 1 \in \mathbb{Z}/ 2
+    \mathbb{Z}$. Hence $1 \otimes 2 \neq 0$ in $\mathbb{Z}/2
+    \mathbb{Z} \otimes 2 \mathbb{Z}$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    For the sake of contradiction, assume that there exist $v, w \in
+    \mathbb{R}^2$ such that $e_1 \otimes e_2 + e_2 \otimes e_1 = v
+    \otimes w$. Since $e_1, e_2$ is a basis of $\mathbb{R}^2$, let $
+    v = v_1 e_1 + v_2 e_2$ and $w = w_1 e_1 + w_2 e_2$ for $v_i, w_j
+    \in \mathbb{R}$. Then
+    \begin{align*}
+      v \otimes w = (v_1 e_1 + v_2 e_2) \otimes (w_1 e_1 + w_2 e_2) &=
+      v_1w_1 (e_1 \otimes e_1) + v_1 w_2 (e_1 \otimes e_2) \\
+      &+ v_2w_1 ( e_2 \otimes e_1) + v_2w_2( e_2 \otimes e_2)
+    \end{align*}
+    Since $v \otimes w = e_1 \otimes e_2 + e_2 \otimes e_1$, and $\{
+    e_i \otimes e_j \ : \ i , j \in \{ 1, 2 \} \}$ forms a basis for
+    $ \mathbb{R}^2 \otimes \mathbb{R}^2$, this forces $v_1w_1 =
+    v_2w_2 = 0$. Without loss of generality, assume that $v_1 = 0$
+    and $w_2 = 0$. But this forces $v \otimes w = v_2w_1 (e_2 \otimes
+    e_1)$, and we get a contradiction. We can show that the other
+    cases also leads to a contradiction, and hence our assumption
+    that $e_1 \otimes e_2 + e_2 \otimes e_1$ is a simple tensor is false.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $v = av^\prime$, then
+    \begin{align*}
+      v \otimes v^\prime = av^\prime \otimes v^\prime = a(v^\prime
+      \otimes v^\prime) = v^\prime \otimes av^\prime = v^\prime \otimes v
+    \end{align*}
+    Now assume $v \neq a v^\prime$ for any $a \in F$. We need to show
+    that $v \otimes v^\prime \neq v^\prime \otimes v$. By the
+    universal property of the tensor products, this is equivalent to
+    finding a bilinear map $\phi : V \times V \to \mathbb{C}$ such
+    that $\phi(v, v^\prime) \neq \phi(v^\prime, v)$. Define $\phi$ such that
+    \begin{align*}
+      \phi(x, y) =
+      \begin{cases}
+        \alpha \beta, & \textrm{ if } x = \alpha v, y = \beta v^\prime \\
+        0, & \textrm{elsewhere}
+      \end{cases}
+    \end{align*}
+    Then  we can verify that $\phi$ is a bilinear map, such that
+    $\phi(v, v^\prime) = 1$. But $(v^\prime, v) = (v^\prime, 0)
+    + (0, v)$ cannot be represented as a linear combination of $(v,
+    0), (0, v^\prime)$ by assumption that $v \neq a v^\prime$ for any
+    $a \in F$. Thus $\phi(v^\prime, v) = 0$. This shows that $v
+    \otimes v^\prime \neq v^\prime \otimes v$.
+  \end{solution}
+
+  \question
+  \textcolor{red}{not finished}
+  \begin{solution}
+    \begin{parts}
+      \part Let $p(x)
+      = p_0 + p_1x, q(x) = q_0 + q_1 x, r(x) = r_0 + r_1 x$ be
+      elements in $I$. Since $\phi$ one depends on the first two
+      co-efficients, it is enough to prove that $\phi$ is a bilinear
+      map on the linear polynomials. By rules of modular addition we get,
+      \begin{align*}
+        \phi(p + r, q) & = \frac{(p_0+r_0) q_1}{2}\mod 2 \\
+        & =(\frac{p_0q_1}{2} \mod 2 + \frac{r_0q_1}{2} \mod 2 ) \mod 2  \\
+        &= (\phi(p,q) + \phi(r, q) ) \mod 2
+      \end{align*}
+      Similarly
+      \begin{align*}
+        \phi(p , q + r) & = \frac{p_0(q_1 + r_1)}{2}\mod 2 \\
+        & =(\frac{p_0q_1}{2} \mod 2 + \frac{p_0r_1}{2} \mod 2 ) \mod 2 \\
+        &= (\phi(p,q) + \phi(p, r) ) \mod 2
+      \end{align*}
+      Now let $\psi: R/I \to \mathbb{Z}/ 2 \mathbb{Z}$ be the natural
+      homomorphism. Then $s \in \mathbb{Z}/2 \mathbb{Z}$ can be
+      identified with $\psi^{-1}(s) =  s + I \in R/I$, and will have the
+      representative $s + x \in R$. Since $(s + x) p(x) = sp_0 +
+      (sp_1 + p_0)x$, and $  (s + x) q(x) = sq_0 + (sq_1 + q_0)x$, by
+      these identification,
+      \begin{align*}
+        \phi(sp, q) = \phi((s + x) p, q) &= \frac{sp_0q_1}{2} \mod 2 \\
+        &=s\phi(p, q) \mod 2
+      \end{align*}
+      and
+      \begin{align*}
+        \phi(p, sq) = \phi(p, (s + x)q) &= \frac{p_0 (sq_1 + q_0)}{2} \mod 2 \\
+        &= \frac{sp_0q_1}{2} \mod 2 + \frac{p_0q_0}{2} \mod 2
+      \end{align*}
+      Since we assumed $p, q \in I$, $p_0, q_0$ are multiples of $2$,
+      therefore $4|p_0q_0$, and hence $\frac{p_0q_0}{2} \mod 2 = 0$.
+      Thus we get
+      \begin{align*}
+        \phi(p, sq) = \frac{sp_0q_1}{2} \mod 2  = s \phi(p, q)
+      \end{align*}
+      Thus we get that $\phi$ is a bilinear map $ I \times I \to
+      \mathbb{Z}/ 2 \mathbb{Z}$.
+
+      \part Notice that $R$-module homomorphism $I \otimes I \to
+      \mathbb{Z}/2 \mathbb{Z}$ corresponding to the bilinear map
+      $\phi$ above does precisely this by the universal property of
+      the tensor products.
+
+      \part By the universal property of the tensor products, we just
+      need to find a bilinear map $\phi: I \times I \to
+      \mathbb{Z}/2 \mathbb{Z}$ such that $\phi(2, x) \neq \phi(x,
+      2)$. Taking $\phi$ to be the bilinear map above in the first
+      part of the problem, we see that $\phi(2, x) = 1 \neq 0 =
+      \phi(x, 2)$. Hence $2 \otimes x \neq x \otimes 2$.
+    \end{parts}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

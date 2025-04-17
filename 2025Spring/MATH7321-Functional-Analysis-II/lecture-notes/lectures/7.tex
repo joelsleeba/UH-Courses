@@ -1,0 +1,109 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 06/02/2025 }
+
+\begin{lemma}
+  Let $\mu, \mu^\prime$ be Radon probability measures on $X$, such
+  that $ \mu \sim \mu^\prime$. Define $U: L^{2}(X, \mu) \to L^{2}(X,
+  \mu^\prime)$ by sending
+  \begin{align*}
+    U : \xi \to \sqrt{\frac{d\mu}{d \mu^\prime}} \xi
+  \end{align*}
+  Then $U$ is a unitary, and $\forall f \in C(X)$, and
+  \begin{align*}
+    UM_fU^* = M^\prime_f
+  \end{align*}
+  where $M_f \in B(L^{2}(X, \mu))$ and $M_f^\prime \in B(L^{2}(X, \mu^\prime))$.
+\end{lemma}
+\begin{proof}
+  To see that $U$ is an isometry, take the $L^{2}$ norms on both of
+  these spaces. \textcolor{red}{verify the rest}.
+\end{proof}
+
+\begin{lemma}
+  Let $\mu, \mu^\prime \in \textrm{Prob}(X)$. If $\exists$ unitary
+  $U: L^{2}(\mu) \to L^{2}(\mu^\prime)$ such that $UM_fU^* = M_f$ for
+  all $f \in C(X)$, then $\mu \sim \mu^\prime$.
+\end{lemma}
+\begin{proof}
+  Let $h = |U 1|^2 \in L^{1}(\mu^\prime)$. $\forall f \in C(X)$,
+  \begin{align*}
+    \int f \ d \mu = \langle M_f 1 , 1 \rangle_{\mu} = \langle
+    U^*M_f^\prime U 1 , 1 \rangle = \int f h \ d \mu^\prime
+  \end{align*}
+  Thus we get $\mu = h \mu'$. Hence we see that $\mu \sim \mu^\prime$.
+\end{proof}
+
+\begin{definition}[Strong operator topology]
+  The strong operator topology is the locally convex topology on
+  $B(\mathcal{H})$ for separable $\mathcal{H}$, defined by the family
+  of seminorms $\{ \phi_x  \ : \  x \in \mathcal{H} \}$, where
+  $\phi_x(T) := \|T x\|$.
+  We have $T_i \stackrel{SOT}{\to} T$ if and only if $\|(T_i - T) x\|
+  \to 0$ for all $x \in \mathcal{H}$.
+  For any $x_1 , x_2 , \ldots , x_n \in \mathcal{H}$, and
+  $\varepsilon > 0$, $T \in B(\mathcal{H})$, the set
+  \begin{align*}
+    \{  S \in B(\mathcal{H})  \ : \    \|(T - S) x_i\| < \varepsilon,
+    \ \forall i = 1,2, \ldots n \}
+  \end{align*}
+  is an open neighborhood of $T$.
+\end{definition}
+
+\begin{definition}
+  \marginnote{ \scriptsize \it $T_i \to T$ in WOT $T_i(x)
+  \stackrel{w^*}{\to} T(x)$ for all $x \in \mathcal{H}$}
+  The weak operator topology is the locally convex topology on
+  $B(\mathcal{H})$ for separable $\mathcal{H}$, defined by the family
+  of seminorms $\{ \phi_{x, y}  \ : \  x \in \mathcal{H} \}$, where
+  $\phi_{ x, y}(T) := |\langle  Tx , y \rangle |$.
+  We have $T_i \stackrel{WOT}{\to} T$ if and only if $|\langle (T_i -
+  T) x , y \rangle |
+  \to 0$ for all $x,y \in \mathcal{H}$.
+  For any $x_1 , x_2 , \ldots , x_n, y_1 , y_2 , \ldots , y_n \in
+  \mathcal{H}$, and
+  $\varepsilon > 0$, $T \in B(\mathcal{H})$, the set
+  \begin{align*}
+    \{  S \in B(\mathcal{H})  \ : \  |\langle (T - S) x_i , y_i
+    \rangle | < \varepsilon, \ \forall i = 1,2, \ldots n \}
+  \end{align*}
+  is an open neighborhood of $T$.
+\end{definition}
+
+\begin{example}
+  Let $\{ f_i \} \subset  C([0, 1]) \ni f$ identified as
+  multiplication operators on $  B(L^{2}([0, 1]))$. Then $M_{f_i}
+  \stackrel{WOT}{\to} M_{f}$ if and only if $f_i \to f$ in weak * topology
+  on $L^{\infty}([0, 1])$.
+\end{example}
+\begin{proof}
+  \textcolor{red}{verify with intergrals and the fact with dual space
+  of $L^{1}([0, 1])$}
+\end{proof}
+
+\begin{lemma}
+  For any convex subset $K \subset B(\mathcal{H}),
+  \overline{K}^{\textrm{SOT}} = \overline{K}^{\textrm{WOT}}$.
+\end{lemma}
+\begin{proof}
+  Clearly $\overline{K}^{\textrm{SOT}} \subset
+  \overline{K}^{\textrm{WOT}}$ since the topologies are relative.
+  Let $ T \in \overline{K}^{\textrm{WOT}}$, $ x_1 , x_2 , \ldots ,
+  x_n \in H$ and $ \varepsilon > 0$. Let $\mathcal{H}^n =
+  \mathcal{H} \oplus \mathcal{H} \oplus \ldots \oplus \mathcal{H}$,
+  and $T^n \in B(H^n)$ be defined as $T^n = T \otimes C_n$, then
+  $n$-amplification of $T$. Similarly, let
+  \begin{align*}
+    K^n = \{ T^n  \ : \  T \in K \}.
+  \end{align*}
+  Then $K^n$ is a convex subset of $B(\mathcal{H}^n)$, and
+  \begin{align*}
+    K^n(x_1 , x_2 , \ldots , x_n) = \{ T^n(x_1 , x_2 , \ldots , x_n)
+    \ : \ T \in K  \}
+  \end{align*}
+  is a convex subset of $\mathcal{H}^n$. Thus, the weak and norm
+  closures of the set coincide by what we proved last semester. By
+  assuming, $T^n(x_1 , x_2 , \ldots , x_n)$ in the weak closure of
+  $K^n(x_1 , x_2 , \ldots , x_n)$, there is a $T_i \in K$ such that
+  $T_i^n(x_1 , x_2 , \ldots , x_n) \to T^n(x_1 , x_2 , \ldots , x_n)$ weakly.
+\end{proof}

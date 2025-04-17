@@ -1,0 +1,78 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 15/04/2025}
+
+\begin{definition}
+  Let $\alpha$ be a family of tensor norms defined uniquely for $X
+  \otimes Y$ for any finite dimensional normed spaces $X$ and $Y$
+  such that if $X_1, X_2, Y_1, Y_2$ are finite dimensional normed
+  spaces and $T : X_1 \to X_2$  and $S : Y_1 \to Y_2$ are linear
+  maps, then $ \|T \otimes S\| \le \|T\|\|S\|$. In this case we say,
+  $\alpha$ is a \textit{good} family of tensor norms.
+
+  Here the word \textit{uniquely} mean if $X_1 \stackrel{iso}{\cong}
+  X_2$ and $Y_1 \stackrel{iso}{\cong} Y_2$, then $\alpha$ takes same
+  values on $X_1 \otimes Y_1$ and $X_2 \otimes Y_2$ via the isomorphism.
+
+  Examples are projective and injective tensor norms.
+\end{definition}
+
+\begin{exercise}
+  Show that if $\alpha$ is a \textit{good} norm. Then its flip norm
+  $\alpha_f$ and the dual norm $\alpha^*$ are also \textit{good} norms.
+\end{exercise}
+
+\begin{definition}
+  Let $\alpha$ be a \textit{good} family of tensor norms. Let $X, Y$
+  be normed spaces. Given $z \in X \otimes Y$, define
+  \begin{align*}
+    \|z\|_\alpha = \inf \{ \|z\|_{E \otimes F, \alpha}  \ : \    E, F
+    \textrm{ are finite dimensional subspaces of } X, Y, z \in E \otimes F \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  The above defines a tensor norm on $X \otimes Y$
+\end{lemma}
+\begin{proof}
+  We only need to show triangle inequality and that $\|z\|_\alpha = 0
+  \implies z = 0$. Triangle inequality follows since if $z_1 + z_2
+  \subset E \otimes F$ demands $z_1 \in E \otimes F$ and $z_2 \otimes
+  E \otimes F$, shows that the supremums are taken over a smaller set
+  in case of $z_1 + z_2$. Hence triangle inequality satisfies.
+
+  To show the other one, we'll show that $\|z\|_\alpha \ge  \|z\|_{\vee}$
+  and since the injective tensor product preserve injections, this inequality
+  follows in the set where $\inf$ giving the inequality outside $\inf$ set.
+
+  To show that this is a tensor norm, let $x \in X, y \in Y$. Then
+  \begin{align*}
+    \|x \otimes y \|_{\alpha} &= \inf \{ \|x \otimes y\|_{E \otimes
+    F, \alpha} \ : \ x \otimes y \in E \otimes F \} \\
+    &= \inf \{ \|x \otimes y\|_{E \otimes F, \alpha} \ : \ x \in E, y
+    \in F \} \\
+    &= \|x\|\|y\|
+  \end{align*}
+  \textcolor{red}{verify the second line}.
+
+  Now let $\phi \in X^*, \psi \in Y^*$ and let $z \in (X \otimes Y,
+  \alpha)$. Then $\forall E \stackrel{f.d}{\leqslant} X, F
+  \stackrel{f.d}{\leqslant} Y$, with $z \in E \otimes F$, we have
+  \begin{align*}
+    \Big|(\phi \otimes \psi)(z)\Big| &=   \Big|(\phi|_E \otimes
+    \psi|_F)(z)\Big| \\
+    &\le \| \phi|_E\|_{E^*} \| \psi|_F\|_{F^*} \| z\|_{(E \otimes F, \alpha)}
+  \end{align*}
+\end{proof}
+
+\begin{lemma}
+  Let $\alpha$ be a \textit{good} famliy. $T: X_1 \to X_2$, $T_2: Y_1
+  \to Y_2$ be bounded linear maps. Then $T \otimes S$ is bounded and
+  $\|T \otimes S\| \le \|T\| \|S\|$.
+\end{lemma}
+
+\begin{lemma}
+  For any normed spaces $X, Y$ and $z \in X \otimes Y$,
+  $\|z\|_{\wedge} = \|z\|_{\wedge}$. That is projective tensor norm
+  is a \textit{good} norm.
+\end{lemma}

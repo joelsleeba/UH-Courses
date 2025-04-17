@@ -1,0 +1,29 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 30/01/2025 }
+
+\begin{definition}
+  A set $E \subset X$ is called \textbf{nowhere dense} if $\overline{E}$ does
+  not contain a non-empty open set in $X$. A set is called
+  \textbf{first category} if it is a union of nowhere dense sets,
+  otherwise the set is called \textbf{second category}.
+\end{definition}
+
+\begin{theorem}[Baire category theorem, version II]
+  Let $(X, d)$ be a  complete metric space. Then $X$ is not of first category.
+\end{theorem}
+\begin{proof}
+  Let $E_1 , E_2 , \ldots$ be a sequence of nowhere dense sets. Then
+  $\overline{E_n}$ has an empty interior for all $n \in \mathbb{N}$.
+  Thus $\overline{E_n}^c$ is open and dense. Then by
+  \autoref{thm:Baire-Category-Rudin} $\cap_{n =
+  1}^{\infty}\overline{E_n}^c$ is a dense $G_\delta$ set. Thus
+  $\cap_{n = 1}^{\infty} \overline{E_n}^c \neq \emptyset$. Thus
+  taking complements, we get
+  \begin{align*}
+    \bigcup_{n = 1}^{\infty}E_n \subset \bigcup_{n = 1}^{\infty}
+    \overline{E_n} \neq X
+  \end{align*}
+\end{proof}
+
+\textcolor{red}{ \scriptsize \it missed something here}

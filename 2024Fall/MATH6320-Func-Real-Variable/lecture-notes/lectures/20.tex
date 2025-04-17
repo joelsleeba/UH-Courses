@@ -1,0 +1,144 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+\begin{theorem}[Holder's \& Minkowski Inequality]
+  Let $(X, \mathcal{M},  \mu)$ be a measure space, $f, g : X \to [0,
+  \infty]$ be measurable. Then for $1 \le p < \infty$, with $1/p + 1/q
+  = 1$, then \[
+    \int  fg \ d \mu \le \Bigg(\int  f^p \ d \mu \Bigg)^{\frac{1}{p}}
+    \Bigg(\int  g^q \ d \mu\Bigg)^{\frac{1}{q}} = \| f\|_p \|g\|_q
+  \]
+  and \[
+    \Bigg(\int(f+g)^p \ d \mu\Bigg)^{\frac{1}{p}} \le \|f\|_p + \|g\|_p
+  \]
+\end{theorem}
+\begin{proof}
+  Let $A = \|f\|_p, B=\|g\|_p$. If $A = 0$ or $A = \infty$, or $ B =
+  0$, or $ B = \infty$, we have nothing to show. Hence assume that $0
+  < A, B < \infty$. Let $F(x) = \frac{f(x)}{A}, G(x) =
+  \frac{g(x)}{B}$. We also define $ s, t : X \to \mathbb{R}$ as \[
+    F(x) = e^{\frac{s(x)}{p}}, \quad G(x) = e^{\frac{t(x)}{q}}
+  \]
+  By convexity of the exponential function, we have $$e^{s/p + t/q}
+  \le \frac{1}{p}e^s + \frac{1}{q}e^t$$
+  In terms of $F, G$, this is \[
+    F(x) G(x) \le \frac{1}{p}(F(x))^p + \frac{1}{q}(G(x))^p
+  \]
+  Hence integrating both sides, we get \[
+    \int F(x) G(x) \ d \mu \  \le \ \frac{1}{p} \int (F(x))^p \ d \mu
+    + \frac{1}{q} \int (G(x))^p \ d \mu
+  \]
+
+  Now writing this in terms of $f, g$ gives us
+  \begin{align*}
+    \frac{1}{AB} \int fg \ d \mu &\le \frac{1}{p} \frac{1}{A^p} \int
+    f^p \ d \mu + \frac{1}{q} \frac{1}{B^q} \int g^q \ d \mu \\
+    &= \frac{1}{p}\frac{1}{A^p}\|f\|_p^p + \frac{1}{q}\frac{1}{B^q} \|g\|_q^q \\
+    &= 1/p + 1/q = 1
+  \end{align*}
+  Thus we get Holder inequality.
+
+  For Minkowski, consider
+  \begin{align*}
+    (f+g)^p &= (f+g)(f+g)^{p-1} \\
+    &= f(f+g)^{p-1} + g(f+g)^{p-1}
+  \end{align*}
+  Now integrating both sides and carefully applying Holder's inequality, we get
+  \begin{align*}
+    \int (f+g)^p \ d m &= \int f(f+g)^{p-1} \ d   \mu + \int
+    g(f+g)^{p-1} \ d  \mu \\
+    &= \Bigg(\int f^p \ d  \mu \Bigg)^p  \Bigg(\int
+    (f+g)^{(p-1)q} \ d \mu \Bigg)^q + \Bigg(\int
+    g^q  \ d \mu\Bigg)^{q} \Bigg(\int (f+g)^{(p-1)p} \ d \mu \Bigg)^{p} \\
+    &=
+  \end{align*}
+  \textcolor{red}{verify}
+\end{proof}
+
+\begin{definition}
+  Let $0< p< \infty$. $ f: X \to \mathbb{C}$ measurable on $(X,
+  \mathcal{M}, \mu)$. We define \[
+    \|f\|_p = \Big( \int |f|^p \ d \mu\Big)^p
+  \]
+  We also write $L^p(\mu) = \{ f : X \to \mathbb{C}  \ : \  \|f\|_p <
+  \infty  \}$
+\end{definition}
+
+\begin{definition}
+  Let $(X, \mathcal{M}, \mu)$ be a measure space. Let $f: X \to [0,
+  \infty]$ be measurable. The essential supremeum of $f$ is \[
+    \textrm{ess}\sup f = \inf \{ \alpha  \ : \  \mu(\{ f> \alpha \}) = 0  \}
+  \]
+\end{definition}
+
+\begin{proposition}
+  With $(X, \mathcal{M}, \mu), f$ be as above. $  \beta =
+  \textrm{ess}\sup f$. Then \[
+    \mu(\{ f > \beta \}) = 0
+  \]
+\end{proposition}
+
+\begin{definition}
+  For $(X, \mathcal{M}, \mu ), f$ as above,  \[
+    \|f\|_\infty = \textrm{ess}\sup \|f\|
+  \]
+  and $L^\infty(\mu)$ be the set of all $f$ with $\|f\|_\infty < \infty$
+\end{definition}
+
+We add a case of Holder's inequality for $\|\cdot\|_\infty$.
+
+\begin{theorem}
+  If $(X, \mathcal{M}, \mu)$ is as usual $f, g$ measurable, $ f \in
+  L^1(\mu), g \in L^\infty(\mu)$, then $ fg \in L^1(\mu)$ and \[
+    \|fg\|_1 \le \|f\|_1 \|g\|_\infty
+  \]
+\end{theorem}
+\begin{proof}
+  Take $E = \{ x \in X  \ : \  |g(x)|> \|g\|_\infty \}$. Then $E$ has
+  measure zero, and
+  \begin{align*}
+    \int |fg| \ d \mu &= \int_{X\setminus E}  |fg| \ d \mu + \int_E
+    |fg| \ d \mu \\
+    & \le \|g\|_\infty \int_{X\setminus E}  |f| \ d \mu \\
+    & \le \|g\|_\infty \|f\|_1
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  let $(X, \mathcal{M}, \mu)$ be as usual, $f, g$ measurable $ f, g
+  \in L^\infty(\mu)$. Then \[
+    \|f+g\|_\infty \le \|f\|_\infty + \|g\|_\infty
+  \]
+\end{theorem}
+\begin{proof}
+  Notice that
+  \begin{align*}
+    \{ x  :  |f(x) + g(x)| > \| f\|_\infty + \|g\|_\infty \} & \subset
+    \{ x  :  |f(x)| + |g(x)| > \| f\|_\infty + \|g\|_\infty \} \\
+    & \subset \{ x :  |f(x)| > \|f\|_\infty \} \ \cup \ \{ x
+    : |g(x)|> \|g\|_\infty \}
+  \end{align*}
+  Since both the sets at the end is of measure zero. Hence we get the
+  inequality.
+\end{proof}
+
+\begin{theorem}
+  For each $1 \le p \le \infty$, $L^p(\mu)$ is a normed vector space
+  over $\mathbb{C}$ provided we identify functions that are equal
+  almost everywhere.
+\end{theorem}
+\begin{proof}
+  Positive definiteness follows from the identification of functions
+  in the space. Homogeneity follows from the definition of
+  $\|\cdot\|_p$. And triangle inequality is the Minkowski inequality.
+  We have shown that for the cases $1 \le p < \infty$, that
+  $\|\cdot\|_p$ is a norm.
+\end{proof}
+
+\begin{lemma}
+  Let $(f_n) \in L^p( \mu)$ be a Cauchy sequence in $1 \le p \le
+  \infty$. Then there exists a subsequence $(f_{n_j})$ which is convergent
+  pointwise almost everywhere.
+\end{lemma}
+
+

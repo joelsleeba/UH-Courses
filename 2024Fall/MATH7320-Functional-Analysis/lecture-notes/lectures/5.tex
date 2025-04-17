@@ -1,0 +1,56 @@
+% TeX_root = ../main.tex
+
+\section{Quotient Spaces}
+\begin{definition}
+  Let $X$ be a normed space and $Y \leqslant X$ be a closed
+  subspace. For every $x \in X$, define \[
+    \|x + Y\| = \inf \{ \|x+y\| \ : \ y \in Y \}
+  \]
+\end{definition}
+\begin{lemma}
+  This defines as norm on  $\frac{X}{Y}$. If $X$ is complete, then
+  $ \frac{X}{Y}$ is complete.
+\end{lemma}
+\begin{proof}
+  Obviously, $\|x+Y\| \ge 0 $ for all $ x \in X$, and $\|x+z + Y\|
+  \le \|x+Y\| + \|y + Y\|$. Similarly, we can also show homogeneity.
+
+  Now assume $x \in X$ is such that $\|x+Y\| = 0$. Then there is a
+  sequence $(y_n) \in Y$ such that $ \|x - y_n\| \to 0$, that is
+  $y_n \to x$. Since $Y$ is closed, we get $x \in Y$.
+
+  To show the second part of the lemma, consider the sequence $(x_n
+  + Y) \in X/Y$ such that $\sum_{n \in \mathbb{N}} \|x_n - Y\| <
+  \infty$. For each $ n \in \mathbb{N}$, choose $y_n \in Y$ such that \[
+    \|x_n + y_n\| \le \|x_n + Y\| + \frac{1}{2^n}
+  \]
+  Then $\sum_{n \in \mathbb{N}} \|x_n + y_n\| \le \infty$. Since
+  $X$ is complete, the sequence $ \sum_{n \in \mathbb{N}} x_n +
+  y_n$ converges to say $z \in X$. Then
+  \begin{align*}
+    \|(z+Y) - \sum_{n = k}^{n} (x_n +Y)\| &= \|\Big( z - \sum_{n =
+    k}^{n} x_n \Big) + Y\| \\
+    & = \|\Big( z - \sum_{i = 1}^{k}(x_n + y_n) \Big) + Y\| \\
+    & \le \|\Big( z - \sum_{i = 1}^{k}(x_n + y_n) \Big) \|
+  \end{align*}
+  which converges to 0 as $k \to \infty$
+\end{proof}
+
+\begin{lemma}
+  The canocial map, $q: X \to \frac{X}{Y}$ is a continuous open
+  map. A subset $E \subset X/Y$ is open iff $ q^{-1}(E) \subset X$ is open.
+  \marginnote{ \scriptsize \it This is also a direct
+  consequence of open mapping theorem}
+\end{lemma}
+\begin{proof}
+  Since $\|x + Y\| \le \|x\|$,  for all $x \in X$, we see that the
+  map $q$ is a contraction. Thus  for all open $E \subset X/Y$, we
+  get $ q^{-1}(E)$ is open.
+
+  Conversely, assume that $  A \subset X$ is open. Let $ x \in A$
+  and $ r > 0$ such that $B_r(a) \subset A$. Let $  z \in X$ such
+  that $\|q(a) - q(z)\| < r$. So, $\|(a-z) + Y\| < r$. Then
+  $\exists y \in Y$ such that $ \|a-z-y\| < r$. So $z+y \in B_r(a),
+  q( z+y) = q( z) \in q( B_r(a))$. So $B_r(q(a)) \subset q(
+  B_r(a)) \subset q(A)$. Thus $q(A)$ is open.
+\end{proof}

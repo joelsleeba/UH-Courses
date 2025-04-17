@@ -1,0 +1,114 @@
+% initial settings
+\documentclass[11pt]{article}
+\usepackage{geometry} % automatic papersizes, margins.
+\usepackage{makeidx} % 'makeidx' make and show index
+\usepackage{enumitem} % itemize, enumerate, description.
+\usepackage{hyperref} % hyperlinks, cross-references.
+\usepackage{xcolor} % foreground and background color management.
+% Better color mixing compared to 'color'
+\usepackage{graphicx} % provide options for \includegraphics. Builds
+% on 'graphic'
+\usepackage{caption} % better control over captions of figures and equations.
+\usepackage{appendix} % extra control over appendix
+\usepackage[backend=biber, style=alphabetic]{biblatex} % better than
+% bibtex, people say.
+\usepackage{tocbibind} % add ToC/Bibliography/Index to ToC
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+\usepackage{tikz} % for tikz diagrams
+\usepackage{tikz-cd} % commutative diagrams.
+\usepackage{marginnote} % For sidenotes
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{articles.bib}
+
+\begin{document}
+
+\title{Burnside's Lemma}
+
+% author list
+\author{
+  Joel Sleeba \\
+  University of Houston \\
+  joelsleeba1@gmail.com \\
+}
+
+\maketitle
+
+\begin{theorem}
+  Let $G$ be a group, and $G \curvearrowright A$. If we denote the
+  collection of all the orbits of $A$ under the action of $G$ by
+  $A/G$, and the elements of $A$ which are fixed by a $g \in G$ by $A^g$, then
+  \begin{align*}
+    |A/G| = \frac{1}{|G|} \sum_{ g \in G} |A^g|
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Notice that
+  \begin{align*}
+    \bigcup_{a \in A} G_a \times a = \{ (g, a) \in G \times A  \ : \
+    g \cdot a = a \}  = \bigcup_{g \in G} g \times A^g
+  \end{align*}
+  Thus $\sum_{a \in A} |G_a| = \sum_{g \in G} |A^g|$. Moreover,
+  notice that if $ga = b$, then $G_b = gG_a g^{-1}$. Thus $|G_a| =
+  |G_b|$ if $a$ and $ b$ are in the same orbits. Also, by the
+  orbit-stabilizer theorem, we know that there are $|G:G_a|$ elements
+  in the orbit of $a$. Thus for each representative $r$ from the
+  distinct orbits of $A$, we see that
+  \begin{align*}
+    \sum_{g \in G} |A^g| = \sum_{r \in A/G}|G_r||G:G_r| = \sum_{r \in
+    A/G} |G| = |G| |A/G|
+  \end{align*}
+  Hence the theorem follows.
+\end{proof}
+
+\printbibliography[heading=bibintoc]
+\end{document}

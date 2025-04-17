@@ -1,0 +1,118 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 01/04/2025 }
+
+\begin{definition}
+  Let $V, W$ be normed spaces. A crossed norm on $V \otimes W$ is a
+  norm satisfying $ \|v \otimes w\| \le \|v\| \|w\|$.
+\end{definition}
+\begin{definition}
+  Let $X, Y$ be normed spaces. A tensor norm on $X \otimes Y$ is a
+  crossed norm such that $ X^* \otimes Y^* \subset (X \otimes Y)^*$,
+  and $ \|\phi \otimes \psi\| \le \|\phi\| \|\psi\|$ for all $ \phi
+  \in X^*, \psi \in Y^*$.
+\end{definition}
+
+\begin{lemma}
+  If $\|\cdot\|$ is a tensor norm on $X \otimes Y$, then
+  \begin{align*}
+    \|x \otimes y \| = \|x\| \|y\| \\
+    \|\phi \otimes \psi \| = \|\phi\| \|\psi\|
+  \end{align*}
+  for all $x \in X, y \in Y, \phi \in X^*, \psi \in Y^*$.
+\end{lemma}
+\begin{proof}
+  \textcolor{red}{Exercise}
+\end{proof}
+
+Recall that the projective norm is a tensor norm and it is the
+largest. Also recall that injective norm is a tensor norm, which is
+the smallest.
+
+\begin{theorem}
+  If $Z \leqslant X$, then
+  \begin{align*}
+    Z \check{\otimes} Y \leqslant X \check{\otimes} Y
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Immediate from the definition of the injective tensor norm.
+\end{proof}
+
+Moreover note that $X \otimes Y$ has an injection to
+$\textrm{Bil}(X^* \times Y^*)$ as evaluations. Also note that
+$\textrm{Bil}(X^* \times Y^*)$ has a norm where $\phi \in
+\textrm{Bil}(X^* \times Y^*)$ has norm
+\begin{align*}
+  \|\phi\| = \sup\{|\phi(x, y)| \ : \ \|x\|, \|y\| \le 1\}
+\end{align*}
+Then the push-back norm into $X \otimes Y$ is the injective tensor norm.
+
+If instead $X \otimes Y$ borrows the norm via the injection $X
+\otimes Y \hookrightarrow \textrm{Bil}(X \times Y)^*$ again via the
+\textcolor{red}{obvious injection}. This push-back gives the
+projective tensor norm.
+
+Recall that $(X \hat{\otimes} Y)^* = \textrm{Bil}(X \times Y)$
+
+\begin{theorem}
+  Let $\rho \in \textrm{Bil}(X \times Y)$. Then, $\rho \in (X
+  \check{\otimes} Y)^*$ iff there is a radon measure (from Reisz
+  representation) $\mu$ in
+  $X^*_1 \times Y^*_1$ such that $$\rho(x \otimes y) = \int_{X^*_1 \times
+  Y^*_1}  \phi(x) \psi(y) \ d  \mu(\phi, \psi)$$
+  In this case, we say $\rho$ is an integral Bilinear map.
+\end{theorem}
+\begin{proof}
+  Use $z \to f_z: $
+\end{proof}
+
+\begin{definition}
+  Let $X, Y$ be Banach spaces. Let $\alpha$ be a tensor norm on $X
+  \otimes Y$. We define the dual norm $\alpha^*$ on $ X^* \otimes Y^*
+  $ via the embedding
+  \begin{align*}
+    X^* \otimes Y^* \hookrightarrow (X \otimes Y)^*
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  $\alpha^*$ is a tensor norm.
+\end{lemma}
+
+\begin{definition}
+  Let $\Xi : X \otimes Y \to Y \otimes X$ be the flip map. The flip
+  of $\alpha$ denoted $\alpha_f$ is $\alpha \circ \Xi$.
+\end{definition}
+
+clearly the projective and injective norms are flip invariant.
+
+\begin{exercise}
+  Let $X, Y$ be finite dimensional normed spaces. Then
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\wedge^* = \vee$ and $\vee^* = \wedge$
+    \item $(\alpha^*)^* = \alpha$
+  \end{enumerate}
+\end{exercise}
+\begin{proof}
+  \begin{enumerate}[label=(\arabic*)]
+    \item
+    \item
+      Let $\rho \in X^* \otimes Y^*$. By definition,
+      \begin{align*}
+        \|\rho\|_{\wedge^*} &= \sup \{ |\rho(z)| \ : \ z \in (X
+        \hat{\otimes} Y)_1 \} \\
+        &\ge \|\rho\|_{\vee} \\
+        &= \sup \{ \rho(x \otimes y) \ : \ x \in X_1, y \in Y_1 \}
+      \end{align*}
+      Let $\varepsilon >0$, and let $z = \sum_{i = 1}^{N} x_i \otimes
+      y_i \in (X \otimes Y)_1$
+      be such that $\|z\|_{\wedge} > \sum_{i = 1}^{n} \|x_i\|\|y_i\|
+      - \varepsilon$ and $\sum_{i = 1}^{n}  \rho(x_i \otimes y_i) = \rho(z)
+      \ge \|\rho\|_{\wedge^*} - \varepsilon$. Then
+      \begin{align*}
+        \sum_{i = 1}^{n}  \rho(x_i \otimes y_i) \le \|\rho\|_{\wedge}
+        \sum_{i = 1}^{n} \|x_i\|\|y_i\| \le \|\rho\|_{\wedge}()
+      \end{align*}
+  \end{enumerate}
+\end{proof}

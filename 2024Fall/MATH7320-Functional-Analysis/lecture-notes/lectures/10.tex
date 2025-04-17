@@ -1,0 +1,147 @@
+% TeX_root = ../main.tex
+
+\begin{lemma}
+  Let $K$ be a convex set. $x_0 \in \textrm{Ext}(K)$ if and only if
+  $K \setminus \{ x_0 \}$ is convex.
+  \label{lem:extreme_point_of_convex_set}
+\end{lemma}
+\begin{proof}
+  If $K \setminus \{ x_0 \}$ is not convex, since $K$ is convex,
+  $x_0$ can be written as the convex combination of elements in
+  $K\setminus \{ x_0 \}$
+  which makes $x_0 \notin \textrm{Ext}(K_0)$. Conversely if $x_0 \in
+  \textrm{Ext}(K)$, then
+  $x_0$ cannnot be written as the convex combination of elements of
+  $K$. Hence $K \setminus \{ x_0 \}$
+  is closed under convex combinations, making in convex.
+\end{proof}
+
+\begin{theorem}[Krein-Milman Theorem]
+  Let $X$ be a locally convex space, and let $K$ be a compact convex
+  subset of $X$. Then the $ \textrm{Ext}(K) \neq \emptyset$ and
+  indeed $K = \overline{\textrm{co}}(\textrm{Ext}(K))$
+\end{theorem}
+\begin{proof}
+  We first prove that the $\textrm{Ext}(K) \neq \emptyset$.
+  Note that $K \setminus \{ x_0 \}$ is a
+  relatively open subset of $K$ since $\{ x_0 \}$ is closed and $K
+  \setminus \{ x_0 \} = \{ x_0 \}^c$ relative to $K$.
+
+  Now let $ \mathcal{A}$ be the collection of all relatively open
+  convex proper subsets of $K$. Note that $\emptyset \in
+  \mathcal{A}$, therefore $\mathcal{A}$ is nonempty. Equip
+  $\mathcal{A}$ with the partial order defined by the set inclusion.
+  Let $\mathscr{C}$ be a chain in $\mathcal{A}$ and $F_{\mathscr{C}}
+  = \cup_{C \in \mathscr{C}} C$. $F_{ \mathscr{C}}$ is relatively
+  \marginnote{\scriptsize Zorn's Lemma to find a maximal proper open
+  convex subset of $K$}
+  open being the union of relatively open subsets of $K$. To see that
+  $F_{\mathscr{C}}$ is convex, let $x,  y \in F_{\mathscr{C}}$. Then
+  since $\mathscr{C}$ is a chain, there exist a $C \in \mathscr{C}$
+  such that $x, y \in \mathscr{C}$. Then by the convexity of $C$, $tx
+  + (1-t)y \in C
+  \subset F_{\mathscr{C}}$ for all $t \in [0, 1]$.
+
+  We claim that $F_{ \mathscr{C}}$ is a proper subset of $K$. For the
+  sake of contradiction, assume $F_{ \mathscr{C}} = K$. Since $K$ is
+  compact and $C$ is open in $K$ for all $C \in \mathscr{C}$, there
+  are finitely many $C_1 \subset C_2 \subset \ldots \subset C_k \in
+  \mathscr{C}$ which cover $K$ (i.e $K = \cup_{n = 1}^{k}C_n$). Hence
+  we get $C_k = K$, which is absurd since $C_k$ must be a proper subset of $K$.
+  Hence $F_{\mathscr{C}} \in \mathcal{A}$ and thus every chain must
+  have an upper bound in $\mathcal{A}$. Now by Zorn's lemma,
+  $\mathcal{A}$ has a maximal element $K_0$.
+
+  Since $K$ is a connected space (path connected by a straight line,
+  being convex), we know that the only
+  clopen subsets are $\emptyset$ and $K$. Since we know that $K_0$ is
+  \marginnote{\scriptsize Constructing and open convex subset containing $K_0$}
+  open being in $\mathcal{A}$, we see that $K_0 \neq K$ and $K_0 \neq
+  \emptyset$. Therefore $\overline{K_0} \neq K_0$. Let $x_0 \in
+  \overline{K_0} \setminus K_0$, $y_o \in K_0$ and $0 < t <1$. Define
+  $\varphi_{t, y_0}: K \to K$ such that $\varphi_{t, y_0}(z) = ty_0 +
+  (1-t) z$. Then $\varphi_{t, y_0}$ is ($1-t$ Lipschitz) continuous
+  relative to $K$ and thus $\varphi_{t, y_0}^{-1}(K_0)$ is open in
+  $K$.
+  By the convexity of $K_0$, we get $K_0 \subset \phi^{-1}_{t, y_0}(K_0)$.
+
+  Also $\varphi_{t, y_0}^{-1}(K_0)$ is convex. Let $a, b \in
+  \phi^{-1}_{t, y_0}(K_0)$. Then $ty_0 + (1-t)a, ty_0 + (1-t)b \in
+  K_0$. By the convexity of $K_0$ we get $r(ty_0 + (1-t)a) +
+  (1-r)(ty_0 + (1-t)b) = ty_0 + (1-t)(ra + (1-r)b) = \phi_{t, y_0}(ra
+  + (1-r)b) \in K_0$ for all $r \in [0, 1]$. Thus $ra + (1-r)b \in
+  \phi^{-1}_{t, y_0}(K_0)$ for all $r \in [0, 1]$. Hence we get
+  $\phi^{-1}_{t, y_0}(K_0)$ is convex.
+
+  We claim, $x_0 \in \varphi_{t, y_0}^{-1}(K_0)$, then the maximality
+  of $K_0$ will force $\phi^{-1}_{t, y_0}(K_0) = K$.  Let $U$ be a
+  convex neighborhood of $0 \in X$ containing $-x$ for all $x \in U$
+  \marginnote{\scriptsize \textcolor{red}{I can't picturize the choice of $z$}}
+  (just take $-U$ and intersect with $U$) such that $y_o + E
+  \subset K_0$, where $E = K \cap U$. Let $w = \varphi_{t,
+  y_0}(x_0)$. Since $x_0 \in
+  \overline{K_0}$, for any $r>0$, there exists $x_r \in K_0$ such
+  that $x_r \in (x_0 +
+  rE) \cap K_0 \neq \emptyset$. In particular, let $r =
+  \frac{t}{1-t}$. Then by linearity, we get $\big(x_0 +
+  \frac{t}{1-t}E\big) \cap K_0 = ( \frac{t}{1-t}  )E\cap
+  (K_0 - x_0) \neq \emptyset$. Choose $z$ in the above set. Then \[
+    y_0 - \Big( \frac{1-t}{t} \Big)z \ \in \ y_0 + E \subset K_0
+  \]
+  and $x_0 + z \in K_0$. Since $K_0$ is convex, \[
+    t\Big(y_0 - \frac{(1-t)}{t}z\Big) + (1-t)(x_0 + z)  = \phi_{t,
+    y_0}(x_0) \in K_0
+  \]
+  Thus $\phi^{-1}_{t, y_0}(K_0) = K$.
+
+  Now we claim that $K = K_0 \cup \{ x_0 \}$. For the sake of
+  contradiction assume $\exists p \in K$ such that $p \notin K_0 \cup
+  \{ x_0 \}$. Since the space is Hausdorff and locally convex, $x_0$ has an
+  open convex neighborhood $E$ in $X$ such that $p \not\in E$. Let
+  $E^\prime = E \cap K$, $a \in K_0, b \in E^\prime$ and $0 < r < 1$.
+  Then since $\phi_{t, y_0}(K) = K_0$ for all $t \in [0, 1], y_0 \in K_0$, we
+  get $\phi_{r, a}(b) = ra + (1-r)b \in K_0$. So $K_0 \cup
+  E^\prime$ is convex (Sine we know that $K_0, E^\prime$ are convex,
+    we only need to worry about $rx + (1-r)y$ for $x \in K_0, y \in
+  E^\prime$. But $\phi_{r, x}$ takes care of that). $K_0 \cup
+  E^\prime$ is also open in $K$. Hence by maximality, we get $K_0
+  \cup E' = K$. But this is a contradiction since $ p \not\in K_0
+  \cup E^\prime$. Thus by \autoref{lem:extreme_point_of_convex_set}, we see
+  that $x_0 \in \textrm{Ext}(K)$.
+
+  Next we prove $K = \overline{co}(\textrm{Ext}(K))$. Let $P =
+  \overline{co}(\textrm{Ext}(K))$ and for the sake of contradiction
+  assume $P \neq K$. Let $ x_0 \in K \setminus P$.
+  %
+  % Let $E$ be an open
+  % convex neighborhood of $0 \in X$ such that $(x_0 + E^\prime) \cap P
+  % = \emptyset$ for $E^\prime = E \cap K$. Existence of such an $E$
+  % is guaranteed
+  % since $P$ is compact and the space $X$ is Hausdorff.
+  % \marginnote{\scriptsize \textcolor{red}{Don't know how to proceed after}}
+  %
+  Now by the geometric Hahn-Banach separation theorem, we get that
+  there is a continuous linear functional
+  $\phi: X \to \mathbb{R}$ and a number $\alpha, \epsilon \in
+  \mathbb{R}$ such that \[
+    \Re\phi(x_0) \le  \alpha < \alpha + \epsilon \le \Re\phi(p),
+    \quad  \forall p \in P
+  \]
+
+  % Define $\phi: X \to
+  % \mathbb{R}$ such that \[
+  %   \phi(x) = \inf \{ 0 \le t \big | x \in tE \}
+  % \]
+  % Observe that $E = \{ x \in X \ : \phi(x) < 1 \}$. For every $r \ge
+  % 0$ and $x \in X$, $\phi(rx) = r \phi(x)$, and for all $x, y \in X$,
+  % $ \phi(x+y) \le \phi(x) + \phi(y)$. Define $f:  \mathbb{R}\{ x_0 \}
+  % \to \mathbb{R}$, $f(rx_0) = r \phi(x_0)$, for all $r \in
+  % \mathbb{R}$. For every $r \ge 0$, we have $f(rx_0) = r \phi(x_0) =
+  % \phi(rx_0)$. For $r < 0$, we have $f(rx_0) = r \phi(x_0) =
+  % -\phi(-rx_0) \le 0 \le \phi(rx_0)$. So $f \le \phi$ on $\mathbb{R}
+  % x_0$. Then by Hahn-Banach separation theorem, there is an
+  % extension $ \tilde{f}: X \to
+  % \mathbb{R}$ such that $\tilde{f}(x) \le \phi(x) $ for all $x \in X$.
+
+\end{proof}
+

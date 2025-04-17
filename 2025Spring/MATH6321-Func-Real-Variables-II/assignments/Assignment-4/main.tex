@@ -1,0 +1,167 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH 6321 - Theory of functions of one real variable \\ Homework  IV}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  \question
+  \begin{solution}
+    Let $e_0, e_1$ be the usual linearly independent unit norm vectors in
+    $\ell^{1}(\mathbb{N})$. Let $ \mathcal{M} = \textrm{span}\{ e_0 \}$, and
+    $\mathcal{N} = \textrm{span}\{ e_0, e_1 \}$. Let $ \lambda \in
+    \mathbb{C}\setminus \{ 0 \}$ and define a linear functional
+    \begin{align*}
+      \phi :  \mathcal{M} \to  \mathbb{C} := t e_0 \mapsto t \lambda,
+      \quad t \in \mathbb{C}
+    \end{align*}
+    Then by the definition of the operator norm, we see that
+    $\|\phi\| = |\lambda|$
+    Now, let $\phi_1, \phi_2: \mathcal{N} \to \mathbb{C}$ defined as
+    \begin{align*}
+      \phi_1(e_0) = \lambda = \phi_2(e_0) \\
+      \phi_1(e_1) = -\frac{\lambda}{2}, \ \phi_2(e_1) = \frac{\lambda}{2}
+    \end{align*}
+    and then linearly extending to $\mathcal{N}$. We see that $\phi_1,
+    \phi_2$ extend $\phi$. And since
+    \begin{align*}
+      |\phi_i(a e_0 + be_1)| &= |a \phi_i(e_0) + b \phi_i(e_1)| \\
+      &= | a  \lambda  + (-1)^i\frac{\lambda}{2}b| \\
+      &= |\lambda| |a + (-1)^i \frac{b}{2}| \\
+      &\le |\lambda| \Big(|a| + \frac{|b|}{2} \Big) \\
+      &\le |\lambda| (|a| + |b|) \\
+      &= |\lambda| \|(a, b)\|_1
+    \end{align*}
+    we see that $\|\phi_i\| = |\lambda|$. Now by Hahn-Banach
+    extension theorem, we see that both $\phi_1, \phi_2$ extends to
+    linear functionals on $\ell^{1}(\mathbb{N})$. By an abuse of
+    notation, call them $ \phi_1, \phi_2$. Then we see that $\phi_1,
+    \phi_2$ are extensions of $\phi$, which preserve norm, but that
+    the extension is not unique since $\phi_1(e_1) \neq \phi_2(e_1)$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $(x_n)$ be as sequence in $X$.
+    Assume that $(\|x_n\|) < M$. Since $\|x_n\|
+    = \|i_{x_n}\|$, for any $f \in X^*$,
+    \begin{align*}
+      \|f(x_n)\| = \|i_{x_n}(f)\| \le \|i_{x_n}\|\|f\| =
+      \|x_n\|\|f\| < M \|f\|
+    \end{align*}
+    shows that $\|f(x_n)\|$ is a bounded sequence. Since $f \in X^*$
+    was arbitrary, this holds true for all $f \in X^*$.
+
+    Conversely let $\sup_{n \in \mathbb{N}}\|i_{x_n}(f)\| = \sup_{n
+    \in \mathbb{N}}\|f(x_n)\| < \infty$ for all
+    $f \in X^*$. Then by a corollary to Banach-Steinhaus
+    theorem, we see that
+    \begin{align*}
+      \sup_{  n \in \mathbb{N}} \|x_n\| = \sup_{n \in \mathbb{N}}
+      \|i_{x_n}\| < N
+    \end{align*}
+    for some $N \ge 0$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $\Lambda \in
+    \textbf{c}_0^{*}$. We claim that the sequence $(y_n) =
+    (\Lambda(e_n)) \in \ell^1$. Let
+    $\theta_j \in [0, 2\pi)$ such that $e^{ i \theta_j}y_j =
+    |y_j|$. Then for any $N \in \mathbb{N}$, we have
+    \begin{align*}
+      \sum_{j = 1}^{N} |y_n| = \sum_{j = 1}^{N} |\Lambda(e_j)| &=
+      \sum_{j = 1}^{N} e^{i \theta_j} \Lambda(e_j) \\
+      &= \Lambda\Big(\sum_{j = 1}^{N} e^{i \theta_j} e_j \Big) \\
+      %&= \Bigg |\Lambda\Big(\sum_{j = 1}^{N} e^{i \theta_j} e_j
+      % \Big) \Bigg | \\
+      &\le \| \Lambda\| \Big \| \sum_{j = 1}^{N} e^{i \theta_j} e_j
+      \Big \|_\infty \\
+      &= \| \Lambda\|
+    \end{align*}
+    Since this is true for all $N \in \mathbb{N}$, taking the
+    limits as $N \to \infty$, the inequality is preserved and we
+    get that $(y_n) \in \ell^1$.
+
+    Since any $x \in \textbf{c}_0$ can be written as $x = \sum_{n \in
+    \mathbb{N}} x_i e_i$, where $x_i \to 0$, by linearity of
+    $\Lambda$, we see that
+    \begin{align*}
+      \Lambda(x) &= \sum_{n \in \mathbb{N}} x_i \Lambda(e_i) =
+      \sum_{n \in \mathbb{N}}  x_i y_i
+    \end{align*}
+  \end{solution}
+
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

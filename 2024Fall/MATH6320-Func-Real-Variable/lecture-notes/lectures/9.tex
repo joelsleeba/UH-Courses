@@ -1,0 +1,52 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+\begin{remark}[Warm up]
+  Assume there is a measure $\mu$ on $\mathbb{R}^+$, for all Borel-measurable functions, and $\mu([a, b]) = b-a$ for each $a \le b$ and for continuous function $f$, \[
+    \int_{[a, b]}  f \ d \mu = \int_{a}^{b} f \ dx
+  \]
+  Is the function \[
+    f(x) = \begin{cases}
+      1, & x = 0 \\ 
+      \frac{\sin(x)}{x},& x>0
+    \end{cases}
+  \]
+\end{remark}
+
+\begin{theorem}
+  $L^1(\mu)$ is a vector space for $f, g \in L^1(\mu)$. Moreover \[
+    \int f+g \ d \mu = \int  f \ d \mu + \int  g \ d \mu
+  \]
+\end{theorem}
+\begin{proof}
+  We know that for $\alpha, \beta \in \mathbb{C}$, \[
+      |\alpha f + \beta g| \le |\alpha||f| + |\beta||g|
+  \]
+  Then using the properties of integration, we get that \[
+      \int |\alpha f + \beta g| d \mu \le \int |\alpha||f| d \mu +  \int |\beta||g| \ d \mu = |\alpha|\|f\|_1 + \beta \|g\|_1 \le \infty
+  \]
+
+  Now to prove the rest, we'll assume $f, g$ are $\mathbb{R}$-valued functions and let $h = f+g$. Then we have $h^+ - h^- = f^+ - f^- + g^+ - g^- = f^+ +g^+ - (f^- + g^-)$, which gives \begin{align*}
+    \int  h^+ \ d \mu + \int  f^+ \ d \mu + \int  g^+ \ d \mu &= \int  h^+ + f^- + g^- \ d \mu \\ 
+    & = \int  h^- + f^+ + g^+ \ d \mu \\ 
+    & = \int  h^- \ d \mu + \int  f^- \ d \mu + \int  g^- \ d \mu
+  \end{align*}
+  Now rearranging things up, we get what we need for reals. \textcolor{red}{verify similarly for Complex case}. 
+\end{proof}
+
+\begin{note}
+  What can we say about $f$?
+\end{note}
+
+\begin{theorem}
+  If $f \in L^1(\mu)$, then \[
+    \Big| \int  f \ d \mu \Big| \le \int |f| \ d \mu
+  \]
+\end{theorem}
+\begin{proof}
+  If $f$ was $\mathbb{R}$-valued, then \[
+      \Bigg| \int  f \ d \mu \Bigg| = \Bigg| \int  f^+ \ d \mu + \int f^- \ d \mu \Bigg| \le \Bigg| \int f^+ \ d \mu \Bigg| + \Bigg| \int f^- \ d \mu \Bigg| = \int |f| \ d \mu
+  \]
+
+  Now in general, if $f$ is a $\mathbb{C}$-valued function, then let the integral be equal to $z$. Now if $z  =0$, we have nothing to prove. If $z \neq 0$, then multiply $f$  with $\alpha = \frac{\bar{z}}{|z|}$. Then integral of $\alpha f$ will be real and we'll be good.
+\end{proof}

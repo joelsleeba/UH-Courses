@@ -1,0 +1,103 @@
+% TeX_root = ../main.tex
+
+\chapter{}
+
+\begin{theorem}[Luzin's theorem]
+  Let $X$ be a locally compact Hausdorff space.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\mu$ is a regular measure on a $\sigma$-algebra
+      $\mathcal{M}$ containing $B(X)$
+    \item $f: X \to \mathbb{C}$ is measurable
+    \item there is a $A \in \mathcal{M}$ such that $\mu(A) < \infty$
+      and $f = 0$ on $A^c$
+  \end{enumerate}
+  Given $\epsilon> 0$ there is a $g \in C_c(X)$ such that $
+  \mu(\{ x \in X  \ : \  f(x) \neq g(x) \}) < \epsilon$ and $\sup \{
+  |g(x)|  \ : \ x \in X \} \le \sup \{ |f(x)| \ : \  x \in X \}$.
+\end{theorem}
+\begin{proof}
+  Suppose for now $A$ is compact. (We can assume this since the
+    measure is regular and we can find a compact set $K \subset A$ such
+  that $f = 0$ almost everywhere in $K^c$.) We'll do the $A$ not
+  compact case later.
+
+  Choose $V$ open such that $ A \subset V$ and $\overline{V}$ is
+  compact. We'll first prove the existence of the desired $g$ if $f$
+  is simple. Let \[
+    f = \sum_{j = 1}^{n} \alpha_j \chi_{A_j}
+  \]
+  where each $A_j$ is disjoint and $\cup_{j = 1}^{n}A_j = A$. Again
+  each of the $\mu(A_j) \le \mu(A) < \infty$. Hence by the regularity
+  of the measure there are compact sets $K_j \subset A_j$ such that $
+  \mu(A_j \setminus K_j) < \frac{\epsilon}{2^{j+1}}$.
+
+  Since $K_j$ are compact and disjoint, we can find collection of
+  disjoint open sets $V_j$ such that $K_j \subset V_j$.
+  \textcolor{red}{verify this, I am not sure}.
+
+  Moreover by replacing $V_j$ with $V_j \cap V$, we can assume $V_j \subset V$.
+  Now by the outer regularity of the measure, we can assume $\mu(V_j
+  \setminus K_j) < \frac{\epsilon}{2^{j+1}}$. Now by Urysohn, there is a
+  $g_i \in C_c(X)$ such that $\chi_{K_j} \le g_j \le \chi_{V_j}$. Let   \[
+    g = \sum_{j = 1}^{n} \alpha_j g_j
+  \]
+  Then $g$ is continuous being the finite sum of continuous function.
+  Moreover since $\cup_{j = 1}^{n}V_j \subset V$, we get
+  $\textrm{supp}(g) \subset \overline{V}$. Also
+  \begin{align*}
+    |g(x)| & \le \max \{ |\alpha_j| \} \\
+    & \max_{x \in A} | f(x)|
+  \end{align*}
+
+  Now we see that $f(x) = g(x)$ for all $x \in K_j$ and $x \in
+  (A_j \cup V_j)^c$. Since $K_j \subset V_j$, the set where they possibly
+  \marginnote{\scriptsize Add a diagram for ease of reasoning}
+  disagree is $$D = \bigcup_{j = 1}^{n}(V_j \setminus K_j) \quad \cup
+  \quad \bigcup_{j = 1}^{n}(A_j \setminus K_j)$$
+  Now by the subadditivity of $\mu$, we get $\mu(D) < \epsilon$ and
+  we have proved the result for $A$ compact and $f$ simple.
+
+  Now for the case when $0\le f < 1$, let $s_n$ be the
+  sequence of simple functions $0 \le s_1 \le s_2 \le \ldots \le $
+  with $\lim_{n \to \infty} s_n(x) = f(x)$. Let $t_n = s_n -
+  s_{n-1}$, where $s_0 = 0$. Each $t_n$ is simple and $t_n = 0$ on
+  $A^c$ and by construction, we get \[
+    t_n \le \frac{1}{2^{n-1}} \chi_{B_n}
+  \]
+  for some  set $B_n$.
+
+  Now we use the first part of the proof on $t_n$s to get a
+  corresponding $g_n \in C_c(X)$. Then $g_n$ satisfy
+  \begin{enumerate}[label=(\arabic*)]
+    \item
+    \item
+    \item
+  \end{enumerate}
+  Let $g = \sum_{n \in \mathbb{N}} g_n$, which converges uniformly as
+  $|g_n| \le \frac{1}{2^{n-1}}$ by Wierestrass. Hence $g \in C_c(X)$
+  and $  \textrm{supp}(g) \subset \overline{V}$.
+
+  We know that $f = \sum_{n = 1}^{\infty}  t_n$  from
+  the definition of $t_n$. So the set $D = \{ x \in X  \ : \  f(x)
+  \neq g(x) \}$ is a subset of $\cup_{n = 1}^{\infty} \{ x \in X  \ :
+  \ t_n(x) \neq g_n(X)  \}$. Now the subadditivity of $\mu$ gives
+  that $\mu(D) < \epsilon$.
+
+  Next, if $f$ is non-negative, bounded, the result follows from
+  scaling $f$. Again if $f \ge 0$ is measurable and possibly
+  unbounded, we have
+  $\cap_{n = 1}^{\infty} \{ x \in X  \ : \  f(x) \ge n \} =
+  \emptyset$. Moreover $\mu(\{ f \ge 1 \}) \le \mu(A) < \infty$.
+  Hence by the continuity of the measure from above, we get $\mu(\{ f
+  \ge n \}) \to 0$. Hence we can replace $f$ with $f \chi_{f< n}$ for
+  some appropriate $n$.
+
+  Now if the function is general complex, we can split it as the sum
+  and difference of four non-negative measurable functions and
+  continue the analysis. Finally if $A$ is not compact, we can find a
+  $K \subset A$ such that $ K$ is compact and $\mu(A \setminus K)$ is
+  arbitrarily small by the inner regularity of the measure $\mu$ for
+  finite sets.
+\end{proof}
+
+

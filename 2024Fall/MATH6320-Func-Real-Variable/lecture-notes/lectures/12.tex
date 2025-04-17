@@ -1,0 +1,85 @@
+% TeX_root = ../main.tex
+
+% \part
+
+\chapter{}
+
+\section{Recap on topology}
+\begin{definition}
+  Let $(X, \tau)$ be a topological space. A set $E$ is called closed if its complement is open. The closure of $E$ is the smallest closed subset containing $E$. \[
+    \overline{E} = \bigcap_{\substack{F^c \in \tau \\ E \subset F}} F
+  \]
+  We can check $\overline{E}$ is closed by looking at $\overline{E}^c$.
+\end{definition}
+
+\begin{definition}
+  A set $K \subset X$ is called compact if every open cover of $K$ has a finite subcover.
+\end{definition}
+
+\begin{definition}
+  $(X, \tau)$ is Hausdorff ($T_2$) if for any $p \neq q \in X$ there are open sets $U, V \in \tau$ such that $ p \in U, q \in V$ and $ U \cap V  = \emptyset$. 
+\end{definition}
+
+\begin{definition}
+   A neighborhood of $p \in X$ is an open set $U \in \tau$ containing $p$.
+\end{definition}
+
+\begin{definition}
+  $X$ is called locally compact if any point $p \in X$ has a neighborhood $V$ with compact $\overline{V}$.
+\end{definition}
+
+\begin{theorem}
+   Let $X$ be a topological space. If $K \subset X$ is compact and $F\subset K$ is closed, then $F$ is compact.
+\end{theorem}
+\begin{proof}
+  Make any covering of $F$ into a covering of $K$, by adding $F^c$, the get a finite subcover for $K$, then remove $F^c$ from this subcover if its there. Now you got a finite subcover for $F$.
+\end{proof}
+
+\begin{theorem}
+  let $X$ be a topological Hausdorff space. Then if $K \subset X$ is compact, $p \notin K$, then there are open set $U, V$ such that $K \subset V$, $p \in U$, $U \cap V = \emptyset$. (not that we are not claiming regularity).
+\end{theorem}
+\begin{proof}
+  For each $q \in K$, there is an open set $U_q, V_q$ with $q \in V_q, p \in V_q, V_q \cap U_q = \emptyset$. Then $K \subset \cap_{q \in K}V_q$. Then since $ K$ is compact, there is a finite subcover $V_{q_1} , V_{q_2} , \ldots V_{q_n}$ of $K$. Now let $V = \cup_{i = 1}^{n}V_{q_i}$ and $U = \cap_{i = 1}^{n}U_{q_i}$ both of which are open. Then $K \subset V, p \in U$ and $U \cap V = \emptyset$.
+\end{proof}
+
+\begin{theorem}
+   If $K_\alpha$ is a collection of nonempty compact subsets of a topological Hausdorff space $X$ indexed by $ A$, and if for each finite subset $B \subset A$, $\cap_{\beta \in  B}K_{\beta} \neq \emptyset$ then  \[
+      \cap_{\alpha \in  A}K_\alpha \neq \emptyset
+   \]
+\end{theorem}
+\begin{proof}
+  If $\cap_{\alpha \in  A}K_\alpha = \emptyset$, then $K_\alpha^c$ forms an open cover for $K_{\alpha_0}$. Now use the compactness property. \textcolor{red}{verify}
+\end{proof}
+
+\begin{theorem}
+  If $X, Y$ are topological spaces, if $f: X \to Y$ is continuous, and $K$ is compact, then $f(K)$ is compact.
+\end{theorem}
+\begin{proof}
+  Let $U_\alpha$ be an open cover for $f(K)$, then $f^{-1}(U_\alpha)$ forms an open cover for $K$. Now by the compactness there is a finite cover $f^{-1}(U_{\alpha_1}), f^{-1}(U_{\alpha_2}), \ldots , f^{-1}(U_{\alpha_n})$. Therefore $U_{\alpha_1} , U_{\alpha_2} , \ldots , U_{\alpha_n}$ is a finite subcover of $f(K)$.
+\end{proof}
+
+\begin{definition}
+  Let $X$ be a topological space, $f: X \to \mathbb{C}$. Then the support of $f$ is defined as $\textrm{  supp} f = \overline{\{ x \in X  \ : \  f(x) \neq 0 \}}$. 
+  See that $\textrm{supp}(f+g) \subset \textrm{supp}(f) \cup \textrm{supp}(g)$
+\end{definition}
+
+  We denote $C_c(X)$ to be the set of continuous functions which have compact support. $C_c(X)$ is a subspace of the vector space $C(X)$.
+
+\begin{theorem}[Urysohn Lemma]
+  Let $X$ be a locally compact Hausdorff space. If $X$ is compact, $V$ is open and $K \subset V$, then there is a function $f \in C_c(X)$ with $$\chi_K \le f \le \chi_V$$.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
