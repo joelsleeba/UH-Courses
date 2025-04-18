@@ -1,0 +1,67 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 17/04/2025 }
+
+\begin{definition}
+  Let $\lambda \ge 1$ be a Banach space. $X$ is said to have
+  $\lambda$-approximation property if three exist a net $\phi_i$ of
+  finite rank maps on $X$ with $ \|\phi_i\| \le \lambda$ such that
+  $\phi_i \to I$ uniformly on compact subsets of $X$.
+
+  In particular if $\lambda = 1$, then we say the space has metric
+  approximation property.
+\end{definition}
+
+\begin{theorem}
+  If $X, Y$ be Banach spaces with metric approximation property. Let
+  $\alpha$ be a \textit{good} family of tensor norms. Then the canonical map
+  \begin{align*}
+    X \otimes^\alpha Y \to (X^* \otimes^{\alpha^*} Y^*)^*
+  \end{align*}
+  is isometric.
+  Note here that here $\alpha^*$ comes from the \textit{good} family
+  of norms in finite dimensional spaces.
+\end{theorem}
+\begin{proof}
+  \textcolor{red}{verify that this is a contraction}. Notice that if
+  $\rho \in X^* \otimes Y^*$, the algebraic tensor product, then
+  \begin{align*}
+    \|\rho\|_{\alpha^*} = \inf \{ \|\rho\|_{(E \otimes F, \alpha^*)}
+    \ : \   \rho = \rho|_{E \otimes F} \}
+  \end{align*}
+
+  % Let $z \in (X \otimes Y, \alpha)$. Let $\varepsilon > 0$. Let $E
+  % \leqslant X, F \leqslant Y$  be  finite dimensional subspaces such
+  % that $z \in E \otimes F$ and $ \|z\|_\alpha > \|z\|_{E
+  % \otimes^\alpha F} - \varepsilon$.
+  % Let $\phi \in (E \otimes^\alpha F)^* = (E^* \otimes^{\alpha^*}
+  % F^*)$, with $\|\phi\| = 1$ and $|\phi(z)| = \|z\|_{E \otimes^\alpha F}$.
+
+  Let $z = \sum_{i = 1}^{n} x_i \otimes y_i$. By metric
+  approximation property, there are finite rank maps $\phi: X \to X,
+  \psi: Y \to Y$ such that $\|\phi\|, \|\psi\| \le 1$, and $\|\phi(x_i)
+  - x_i\| < \varepsilon$, $ \|\psi(y_i) - y_i\|< \varepsilon$ for all
+  $i$. Let $E^\prime = \textrm{Im}(\phi), F^\prime = \textrm{Im}(\psi)$. Then
+  \begin{align*}
+    \|(\phi \otimes \psi)(z) - z\| &= \sum_{i = 1}^{n}\|(\phi(x_i)
+    \otimes \psi(y_i)) -  x_i \otimes y_i\| \le \varepsilon^\prime
+  \end{align*}
+
+  Now for a general $z$, since we need to take inf over all such
+  finite dimensional representations, we have $\|z\|_\alpha \le
+  \|z\|_{E^\prime \otimes^{\alpha} F^\prime}$.
+
+  Choose $\rho \in (E^\prime \otimes^\alpha F^\prime)^* =
+  (E^\prime)^* \otimes^{\alpha^*} (F^\prime)^*$, such that $\|\rho\|
+  = 1$ and $|\rho((\phi \otimes \psi)(z))| = \| \phi \otimes \psi
+  (z)\|_{ E^\prime \otimes^\alpha F^\prime}$. Then
+  \begin{align*}
+    \|z\|_\alpha &\le \|(\phi \otimes \psi)(z)\|_{X \otimes^\alpha Y}
+    + \varepsilon \\
+    &\le \|(\phi \otimes \psi)(z)\|_{ E^\prime \otimes F^\prime} +
+    \varepsilon \\
+    &= |\langle (\phi \otimes \psi)(z), \rho \rangle| + \varepsilon \\
+    &= |\langle z, (\phi^* \otimes \psi^*)(\rho) \rangle | + \varepsilon \\
+    &\le \| z\|_{(X^* \otimes^{\alpha^*} Y^*)^*}
+  \end{align*}
+\end{proof}

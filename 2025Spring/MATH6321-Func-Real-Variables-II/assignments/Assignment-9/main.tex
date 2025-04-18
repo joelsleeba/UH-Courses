@@ -139,22 +139,58 @@
   \end{solution}
 
   \question
-  \textcolor{red}{not finished}
   \begin{solution}
-    Let $x \in \mathbb{R}$ and $g_x : [x - 1, x+ 1] \to \mathbb{R} :
-    g_x(y) := |f(x) - f(y)|^2$. Note that since $f \in L^{2}([x- 1, x
-    + 1])$, by Holder's inequality, $f \in L^{1}([x - 1, x + 1])$. Also
+    Let $x \in \mathbb{R}$ and $f \in L^{2}(\mathbb{R})$. Then $f \in
+    L^2(B_2(x)) \subset L^{1}(B_2(x))$ (2-radius ball). We know that
+    \begin{align}
+      \label{eq:3}
+      \lim_{1 > r \to 0} \frac{1}{m(B_r(y))} \int_{B_r(y)} |f(y) - f|
+      \ d \mu = 0
+    \end{align}
+    for almost all $y \in B_1(x)$. As a consequence for almost every
+    $y \in B_1(x)$,
+    \begin{align}
+      \label{eq:3.1}
+      \lim_{1> r \to 0} \frac{1}{m(B_r(y))} \int_{B_r(y)}  f \ d \mu = f(y)
+    \end{align}
+    Moreover,  as a consequence of Holders
+    inequality, we have $f, \overline{f}, |f|^2 \in  L^{1}(B_2(x))$.
+    Let $A_f, A_{\overline{ f}}, A_{|f|^2}$ be the measure zero subsets
+    of $B_1(x)$, where $\autoref{eq:3}$ does not hold for $f,
+    \overline{f}, |f|^2$. Let $A = A_f \cup A_{\overline{ f}} \cup
+    A_{|f|^2}$. Then $m(A) = 0$, and for all $y \in B_1(x) \setminus A$
+    and $r< 1$.
     \begin{align*}
-      \int_{[x-1, x+1]}  |g_x| \ d m &= \int_{[x - 1, x + 1]}  |f(x)
-      - f(y)|^2 \ d m(y) \\
-      &\le \int_{[x-1, x +1]} |f(x)|^2 + 2|f(x)||f(y)| + |f(y)|^2 \ d \mu \\
-      &\le 2|f(x)|^2 + 2|f(x)| \|f\|_1 + \|f\|_2 \\
-      &< \infty
+      \frac{1}{m(B_r(y))} \int_{B_r(y)} |f(y) - f|^2 \ d m &=
+      \frac{1}{m(B_r(y))} \int_{B_r(y)} (f(y) - f)(\overline{f(y)} -
+      \overline{f}) \ d m \\
+      &= \frac{1}{m(B_r(y))} \int_{B_r(y)}  |f(y)|^2 -
+      \overline{f(y)} f - \overline{f}f(y) + |f|^2 \ d m \\
+      &= |f(y)|^2 - \frac{\overline{f(y)}}{m(B_r(y))} \int_{B_r(y)}
+      f \ d m  \\
+      & \quad \quad - \frac{f(y)}{m(B_r(y))} \int_{B_r(y)}  \overline{f}
+      \ d m + \frac{1}{m(B_r(y))} \int_{B_r(y)}  |f|^2 \ d m
     \end{align*}
-    Thus $g_x \in L^{1}([x - 1, x + 1])$. Thus almost every $y \in [x
-    - 1, x + 1]$ is a Lebesgue point of $g_x$ by the Lebesgue
-    differentiation theorem.
-
+    Then, taking limit as $r \to 0$, $\autoref{eq:3.1}$ gives
+    \begin{align*}
+      \lim_{1 > r \to 0} \frac{1}{m(B_r(y))} \int_{B_r(y)} |f(y) -
+      f|^2 \ d m &= |f(y)|^2 - \overline{f(y)}f(y) - f(y)
+      \overline{f(y)} + |f(y)|^2 \\
+      &= |f(y)|^2 - |f(y)|^2 - |f(y)|^2 + |f(y)|^2 \\
+      &= 0
+    \end{align*}
+    Thus for almost every $y \in B_1(x)$,
+    \begin{align*}
+      \lim_{1 > r \to 0} \frac{1}{m(B_r(y))} \int_{B_r(y)} |f(y) -
+      f|^2 \ d m =0
+    \end{align*}
+    Since $x \in \mathbb{R}$ was chosen arbitrarily, this holds true
+    for all $x \in \mathbb{R}$, and thus
+    \begin{align*}
+      \lim_{r \to 0} \frac{1}{m(B_r(y))} \int_{B_r(y)} |f(y) -
+      f|^2 \ d m =0
+    \end{align*}
+    for almost every $y \in \mathbb{R}$.
   \end{solution}
 
   \question
