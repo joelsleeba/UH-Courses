@@ -1,0 +1,77 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 22/04/2025 }
+
+\section{Tensor Products of C* Algebras}
+\begin{definition}
+  Recall that a C* algebra is a Banach space with a continuous
+  multiplication turning it into an algebra such that $\|ab\| \le
+  \|a\|\|b\|$ and $\|a^*\| = \|a\|$, and an isometric involution $*$
+  such that $\|a^*a\| = \|a\|^2$.
+\end{definition}
+
+Given two algebras $\mathcal{A, B}$, the algebraic tensor product
+admits a canonical algebra structure
+\begin{align*}
+  (a \otimes b)(a^\prime \otimes b^\prime) = aa^\prime \otimes bb^\prime
+\end{align*}
+and same holds if it is a $*$-algebra with
+\begin{align*}
+  (a \otimes b )^* = a^* \otimes b^*
+\end{align*}
+
+\begin{definition}
+  Let $\mathcal{A, B}$ be two unital C* algebras. By a C* norm on the
+  algebraic tensor product, we mean a norm satisfying
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\|a \otimes b\| \le \|a\|\|b\|$
+    \item $\|z^* z\| \le \|z\|^2, \ \forall z \in A \otimes B$
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  Consider $C(X) \otimes C(Y)$, where $X, Y$ are compact Hausdorff
+  spaces. Then $C(X) \otimes C(Y)$ sits inside $C(X \times Y)$
+  densely (Stone-Weierstrass) via
+  $f_i \otimes g_i \to ((x, y) \to f_i(x) g_i(x))$
+\end{example}
+
+\begin{example}
+  Similarly $B(H) \otimes B(K) \to B(H \otimes_2 K)$.
+\end{example}
+
+\begin{lemma}
+  Every $*$-homomorphisms between C* algebra is contractive
+\end{lemma}
+\begin{proof}
+  Let $\phi: A \to B$ be the $*$-homomorphism. Then for all $ a \in
+  \mathcal{A}$,
+  \begin{align*}
+    \|a\|^2 = \|a^*a\| = r(a^*a) \ge r(\phi(a^*a)) = r(\phi(a)^*
+    \phi(a)) = \| \phi(a)^*\phi(a)\| = \|\phi(a)\|^2
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  Let $(\mathcal{A}, \|\cdot\|)$ be a C* algebra. Suppose $
+  \|\cdot\|^\prime$ is a pre-C* norm on $ \mathcal{A}$. Then $\|\cdot\|
+  = \|\cdot\|^\prime$.
+\end{theorem}
+
+\begin{example}
+  Let $\mathcal{A}$ be a unital C* algebra, and $n \in \mathbb{N}$.
+  Then $\exists!$ C* norm on $M_n(\mathbb{C}) \otimes \mathcal{A}$
+\end{example}
+
+\begin{definition}
+  Let $\mathcal{A}, \mathcal{B}$ be unital C* algebra. Define
+  $\forall z \in A \otimes B$,
+  \begin{align*}
+    \|z\|_{\textrm{max}} &= \sup\{ \|z\| \ : \ \|\cdot\| \textrm{ is a
+    C* norm on } A \otimes B\} \\
+    &= \sup \{ \|\pi(z)\| \ : \ \pi: A \otimes B \to B(H) \textrm{ is
+    a representation.}  \}
+  \end{align*}
+\end{definition}
+note that this norm we defined will have its upper bound to be the
+projective tensor norm of $A, B$ viewed as Banach spaces.

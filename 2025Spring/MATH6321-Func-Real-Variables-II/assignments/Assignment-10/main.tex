@@ -1,0 +1,205 @@
+% initial settings
+\documentclass[12pt]{exam}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{url,hyperref}
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{MATH6321 - Theory of functions of a real variable \\ Homework 10}
+
+% author list
+\author{
+  Joel Sleeba \\
+}
+
+\maketitle
+\printanswers
+\unframedsolutions
+
+\begin{questions}
+  \question
+  \begin{solution}
+    Let $s_n := \sum_{i = 1}^{m} a_i^n \chi_{A_i^n}$ be an increasing
+    sequence of
+    simple functions which converge
+    pointwise to $f$ from below
+    where $A_i^n$ are Lebesgue measurable in $\mathbb{R}$,
+    $A_i^n \cap A_j^n = \emptyset$ if $i \neq j$, and
+    $a_i^n \in [0, \infty]$. Then
+    \begin{align*}
+      A(s_n) &= \{ (x, y) \in \mathbb{R}^2 \ : \  0 < y < s_n(x)  \} \\
+      &= \{ (x, y) \ : \ 0 < y < \sum_{i = 1}^{m} a_i^n \chi_{A_i^n} \} \\
+      &= \bigcup_{i = 1}^{m}\{ (x, y) \ : \ x \in A_i^n, 0 < y < a_i^n \}\\
+      &= \bigcup_{i = 1}^{m} A_i^n \times (0, a_i^n)
+    \end{align*}
+    Since each $A_i^n$ and $(0, a_i^n)$ are Lebesgue measurable in
+    $\mathbb{R}$, $A_i^n \times (0, a_i^n)$ is Lebesgue measurable in
+    $\mathbb{R}^2$ by the definition of the product $\sigma$-algebra.
+    Moreover, since $s_n$ converge pointwise to $f$ from below, if $y < f(x)$,
+    then $y < s_n(x)$ for some $n \in \mathbb{N}$. Hence,
+    \begin{align*}
+      A(f) = \bigcup_{n = 1}^{\infty}A(s_n)
+    \end{align*}
+    Thus, $A(f)$ is a Lebesgue measurable set in
+    $\mathbb{R}^2$.
+
+    To show that $m_2(A(f)) = \int f \ d m$, since
+    \begin{align*}
+      A(s_n) = \bigcup_{i = 1}^{m} A_i^n \times (0, a_i^n)
+    \end{align*}
+    for $s_n$ defined as before, and since $m_2 = m \times m$,
+    \begin{align*}
+      m_2(A(s_n)) = \sum_{i = 1}^{m} m(A_i^n) m((0, a_i^n)) = \sum_{i
+      = 1}^{m}  a_i^n m(A_i^n) = \int s_n \ d m
+    \end{align*}
+    Since $s_n$ is an increasing sequence, $A(s_i) \subset
+    A(s_{i+1})$, and by the continuity of the measure $m_2$ from below, we get
+    \begin{align*}
+      m_2(A(f)) = \lim_n m_2(A(s_n)) = \sup_n \int s_n \ d m = \int f \ d m
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Notice that since $f \in L^{1}(\mathbb{R})$, by the translation
+    invariance of the Lebesgue measure, for all $x \in \mathbb{R}$,
+    $f_x(y):= f(x - y)$ is also in $L^{1}(\mathbb{R})$.
+    Then
+    \begin{align*}
+      |f*g(x)| &\le \int |f(x-y) g(y)| \ d m \\
+      &= \int  |f(x-y)|^{\frac{1}{q}}
+      |f(x-y)|^{\frac{1}{p}} |g(y)|\ d m \\
+      & \le \Big( \int |f(x-y)| \ d m\Big)^{\frac{1}{q}} \Big( \int
+      |f(x-y)||g(y)|^{p} \ d m\Big)^{\frac{1}{p}} \\
+      &= \|f\|_1^{\frac{1}{q}} \Big( \int
+      |f(x-y)||g(y)|^{p} \ d m\Big)^{\frac{1}{p}}
+    \end{align*}
+    Therefore,
+    \begin{align*}
+      \int |f*g(x)|^p \ d m &\le \|f\|_1^{\frac{p}{q}} \int \int
+      |f(x-y)||g(y)|^{p} \ dm(y) dm(x)
+    \end{align*}
+    Since $|f(x-y)||g(y)|^p \ge 0$, by Fubini's theorem,
+    \begin{align*}
+      \int |f*g(x)|^p \ d m &\le \|f\|_1^{\frac{p}{q}} \int \int
+      |f(x-y)||g(y)|^{p} \ dm(x) dm(y) \\
+      &= \|f\|_1^{\frac{p}{q}}\int |g(y)|^{p}\int |f(x-y)| \ dm(x) dm(y) \\
+      &= \|f\|_1^{\frac{p}{q}}\int |g(y)|^p \|f\|_1 dm(y) \\
+      &= \|f\|_1^{1 + \frac{p}{q}}\|g\|_p^{p} \\
+      &= \|f\|_1^{p} \|g\|_p^p
+    \end{align*}
+    Thus taking powers with $\frac{1}{p}$, we get
+    \begin{align*}
+      \|f * g\|_p \le \|f\|_1 \|g\|_p
+    \end{align*}
+    Since the $p$ norm of $f*g$ is finite, $f*g$ is finite almost everywhere.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    We need to show that
+    \begin{align}
+      \label{eq:3}
+      \lim_{ n \to \infty} \int_{0}^{n} \int_{0}^{\infty}
+      \frac{\sin(x)}{e^{xt}} \ dt \ dx =
+      \frac{\pi}{2}
+    \end{align}
+    Since we know that for Riemann integrable functions, the Riemann
+    integral coincides with the Lebesgue integral, we'll use Reimann
+    integration techniques without sweat. Since $\frac{\sin(x)}{x}$
+    is a continuous function on $(0, \infty)$, $\frac{\sin(x)}{x} \in
+    L^{1}(0, n)$ for all $n \in \mathbb{N}$. Hence we can interchange
+    the order of integration in \autoref{eq:3}. Thus, we'll show that
+    \begin{align*}
+      \lim_{ n \to \infty} \int_{0}^{\infty}\int_{0}^{n}
+      \frac{\sin(x)}{e^{xt}} \ dx \ dt =
+      \frac{\pi}{2}
+    \end{align*}
+    Using integration by parts, we get
+    \begin{align*}
+      \int_{0}^{n} \frac{\sin(x)}{x} \ dx = \Big(1 - \frac{t\sin(n) -
+      \cos(n)}{e^{nt}}\Big) \frac{1}{1 + t^2}
+    \end{align*}
+    Since $1 + t < e^{nt}$ for all $n \in \mathbb{N}, t > 0$, we get
+    \begin{align*}
+      \Big|1 - \frac{t\sin(n) - \cos(n)}{e^{nt}}\Big| \le 1 +
+      \frac{1+t}{e^{nt}} < 2
+    \end{align*}
+    Thus
+    \begin{align*}
+      \Big|\int_{0}^{n} \frac{\sin(x)}{x} \ dx\Big| \le \frac{2}{1+t^2}
+    \end{align*}
+    and since $\frac{2}{1+t} \in L^{1}(0, \infty)$, by Lebesgue
+    dominated convergence theorem,
+    \begin{align*}
+      \lim_{ n \to \infty} \int_{0}^{\infty}\int_{0}^{n}
+      \frac{\sin(x)}{e^{xt}} \ dx \ dt &= \int_{0}^{\infty} \lim_{ n
+      \to \infty} \int_{0}^{n}
+      \frac{\sin(x)}{e^{xt}} \ dx \ dt \\
+      &= \int_{0}^{\infty} \lim_{n \to \infty} \Big(1 -
+      \frac{t\sin(n) - \cos(n)}{e^{nt}}\Big) \frac{1}{1 + t^2} \\
+      &= \int_{0}^{\infty} \frac{1}{1+t^2} \ dx \\
+      &= \arctan(\infty) - \arctan(0) \\
+      &= \frac{\pi}{2}
+    \end{align*}
+  \end{solution}
+\end{questions}
+\printbibliography[heading=bibintoc]
+\end{document}

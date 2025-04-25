@@ -1,0 +1,60 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 24/04/2025 }
+
+\begin{theorem}
+  Let $\mathcal{A, B}$ be unital C* algebras and $\mathcal{H,
+  H^\prime, K, K^\prime}$ be Hilbert spaces, and $\pi: \mathcal{A}
+  \to B(\mathcal{H}), \pi^\prime: \mathcal{A} \to
+  B(\mathcal{H}^\prime)$, $\sigma: \mathcal{B} \to B(\mathcal{K}),
+  \sigma^\prime: \mathcal{B}\to B(\mathcal{K}^\prime)$ be injective
+  $*$-homomorphisms. Then $\forall z \in A \otimes B$,
+  \begin{align*}
+    \|(\pi \otimes \sigma)(z)\|_{B(H \otimes K)} = \|(\pi^\prime
+    \otimes \sigma^\prime)(z)\|_{B(H^\prime \otimes K^\prime)}
+  \end{align*}
+\end{theorem}
+\begin{proof}
+  Let $P_n$ be sequence of finite rank projections that converge to
+  $I$ in the strong operator topology. Because the result holds in
+  finite dimensions, $$\|(I \otimes P_n)((\pi
+  \otimes \sigma)(z))(I \otimes P_n)\|_{B(\mathcal{H} \otimes
+  \mathcal{K})} = \|(I \otimes P_n)((\pi^\prime
+  \otimes \sigma)(z))(I \otimes P_n)\|_{B(\mathcal{H}^\prime
+  \otimes \mathcal{K})}$$
+  Now taking limits as $ n \to \infty$, and repeating the same steps
+  3 more times, we get our result.
+\end{proof}
+
+\begin{definition}
+  The above unique norm is called the minimal tensor product of
+  $\mathcal{A}$ and $\mathcal{B}$, denoted $\otimes_{\textrm{min}}$.
+\end{definition}
+
+\begin{theorem}
+  $\otimes_{\textrm{min}}$ is the smallest tensor norm on
+  $\mathcal{A} \otimes \mathcal{B}$.
+\end{theorem}
+\begin{proof}
+  Assuming $\|\phi \otimes \psi\|_{(A \otimes_{\textrm{min}} B)} = \|
+  \phi\| \|\psi\|$ for all $\phi \in \mathcal{A}^*$ such that
+  $\phi(a^*a) > 0$ for all $a \in \mathcal{A}\setminus \{ 0 \}$.
+  Similarly for $\mathcal{B}$.
+
+  Given $a_1, a_2 \in \mathcal{A}$, define $  \langle a_1 , a_2
+  \rangle  = \phi(a_2^*a_1)$. This defines an inner product on
+  $\mathcal{A}$. Denote by $\mathcal{H}_{\phi}$, the Hilbert space
+  completion. Denote by $\Lambda: \mathcal{A} \to \mathcal{H}_\phi$.
+  And do GNS constructions.
+\end{proof}
+
+Let $\mathcal{A}_1 \leqslant \mathcal{A}_2 \leqslant \ldots \leqslant
+\mathcal{A}$ be an increasing sequence of C* algebras where
+$\mathcal{A}_n \cong M_n(\mathbb{C})$, and $  \overline{\cup_{n \in
+\mathbb{N}}\mathcal{A}_n} = \mathcal{A}$. This implies for all C* algebra $B$,
+\begin{align*}
+  A \otimes_{\max} = \mathcal{A} \otimes_{\min} \mathcal{B}
+\end{align*}
+
+Discussion about the max and min tensor product of
+$C_\lambda(\mathbb{F}_2)$ with $C_\rho(\mathbb{F}_2)$ are not the same.
