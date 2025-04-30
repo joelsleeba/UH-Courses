@@ -75,10 +75,279 @@
 
 \begin{questions}
   \question
-  \textcolor{red}{not finished}
-
   \begin{solution}
+    \begin{parts}
+      \part Given that $G(A) = \sum_{n \in \mathbb{N}} a_nA^n$, where
+      the $(i, j)$-th entry of the partial sums converge to the $(i,
+      j)$-th entry of $G(A)$. Let $G_N(A) = \sum_{i = 1}^{N} a_i
+      A^i$, be the $N$-th partial sum. We'll show that
+      $PG_N(At)P^{-1} = G_N(PAtP^{-1}) = G_N(PAP^{-1}t)$. The first
+      equality follows easily by the distributivity of the matrix
+      multiplication as,
+      \begin{align*}
+        PG_N(At)P^{-1} = P\Big(\sum_{i = 1}^{N} a_i A^i t\Big)P^{-1}
+        = \sum_{i =
+        1}^{N} a_i PA^itP^{-1} = G_N(PAtP^{-1})
+      \end{align*}
+      Since $t = tI$, where $I$ is the identity matrix, it commutes
+      with $P^{-1}$, and we get
+      \begin{align*}
+        G_N(PAtP^{-1}) = \sum_{i=1}^{N} a_i PA^itP^{-1} = \sum_{i =
+        1}^{N} a_i P A^i P^{-1} tI = G_N(PAP^{-1}t)
+      \end{align*}
+      Since $G$ is defined as the limit of the partial sums
+      $G_N$, whenever the limit exists, the equality will be
+      preserved for $G$ as well.
+      \part Let $A = A_1 \oplus A_2 \oplus \ldots \oplus A_m$. Then
+      \begin{align*} A =
+        \begin{pmatrix}
+          A_1 & & \\
+          &  \ddots & \\
+          & & A_m \\
+        \end{pmatrix} \quad
+        \textrm{and} \quad
+        A^n =
+        \begin{pmatrix}
+          A_1^n & & \\
+          &  \ddots & \\
+          & & A_m^n \\
+        \end{pmatrix}
+      \end{align*}
+      Thus by the definition of $G$,
+      \begin{align}
+        \label{eq:1}
+        G(A) =
+        \begin{pmatrix}
+          G(A_1) & & \\
+          &  \ddots & \\
+          & &  G(A_m) \\
+        \end{pmatrix}
+      \end{align}
+      which proves what we need since $At = A_1t \oplus A_2t \oplus \ldots
+      \oplus A_mt$ and
+      \begin{align*}
+        G(At) =
+        \begin{pmatrix}
+          G(A_1t) & & \\
+          &  \ddots & \\
+          & &  G(A_mt) \\
+        \end{pmatrix}
+      \end{align*}
+      \part This is the special case of part (b) by taking $A_i = [z_i]$.
+    \end{parts}
+  \end{solution}
 
+  \question
+  \begin{solution}
+    By the definition and since $AB = BA$,
+    \begin{align*}
+      \exp(A)\exp(B) &= \Big( I + A + \frac{A^2}{2!} +
+      \frac{A^3}{3!} \ldots \Big)\Big( I + B + \frac{B^2}{2!} +
+      \frac{B^3}{3!}\ldots \Big) \\
+    \end{align*}
+    and
+    \begin{align*}
+      \exp(A + B) &= I + A+B + \frac{(A+B)^2}{2!} +
+      \frac{(A+B)^3}{3!} + \ldots
+    \end{align*}
+    Thus we see that the $n$th term in the above summation is
+    \begin{align*}
+      \frac{(A+B)^n}{n!} &= \frac{1}{n!} \sum_{i = 0}^{n} {n \choose
+      i} A^{n-i}B^i \\
+      &= \sum_{i = o}^{n} \frac{1}{i! (n-i)!} A^{n-i} B^i \\
+      &= \sum_{i = 0}^{n} \frac{A^{n-i}}{(n-i)!} \times \frac{B^{i}}{i!}
+    \end{align*}
+    which is precisely the term in $\exp(A)\exp(B)$ whose powers sum
+    to $n$. Since this is true for all $n \in \mathbb{N}$, the power
+    series agree and thus $\exp(A)\exp(B) = \exp( A + B)$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $Nt$ be as given. Then we see that
+    \begin{align*}
+      (Nt)^2 =
+      \begin{bmatrix}
+        0 & 0 & t^2 & & &\\
+        & 0 & 0  & t^2 & &\\
+        &  & \ddots & \ddots & \ddots & \\
+        &  &   & 0 & 0  & t^2 \\
+        &  &   &  & 0  & 0 \\
+        & &  & &   &  0\\
+      \end{bmatrix}
+    \end{align*}
+    and similarly for the rest of the powers of $Nt$. Hence by the
+    definition of $\exp(Nt)$, we get that
+    \begin{align*}
+      \exp(Nt) =
+      \begin{bmatrix}%{c c c c c c}
+        1 & t & \frac{t^2}{2!} & \ldots & \ldots &  \frac{t^{r-1}}{(r-1)!} \\
+        & 1 & t &\frac{t^2}{2!}  & & \vdots \\
+        & & \ddots & \ddots & \ddots & \vdots \\
+        & & & \ddots & t & \frac{t^2}{2!} \\
+        & & & & 1 & t \\
+        & & & & & 1
+      \end{bmatrix}
+    \end{align*}
+    Now if
+    \begin{align*} J =
+      \begin{bmatrix}%{c c c c c}
+        \lambda  & 1 & 0 & \ldots & 0\\
+        &  \lambda & 1 & \ldots & \vdots \\
+        &  & \ddots & \ddots  & \\
+        &  &  &  \lambda  & 1 \\
+        &  &  &  &  \lambda
+      \end{bmatrix}
+    \end{align*}
+    is an elementary Jordan matrix with eigenvalue $\lambda$, then
+    since $Jt = \lambda I t + Nt$,
+    \begin{align*}
+      \exp(Jt) = \exp(\lambda It + Nt) = \exp(\lambda I t)\exp(Nt) =
+      e^{\lambda t}\exp(Nt)
+    \end{align*}
+    which gives
+    \begin{align}
+      \label{eq:3}
+      \exp(Jt) =
+      e^{\lambda t}
+      \begin{bmatrix}%{c c c c c c}
+        1 & t & \frac{t^2}{2!} & \ldots & \ldots &  \frac{t^{r-1}}{(r-1)!} \\
+        & 1 & t &\frac{t^2}{2!}  & & \vdots \\
+        & & \ddots & \ddots & \ddots & \vdots \\
+        & & & \ddots & t & \frac{t^2}{2!} \\
+        & & & & 1 & t \\
+        & & & & & 1
+      \end{bmatrix}
+    \end{align}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    From example 3, we see that for the given matrices $P, D$
+    \begin{align*}
+      P^{-1}DP =
+      \begin{bmatrix}%{c c c c}
+        1 & 1 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 1\\
+        0 & 0 & 0 & 1
+      \end{bmatrix} =
+      \begin{bmatrix}%{c c }
+        J & 0\\
+        0 & J
+      \end{bmatrix}
+    \end{align*}
+    where $J =
+    \begin{bmatrix}%{c c}
+      1 & 1\\
+      0 & 1
+    \end{bmatrix}$ is the elementary Jordan matrix. From
+    \autoref{eq:1}, we get that
+    \begin{align*}
+      \exp(P^{-1}DP) =
+      \begin{bmatrix}%{ c c }
+        \exp(J) & 0\\
+        0 & \exp(J)
+      \end{bmatrix}
+    \end{align*}
+    Moreover, \autoref{eq:3} for $\lambda = t = 1$, shows that
+    \begin{align*}
+      \exp(P^{-1}DP) =
+      \begin{bmatrix}%{ c c }
+        \exp(J) & 0\\
+        0 & \exp(J)
+      \end{bmatrix} =
+      e^{1}
+      \begin{bmatrix}%{c c c c}
+        1 & 1 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 1\\
+        0 & 0 & 0 & 1
+      \end{bmatrix} =
+      \begin{bmatrix}%{c c c c}
+        e & e & 0 & 0\\
+        0 & e & 0 & 0\\
+        0 & 0 & e & e\\
+        0 & 0 & 0 & e
+      \end{bmatrix}
+    \end{align*}
+    Then
+    \begin{align*}
+      \exp(D) = P\exp(P^{-1}DP)P^{-1} &=
+      \begin{bmatrix}%{c c c c}
+        0 & 1 & 2 & 0\\
+        2 & 0 & -2 & 1\\
+        1 & 0 & 0 & 0\\
+        0 & 0 & 1 & 0
+      \end{bmatrix}
+      \begin{bmatrix}%{c c c c}
+        e & e & 0 & 0\\
+        0 & e & 0 & 0\\
+        0 & 0 & e & e\\
+        0 & 0 & 0 & e
+      \end{bmatrix}
+      \begin{bmatrix}%{c c c c}
+        0 & 0 & 1 & 0\\
+        1 & 0 & 0 & -2\\
+        0 & 0 & 0 & 1\\
+        0 & 1 & -2 & 2
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}%{c c c c}
+        e & 2e & -4e & 4e\\
+        2e & -e & 4e & -8e\\
+        e & 0 & e & -2e\\
+        0 & e & -2e & 3e
+      \end{bmatrix}
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    If $A = \textbf{0}$, then $A^n = \textbf{0}$ matrix for all $n
+    \in \mathbb{N}$. Since $B + \textbf{0} = B$ for any matrix $B$,
+    form the definition of $e^A$, we get that
+    $e^{\textbf{0}} = I$. Moreover since we know that $\exp(A + B) =
+    \exp(A)\exp(B)$, we get that
+    \begin{align*}
+      \exp(A)\exp(-A) = \exp(A - A) = \exp(0) = I\\
+      I= \exp(0) = \exp(-A
+      + A) = \exp(-A)\exp(A)
+    \end{align*}
+    Thus $\exp(A)$ is a nonsingular matrix with inverse $\exp(-A)$
+    for all $A \in M_n(K)$.
+  \end{solution}
+
+  \question
+  \begin{solution}
+    Let $A = UTU^{-1}$, where $U$ is a invertible matrix and $T$ is the
+    corresponding Jordan representation of $A$. Additionally assume
+    that $ T = T_1 \oplus T_2 \oplus \ldots \oplus T_n$, where each
+    $T_i$ are elementary Jordan blocks with eigenvalue $\lambda_i$. Then
+    \begin{align*}
+      e^A  = e^{UTU^{-1}} &= I + UTU^{-1} + \frac{(UTU^{-1})^2}{2!} +
+      \frac{(UTU^{-1})^3}{3!} + \ldots \\
+      &= U \Big( I + T + \frac{T^2}{2!} + \frac{T^3}{3!}  + \ldots\Big) \\
+      &= U e^T U^{-1}
+    \end{align*}
+    Also notice that $\det(e^{T_i})= e^{\lambda_i}$ by setting $t = 1$
+    in \autoref{eq:3}. Thus
+    \begin{align*}
+      \det(e^A) = \det(e^T) = \prod_{i = 1}^{n} \det(T_i) = \prod_{i
+      = 1}^{n}  e^{\lambda_i} = e^{\sum_{i = 1}^{n} \lambda_i} =
+      e^{\textrm{tr}(T)} = e^{\textrm{tr}(A)}
+    \end{align*}
+  \end{solution}
+
+  \question
+  \begin{solution}
+    We know that $\exp(A + B) = \exp(A)\exp(B)$. For a fixed $A \in
+    M_n(K)$, $\Phi: K \to GL_n(K):= t \to \exp(At)$ is a well defined map
+    since $\exp(A) \in GL_n(K)$ for all $A \in M_n(K)$. Moreover
+    \begin{align*}
+      \Phi(t + r) = \exp(A(t + r)) = \exp(At + Ar) = \exp(At)\exp(Ar)
+    \end{align*}
+    shows that $\Phi$ is a group homomorphism.
   \end{solution}
 
 \end{questions}
