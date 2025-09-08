@@ -1,0 +1,71 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 28/08/2025 }
+
+\begin{definition}
+  If $A \in M_n$, $A = (a_{i, j})_{i, j = 1}^n$, we let
+  \begin{align*}
+    \rm{trace}(A) = \sum_{j = 1}^{n} a_{jj}
+  \end{align*}
+  The determinant is
+  \begin{align*}
+    \textrm{det}(A) = \sum_{ \sigma \in  S_n} \textrm{sgn}(\sigma)
+    a_{1, \sigma(1)} a_{2, \sigma(2)} \ldots a_{n, \sigma(n)}
+  \end{align*}
+\end{definition}
+
+\begin{remark}
+  If $A = [a_1  a_2  \ldots  a_n]$, then $det(A) = f( a_1 , a_2 ,
+  \ldots , a_n)$ is the only function that is linear in each $a_i$,
+  alternating (swapping columns doesn't alter the value), and
+  normalized ($det(I) = 1$).
+
+  This is useful to show that for $A, B \in M_n$, $det(AB) = det(A) det(B)$.
+
+  Moreover if $A =
+  \begin{bmatrix}
+    B & C \\
+    0 & D
+  \end{bmatrix}$, then $det(A) = det(B) det(D)$.
+
+  We also have
+  \begin{align*}
+    det(A) = \sum_{i, j = 1}^{n} (-1)^{i + j} a_{i, j} det(A_{i, j})
+  \end{align*}
+  Where $A_{i, j}$ is the submatrix with $i$th row and $j$th column
+  removed from $A$.
+\end{remark}
+
+\section{Eigenvalues and Eigenvectors}
+
+\begin{definition}
+  Eigenvalue, Eigenvector, Spectrum of a matrix
+\end{definition}
+
+\section{Similarity}
+
+\begin{definition}
+  A matrix $B \in M_n$ is similar to $A \in M_n$, if there is an
+  invertible $S \in M_n$ such that $B = S^{-1}AS$. This defines an
+  equivalence relation.
+\end{definition}
+
+\begin{theorem}
+  If $A, B \in M_n$ are similar. Then their characteristic polynomial
+  $P_A = P_B$.
+\end{theorem}
+
+\begin{remark}
+  characteristic polynomial i snot characteristic upto similarity, because
+  \begin{align*}
+    A =
+    \begin{pmatrix}%{c c}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix} \text{ and } B =
+    \begin{pmatrix}%{c c}
+      0 & 0\\
+      0 & 0
+    \end{pmatrix}
+  \end{align*}
+\end{remark}

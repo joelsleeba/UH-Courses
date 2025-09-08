@@ -1,0 +1,138 @@
+% TeX_root = ../main.tex
+
+\chapter{Derivation of PDEs}
+
+\marginnote{\scriptsize 26/08/2025 }
+\section{Conservation Laws}
+These are balanced laws that express the fact that some quantity is
+balanced throughout a process.
+
+Let $u(x, t)$ be the density of some quantity (mass, heat, energy,
+bacteria). Given a region $R \subset \mathbb{R}^n$, then
+\begin{align*}
+  \int_R u(x, t) \ d  x
+\end{align*}
+represents the total amount of quantity inside $R$ at time $t$.
+
+\begin{definition}
+  The quantity (represented by $u$) is then locally conserved if it
+  is only gained or lost either through domain boundaries or because
+  of sources or sinks in the domain.
+\end{definition}
+
+\begin{definition}
+  The \textbf{flux} of $u(x, t)$ is the direction and rate of flow of
+  this quantity per unit area. It has a magnitude and a direction and
+  is therefore a vector field $\vec{J}$.
+\end{definition}
+
+\begin{remark}
+  Flux is defined so that $\vec{J} \cdot \vec{n}dA$ represent the
+  amount of quantity $u$ flowing across a small area $dA$ per unit time.
+\end{remark}
+
+\begin{remark}
+  $\vec{J}$ has the unit of density times velocity.
+\end{remark}
+
+Track $u$, area, time on same domain $\Omega$, and assume we have a
+source term $Q(x, t) > 0$. Conservation of $u$ on a region $R \subset
+\Omega$ then implies
+\begin{align*}
+  \frac{d}{dt}\int_R u(x, t) \ d  t = \int_R \frac{\partial
+  u}{\partial t} \ d x = - \int_{\partial R} \vec{J} \cdot \vec{n}
+  \ d x + \int_R Q(x, t) \ dx
+\end{align*}
+Using divergence theorem, we can rewrite this as
+\begin{align*}
+  \int_R \frac{\partial u}{\partial t} \ d x = - \int_{R} \nabla
+  \cdot \vec{J} \ d x + \int_R Q(x, t) \ dx
+\end{align*}
+which gives
+\begin{align*}
+  \int_R \frac{\partial u}{\partial t} + \nabla \cdot \vec{J}  - Q(x,
+  t) \ dx = 0
+\end{align*}
+Since $R$ can be chosen arbitrarily, and the variables $u, J, Q$ are
+"nice enough" (sufficiently smooth) this forces
+\begin{align}
+  \label{eq:continuity_eq}
+  \frac{\partial u}{\partial t} + \nabla \cdot \vec{J} - Q = 0
+\end{align}
+for all points in space and time.
+
+$\autoref{eq:continuity_eq}$ called the continuity equation is the
+standard form of all conservation equations and depending on the
+context different $\vec{J}$ will play different roles.
+
+\section{Review of Vector Calculus}
+
+\begin{theorem}[Gauss-Green Theorem]
+  Suppose $u \in C^1(\overline{\Omega})$, and let $\vec{x} \in \Omega
+  \subset \mathbb{R}^m$ with $u_{x_i}: = \frac{\partial u}{\partial x_i}$, then
+  \begin{align*}
+    \int_{\Omega}  u_{x_i} \ d x = \int_{\partial \Omega}   u n_i \ d x
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}[Divergence Theorem]
+  \begin{align*}
+    \int_\Omega \nabla \cdot \vec{J} \ d  x = \int_{\partial \Omega}
+    \vec{J} \cdot \vec{n} \ d x
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}[Green's First Identity]
+  \begin{align*}
+    \int_{\Omega}(u \Delta v + \nabla u \cdot \nabla v) \ d x =
+    \int_{\partial \Omega}   u \frac{\partial v}{\partial \vec{n}} \ dS
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}[Green's 2nd identity]
+  \begin{align*}
+    \int_{\Omega}(u \Delta v - v \Delta u) \ d x = \int_{\Omega}   u
+    \frac{\partial v}{\partial \vec{n}} - v \frac{\partial
+    u}{\partial \vec{n}} \ dS
+  \end{align*}
+\end{theorem}
+
+\begin{remark}
+
+\end{remark}
+
+\begin{theorem}
+  Suppose $f : \Omega \times [a, b] \to  \mathbb{C}$ with $a < b \in
+  \mathbb{R}$ and $f(\cdot, t): \Omega \to \mathbb{C}$ is integrable
+  for each $t \in [a, b]$. Let $F(t) = \int_\Omega  f(x, t) \ d
+  \mu(x)$, where $\mu$ denote a measure for $\Omega$. Suppose
+  $\frac{\partial f}{\partial t}$ exists and $g \in L^{1}(\mu)$ such
+  that $\Big|\frac{\partial f}{\partial t} (x, t)\Big| < g(x)$, then
+  $F$ is differentiable and
+  \begin{align*}
+    F^\prime(t) = \int_\Omega  \frac{\partial f}{\partial t}(x, t) \ d \mu(x)
+  \end{align*}
+\end{theorem}
+
+\section{Examples}
+
+\subsection{Advection (Convection, Drift)}
+
+Advection or drift where a bulk of the quantity is carried along the
+medium in a given velocity.
+
+Suppose $u(x, t)$ is the density of some quantity that is being
+transported with velocity $\vec{v}$. Then
+\begin{align*}
+  \vec{J} = \vec{v} u
+\end{align*}
+\begin{example}[Simple transport]
+  Assume $\vec{v}$ is a constant. Then  \autoref{eq:continuity_eq} becomes
+  \begin{align*}
+    \frac{\partial u}{\partial t} + \vec{v} \ \nabla u  - Q = 0
+  \end{align*}
+  In case $Q = 0$ and $ \Omega \subset \mathbb{R}$, then we get
+  \begin{align*}
+    \frac{\partial u}{\partial t} + \vec{v} \ \frac{\partial u}{\partial t} = 0
+  \end{align*}
+\end{example}

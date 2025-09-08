@@ -1,0 +1,74 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 04/09/2025 }
+
+\section{Euler Equation}
+
+Let $\vec{u} = \vec{u}(x, t)$ be the velocity field of a fluid, where
+$(x, t ) \in \Omega \subset \mathbb{R}^3 \times [0, T], T > 0$.
+Conservation of mass gives us
+\begin{align*}
+  \frac{\partial \rho}{\partial t} + \nabla \cdot(\rho \vec{u})
+\end{align*}
+If the fluid is incompressible, then $\rho$ is a constant and then
+$\nabla \cdot \vec{u} = 0$.
+
+By the convervation of momentum,
+\begin{align*}
+  \underbrace{\frac{d }{d t} \int_R \rho \vec{u} \ d x}_{\textrm{Rate
+  of change of momentum}}  = - \underbrace{\int_{\partial R}  \rho
+  \vec{u}(\vec{u} \cdot \vec{n}) \ d  A}_{\textrm{momenum flux term}}
+  - \underbrace{\int_{\partial R} P \vec{n} \ d  A}_{\textrm{Forces
+  felt by region $R$}}
+\end{align*}
+where $ \rho \vec{u}$ is the momentum density, and hence $\rho
+\vec{u} ( \vec{u})$ is the momentum flux, being the product of
+density and velocity.
+
+We are additionaly assuming that the fluid is ideal, i.e there's no
+viscocity. Then using the divergence theorem to switch to volume
+integrals, we get
+\begin{align*}
+  \int_{\partial R}  \rho u^i(\vec{u} \cdot \vec{n}) \ d A = \int_R
+  \nabla \cdot (\rho u ^i \vec{u}) \ d  x
+\end{align*}
+where
+\begin{align*}
+  \nabla \cdot(\rho u^i \vec{u}) & = \langle \partial x , \partial y,
+  \partial z \rangle \cdot u^i \langle \rho u^1, \rho u^2 , \rho u^3 \rangle  \\
+  &= u^i \nabla \cdot(\rho \vec{u}) + \rho \vec{u}\cdot \nabla u^i \\
+\end{align*}
+which gives
+\begin{align*}
+  \int_{\partial R}  \rho u^i(\vec{u} \cdot \vec{n}) \ d A = \int_R
+  \nabla \cdot (\rho u ^i \vec{u}) \ d  x = \int_R (u^i \nabla
+  \cdot(\rho \vec{u}) + \rho \vec{u}\cdot \nabla u^i) \ d x
+\end{align*}
+
+Similarly
+\begin{align*}
+  \int_{\partial R}  P n^i \ d A &= \int_{\partial R}  P \vec{e_i}
+  \vec{n} \ d  A \\
+  &= \int_R \nabla \cdot(P \vec{e_i}) \ d x \\
+  &= \int_R \frac{\partial P}{\partial x_i} \ d x
+\end{align*}
+
+Combining things together, we get the conservation of momentum as
+\begin{align*}
+  \int_R  \frac{d}{d t}(\rho u^i) + u^i \nabla \cdot\rho \vec{u} +
+  \rho \vec{u}\cdot \nabla u^i +  \frac{\partial P}{\partial x_i} = 0
+\end{align*}
+
+This can be written shortly as
+\begin{align*}
+  (\rho \vec{u})_t + \vec{u} \nabla \cdot(\rho \vec{u}) + (\rho
+  \vec{u} \cdot \nabla \vec{u}) + \nabla P = 0
+\end{align*}
+If the fluid is incompressible, then $\rho$ is a constant and we get
+\begin{align*}
+  \vec{u}_t + \vec{u} \nabla \cdot \vec{u} + \vec{u} \cdot \nabla
+  \vec{u} + \frac{1}{\rho} \nabla P = 0
+\end{align*} \textcolor{red}{which can also be written as}
+\begin{align*}
+  \vec{u}_t + (\vec{u} \cdot \nabla) \vec{u} + \frac{1}{\rho} \nabla P = 0
+\end{align*}

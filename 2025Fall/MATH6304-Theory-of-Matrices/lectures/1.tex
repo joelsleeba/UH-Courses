@@ -1,0 +1,72 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 26/08/2025 }
+
+Office Hours : Tuesday 10 - 11 AM, Wednesday 1 - 2 PM
+
+\chapter{Introduction}
+
+Let $A$ be a $m \times n$ matrix and $D$ a diagonal $n \times n$
+matrix with entries $d_1 , d_2 , \ldots , d_n$,
+\begin{align*}
+  A =
+  \begin{bmatrix}%{c c c c}
+    | & | & \cdots &  | \\
+    a_1 & a_2 & \cdots &  a_n \\
+    | & | & \cdots &  | \\
+  \end{bmatrix}
+\end{align*}
+Then
+\begin{align*}
+  AD =
+  \begin{bmatrix}%{c c c c}
+    | & | & &  | \\
+    d_1a_1 & d_2a_2 & \cdots &  d_na_n \\
+    | & | & &  | \\
+  \end{bmatrix}
+\end{align*}
+and if
+\begin{align*}
+  B =
+  \begin{bmatrix}%{c c c c}
+    - & b_1 & - \\
+    - & b_2 & - \\
+    & \vdots &  \\
+    - & b_n & - \\
+  \end{bmatrix}
+\end{align*}
+then
+\begin{align*}
+  DB =
+  \begin{bmatrix}%{c c c c}
+    - & d_1b_1 & - \\
+    - & d_2b_2 & - \\
+    & \vdots &  \\
+    - & d_nb_n & - \\
+  \end{bmatrix}
+\end{align*}
+
+\textcolor{red}{Do the same for upper triangular matrices and add
+some context to the multiplications}.
+
+Notice that every time you left multiply, you play with column, and
+when you right multiply, you play with the rows.
+
+\begin{exercise}
+  Let $A$ be an $n \times n$ matrix over $\mathbb{C}$. Let $\omega =
+  e^{ \frac{2\pi i}{n}}$. Then prove that
+  \begin{align*}
+    A' = \frac{1}{n} \sum_{k = 0}^{n} (U^*)^kAU^k
+  \end{align*}
+  preserve all the diagonal entries of $A$ and kills the rest of
+  entries. That is $A^\prime = \text{Diag}(A)$
+\end{exercise}
+
+\section{Review of Linear Algebra}
+
+\begin{itemize}
+  \item Rank-Nullity Theorem
+  \item Orthogonality
+  \item Orthogonal projection is the closest point on the subspace
+    from the given vector.
+\end{itemize}

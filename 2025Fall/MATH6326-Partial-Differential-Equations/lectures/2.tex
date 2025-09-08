@@ -1,0 +1,61 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 28/08/2025 }
+
+See Burgers equations and diffusion equation from the notes.
+Reasons for boundary condition and initial condition.
+
+\section{Boundary Contitions}
+\begin{definition}
+  Dirichlet boundary condition is when the prescribed value of
+  unknown $u$ at the boundary $\partial \Omega$. For example when $u$
+  is the temperature of the metal rod, and the temperature along the
+  boundary is known.
+\end{definition}
+
+\begin{definition}
+  Neumann boundary condition is when $\nabla \cdot \vec{n} = g(x)$,
+  where $x \in \partial \Omega$. When $ g(x) = 0$, we say it is
+  \textbf{homogeneus Neumann boundary condition}.
+\end{definition}
+
+\begin{definition}
+  Robin boundary condition is when $u + \nabla \cdot \vec{n} = g(x)$,
+  where $x \in \partial \Omega$.
+\end{definition}
+
+\begin{definition}
+  No flux boundary condition is when $\vec{J}\cdot\vec{n} = 0$, where
+  $ x \in \partial \Omega$.
+\end{definition}
+
+\section{Steady States}
+
+A steady state solution is a solution ot
+\begin{align*}
+  \partial_t u + \nabla\cdot J = Q
+\end{align*}
+that does not depend on time. So it solves $\nabla \cdot J = Q$.
+If we have $u$ to be the concentration of chemical species, then $J =
+- D \nabla u$. So $\nabla \cdot J = Q \implies D \Delta u = Q$ if $D$
+is a constant.
+
+\section{Euler's Equation}
+Let $\vec{u} = \vec{u}(x, t)$ be the velocity of a fluid for $(x, t)
+\in \Omega \subset \mathbb{R}^3 \times [0, T]$, $T > 0$.
+
+Using conservation of mass $R \subset \Omega \subset \mathbb{R}^3$,
+where $\rho = \rho(x, t)$ is the density of the fluid.
+\begin{align*}
+  \frac{d}{dt} \int_R \rho \ d \nu = - \int_{\partial R}
+  \vec{J}\cdot\vec{n} \ d A = - \int_{\partial R}  \rho \vec{u} \cdot
+  \vec{n} \ d A
+\end{align*}
+By divergence theorem, we have
+\begin{align*}
+  \frac{\partial \rho}{\partial t} + \nabla(\rho \vec{u}) = 0
+\end{align*}
+Assuming the fluid is incompressible, we have $\rho$ is a constant, hence
+\begin{align*}
+  \nabla \cdot \vec{u} = 0
+\end{align*}

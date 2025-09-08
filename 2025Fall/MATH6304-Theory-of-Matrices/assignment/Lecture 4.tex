@@ -1,0 +1,268 @@
+% initial settings
+\documentclass[11pt]{article}
+\usepackage{geometry} % automatic papersizes, margins.
+\usepackage{makeidx} % 'makeidx' make and show index
+\usepackage{enumitem} % itemize, enumerate, description.
+\usepackage{hyperref} % hyperlinks, cross-references.
+\usepackage{xcolor} % foreground and background color management.
+% Better color mixing compared to 'color'
+\usepackage{graphicx} % provide options for \includegraphics. Builds
+% on 'graphic'
+\usepackage{caption} % better control over captions of figures and equations.
+\usepackage{appendix} % extra control over appendix
+\usepackage[backend=biber, style=alphabetic]{biblatex} % better than
+% bibtex, people say.
+\usepackage{tocbibind} % add ToC/Bibliography/Index to ToC
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+\usepackage{tikz} % for tikz diagrams
+\usepackage{tikz-cd} % commutative diagrams.
+\usepackage{marginnote} % For sidenotes
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{Matrix Theory\\ Lecture Notes from September 4, 2025}
+\date{}
+% author list
+\author{
+  taken by Joel Sleeba
+}
+
+\maketitle
+
+\section{Warm Up}
+Assume we know that $A \in M_n(\mathbb{C})$ is diagonalizable. Let
+$p_0, p_1 , p_2 , \ldots , p_n \in \mathbb{C}$ and consider
+\begin{align*}
+  B: = P(A) = p_0 I + p_1 A + p_2A^2 + \ldots + p_nA^n
+\end{align*}
+Is $B$ diagonalizable?
+\begin{proof}
+  Yes. Because if $A = S^{-1}DS$ for a diagonal $D$, then $A^n =
+  S^{-1}D^n S$, and therefore
+  \begin{align*}
+    B = S^{-1} (p_0 I  + p_1D + p_2D^2 + \ldots + p_nD^n)S
+  \end{align*}
+  Since $D$ is a diagonal matrix, $p_0 I  + p_1D + p_2D^2 + \ldots +
+  p_nD^n$ will also be a diagonal matrix. Hence we get that $B$ is
+  diagonalizable.
+\end{proof}
+
+\section{Simultaneous diagonalization}
+
+\begin{theorem}
+  Let $A, B$ be diagonalizable. Then $AB = BA$ if and only if they
+  are simultaneously diagonalizable by the same $S$.
+\end{theorem}
+\begin{proof}
+  Let $D_A = S^{-1} A S$, and $B^\prime = S^{-1} B S$, where $D_A$ is
+  a diagonal matrix. Without loss of generality, assume that common
+  eigenvalues appear together in $D_A$. If not choose $S$ with an
+  additional permutation of the rows.
+
+  Assuming $AB = BA$, we get
+  \begin{align*}
+    D_AB^\prime &= S^{-1} ASS^{-1}BS \\
+    &= S^{-1}ABS \\
+    &= S^{-1}BAS \\
+    &= S^{-1}BSS^{-1}AS \\
+    &= B^\prime D_A
+  \end{align*}
+  If $B^\prime = [b_{i, j}^\prime]_{i, j = 1}^n$, then by $D_A
+  B^\prime = B^\prime D_A$, from the diagonal structure of $D_A$, we get
+  \begin{align*}
+    \tilde{\lambda}_ib_{i, j}^\prime = b_{i, j}^\prime \tilde{\lambda}_j
+  \end{align*}
+  where $\tilde{\lambda}_i$ is the $i$-th diagonal entry on $D_A$.
+  So, we have
+  \begin{align*}
+    (\tilde{ \lambda}_i - \tilde{\lambda}_j) b_{i, j}^\prime = 0
+  \end{align*}
+  which shows that if $\tilde{ \lambda}_i \neq \tilde{\lambda}_j$,
+  then $b_{i, j}^\prime = 0$. Thus we get that
+  \begin{align*}
+    B^\prime =
+    \begin{bmatrix}%{c c c c}
+      B_1^\prime &  &  & \\
+      & B_2^\prime &   & \\
+      &  &  & \ddots  & \\
+      &  & &   & B_r^\prime \\
+    \end{bmatrix}
+  \end{align*}
+
+  Since $B$ and $B^\prime$ are diagonalizable, so is each
+  $B_i^\prime$. Taking matrices $T_1 , T_2 , \ldots , T_r$ that
+  diagonalize $B^\prime_1 ,  B^\prime_2 , \ldots , B^\prime_r$
+  respectively, let
+  \begin{align*}
+    T =
+    \begin{bmatrix}%{c c c c}
+      T_1&  &  &  \\
+      & T_2 &  &  \\
+      &  & \ddots &  \\
+      &  &  & T_4 \\
+    \end{bmatrix}
+  \end{align*}
+  Then,
+  \begin{align*}
+    T^{-1} B T =
+    \begin{bmatrix}
+      T_1^{-1}B_1^\prime T_1 &  &  & \\
+      & T_2^{-1}B_2^\prime T_2 &   & \\
+      &  &  & \ddots  & \\
+      &  & &   & T_r^{-1} B_r^\prime T_r \\
+    \end{bmatrix} =
+    \begin{bmatrix}%{c c c c}
+      D_1^\prime&  &  &  \\
+      &  D_2^\prime&  &  \\
+      &  &  \ddots&  \\
+      &  &  & D_r^\prime \\
+    \end{bmatrix}
+  \end{align*} where each $D_i^\prime$ is a diagonal block.
+  Also,
+  \begin{align*}
+    T^{-1} D_A T =
+    \begin{bmatrix}
+      T_1^{-1}\lambda_1 I T_1 &  &  & \\
+      & T_2^{-1}\lambda_2 IT_2 &   & \\
+      &  &  & \ddots  & \\
+      &  & &   & T_r^{-1} \lambda_r I T_r \\
+    \end{bmatrix} = D_A
+  \end{align*}
+  This implies $D_A = T^{-1} S^{-1} A S T$, and $D_B = T^{-1} S^{-1}
+  B ST$ are both diagonal.
+
+  Conversely if $A, B$ are diagonalizable by the same $S$, we have $A
+  = SD_AS^{-1}$ and $B = S^{-1}D_BS$. Then
+  \begin{align*}
+    AB &= S^{-1}D_ASS^{-1}D_BS \\
+    &= S^{-1}D_AD_B S \\
+    &= S^{-1}D_BD_AS \\
+    &=S^{-1}D_BSS^{-1}D_AS \\
+    &= BA
+  \end{align*}
+  And thus we are done.
+\end{proof}
+
+Next, we consider simultaneous diagonalization for a family of matrices.
+\begin{definition}
+  A family $F \subset M_n$ is a commuting family if for each $A, B
+  \in F$, $AB = BA$.
+\end{definition}
+
+\begin{definition}
+  A subspace $W \subset \mathbb{C}^n$ is called an $A$-invariant
+  subspace for some $A \in M_n$, if $Aw \in W$ for all $w \in W$. If
+  $F \subset M_n$, then $W$ is called $F$-invariant if for each $A
+  \in F$, $W$ is $A$-invariant.
+\end{definition}
+
+\begin{lemma}
+  If $W \subset \mathbb{C}^n$ is $A$-invariant for some $A \in M_n$,
+  and suppose that $\textrm{dim}(W) \ge 1$, then there is an $x \in W
+  \setminus \{  \textbf{0} \}$ such that $Ax = \lambda x$.
+\end{lemma}
+\begin{proof}
+  We consider $B:= A|_W$, the matrix representation of $A$ restricted
+  to the subspace $W$. Then $B: W \to W$ has an eigenvector since it
+  has at least one eigenvalue as the characteristic polynomial
+  $p_B(x)$ decomposes into linear factors by the fundamental theorem of algebra.
+\end{proof}
+
+\begin{lemma}
+  If $F \subset M_n$ is a commuting family, then there exists an $x
+  \in \mathbb{C}^n$ such that for each $A \in F$, $Ax = \lambda_A x$.
+\end{lemma}
+\begin{proof}
+  Choose $W$ to be an $F$-invariant subspace of minimum, non-zero
+  dimension. Existence of $W$ is guaranteed since $\mathbb{C}^n$ is
+  an $F$-invariant subspace of non-zero dimension.
+
+  Next, we show that any $ x \in W \setminus \{ \textbf{0} \}$ is an
+  eigenvector for each $ A \in \mathbb{F}$. Assume this is not true.
+  Then there is  a $ y\in W \setminus \{ \textbf{0} \}$, and an $ A
+  \in F$, such that $Ay \not\in \mathbb{C}y$. Since $W$ is
+  $A$-invariant by the setup, by previous lemma, we get that there is
+  a $x \in W \setminus \{ \textbf{0} \}$ such that $Ax = \lambda_x x$
+  for some $\lambda_x \in \mathbb{C}$.
+
+  Let $ W_0 := \{ z \in W \ : \ Az = \lambda_x z \}$. Since $y \notin
+  W_0$, we get that $W_0 \neq W$. But for any $B \in F$, by the
+  invariance of $W$, $Bx \in W$, and for $u \in W_0$,
+  \begin{align*}
+    A(Bu) = B(Au) =  \lambda_x Bu
+  \end{align*}
+  We observe $Bu \in W_0$. Thus $B$ maps $W_0$ to $W_0$, so $ W_0$ is
+  $ F$-invariant. We have derived a contradiction with the minimality
+  of $W$, proving our statement.
+\end{proof}
+
+\begin{remark}
+  This implies that commuting families have at least one common eigenvector
+\end{remark}
+
+\begin{definition}
+  A simultaneously diagonalizable family is a family $F \subset M_n$
+  such that there exists $S \in M_n$ for which $S^{-1} A S$ is
+  diagonal for each $A \in F$
+\end{definition}
+
+\begin{theorem}
+  Let $F \subset M_n$ be a family of diagonalizable matrices, then
+  $F$ is a commuting family if and only if it is simultaneously diagonalizable.
+\end{theorem}
+We will prove this in the next lecture.
+
+\printbibliography[heading=bibintoc]
+\end{document}

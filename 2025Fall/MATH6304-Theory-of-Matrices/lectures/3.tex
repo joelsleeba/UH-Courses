@@ -1,0 +1,110 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 02/09/2025 }
+
+\section{Diagonazability}
+
+Can we find conditions for diagonalizability.
+
+\begin{theorem}
+  Let $A \in M_n(\mathbb{C})$, $p_A(t) = \prod_{j = 1}^{n} (t -
+  \lambda_j)$, and $\lambda_i \neq \lambda_j$ for $j \neq k$, then
+  $A$ is diagonalizable.
+\end{theorem}
+\begin{proof}
+  We'll show that there's a linearly independent set of $n$
+  eigenvectors. Let $x_j \in \mathbb{C}^n$ such that $Ax_j =
+  \lambda_j x_j$. If $\{x_1 , x_2 , \ldots , x_n  \}$ were linearly
+  dependent, then there is a linear combination
+  \begin{align*}
+    \alpha_1x_{j_1} + \alpha_2x_{j_2} + \ldots + \alpha_rx_{j_r} = 0
+  \end{align*}
+  with $ r \le n$, and all $\alpha_j \neq 0$. Let $r$ be smallest
+  such $r \le n$, and assume with possible renumbering that $j_i =
+  i$. Then applying $ A$ to the linear combination gives us
+  \begin{align*}
+    A( \alpha_1x_{1} + \alpha_2x_{2} + \ldots + \alpha_nx_{n})
+    =\alpha_1 \lambda_1 x_{1} + \alpha_2 \lambda_2 x_{2} + \ldots +
+    \alpha_n \lambda_n x_{n}  = 0
+  \end{align*}
+  multiplying the previous equation with $\lambda_r$ and then
+  subtracting gives us
+  \begin{align*}
+    \alpha_1 (\lambda_1 - \lambda_r) x_{1} + \alpha_2 (\lambda_2 -
+    \lambda_r) x_{2} + \ldots + \alpha_r (\lambda_r - \lambda_r) x_{r}  = 0
+  \end{align*}
+  which contradicts the minimality of $r$.
+\end{proof}
+
+Unfortunately this is just a sufficient condition, as it excludes the
+following matrix.
+
+\begin{align*}
+  \begin{bmatrix}%{c c c}
+    0 & 0 & 0\\
+    0 & 0 & 0\\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{align*}
+
+\begin{definition}
+  If for $A \in M_n(\mathbb{C})$,
+  \begin{align*}
+    p_A(t) = (t - \lambda_1)^{m_1} ( t - \lambda_2)^{m_2} \ldots (t -
+    \lambda_r)^{m_r}
+  \end{align*}
+  then we say that $\lambda_j$ has algebraic multiplicty $m_j$. We
+  call $\textrm{null}(\lambda_jI - A)$, the geometric multiplicity of
+  $\lambda_j$
+\end{definition}
+
+\begin{lemma}
+  If $A \in M_n$ has eigenvalue $\lambda$, and $ p_A(t) = (t -
+  \lambda)^m q(t)$, with $q(\lambda) = 0$, then $r =
+\textrm{nul}(\lambda I - A)) \le m$
+\end{lemma}
+\begin{proof}
+Choose a basis $\{ x_1 , x_2 , \ldots , x_r \}$ of veignevectors,
+spanning $E_\lambda = \{ x \in \mathbb{C}^n \ : \ Ax = \lambda x \}$.
+Complete it to a basis $\{ x_1 , x_2 , \ldots , x_n \}$ of $
+\mathbb{C}^n$.Let $S = [x_1 , x_2 , \ldots , x_n]$.
+
+Then $AS = [ \lambda x_1 , \lambda x_2 , \ldots  \lambda x_r,
+y_{r+1}, \ldots y_n]$ with some vectors $y_{r+1} , \ldots , y_n$.
+Then $S^{-1}AS = $\textcolor{red}{verify}, and we get
+\begin{align*}
+  \textrm{det}(tI - A) & = \textrm{det}(tI - S^{-1}AS) \\
+  &= ( t - \lambda)^r \textrm{det}(t - C)
+\end{align*}
+
+Thus we conclude that algebraic multiplicity of $\lambda$ is at least
+equal to $r$.
+\end{proof}
+
+\begin{remark}
+See that the sum of all the algebraic multiplicity of the eigenvalues
+of $A \in M_n(\mathbb{C})$ is $n$.
+\end{remark}
+
+\begin{theorem}
+The matrix $A \in M_n(\mathbb{C})$ is diagonalizable if and only if
+the algebraic and geometric multiplicities are equal for each eigenvalue.
+\end{theorem}
+\begin{proof}
+We note that given two eigenvalues $\lambda_j \neq \lambda_k$, then
+their eigenspaces $E_{i}, E_{j}$ intersect trivially. Thus if $\{ v_1
+, v_2 , \ldots , v_{r_1} \}$ and $\{ u_1 , u_2 , \ldots , u_{r_2} \}$
+form a basis for $E_{\lambda_1}$ and $E_{\lambda_2}$ respectively,
+then $\{ v_1 , v_2 , \ldots , v_{r_1}, u_1 , u_2 , \ldots , u_{r_2}
+\}$ is linearly independent. Iterating this way, we get a basis for
+$E_1 + E_2 \ \ldots  + E_n$ with dimension $r = \sum_{i = 1}^{k} r_i$.
+
+If algebraic and geometric multiplicities equal then $r = n$, and we
+have a basis of eigenvectors. Otherwise if $r < n$, then we do not
+have such a basis of eigenvectors. And since existence of a basis of
+eigenvectors characterizes diagonalizability, this characterizes
+diagonalizability.
+\end{proof}
+
+Next lecture, we'll look when multiple matrices can be simultaneously
+diagonalizable with the same $S$ matrix.

@@ -1,0 +1,231 @@
+% initial settings
+\documentclass[11pt]{article}
+\usepackage{geometry} % automatic papersizes, margins.
+\usepackage{makeidx} % 'makeidx' make and show index
+\usepackage{enumitem} % itemize, enumerate, description.
+\usepackage{hyperref} % hyperlinks, cross-references.
+\usepackage{xcolor} % foreground and background color management.
+% Better color mixing compared to 'color'
+\usepackage{graphicx} % provide options for \includegraphics. Builds
+% on 'graphic'
+\usepackage{caption} % better control over captions of figures and equations.
+\usepackage{appendix} % extra control over appendix
+\usepackage[backend=biber, style=alphabetic]{biblatex} % better than
+% bibtex, people say.
+\usepackage{tocbibind} % add ToC/Bibliography/Index to ToC
+
+\usepackage{amsmath} % math symbols, matrices, cases, trig functions,
+% var-greek symbols.
+\usepackage{amsfonts} % mathbb, mathfrak, large sum and product symbols.
+\usepackage{amssymb} % extended list of math symbols from AMS.
+% https://ctan.math.washington.edu/tex-archive/fonts/amsfonts/doc/amssymb.pdf
+\usepackage{amsthm} % theorem styling.
+\usepackage{mathrsfs} % mathscr fonts.
+\usepackage{yhmath} % widehat.
+\usepackage{empheq} % emphasize equations, extending 'amsmath' and 'mathtools'.
+\usepackage{bm} % simplified bold math. Do \bm{math-equations-here}
+\usepackage{tikz} % for tikz diagrams
+\usepackage{tikz-cd} % commutative diagrams.
+\usepackage{marginnote} % For sidenotes
+
+% geometry of paper
+\geometry{
+  a4paper, % 'a4paper', 'c5paper', 'letterpaper', 'legalpaper'
+  asymmetric, % don't swap margins in left and right pages. as
+  % opposed to 'twoside'
+  centering, % to center the content between margins
+  bindingoffset=0cm,
+}
+
+% hyprlink settings
+\hypersetup{
+  colorlinks = true,
+  linkcolor = {red!60!black},
+  anchorcolor = red,
+  citecolor = {green!50!black},
+  urlcolor = magenta,
+}
+
+% theorem styles
+\theoremstyle{plain} % default; italic text, extra space above and below
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{definition} % upright text, extra space above and below
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark} % upright text, no extra space above or below
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note} %'Notes' in italics and without counter
+
+% renewcommands for counters
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\remarkautorefname}{Remark}
+\newcommand{\exampleautorefname}{Example}
+
+\addbibresource{~/Books/Research/research.bib}
+
+\begin{document}
+
+\title{Matrix Theory\\ Lecture Notes from September 2, 2025}
+\date{}
+% author list
+\author{
+  taken by Joel Sleeba
+}
+
+\maketitle
+
+\section{Warm Up}
+Let $A, B \in M_n(\mathbb{C})$, and $A$ be an invertible matrix.
+Consider the function $F: \mathbb{R} \to M_n(C) := t \to A + tB$.
+Since $F$ is continuous, and $F(0) = A$ is invertible, by the inverse
+function theorem, $F$ is invertible in some neighborhood
+$B_\varepsilon(0)$ of $0$. Let $G: B_\varepsilon(0) \to
+M_n(\mathbb{C})$, be the inverse. Clearly $G(0) = A^{-1}$. We are
+interested to have a good approximation $G$.
+
+If we can find $G^\prime$, the derivative of $G$, $H(t) = G(0) + t
+G^\prime(t)$ would be a good approximation for $G$. We know that
+$F(t)G(t) = I_n$, then using the product rule of differentiation,
+\begin{align*}
+  F(t) G^\prime(t) + F^\prime(t) G(t) &= 0 \\
+  F(0) G^\prime(0) &= - F^\prime(0)G(0) \\
+  A G^\prime(0) &= -BA^{-1} \\
+  G^\prime(0) = -A^{-1}BA^{-1}
+\end{align*}
+Thus we get that $H(t) = A - t A^{-1}BA^{-1}$ is a good approximation for $G$.
+
+\section{Conditions for Diagonazability}
+
+Now we look for some more conditions for diagonalizability.
+
+\begin{theorem}
+  \label{thm:diag1}
+  Let $A \in M_n(\mathbb{C})$, with its characteristic polynomial
+  $p_A(t) = \prod_{j = 1}^{n} (t - \lambda_j)$, and $\lambda_i \neq
+  \lambda_j$ for $j \neq k$, then $A$ is diagonalizable.
+\end{theorem}
+\begin{proof}
+  We'll show that there's a linearly independent set of $n$
+  eigenvectors. Then by what we've proved in the last lecture, we'll
+  be done. Let $\{ x_1 , x_2 , \ldots , x_n \}$ be such that $x_j \in
+  \mathbb{C}^n$ with $Ax_j = \lambda_j x_j$. If $\{x_1 , x_2 , \ldots
+  , x_n  \}$ were linearly dependent, then there is a linear combination
+  \begin{align*}
+    \alpha_1x_{j_1} + \alpha_2x_{j_2} + \ldots + \alpha_sx_{j_s} = 0
+  \end{align*}
+  with $s \le n$, and all $\alpha_j \neq 0$. Let $r$ be smallest such
+  $s \le n$, and assume with possible renumbering that $j_i = i$.
+  Then applying $ A$ to the linear combination gives us
+  \begin{align*}
+    A( \alpha_1x_{1} + \alpha_2x_{2} + \ldots + \alpha_nx_{n})
+    =\alpha_1 \lambda_1 x_{1} + \alpha_2 \lambda_2 x_{2} + \ldots +
+    \alpha_n \lambda_n x_{n}  = 0
+  \end{align*}
+  multiplying the previous equation with $\lambda_r$ and then
+  subtracting gives us
+  \begin{align*}
+    0 &= (\alpha_1 \lambda_1 x_{1} + \alpha_2 \lambda_2 x_{2} +
+    \ldots + \alpha_n \lambda_n x_{n}) - (\alpha_1 \lambda_r x_{1} +
+    \alpha_2 \lambda_r x_{2} + \ldots + \alpha_r \lambda_r x_{r}) \\
+    &= \alpha_1 (\lambda_1 - \lambda_r) x_{1} + \alpha_2 (\lambda_2 -
+    \lambda_r) x_{2} + \ldots + \alpha_{r-1} (\lambda_{r-1} -
+    \lambda_r) x_{r-1} + \alpha_r (\lambda_r - \lambda_r) x_{r} \\
+    &= \alpha_1 (\lambda_1 - \lambda_r) x_{1} + \alpha_2 (\lambda_2 -
+    \lambda_r) x_{2} + \ldots + \alpha_{r-1} (\lambda_{r-1} - \lambda_r) x_{r-1}
+  \end{align*}
+  which contradicts the minimality of $r$.
+\end{proof}
+
+Unfortunately this is just a sufficient condition, as in the next example.
+\begin{example}
+  Consider the matrix
+  \begin{align*}A =
+    \begin{bmatrix}%{c c c}
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 1
+    \end{bmatrix}
+  \end{align*}
+  Clearly $A$ is diagonalizable. But the characteristic polynomial
+  $p_A(x) = x^2(1-x)$ does not satisfy the conditions of \autoref{thm:diag1}
+\end{example}
+
+\begin{definition}
+  If for $A \in M_n(\mathbb{C})$, with characteristic polynomial
+  \begin{align*}
+    p_A(t) = (t - \lambda_1)^{m_1} ( t - \lambda_2)^{m_2} \ldots (t -
+    \lambda_r)^{m_r}
+  \end{align*}
+  then we say that the eigenvalue $\lambda_j$ has algebraic
+  multiplicity $m_j$. We call $\textrm{null}(\lambda_jI - A)$, the
+  geometric multiplicity of $\lambda_j$
+\end{definition}
+
+\begin{lemma}
+  If $A \in M_n$ has eigenvalue $\lambda$, and characteristic
+  polynomial $ p_A(t) = (t - \lambda)^m q(t)$, with $q(\lambda) = 0$,
+then $r = \textrm{nul}(\lambda I - A)) \le m$
+\end{lemma}
+\begin{proof}
+Choose a basis $\{ x_1 , x_2 , \ldots , x_r \}$ of eigenvectors,
+spanning $E_\lambda = \{ x \in \mathbb{C}^n \ : \ Ax = \lambda x \}$.
+Complete it to a basis $\{ x_1 , x_2 , \ldots , x_n \}$ of $
+\mathbb{C}^n$. Let $S = [x_1 , x_2 , \ldots , x_n]$.
+
+Then $AS = [ \lambda x_1 , \lambda x_2 , \ldots  \lambda x_r,
+y_{r+1}, \ldots y_n]$ with some vectors $y_{r+1} , \ldots , y_n$.
+Then
+\begin{align*}
+  S^{-1}AS =
+  \begin{bmatrix}
+    \lambda I_r & 0 \\
+    0 & C
+  \end{bmatrix}
+\end{align*}
+and we get
+\begin{align*}
+  \textrm{det}(tI - A) & = \textrm{det}(tI - S^{-1}AS) \\
+  &= ( t - \lambda)^r \textrm{det}(t - C)
+\end{align*}
+Thus we conclude that algebraic multiplicity of $\lambda$ is at least
+equal to $r$.
+\end{proof}
+
+\begin{remark}
+See that the sum of all the algebraic multiplicity of the eigenvalues
+of $A \in M_n(\mathbb{C})$ is $n$. This is a direct consequence of
+the fundamental theorem of algebra.
+\end{remark}
+
+\begin{theorem}
+The matrix $A \in M_n(\mathbb{C})$ is diagonalizable if and only if
+the algebraic and geometric multiplicities are equal for each eigenvalue.
+\end{theorem}
+\begin{proof}
+We note that given two eigenvalues $\lambda_j \neq \lambda_k$, then
+their eigenspaces $E_{i}, E_{j}$ intersect trivially. Thus if $\{ v_1
+, v_2 , \ldots , v_{r_1} \}$ and $\{ u_1 , u_2 , \ldots , u_{r_2} \}$
+form a basis for $E_{\lambda_1}$ and $E_{\lambda_2}$ respectively,
+then $\{ v_1 , v_2 , \ldots , v_{r_1}, u_1 , u_2 , \ldots , u_{r_2}
+\}$ is linearly independent. Iterating this way, we get a basis for
+$E_1 + E_2 \ \ldots  + E_n$ with dimension $r = \sum_{i = 1}^{k} r_i$.
+
+If algebraic and geometric multiplicities equal then $r = n$, and we
+have a basis of eigenvectors. Otherwise if $r < n$, then we do not
+have such a basis of eigenvectors. And since existence of a basis of
+eigenvectors characterizes diagonalizability, this characterizes
+diagonalizability.
+\end{proof}
+
+Next lecture, we'll look when multiple matrices can be simultaneously
+diagonalizable with the same $S$ matrix.
+
+\printbibliography[heading=bibintoc]
+\end{document}
