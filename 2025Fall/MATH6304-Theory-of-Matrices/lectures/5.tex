@@ -1,0 +1,104 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 09/09/2025 }
+
+\begin{theorem}
+  Let $F \subset M_n$ be a family of diagonalizable matrices, then
+  $F$ is a commuting family if and only if it is simultaneously diagonalizable.
+\end{theorem}
+\begin{proof}
+  It is an easy exercise to show that a simultaneously diagonalizable
+  family is commuting.
+
+  We prove the converse by induction over $n$. For $n = 1$, there's
+  nothing to prove. Assume that this is true for all $F^\prime
+  \subset M_k$, where $k < n$. If each $A \subset F$ is of the form
+  $A = \lambda I$, again nothing to prove. Thus, assume $A$ is
+  diagonalizable with eigenvalues $\lambda_1 , \lambda_2 , \ldots ,
+  \lambda_r, r \ge 2$, and assume $AB = BA$, for each $B \in F$.
+  Then $A, B$ are simultaneously diagonalizable by previous theorem
+  and hence without loss of generality, assume that
+  $A$ is diagonal.
+
+  \textcolor{red}{verify rest from the lecture notes}
+\end{proof}
+
+\begin{remark}
+  Given $C \in M_n(\mathbb{C})$, we can think of function associated
+  with $C$, as $ \langle x , y \rangle   \to \langle Cx, y\rangle$.
+  Notice that this function preserves all information about $C$,
+  since we can find the individual matrix entries.
+  We can also associate $Q_c : x \to \langle Cx , x \rangle$. We
+  recall $Q_c$ determines $C$ as
+  \begin{align*}
+    \langle Cx, y \rangle = \frac{1}{4}\sum_{j = 1}^{4} i^j\|Q_c(x + i^j
+    y)\|^2, \quad ( i = \sqrt{-1})
+  \end{align*}
+\end{remark}
+
+\subsection{Hermitian, normal, and unitary matrices}
+\begin{definition}
+  Let $A \in M_{n, m}$, then the adjoint $A^* \in M_{m, n}$ satisfies
+  $\langle  Ax , y \rangle  = \langle x , A^*y \rangle $ for each $x
+  \in \mathbb{C}^m, y \in \mathbb{C}^n$.
+
+  If for $A \in M_n$, $A = A^*$, then we say that $A$ is Hermitian or
+  self-adjoint. If $A = - A^*$, the it is called skew-hermitian.
+
+  If $A \in M_n$, then $A = B+ iC$, where $B = \frac{1}{2} (A + A^*),
+  C = \frac{1}{2i} (A - A^*)$ have the property $B = B^*, C = C^*$.
+  Here $ B$ is called the real part of $A$, and $iC$ is called the
+  imaginary part of $A$.
+\end{definition}
+
+\begin{proposition}
+  \begin{align*}
+    A = A^* \iff (iA) = -(iA)^*
+  \end{align*}
+\end{proposition}
+
+\begin{proposition}
+  A matrix $A \in M_n$ is Hermitian if and only if for all $x \in
+  \mathbb{C}^n$, $ \langle Ax , x \rangle  \in \mathbb{R}$.
+\end{proposition}
+\begin{proof}
+  If $A$ is Hermitian, then
+  \begin{align*}
+    \overline{\langle Ax , x \rangle } & = \langle x , Ax \rangle =
+    \langle A^*x , x \rangle  = \langle Ax , x \rangle
+  \end{align*}
+  shows that $\langle  Ax , x \rangle  \in \mathbb{R}$.
+
+  Conversely, assume that $\langle  Ax , x \rangle  \in \mathbb{R}$
+  for all $x \in \mathbb{C}^n$. Let $ A = B + iC$, where $B= B^*, C =
+  C^*$. Then
+  \begin{align*}
+    \langle Ax , x \rangle  &= \underbrace{\langle Bx , x
+    \rangle}_{\in \mathbb{R}}  + i \underbrace{\langle Cx , x
+    \rangle}_{\in \mathbb{R}}  \\
+  \end{align*}
+  We conclude that $\langle  Cx , x \rangle  = 0$ for all $x$. Now
+  using polarization identity, we get that $C = 0$.
+\end{proof}
+
+We also consider and equivalent of unimodular numbers.
+
+\begin{definition}
+  Let $A \in M_n$. $A$ is unitary if $A^*A = I = AA^*$.
+\end{definition}
+
+\begin{proposition}
+  Let $A \in M_n$. The following are equivalent.
+  \begin{enumerate}[label=(\arabic*)]
+    \item $A$ is unitary.
+    \item The columns of $A$ form an orthonormal basis.
+    \item Rows of $A$ form an orthonormal basis.
+    \item A preserves the norm for each $x \in \mathbb{C}^n$. That is
+      $\|Ax\| = \|x\|$.
+    \item $A$ preserve the inner product. That is $\langle  Ax , Ay
+      \rangle = \langle x , y \rangle$
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  You know,
+\end{proof}

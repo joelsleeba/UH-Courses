@@ -1,0 +1,312 @@
+% initial settings
+\documentclass[12pt]{article}
+\usepackage{geometry,amsthm,amsmath,amssymb, graphicx, natbib, float, enumerate}
+% \usepackage{latexml}
+\geometry{margin=1in}
+\renewcommand{\familydefault}{cmss}
+\usepackage{hyperref}
+%\usepackage{charter}
+\restylefloat{table}
+\restylefloat{figure}
+
+%%%%%%%%%%%% MODIFY LECTURE DATE AND AUTHOR %%%%%%%%%%%%%%%%%
+
+\newcommand\lecdat{September 2, 2025} % INSERT LECTURE DATE HERE
+
+\newcommand\notesby{Joel Sleeba}% INSERT NOTE TAKER HERE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\date{} % not needed
+\author{} % not needed
+
+%%%%%%%%%%% SOME MACROS BELOW %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conclusion}{Conclusion}
+
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+%\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{exc}[thm]{Exercise}
+%\newtheorem{fact}[thm]{Fact}
+\newtheorem{facts}[thm]{Facts}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{question}[thm]{Question}
+\newtheorem{answer}[thm]{Answer}
+\newtheorem{conj}[thm]{Conjecture}
+
+\renewcommand{\thethm}{\thesubsection.\arabic{thm}}
+
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
+\newcommand{\ff}[1]{\mathfrak{#1}}
+
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\abs}[1]{|#1|}
+\def\eps{\epsilon}
+\def\del{\delta}
+
+\def\Sn{\mathbb S^n}
+\def\Snm1{\mathbb S^{n-1}}
+
+\def\R{\mathbb R}
+\def\Rn{\mathbb R^n}
+
+% hyprlink settings
+\hypersetup{
+  pdfauthor={\notesby},
+  % pdftitle={Matrix Theory, Math6304\\
+  % Lecture Notes from \lecdat\\[0.1cm] \small taken by \notesby},
+  pdfsubject={Matrix Theory, Math6304, Lecture Notes},
+  pdfkeywords={Math 6304, Matrix Theory},
+  pdfproducer={LaTeX},
+  pdfcreator={pdflatex}
+}
+
+%%%%%%%%%%% PUT YOUR MACROS HERE %%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\mynewcommand{use often}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Matrix Theory \linebreak
+  Lecture Notes
+from \lecdat}
+\author{taken by \notesby}
+\maketitle
+
+\normalsize
+
+\setcounter{section}{1}
+\setcounter{subsection}{6}
+\setcounter{thm}{22}
+
+\subsection*{Warm Up}
+Let $A, B \in M_n(\mathbb{C})$, and $A$ be an invertible matrix.
+Consider the function $F: \mathbb{R} \to M_n(\mathbb{C}) := t \to A +
+tB$. We are interested in
+
+Clearly $F$ is continuous. Observe that $F(0) = A$ is invertible. We
+claim that $F(t)$ is invertible for all $t$ in some neighborhood
+$B_\varepsilon(0)$ of $0$. Notice that $F(t) = A + tB = A(I_n + t A^{-1}B)$.
+Since $A$ is invertible it is enough if we show that $I_n + tA^{-1}B$
+is invertible for some $t \in B_\varepsilon(0)$.
+
+Let $\| \cdot \|$ be the operator norm on $M_n(\mathbb{C})$.
+Let $|t| < \frac{1}{\|A^{-1} B\|}$. We claim that
+\begin{align*}
+  (I_n + tA^{-1}B)^{-1} = \sum_{i = 0}^\infty (- tA^{-1}B)^i
+\end{align*}
+if the infinite sum is well defined. By the triangle inequality we see that
+\begin{align*}
+  \Big \| \sum_{i = 1}^{\infty} (-tA^{-1}B)^n \Big \| \le \sum_{i =
+  1}^{\infty}  \|tA^{-1}B\|^n = \sum_{i = 1}^{\infty}
+  (|t|\|A^{-1}B\|)^n < \infty
+\end{align*}
+where the last inequality is because of the convergence of the
+geometric series. Hence the infinite sum makes sense.
+Moreover
+\begin{align*}
+  (I_n + tA^{-1}B) \Big(  \sum_{i = 1}^{n} (-t A^{-1}B)^i\Big) = I_n
+  + (-t A^{-1}B)^{n+1}
+\end{align*}
+and as $n \to \infty$, the tail $(-tA^{-1}B)^{n+1}$ converges to $\textbf{0}$
+by the convergence of the geometric series above. Thus we get that
+$F(t)$ is invertible in the interval of radius $\frac{1}{\|A^{-1}B\|}$ of $0$.
+
+Let $G: B_\varepsilon(0) \to M_n(\mathbb{C}):= t \to F(t)^{-1}$,
+where $ \varepsilon = \frac{1}{\|A^{-1}B\|}$.
+We are interested in the differentiability of $G$ in
+$B_\varepsilon(0)$. Then we can linearily approximate $G(t)$ about $t
+= 0$ as $G(0) + t G'(0)$.
+Clearly $G(0) = A^{-1}$. Now to show that $G$ is differentiable,
+observe that if $X, Y$ are invertible, then $X^{-1} - Y^{-1} = -
+Y^{-1}(X - Y)X^{-1}$. Then
+\begin{align*}
+  \frac{G(t+h)-G(t)}{h} = \frac{-G(t)[F(t+h)-F(t)]G(t+h)}{h} =
+  \frac{-G(t)hBG(t+h)}{h} = -G(t)BG(t+h)
+\end{align*}
+and thus
+\begin{align*}
+  G^\prime(t) = \lim_{h \to 0} \frac{G(t+h)-G(t)}{h} =  -G(t)BG(t)
+\end{align*}
+is well defined in $B_\varepsilon(0)$. Hence $G$ is differentiable
+everywhere in $B_\varepsilon(0)$ and $G^\prime(0) = -A^{-1}BA^{-1}$ gives that
+\begin{align*}
+  H(t) = A - tA^{-1}BA^{-1}
+\end{align*}
+is a linear approximation for $G(t) = F(t)^{-1}$.
+
+\subsection{Conditions for Diagonalizability}
+
+Now we look for some more conditions for diagonalizability.
+
+\begin{thm}
+  Let $A \in M_n(\mathbb{C})$, with its characteristic polynomial
+  $p_A(t) = \prod_{j = 1}^{n} (t - \lambda_j)$, and $\lambda_i \neq
+  \lambda_j$ for $j \neq k$, then $A$ is diagonalizable.
+\end{thm}
+\begin{proof}
+  We'll show that there's a linearly independent set of $n$
+  eigenvectors. Then by what we've proved in the last lecture, we'll
+  be done. Let $\{ x_1 , x_2 , \ldots , x_n \}$ be such that $x_j \in
+  \mathbb{C}^n$ with $Ax_j = \lambda_j x_j$. If $\{x_1 , x_2 , \ldots
+  , x_n  \}$ were linearly dependent, then there is a linear combination
+  \begin{align*}
+    \alpha_1x_{j_1} + \alpha_2x_{j_2} + \ldots + \alpha_sx_{j_s} = 0
+  \end{align*}
+  with $s \le n$, and all $\alpha_j \neq 0$. Let $r$ be smallest such
+  $s \le n$, and assume with possible renumbering that $j_i = i$.
+  Then applying $ A$ to the linear combination gives us
+  \begin{align*}
+    A( \alpha_1x_{1} + \alpha_2x_{2} + \ldots + \alpha_nx_{n})
+    =\alpha_1 \lambda_1 x_{1} + \alpha_2 \lambda_2 x_{2} + \ldots +
+    \alpha_n \lambda_n x_{n}  = 0
+  \end{align*}
+  multiplying the previous equation with $\lambda_r$ and then
+  subtracting gives us
+  \begin{align*}
+    0 &= (\alpha_1 \lambda_1 x_{1} + \alpha_2 \lambda_2 x_{2} +
+    \ldots + \alpha_n \lambda_n x_{n}) - (\alpha_1 \lambda_r x_{1} +
+    \alpha_2 \lambda_r x_{2} + \ldots + \alpha_r \lambda_r x_{r}) \\
+    &= \alpha_1 (\lambda_1 - \lambda_r) x_{1} + \alpha_2 (\lambda_2 -
+    \lambda_r) x_{2} + \ldots + \alpha_{r-1} (\lambda_{r-1} -
+    \lambda_r) x_{r-1} + \alpha_r (\lambda_r - \lambda_r) x_{r} \\
+    &= \alpha_1 (\lambda_1 - \lambda_r) x_{1} + \alpha_2 (\lambda_2 -
+    \lambda_r) x_{2} + \ldots + \alpha_{r-1} (\lambda_{r-1} - \lambda_r) x_{r-1}
+  \end{align*}
+  which contradicts the minimality of $r$.
+\end{proof}
+
+Unfortunately this is just a sufficient condition, as in the next example.
+\begin{ex}
+  Consider the matrix
+  \begin{align*}A =
+    \begin{bmatrix}%{c c c}
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 1
+    \end{bmatrix}
+  \end{align*}
+  Clearly $A$ is diagonalizable. But the characteristic polynomial
+  $p_A(x) = x^2(1-x)$ does not satisfy the conditions of the above theorem.
+\end{ex}
+
+\begin{defn}
+  If for $A \in M_n(\mathbb{C})$, with characteristic polynomial
+  \begin{align*}
+    p_A(t) = (t - \lambda_1)^{m_1} ( t - \lambda_2)^{m_2} \ldots (t -
+    \lambda_r)^{m_r}
+  \end{align*}
+  then we say that the eigenvalue $\lambda_j$ has algebraic
+  multiplicity $m_j$. We call $\textrm{null}(\lambda_jI - A)$, the
+  geometric multiplicity of $\lambda_j$
+\end{defn}
+
+\begin{lemma}
+  If $A \in M_n$ has eigenvalue $\lambda$, and characteristic
+  polynomial $ p_A(t) = (t - \lambda)^m q(t)$, with $q(\lambda) = 0$,
+then $r = \textrm{nul}(\lambda I - A)) \le m$
+\end{lemma}
+\begin{proof}
+Choose a basis $\{ x_1 , x_2 , \ldots , x_r \}$ of eigenvectors,
+spanning $E_\lambda = \{ x \in \mathbb{C}^n \ : \ Ax = \lambda x \}$.
+Complete it to a basis $\{ x_1 , x_2 , \ldots , x_n \}$ of $
+\mathbb{C}^n$. Let $S = [x_1 , x_2 , \ldots , x_n]$.
+
+Then $AS = [ \lambda x_1 , \lambda x_2 , \ldots  \lambda x_r,
+y_{r+1}, \ldots y_n]$ with some vectors $y_{r+1} , \ldots , y_n$.
+Then
+\begin{align*}
+  S^{-1}AS =
+  \begin{bmatrix}
+    \lambda I_r & 0 \\
+    0 & C
+  \end{bmatrix}
+\end{align*}
+and we get
+\begin{align*}
+  \textrm{det}(tI - A) & = \textrm{det}(tI - S^{-1}AS) \\
+  &= ( t - \lambda)^r \textrm{det}(t - C)
+\end{align*}
+Thus we conclude that algebraic multiplicity of $\lambda$ is at least
+equal to $r$.
+\end{proof}
+
+\begin{rem}
+By the definition the algebraic multiplicity of a matrix $A \in
+M_n(\mathbb{C})$ is the number of roots of its characteristic
+polynomial $p_A(x)$, counted upto multiplicities. But as a
+consequence of the fundamental theorem of algebra, every polynomial
+decomposes as linear factors in $\mathbb{C}$. Thus $p_A(x)$, being a
+polynomial of degree $n$, has $n$ roots in $\mathbb{C}$, forcing its
+algebraic multiplicity equal to $n$.
+\end{rem}
+
+\begin{thm}
+The matrix $A \in M_n(\mathbb{C})$ is diagonalizable if and only if
+the algebraic and geometric multiplicities are equal for each eigenvalue.
+\end{thm}
+\begin{proof}
+Let $\lambda_i, \lambda_j$ be two distinct eigenvalues of $A$ with their
+eigenspaces $E_{i}, E_{j}$ respectively. We claim $E_i \cap E_j =
+\{ \textbf{0} \}$. If not, there exists
+$\textbf{0} \neq x \in E_{i} \cap E_{j}$, and $Ax = \lambda_ix = \lambda_jx$.
+Then since $x \neq \textbf{0}$, $\textbf{0} = (\lambda_i - \lambda_j)
+x$ forces $\lambda_i = \lambda_j$ contradicting our assumption.
+
+Next, we claim that if $\{ v_1
+, v_2 , \ldots , v_{r_1} \}$ and $\{ u_1 , u_2 , \ldots , u_{r_2} \}$
+form a basis for $E_{i}$ and $E_{j}$ respectively,
+then $\{ v_1 , v_2 , \ldots , v_{r_1}, u_1 , u_2 , \ldots , u_{r_2}
+\}$ is linearly independent. If not there will be scalars $ \alpha_1
+, \alpha_2 , \ldots , \alpha_{r_1}$, $\beta_1 , \beta_2 , \ldots ,
+\beta_{r_2}$, such that
+\begin{align*}
+  \sum_{i = 1}^{r_1} \alpha_{i} v_i + \sum_{j = 1}^{r_2} \beta_j u_j = 0
+\end{align*}
+Since we know that $E_{j} \cap E_{j} = \{  \textbf{0} \}$, this forces
+\begin{align*}
+  \sum_{i = 1}^{r_1} \alpha_{i} v_i = - \sum_{j = 1}^{r_2} \beta_j
+  u_j = \textbf{0}
+\end{align*}
+Linear independence of $u_1 , u_2 , \ldots , u_{r_2}$, $v_1 , v_2 ,
+\ldots , v_{r_1}$ forces all $\alpha_i = 0 = \beta_j$ proving the
+linear independence of $\{v_1 , v_2 , \ldots , v_{r_1}, u_1 , u_2 ,
+\ldots , u_{r_2} \}$.
+
+Now by using induction over distinct eigenvalues $\lambda_1 ,
+\lambda_2 , \ldots , \lambda_k$ of $A$, we get a basis for
+$E_1 + E_2 \ \ldots  + E_k$ with dimension $r = \sum_{i = 1}^{k} r_i$.
+
+If algebraic and geometric multiplicities equal then $r = n$, and we
+have a basis of eigenvectors. Otherwise if $r < n$, then we do not
+have such a basis of eigenvectors. And since existence of a basis of
+eigenvectors characterizes diagonalizability (from previous lecture),
+our if and only if statement is proved.
+\end{proof}
+
+In the next lecture, we'll look when multiple matrices can be simultaneously
+diagonalizable with the same $S$ matrix.
+
+% \begin{thebibliography}{2}
+%
+% \bibitem{HornJohnson} Roger A. Horn, Charles R. Johnson, \textit{Matrix
+% Analysis}, 2rd Edition, 2013, Cambridge University Press
+%
+% \end{thebibliography}
+
+\end{document}

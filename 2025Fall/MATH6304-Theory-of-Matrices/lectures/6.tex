@@ -1,0 +1,133 @@
+% TeX_root = ../main.tex
+
+\marginnote{\scriptsize 11/09/2025 }
+
+\subsection*{Warm up}
+
+\begin{enumerate}[label=(\arabic*)]
+  \item Let $A \in M_n(\mathbb{C})$. For each $  x \in \mathbb{C}^n$,
+    $ \langle Ax , x \rangle  = 0$ if and only if $A = 0$.
+  \item Let $A \in M_n(\mathbb{R})$ and $A = A^*$, then for each $x
+    \in \mathbb{R}^n$, $\langle Ax , x \rangle  = 0$ if and only if $A = 0$
+\end{enumerate}
+
+\begin{remark}
+  If $A$ is Hermitian and unitary, then $AA^* = A^2 = I$, so each
+  eigenvalue $ \lambda = \pm 1$.
+\end{remark}
+
+\begin{example}
+  For $y \in \mathbb{C}^n\setminus \{ 0 \}$, $ H = I - 2
+  \frac{y^*y}{\|y\|^2}$ is called a Householder transform
+\end{example}
+\begin{exercise}
+  Check that this is Hermitian and satisfies $H^2 = I$.
+\end{exercise}
+
+\section{Shur Triangulizatoin and consequences of unitary equivalence}
+
+\begin{definition}
+  We say that $A, B \in M_n(\mathbb{C})$ are unitarily equivalent if
+  there is $U \in M_n$, $U^*U = I$ such that $B = U^*AU$.
+\end{definition}
+
+\begin{remark}
+  because of $U^{-1} = U^*$, if $A$ and $B$ are unitarily equivalent,
+  then there are similar. The converse is not true in general.
+\end{remark}
+
+\begin{question}
+  How can we tell if $A, B$ are unitarily equivalent?
+\end{question}
+
+We first look for necessary conditions.
+\begin{proposition}
+  If $A, B$ are unitarily equivalent, then
+  \begin{align*}
+    \sum_{i, j = 1}^{n} |a_{i, j}|^2 = \sum_{i, j = 1}^{n} |b_{i,j}|^2
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  We observe that
+  \begin{align*}
+    \sum_{i, j = 1}^{n} |a_{i, j}|^2 = \sum_{i = 1}^{n} [AA^*]_{i, i}
+    = \textrm{tr}(AA^*)
+  \end{align*}
+  The same is true for $B=U^*AU$. So,
+  \begin{align*}
+    \sum_{i, j = 1}^{n} |b_{i, j}|^2 &= \textrm{tr}(BB^*) \\
+    &= \textrm{tr}(U^*AU (U^*AU)^*) \\
+    &= \textrm{tr}(U^*AA^*U) \\
+    &= \textrm{tr}(AA^*)
+  \end{align*}
+\end{proof}
+
+We compare with a result that characterizes unitary equivalence
+
+\begin{theorem}[Carl Pearcy, 1962]
+  If all words $w_1$ on the alphabet $\{ A, A^* \}$, and $w_2$ on the
+  alphabet $\{ B, B^* \}$ of length upto $2n^2$ have
+  \begin{align*}
+    \textrm{tr}(w_1) = \textrm{tr}(w_2)
+  \end{align*}
+  then $A, B$ are unitarily equivalent.
+\end{theorem}
+
+\begin{theorem}[Shur's Triangulization Theorem]
+  Let $A in M_n$ having eigenvalues $\lambda_1 , \lambda_2 , \ldots ,
+  \lambda_n$, then thre is a unitary $U \in M_n$ such that $A =
+  UTU^*$, where $T$ is an upper triangular matrix with $\lambda_1 ,
+  \lambda_2 , \ldots , \lambda_n$ in the diagonal.
+\end{theorem}
+
+\begin{remark}
+  Remember that $T$ is in genearl not unique. For example,
+  \begin{align*}
+    A =
+    \begin{bmatrix}%{c c}
+      1 & 1\\
+      0 & 1
+    \end{bmatrix} \quad \textrm{and} \quad
+    B =
+    \begin{bmatrix}%{c c}
+      1 & -1\\
+      0 & 1
+    \end{bmatrix}
+  \end{align*}
+\end{remark}
+
+\begin{proof}[Proof of Shur's Triangulization Theorem]
+  We'll use induction on $n \in \mathbb{N}$. Assume this is true for
+  matrices $M_{n-1}$. Given $A \in M_n$ with eigenvalues $\lambda_1 ,
+  \lambda_2 , \ldots , \lambda_n$. Choose an eigenvector $x$
+  corresponding to an eigenvalue $\lambda_1$, and take $\|x\| = 1$.
+
+  Applying the Gram-Schmidt process, we complement $\{x\}$ to an
+  orthonormal basis $\{ x, z_2 , z_3 , \ldots , z_n \}$, Let $U_1 = [x,
+  z_1 , z_2 , \ldots , z_n]$. Then $U_1$ is unitary and $Ax = \lambda_1 x$, and
+  \begin{align*}
+    U_1^*AU_1 &= U_1^*[\lambda_1x , *] \\
+    &=
+    \begin{bmatrix}%{ c c}
+      \lambda_1 & * \\
+      0 & B
+    \end{bmatrix}
+  \end{align*}
+
+  Now $B \in M_{n-1}$ and it follows from induction argument.
+\end{proof}
+
+\begin{definition}
+  A matrix $A \in M_n$ is called normal if $A^*A = A^*A$.
+\end{definition}
+\begin{example}
+  Hermitian, skew-Hermitian, and Unitary matrices are normal.
+\end{example}
+
+\begin{proposition}
+  A matrix $A \in M_n$ is normal if and only if for each $x \in
+  \mathbb{C}^n$, $\|Ax\| = \|A^*x\|$.
+\end{proposition}
+\begin{proof}
+  Normality is $AA^* - A^*A = 0$. Thus for all $x \in \mathbb{C}^n$,
+\end{proof}
